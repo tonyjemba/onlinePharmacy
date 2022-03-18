@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
   public function register(Request $request){
+
+    //the fielsds must be verified, the password should be confirmed and the confirmation field 
+    //should have an id of password_confirmation
         $fields = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|string'
+            'password' => 'required|between:8,255|confirmed'
         ]);
     //after validation the registered user will be put into the table
         $user = User::create([
