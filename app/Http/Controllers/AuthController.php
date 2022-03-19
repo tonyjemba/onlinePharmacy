@@ -32,11 +32,43 @@ class AuthController extends Controller
     
     $response = [
         'user' => $user,
-        'token' => $token
+        'token' => $token,
+        'message' => 'You are now fully registered'
     ];
 
     //we return the response and the status code
     return response($response,201);
     
+  }
+
+  public function login(Request $request){
+
+    $fields = $request->validate([
+        'email' => 'required|string',
+        'password' =>'required|string'
+    ]);
+
+    //get user with email
+    $user = User::where('email', $fields['email'])->first();
+
+    //check password
+    if(!$user || !Hash::check($fields['password'],$user->password)){
+        return response([
+            'message' => 'Wrong password or email'
+        ], 401);
+    }
+
+    //if all fields are valid we create a token for the user to sign in
+    $token = $user->createToken('usertoken')->plainTextToken;
+
+    //return a response with the user and the token
+
+    $response = [
+        'user' => $user,
+        'token' => $token,
+        'message' => 'You are successfully logged in'
+    ];
+    
+    return response($response, 201);
   }
 }
