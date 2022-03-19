@@ -20,8 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('products', ProductController::class);
+
 Route::post('register',[AuthController::class, 'register']);
 
 
-Route::group(['middleware' => ['auth:sanctum']], function(){});
+//protected routes group
+Route::group(['middleware' => ['auth:sanctum']], function(){
+
+    Route::resource('products', ProductController::class);
+});
