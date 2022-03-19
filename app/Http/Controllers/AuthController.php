@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -70,5 +71,26 @@ class AuthController extends Controller
     ];
     
     return response($response, 201);
+  }
+
+  public function logout(Request $request){
+    
+    //logout the current login in email
+    $fields = $request->validate([
+        'email' => 'required|string',
+    ]);
+  
+   //get user with email
+   $user = User::where('email', $fields['email'])->first();
+
+   //delete all tokens associated with the email and it will be logged out
+   if($user){
+    $user->tokens()->delete();
+
+    return response(['message'=> 'logged out'],201);
+   }
+
+   return response(['message'=> ' user doesnot  exist']);
+
   }
 }
