@@ -48,13 +48,11 @@ const routes = [
       path: "/login",
       name: "Login",
       component: Home,
-      meta: { guestOnly: true }
     },
     {
       path: "/register",
       name: "Register",
       component: About,
-      meta: { guestOnly: true }
     },
   ];
 
