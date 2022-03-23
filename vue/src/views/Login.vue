@@ -102,7 +102,6 @@
                 </div>
             </form>
             {{ token }}
-            {{ message }}
         </div>
     </div>
 </template>
@@ -110,36 +109,39 @@
 <script>
 import Icon from "../components/Icon.vue";
 import { ref } from "vue";
-import axios from "axios";
-import { useStore } from 'vuex';
-import { computed } from 'vue';
+import { useStore } from "vuex";
+import { onBeforeRouteLeave } from "vue-router";
+import { computed } from "vue";
 
 export default {
     setup() {
-         const store = useStore();
+        const store = useStore();
         const credentials = ref({
             email: "",
             password: "",
         });
-
-       // function login() {
-            // axios
-            //     .post("http://localhost:8000/api/login", credentials.value)
-            //     .then((res) => console.log(res))
-            //     .catch((error) => {
-            //         if (error.response) {
-            //             console.log(error.response.data);
-            //         }
-            //     });
-        //}
+        // onBeforeRouteLeave(async(to, from) => {
+        //     if (
+                
+        //         // make sure the user is authenticated
+        //         !token &&
+        //         // ❗️ Avoid an infinite redirect
+        //         to.name !== "Login"
+        //     ) {
+        //         // redirect the user to the login page
+        //         return { name: "Login" };
+        //     }else{
+        //         return{name:"Dashboard"}
+        //     }
+        // });
 
         return {
             credentials,
             //actions
-            login: () => store.dispatch('login/submitLoginForm',credentials.value),
+            login: () =>
+                store.dispatch("login/submitLoginForm", credentials.value),
             //getters
             token: computed(() => store.getters['login/getToken']),
-            message:computed(() => store.getters['login/getMessage'])
         };
     },
     components: {

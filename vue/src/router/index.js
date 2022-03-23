@@ -7,6 +7,7 @@ import Main from "../views/Main.vue";
 import AddMedicine from "../views/AddMedicine.vue";
 import MyProfile from "../views/MyProfile.vue";
 import AddService from "../views/AddService.vue";
+import store from "../store";
 
 
 const routes = [
@@ -61,6 +62,19 @@ const router = createRouter({
     routes
 
 })
+
+// router.beforeEach(async (to, from) => {
+//  const token = store.getters['login/getToken']()
+//   if (
+//     // make sure the user is authenticated
+//     !token &&
+//     // ❗️ Avoid an infinite redirect
+//     to.name !== 'Login'
+//   ) {
+//     // redirect the user to the login page
+//     return { name: 'Login' }
+//   }
+// })
 
 
 export default router;

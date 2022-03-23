@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from '../../router/index';
 
 // root state object.
 // each Vuex instance is just a single state tree.
@@ -14,17 +15,21 @@ const state = {
   const mutations = {
     LOGGED_DATA(state,data){
             state.loginUser = data;
+         
     }
   }
   
   // actions are functions that cause side effects and can involve
   // asynchronous operations.
   const actions = {
-    submitLoginForm({ commit },payload) {
+    submitLoginForm({ commit,state },payload) {
         axios.post("http://localhost:8000/api/login", payload)
             .then(response => {
                 commit('LOGGED_DATA', response.data)
-        })
+                
+        }).then(
+            router.push("/dashboard")
+        )
       
 
     }
@@ -37,6 +42,9 @@ const state = {
       },
     getMessage(state){
         return state.loginUser.message;
+    },
+    getLoggedUser(state){
+        return state.loginUser.user;
     }
       
 
