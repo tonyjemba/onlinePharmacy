@@ -101,6 +101,8 @@
                     </button>
                 </div>
             </form>
+            {{ token }}
+            {{ message }}
         </div>
     </div>
 </template>
@@ -109,7 +111,8 @@
 import Icon from "../components/Icon.vue";
 import { ref } from "vue";
 import axios from "axios";
-import { useStore } from 'vuex'
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 export default {
     setup() {
@@ -132,7 +135,11 @@ export default {
 
         return {
             credentials,
-            login: () => store.dispatch('login/submitLoginForm',credentials.value)
+            //actions
+            login: () => store.dispatch('login/submitLoginForm',credentials.value),
+            //getters
+            token: computed(() => store.getters['login/getToken']),
+            message:computed(() => store.getters['login/getMessage'])
         };
     },
     components: {
