@@ -109,28 +109,30 @@
 import Icon from "../components/Icon.vue";
 import { ref } from "vue";
 import axios from "axios";
+import { useStore } from 'vuex'
 
 export default {
     setup() {
+         const store = useStore();
         const credentials = ref({
             email: "",
             password: "",
         });
 
-        function login() {
-            axios
-                .post("http://localhost:8000/api/login", credentials.value)
-                .then((res) => console.log(res))
-                .catch((error) => {
-                    if (error.response) {
-                        console.log(error.response.data);
-                    }
-                });
-        }
+       // function login() {
+            // axios
+            //     .post("http://localhost:8000/api/login", credentials.value)
+            //     .then((res) => console.log(res))
+            //     .catch((error) => {
+            //         if (error.response) {
+            //             console.log(error.response.data);
+            //         }
+            //     });
+        //}
 
         return {
             credentials,
-            login,
+            login: () => store.dispatch('login/submitLoginForm',credentials.value)
         };
     },
     components: {
