@@ -56,6 +56,9 @@ const state = {
     },
     getLoggedUser(state){
         return state.loginUser.user;
+    },
+    getRouteLoadingState(state){
+      return state.routeLoading;
     }
       
 

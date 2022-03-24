@@ -99,6 +99,7 @@
                         </span>
                         Sign in
                     </button>
+                    <Loading v-if="isLoading" :height="80" :width="80"/>
                 </div>
             </form>
         </div>
@@ -107,6 +108,7 @@
 
 <script>
 import Icon from "../components/Icon.vue";
+import Loading from "../components/Loading.vue";
 import { ref } from "vue";
 import { useStore } from "vuex";
 
@@ -124,11 +126,13 @@ export default {
             //actions
             login: () =>
                 store.dispatch("login/submitLoginForm", credentials.value),
+            isLoading: store.state.login.routeLoading
           
         };
     },
     components: {
         Icon,
+        Loading
     },
 };
 </script>
