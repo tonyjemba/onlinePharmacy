@@ -4,7 +4,8 @@ import router from '../../router/index';
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
-    loginUser:[]
+    loginUser:[],
+    islogged:false
   }
   
   // mutations are operations that actually mutate the state.
@@ -16,7 +17,13 @@ const state = {
     LOGGED_DATA(state,data){
             state.loginUser = data;
          
-    }
+    },
+    ISLOGGED(state){
+     
+        state.islogged = true
+    
+    },
+  
   }
   
   // actions are functions that cause side effects and can involve
@@ -26,10 +33,10 @@ const state = {
         axios.post("http://localhost:8000/api/login", payload)
             .then(response => {
                 commit('LOGGED_DATA', response.data)
+                commit('ISLOGGED')
+                router.push('/dashboard')
                 
-        }).then(
-            router.push("/dashboard")
-        )
+        })
       
 
     }

@@ -7,7 +7,7 @@ import Main from "../views/Main.vue";
 import AddMedicine from "../views/AddMedicine.vue";
 import MyProfile from "../views/MyProfile.vue";
 import AddService from "../views/AddService.vue";
-import store from "../store";
+import store from "../store/index";
 
 
 const routes = [
@@ -21,7 +21,7 @@ const routes = [
     path:"/dashboard",
     name: "DashboardLayout",
     component: DashboardLayout,
-    meta: { authOnly: true },
+    meta: { auth: true },
     children:[
       {
         path: "/dashboard",
@@ -49,11 +49,13 @@ const routes = [
       path: "/login",
       name: "Login",
       component: Home,
+      meta:{auth:false}
     },
     {
       path: "/register",
       name: "Register",
       component: About,
+      meta:{auth:false}
     },
   ];
 
@@ -63,18 +65,21 @@ const router = createRouter({
 
 })
 
-// router.beforeEach(async (to, from) => {
-//  const token = store.getters['login/getToken']()
-//   if (
-//     // make sure the user is authenticated
-//     !token &&
-//     // ❗️ Avoid an infinite redirect
-//     to.name !== 'Login'
-//   ) {
-//     // redirect the user to the login page
-//     return { name: 'Login' }
-//   }
-// })
+router.beforeEach((to, from,next) => {
+const loggedin =store.state.login.islogged;
+
+if(to.meta.auth && !loggedin){
+ next({name: 'Login'})
+}else if(loggedin && (to.name === 'Login' || to.name === 'Register')){
+  next({name: 'Dashboard'})
+} else{
+  next()
+}
+
+  // ...
+  // explicitly return false to cancel the navigation
+ // return false
+})
 
 
 export default router;
