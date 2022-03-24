@@ -5,7 +5,8 @@ import router from '../../router/index';
 // each Vuex instance is just a single state tree.
 const state = {
     loginUser:[],
-    islogged:false
+    islogged:false,
+    routeLoading:false
   }
   
   // mutations are operations that actually mutate the state.
@@ -23,6 +24,9 @@ const state = {
         state.islogged = true
     
     },
+    ROUTE_LOADING(state,data){
+      state.routeLoading = data
+    }
   
   }
   
