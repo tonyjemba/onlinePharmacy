@@ -6,7 +6,8 @@ import router from '../../router/index';
 const state = {
     loginUser:[],
     islogged:false,
-    routeLoading:false
+    routeLoading:false,
+    errorMessage:"",
   }
   
   // mutations are operations that actually mutate the state.
@@ -26,6 +27,9 @@ const state = {
     },
     ROUTE_LOADING(state,data){
       state.routeLoading = data
+    },
+    Error(state,data){
+      state.errorMessage = data
     }
   
   }
@@ -40,7 +44,9 @@ const state = {
                 commit('ISLOGGED')
                 router.push('/dashboard')
                 
-        })
+        }).catch(
+          error => commit('Error',error.response.data.message)
+        )
       
 
     }

@@ -24,6 +24,7 @@
                     </a>
                 </p>
             </div>
+            {{ invalidCredentials }}
             <form
                 class="mt-8 space-y-6"
                 action=""
@@ -126,7 +127,8 @@ export default {
             //actions
             login: () =>
                 store.dispatch("login/submitLoginForm", credentials.value),
-            isLoading: store.state.login.routeLoading
+            isLoading: store.state.login.routeLoading,
+            invalidCredentials: store.state.login.errorMessage
           
         };
     },
