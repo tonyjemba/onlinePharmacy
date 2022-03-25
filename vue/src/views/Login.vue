@@ -79,14 +79,7 @@
                         </label>
                     </div>
 
-                    <div class="text-sm">
-                        <a
-                            href="#"
-                            class="font-medium text-indigo-600 hover:text-indigo-500"
-                        >
-                            Forgot your password?
-                        </a>
-                    </div>
+                  
                 </div>
 
                 <div>
@@ -136,7 +129,7 @@ export default {
     },
     components: {
         Icon,
-        Loading
+        LoadingF
     },
 };
 </script>
