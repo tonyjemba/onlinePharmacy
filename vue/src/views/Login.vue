@@ -127,6 +127,7 @@ export default {
             //actions
             login: () =>
                 store.dispatch("login/submitLoginForm", credentials.value),
+            //accessing state
             isLoading: store.state.login.routeLoading,
             invalidCredentials: store.state.login.errorMessage
           
