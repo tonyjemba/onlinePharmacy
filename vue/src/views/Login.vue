@@ -100,6 +100,7 @@
                         </span>
                         Sign in
                     </button>
+                    
                     <Loading v-if="isLoading" :height="80" :width="80"/>
                 </div>
             </form>
