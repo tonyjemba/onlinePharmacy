@@ -40,30 +40,28 @@
                 <input type="hidden" name="remember" value="true" />
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
-                        <label for="email-address" class="sr-only"
-                            >Username</label
-                        >
+                        <label for="name" class="sr-only">Username</label>
                         <input
-                            id="username"
+                            id="name"
                             name="username"
                             type="text"
                             required=""
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Username"
+                            v-model="credentials.name"
                         />
                     </div>
                     <div>
-                        <label for="email-address" class="sr-only"
-                            >Email address</label
-                        >
+                        <label for="email" class="sr-only">Email address</label>
                         <input
-                            id="email-address"
+                            id="email"
                             name="email"
                             type="email"
                             autocomplete="email"
                             required=""
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Email address"
+                            v-model="credentials.email"
                         />
                     </div>
                     <div>
@@ -76,20 +74,22 @@
                             required=""
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Password"
+                            v-model="credentials.password"
                         />
                     </div>
                     <div>
-                        <label for="password" class="sr-only"
+                        <label for="password_confirmation" class="sr-only"
                             >Confirm Password</label
                         >
                         <input
-                            id="password"
+                            id="password_confirmation"
                             name="password"
                             type="password"
                             autocomplete="current-password"
                             required=""
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Confirm Password"
+                            v-model="credentials.password_confirmation"
                         />
                     </div>
                 </div>
@@ -102,21 +102,22 @@
                         <span
                             class="absolute left-0 inset-y-0 flex items-center pl-3"
                         >
-                            <LockClosedIcon
-                                class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                                aria-hidden="true"
-                            />
                         </span>
                         Register
                     </button>
                 </div>
             </form>
+            {{ credentials.name }}
+             {{ credentials.email }}
+              {{ credentials.password }}
+               {{ credentials.password_confirmation }}
         </div>
     </div>
 </template>
 
 <script>
 import Icon from "../components/Icon.vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 
 export default {
@@ -126,8 +127,16 @@ export default {
 
     setup() {
         const store = useStore();
+        const credentials = ref({
+            name: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
+        });
         return {
-           submitRegForm: () => store.dispatch('register/submitRegForm')
+            credentials,
+            submitRegForm: () =>
+            store.dispatch("register/submitRegForm", credentials.value),
         };
     },
 };

@@ -3,7 +3,9 @@ import axios from "axios";
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
-    registeredUser:[]
+    registeredUser:[],
+    routeLoading: false,
+    errorMessage: "",
   }
   
   // mutations are operations that actually mutate the state.
@@ -14,29 +16,33 @@ const state = {
   const mutations = {
     REG_DATA(state,data){
             state.registeredUser = data;
-    }
+    },
+    ROUTE_LOADING(state, data) {
+      state.routeLoading = data;
+  },
+  Error(state, data) {
+    state.errorMessage = data;
+},
   }
   
   // actions are functions that cause side effects and can involve
   // asynchronous operations.
   const actions = {
-    submitRegForm({ commit }) {
-        axios.post('localhost:3000/api/register')
-            .then(response => {
-                commit('REG_DATA', response.data)
-        })
-      
-
-        // axios.all([
-        //     axios.get('localhost:3000/sanctum/csrf-cookie'), 
-        //     axios.post('localhost:3000/register')
-        //   ])
-        //   .then(axios.spread((obj1, obj2) => {
-        //     // Both requests are now complete
-        //     console.log(obj1);
-        //     console.log(obj2);
-        //   }));
-    }
+    submitRegForm({ commit, state }, payload) {
+      //displays a loading indicator
+        commit("ROUTE_LOADING", true);
+        //making api request
+        axios
+            .post("http://localhost:8000/api/register", payload)
+            .then((response) => {
+                commit("REG_DATA", response);
+                router.push("/dashboard");
+            })
+            .catch((error) => {
+                commit("Error", error.response);
+                commit("ROUTE_LOADING", false);
+            });
+    },
   }
   
   // getters are functions.
