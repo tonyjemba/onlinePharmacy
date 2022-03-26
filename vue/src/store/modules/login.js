@@ -34,7 +34,9 @@ const mutations = {
 // asynchronous operations.
 const actions = {
     submitLoginForm({ commit, state }, payload) {
+      //displays a loading indicator
         commit("ROUTE_LOADING", true);
+        //making api request
         axios
             .post("http://localhost:8000/api/login", payload)
             .then((response) => {
