@@ -107,10 +107,6 @@
                     </button>
                 </div>
             </form>
-            {{ credentials.name }}
-             {{ credentials.email }}
-              {{ credentials.password }}
-               {{ credentials.password_confirmation }}
         </div>
     </div>
 </template>
@@ -135,8 +131,8 @@ export default {
         });
         return {
             credentials,
-            submitRegForm: () =>
-            store.dispatch("register/submitRegForm", credentials.value),
+            submitRegForm: () =>{
+            store.dispatch("register/submitRegForm", credentials.value)}
         };
     },
 };
