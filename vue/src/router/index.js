@@ -78,7 +78,7 @@ router.beforeEach((to, from, next) => {
         next({ name: "Dashboard" });
     } else {
       //the loading state of the rout will be set to true  
-      store.commit("login/ROUTE_LOADING", true);
+      
         next();
     }
 });

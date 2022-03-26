@@ -24,7 +24,7 @@
                     </a>
                 </p>
             </div>
-            {{ invalidCredentials }}
+
             <form
                 class="mt-8 space-y-6"
                 action=""
@@ -79,7 +79,14 @@
                         </label>
                     </div>
 
-                  
+                    <div class="text-sm">
+                        <a
+                            href="#"
+                            class="font-medium text-indigo-600 hover:text-indigo-500"
+                        >
+                            {{ invalidCredentials }}
+                        </a>
+                    </div>
                 </div>
 
                 <div>
@@ -93,8 +100,8 @@
                         </span>
                         Sign in
                     </button>
-                    
-                    <Loading v-if="isLoading" :height="80" :width="80"/>
+
+                    <Loading v-if="isLoading" :height="80" :width="80" />
                 </div>
             </form>
         </div>
@@ -104,7 +111,7 @@
 <script>
 import Icon from "../components/Icon.vue";
 import Loading from "../components/Loading.vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 
 export default {
@@ -114,7 +121,6 @@ export default {
             email: "",
             password: "",
         });
-     
 
         return {
             credentials,
@@ -122,14 +128,13 @@ export default {
             login: () =>
                 store.dispatch("login/submitLoginForm", credentials.value),
             //accessing state
-            isLoading: store.state.login.routeLoading,
-            invalidCredentials: store.state.login.errorMessage
-          
+            invalidCredentials: computed(() => store.state.login.errorMessage),
+            isLoading: computed(() => store.state.login.routeLoading),
         };
     },
     components: {
         Icon,
-        LoadingF
+        Loading,
     },
 };
 </script>
