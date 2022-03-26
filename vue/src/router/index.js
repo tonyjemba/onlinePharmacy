@@ -53,7 +53,6 @@ const routes = [
         path: "/register",
         name: "Register",
         component: About,
-        meta: { auth: false },
     },
 ];
 
@@ -68,11 +67,16 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   //this is the loggedin state of the user
     const loggedin = store.state.login.islogged;
+    const registered = store.state.register.registered;
 
     //if the user is not loggedin will stay in the login route
     if (to.meta.auth && !loggedin && to.name !== "Login") {
         next({ name: "Login" });
     } 
+    //user will be redirected to register if he is not registered
+    if (to.meta.auth && !registered ) {
+        next({ name: "Register" });
+    }
     //if the user is loggedin will move to the dashboard route defined as the next
     else if (loggedin && (to.name === "Login" || to.name === "Register")) {
         next({ name: "Dashboard" });

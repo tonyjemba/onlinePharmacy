@@ -105,6 +105,7 @@
                         </span>
                         Register
                     </button>
+                    <Loading v-if="isLoading" :height="80" :width="80" />
                 </div>
             </form>
         </div>
@@ -114,11 +115,13 @@
 <script>
 import Icon from "../components/Icon.vue";
 import { computed, ref } from "vue";
+import Loading from "../components/Loading.vue";
 import { useStore } from "vuex";
 
 export default {
     components: {
         Icon,
+        Loading
     },
 
     setup() {
@@ -131,9 +134,10 @@ export default {
         });
         return {
             credentials,
-            submitRegForm: () =>{
-            store.dispatch("register/submitRegForm", credentials.value)}
+            submitRegForm: () =>store.dispatch("register/submitRegForm", credentials.value),
+            isLoading: computed(() => store.state.register.routeLoading),
         };
     },
+    
 };
 </script>

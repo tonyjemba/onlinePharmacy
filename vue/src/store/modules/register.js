@@ -1,10 +1,12 @@
 import axios from "axios";
-
+import store from "../index";
+import router from "../../router/index";
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
     registeredUser:[],
     routeLoading: false,
+    registered:false,
     errorMessage: "",
   }
   
@@ -16,6 +18,9 @@ const state = {
   const mutations = {
     REG_DATA(state,data){
             state.registeredUser = data;
+    },
+    REGISTERED(state){
+        state.registered = true
     },
     ROUTE_LOADING(state, data) {
       state.routeLoading = data;
@@ -36,6 +41,8 @@ const state = {
             .post("http://localhost:8000/api/register", payload)
             .then((response) => {
                 commit("REG_DATA", response);
+                commit("REGISTERED");
+                store.commit("login/ISLOGGED");
                 router.push("/dashboard");
             })
             .catch((error) => {
