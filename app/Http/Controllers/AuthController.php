@@ -27,7 +27,7 @@ class AuthController extends Controller
 
     // we then generate a unique token for the resgistered user
 
-    $token =  $user->createToken('usertoken')->plainTextToken;
+    $token =  $user->createToken($fields['email'])->plainTextToken;
 
     // for the user to be authenticated we need to pass his token in the response header
     
@@ -60,7 +60,7 @@ class AuthController extends Controller
     }
 
     //if all fields are valid we create a token for the user to sign in
-    $token = $user->createToken('usertoken')->plainTextToken;
+    $token = $user->createToken($fields['email'])->plainTextToken;
 
     //return a response with the user and the token
 

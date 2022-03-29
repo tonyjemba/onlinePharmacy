@@ -73,10 +73,7 @@ router.beforeEach((to, from, next) => {
     if (to.meta.auth && !loggedin && to.name !== "Login") {
         next({ name: "Login" });
     } 
-    //user will be redirected to register if he is not registered
-    // if (to.meta.auth && !registered ) {
-    //     next({ name: "Register" });
-    // }
+ 
     //if the user is loggedin will move to the dashboard route defined as the next
     else if (loggedin && (to.name === "Login" || to.name === "Register")) {
         next({ name: "Dashboard" });

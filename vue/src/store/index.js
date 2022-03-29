@@ -1,14 +1,15 @@
 import { createStore, createLogger } from 'vuex';
-import couter from './modules/couter';
 import register from './modules/register';
-import login from './modules/login'
+import login from './modules/login';
+import logout from "./modules/logout";
 const debug = process.env.NODE_ENV !== 'production';
 
 const store = createStore({
   modules: {
     couter,
     register,
-    login
+    login,
+    logout
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

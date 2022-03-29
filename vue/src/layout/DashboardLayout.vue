@@ -207,8 +207,7 @@ import Icon from "../components/Icon.vue";
 const user = {
     name: "Tom Cook",
     email: "tom@example.com",
-    imageUrl:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: "https://randomuser.me/api/portraits/men/53.jpg",
 };
 const navigation = [
     { name: "Dashboard", route: "/dashboard" },
@@ -217,7 +216,7 @@ const navigation = [
 ];
 const userNavigation = [
     { name: "My Profile", route: "/myprofile" },
-    { name: "Dashboard", route: "/dashboard" },
+
     { name: "Sign out", route: "/login" },
 ];
 
