@@ -61,7 +61,7 @@ const getters = {
         return state.loginUser.message;
     },
     getLoggedUser(state) {
-        return state.loginUser.user;
+        return state.loginUser.user.email;
     },
     getRouteLoadingState(state) {
         return state.routeLoading;

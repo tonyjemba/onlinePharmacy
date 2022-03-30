@@ -26,21 +26,21 @@ const mutations = {
 // asynchronous operations.
 const actions = {
     submitLogout({ commit, state }, payload) {
-        console.log(payload);
+        const email = {'email': payload}
       //displays a loading indicator
-       // commit("ROUTE_LOADING", true);
-        //making api request
-        // axios
-        //     .post("http://localhost:8000/api/logout", payload)
-        //     .then((response) => {
-        //         commit("MSG", response.data);
+       commit("ROUTE_LOADING", true);
+       // making api request
+        axios
+            .post("http://localhost:8000/api/logout", email)
+            .then((response) => {
+                commit("MSG", response.data);
 
-        //         router.push("/");
-        //     })
-        //     .catch((error) => {
-        //         commit("MSG", error.response.data.message);
-        //         commit("ROUTE_LOADING", false);
-        //     });
+                router.push("/");
+            })
+            .catch((error) => {
+                commit("MSG", error.response.data.message);
+                commit("ROUTE_LOADING", false);
+            });
     },
 };
 

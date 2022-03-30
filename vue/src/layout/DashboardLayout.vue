@@ -241,12 +241,12 @@ export default {
     },
     setup() {
         const store = useStore();
-        const loggedEmail =  computed(() => store.state.login.loginUser.user);
+        const loggedEmail =  computed(() => store.getters['login/getLoggedUser']);
 
         function logout(name){
-            console.log(name);
+            
              if(name === 'Sign out'){
-                 store.dispatch("logout/submitLogout", loggedEmail)
+                 store.dispatch("logout/submitLogout", loggedEmail.value)
              }
           return null;      
         }

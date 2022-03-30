@@ -67,7 +67,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   //this is the loggedin state of the user
     const loggedin = store.state.login.islogged;
-    const registered = store.state.register.registered;
 
     //if the user is not loggedin will stay in the login route
     if (to.meta.auth && !loggedin && (to.name !== "Login" )) {
