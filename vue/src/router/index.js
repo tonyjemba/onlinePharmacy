@@ -70,12 +70,12 @@ router.beforeEach((to, from, next) => {
     const registered = store.state.register.registered;
 
     //if the user is not loggedin will stay in the login route
-    if (to.meta.auth && !loggedin && to.name !== "Login") {
+    if (to.meta.auth && !loggedin && (to.name !== "Login" )) {
         next({ name: "Login" });
     } 
  
     //if the user is loggedin will move to the dashboard route defined as the next
-    else if (loggedin && (to.name === "Login" || to.name === "Register")) {
+    else if (loggedin && (to.name === "Login" || to.name === "Register" )) {
         next({ name: "Dashboard" });
     } else {
       //the loading state of the rout will be set to true  

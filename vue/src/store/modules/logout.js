@@ -4,7 +4,8 @@ import router from "../../router/index";
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
-   resMsg:""
+   resMsg:"",
+   loading: false
 };
 
 // mutations are operations that actually mutate the state.
@@ -15,28 +16,31 @@ const state = {
 const mutations = {
  MSG(state,data){
      state.resMsg = data;
+ },
+ ROUTE_LOADING(state,data){
+     state.loading =data;
  }
 };
 
 // actions are functions that cause side effects and can involve
 // asynchronous operations.
 const actions = {
-    submitLoginForm({ commit, state }, payload) {
+    submitLogout({ commit, state }, payload) {
+        console.log(payload);
       //displays a loading indicator
-        commit("ROUTE_LOADING", true);
+       // commit("ROUTE_LOADING", true);
         //making api request
-        axios
-            .post("http://localhost:8000/api/login", payload)
-            .then((response) => {
-                commit("LOGGED_DATA", response.data);
-                commit("ISLOGGED");
+        // axios
+        //     .post("http://localhost:8000/api/logout", payload)
+        //     .then((response) => {
+        //         commit("MSG", response.data);
 
-                router.push("/dashboard");
-            })
-            .catch((error) => {
-                commit("Error", error.response.data.message);
-                commit("ROUTE_LOADING", false);
-            });
+        //         router.push("/");
+        //     })
+        //     .catch((error) => {
+        //         commit("MSG", error.response.data.message);
+        //         commit("ROUTE_LOADING", false);
+        //     });
     },
 };
 

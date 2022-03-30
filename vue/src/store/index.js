@@ -6,7 +6,6 @@ const debug = process.env.NODE_ENV !== 'production';
 
 const store = createStore({
   modules: {
-    couter,
     register,
     login,
     logout
