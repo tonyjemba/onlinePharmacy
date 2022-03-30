@@ -34,8 +34,9 @@ const actions = {
         axios
             .post("http://localhost:8000/api/logout", email)
             .then((response) => {
-                store.commit("login/NOTLOGGED");
                 commit("MSG", response.data);
+                store.commit("login/NOTLOGGED");
+                store.commit("login/CLEARLOGGEDDATA");
                 router.push("/");
             })
             .catch((error) => {

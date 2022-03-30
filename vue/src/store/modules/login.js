@@ -25,6 +25,9 @@ const mutations = {
     NOTLOGGED(state){
         state.islogged = false;
     },
+    CLEARLOGGEDDATA(state){
+        state.loginUser = [];
+    },
     ROUTE_LOADING(state, data) {
         state.routeLoading = data;
     },
