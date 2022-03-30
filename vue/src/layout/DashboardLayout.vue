@@ -81,8 +81,9 @@
                                                     active ? 'bg-gray-100' : '',
                                                     'block px-4 py-2 text-sm text-gray-800',
                                                 ]"
+                                                @click="logout(item.name)"
                                             >
-                                                <router-link :to="item.route" @click="logout">{{
+                                                <router-link :to="item.route" >{{
                                                     item.name
                                                 }}</router-link>
                                             </div>
@@ -113,7 +114,65 @@
                 </div>
             </div>
 
-            
+            <DisclosurePanel class="md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <DisclosureButton
+                        v-for="item in navigation"
+                        :key="item.name"
+                        as="a"
+                        :href="item.href"
+                        :class="[
+                            item.current
+                                ? 'bg-gray-900 text-white'
+                                : 'text-gray-800 hover:bg-gray-700 hover:text-white',
+                            'block px-3 py-2 rounded-md text-base font-medium',
+                        ]"
+                        :aria-current="item.current ? 'page' : undefined"
+                        >{{ item.name }}</DisclosureButton
+                    >
+                </div>
+
+                <div class="pt-4 pb-3 border-t border-gray-700">
+                    <div class="flex items-center px-5">
+                        <div class="flex-shrink-0">
+                            <img
+                                class="h-10 w-10 rounded-full"
+                                :src="user.imageUrl"
+                                alt=""
+                            />
+                        </div>
+                        <div class="ml-3">
+                            <div
+                                class="text-base font-medium leading-none text-white"
+                            >
+                                {{ user.name }}
+                            </div>
+                            <div
+                                class="text-sm font-medium leading-none text-gray-400"
+                            >
+                                {{ user.email }}
+                            </div>
+                        </div>
+                        <button
+                            type="button"
+                            class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                        >
+                            <span class="sr-only">View notifications</span>
+                            <HomeIcon class="h-6 w-6" aria-hidden="true" />
+                        </button>
+                    </div>
+                    <div class="mt-3 px-2 space-y-1">
+                        <DisclosureButton
+                            v-for="item in userNavigation"
+                            :key="item.name"
+                            as="a"
+                            :href="item.href"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                            >{{ item.name }}</DisclosureButton
+                        >
+                    </div>
+                </div>
+            </DisclosurePanel>
         </Disclosure>
 
         <header class="bg-white shadow">
@@ -183,10 +242,17 @@ export default {
     setup() {
         const store = useStore();
         const loggedEmail =  computed(() => store.state.login.loginUser.user);
+
+        function logout(name){
+            console.log(name);
+             if(name === 'Sign out'){
+                 store.dispatch("logout/submitLogout", loggedEmail)
+             }
+          return null;      
+        }
         return {
             //dispatch logout action
-            logout: () =>
-                store.dispatch("logout/submitLogout", loggedEmail),
+            logout,
             user,
             navigation,
             userNavigation,
