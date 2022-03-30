@@ -22,6 +22,9 @@ const mutations = {
     ISLOGGED(state) {
         state.islogged = true;
     },
+    NOTLOGGED(state){
+        state.islogged = false;
+    },
     ROUTE_LOADING(state, data) {
         state.routeLoading = data;
     },

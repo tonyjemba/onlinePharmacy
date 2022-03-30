@@ -1,5 +1,6 @@
 import axios from "axios";
 import router from "../../router/index";
+import store from "../index";
 
 // root state object.
 // each Vuex instance is just a single state tree.
@@ -33,8 +34,8 @@ const actions = {
         axios
             .post("http://localhost:8000/api/logout", email)
             .then((response) => {
+                store.commit("login/NOTLOGGED");
                 commit("MSG", response.data);
-
                 router.push("/");
             })
             .catch((error) => {
