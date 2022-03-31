@@ -77,6 +77,7 @@
                             v-model="credentials.password"
                         />
                     </div>
+
                     <div>
                         <label for="password_confirmation" class="sr-only"
                             >Confirm Password</label
@@ -93,7 +94,14 @@
                         />
                     </div>
                 </div>
-
+                <div class="text-sm">
+                    <a
+                        href="#"
+                        class="font-medium text-indigo-600 hover:text-indigo-500"
+                    >
+                        {{ invalidCredentials }}
+                    </a>
+                </div>
                 <div>
                     <button
                         type="submit"
@@ -121,7 +129,7 @@ import { useStore } from "vuex";
 export default {
     components: {
         Icon,
-        Loading
+        Loading,
     },
 
     setup() {
@@ -134,10 +142,14 @@ export default {
         });
         return {
             credentials,
-            submitRegForm: () =>store.dispatch("register/submitRegForm", credentials.value),
+            submitRegForm: () =>
+                store.dispatch("register/submitRegForm", credentials.value),
             isLoading: computed(() => store.state.register.routeLoading),
+            //accessing state
+            invalidCredentials: computed(
+                () => store.state.register.errorMessage
+            ),
         };
     },
-    
 };
 </script>

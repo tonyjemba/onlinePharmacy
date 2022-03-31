@@ -26,7 +26,7 @@ const state = {
       state.routeLoading = data;
   },
   Error(state, data) {
-    state.errorMessage = data;
+    state.errorMessag = data;
 },
   }
   
@@ -46,7 +46,7 @@ const state = {
                 router.push("/dashboard");
             })
             .catch((error) => {
-                commit("Error", error.response);
+                commit("Error", error.response.data.message);
                 commit("ROUTE_LOADING", false);
             });
     },
@@ -54,7 +54,7 @@ const state = {
   
   // getters are functions.
   const getters = {
- 
+  
   }
   
   // A Vuex instance is created by combining the state, mutations, actions,
