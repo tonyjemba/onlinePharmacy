@@ -147,7 +147,7 @@ export default {
             isLoading: computed(() => store.state.register.routeLoading),
             //accessing state
             invalidCredentials: computed(
-                () => store.state.register.errorMessage
+                () => store.state.register.errorMessage2
             ),
         };
     },

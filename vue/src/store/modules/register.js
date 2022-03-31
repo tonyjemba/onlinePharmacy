@@ -7,7 +7,7 @@ const state = {
     registeredUser:[],
     routeLoading: false,
     registered:false,
-    errorMessage: "",
+    errorMessage2: "",
   }
   
   // mutations are operations that actually mutate the state.
@@ -26,7 +26,7 @@ const state = {
       state.routeLoading = data;
   },
   Error(state, data) {
-    state.errorMessag = data;
+    state.errorMessage2 = data;
 },
   }
   
@@ -54,7 +54,7 @@ const state = {
   
   // getters are functions.
   const getters = {
-  
+ 
   }
   
   // A Vuex instance is created by combining the state, mutations, actions,
