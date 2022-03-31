@@ -69,14 +69,16 @@ router.beforeEach((to, from, next) => {
     const loggedin = store.state.login.islogged;
 
     //if the user is not loggedin will stay in the login route
-    if (to.meta.auth && !loggedin && (to.name !== "Login" )) {
+    if (to.meta.auth && !loggedin ) {
         next({ name: "Login" });
     } 
  
     //if the user is loggedin will move to the dashboard route defined as the next
     else if (loggedin && (to.name === "Login" || to.name === "Register" )) {
         next({ name: "Dashboard" });
-    } else {
+    }
+    
+else {
       //the loading state of the rout will be set to true  
       
         next();
