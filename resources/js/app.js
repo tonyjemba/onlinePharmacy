@@ -1,10 +1,9 @@
 require('./bootstrap');
 
 
-import { createApp } from 'vue'
-// import the root component App from a single-file component.
-import App from './components/App.vue'
+import { createApp } from 'vue';
+import router from './router';
+import store from './store';
+import App from './App.vue';
 
-const app = createApp(App);
-
-app.mount('#app');
+createApp(App).use(store).use(router).mount('#app');

@@ -1,3 +1,4 @@
+
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
@@ -5,7 +6,13 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+     
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@headlessui/vue'),
+    require('@heroicons/vue/outline'),
+  ],
 }
