@@ -1,5 +1,5 @@
 <template>
-    <div>Main Page is herer
+    <div>Main Page is here again
 
         <div>
     <button @click="prod">get products</button>
