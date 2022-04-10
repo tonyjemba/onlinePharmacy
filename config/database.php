@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,15 +63,16 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-//congiguring the postgres database using the pgsql driver that comes with laravel
+        //congiguring the postgres database using the pgsql driver that comes with laravel
+
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => getenv('DATABASE_URL'),
-            'host' => getenv('DB_HOST'),
-            'port' => getenv('DB_PORT'),
-            'database' => getenv('DB_DATABASE'),
-            'username' => getenv('DB_USERNAME'),
-            'password' => getenv('DB_PASSWORD'),
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
@@ -124,7 +125,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
@@ -145,4 +146,4 @@ return [
 
     ],
 
-]; 
+];
