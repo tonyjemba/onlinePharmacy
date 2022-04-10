@@ -63,7 +63,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
+//congiguring the postgres database using the pgsql driver that comes with laravel
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
