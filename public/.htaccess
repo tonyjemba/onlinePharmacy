@@ -4,12 +4,7 @@
     </IfModule>
 
     RewriteEngine On
-    #redirects all wrong routes to the home page
-    RewriteBase /
-    RewriteRule ^index\.html$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.html [L]
+ 
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
