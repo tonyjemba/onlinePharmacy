@@ -66,6 +66,9 @@ const getters = {
     getMessage(state) {
         return state.loginUser.message;
     },
+    islogged(state){
+        return state.islogged;
+    },
     getLoggedUser(state) {
         return state.loginUser.user.email;
     },

@@ -19742,9 +19742,14 @@ var tab = "Dashboard";
     Icon: _components_Icon_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   setup: function setup() {
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.useStore)();
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.useStore)(); //if the user is logged then we use the logged in emain but registered we use the registered email
+
     var loggedEmail = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+      return store.getters['login/islogged'];
+    }) ? (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
       return store.getters['login/getLoggedUser'];
+    }) : (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+      return store.getters['register/registered'];
     });
 
     function logout(name) {
@@ -21142,6 +21147,9 @@ var getters = {
   getMessage: function getMessage(state) {
     return state.loginUser.message;
   },
+  islogged: function islogged(state) {
+    return state.islogged;
+  },
   getLoggedUser: function getLoggedUser(state) {
     return state.loginUser.user.email;
   },
@@ -21317,7 +21325,11 @@ var actions = {
   }
 }; // getters are functions.
 
-var getters = {}; // A Vuex instance is created by combining the state, mutations, actions,
+var getters = {
+  registered: function registered(state) {
+    return state.registeredUser.user.email;
+  }
+}; // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.
 
 var register = {

@@ -60,6 +60,9 @@ CLEARREGISTERDATA(state){
   
   // getters are functions.
   const getters = {
+    registered(state){
+      return state.registeredUser.user.email;
+    }
  
   }
   
