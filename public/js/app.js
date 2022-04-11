@@ -19744,13 +19744,17 @@ var tab = "Dashboard";
   setup: function setup() {
     var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.useStore)(); //if the user is logged then we use the logged in emain but registered we use the registered email
 
-    var loggedEmail = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+    var resgistered = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
       return store.getters['register/isregigister'];
-    }) ? (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+    });
+    var loggedinEmail = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
       return store.getters['login/getLoggedUser'];
-    }) : (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+    });
+    var registeredEmail = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
       return store.getters['register/registered'];
     });
+    var loggedEmail = resgistered ? loggedinEmail : registeredEmail;
+    console.log(loggedEmail.value);
 
     function logout(name) {
       if (name === 'Sign out') {
