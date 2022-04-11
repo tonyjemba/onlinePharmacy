@@ -21215,9 +21215,12 @@ var actions = {
     commit("ROUTE_LOADING", true); // making api request
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://online-pharmacy-project.herokuapp.com/api/logout", email).then(function (response) {
-      commit("MSG", response.data);
+      commit("MSG", response.data); //on signout the user will neither be logged in or registered
+
       _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("login/NOTLOGGED");
       _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("login/CLEARLOGGEDDATA");
+      _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("register/NOTREGISTERED");
+      _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("register/CLEARREGISTERDATA");
       _router_index__WEBPACK_IMPORTED_MODULE_1__["default"].push("/");
     })["catch"](function (error) {
       commit("MSG", error.response.data.message);
@@ -21280,6 +21283,12 @@ var mutations = {
   },
   ROUTE_LOADING: function ROUTE_LOADING(state, data) {
     state.routeLoading = data;
+  },
+  NOTREGISTERED: function NOTREGISTERED(state) {
+    state.registered = false;
+  },
+  CLEARREGISTERDATA: function CLEARREGISTERDATA(state) {
+    state.registeredUser = [];
   },
   Error: function Error(state, data) {
     state.errorMessage2 = data;
