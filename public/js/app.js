@@ -21340,7 +21340,7 @@ var actions = {
 
 var getters = {
   registerMsg: function registerMsg(state) {
-    return state.registeredUser;
+    return state.registeredUser.data.message;
   }
 }; // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.

@@ -34,7 +34,7 @@ class AuthController extends Controller
     $response = [
         'user' => $user,
         'token' => $token,
-        'message' => 'You are now fully registered'
+        'message' => 'Registration successfull, Login in with your credentials'
     ];
 
     //we return the response and the status code
