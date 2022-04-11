@@ -242,11 +242,8 @@ export default {
     setup() {
         const store = useStore();
         //if the user is logged then we use the logged in emain but registered we use the registered email
-        const resgistered = computed(()=>store.getters['register/isregigister']);
-        const loggedinEmail =  computed(() => store.getters['login/getLoggedUser']);
-        const registeredEmail =computed(() => store.getters['register/registered']);
-        const loggedEmail = resgistered  ?loggedinEmail: registeredEmail
-        console.log(loggedEmail.value);
+        const loggedEmail =  computed(() => store.getters['login/getLoggedUser']);
+
         function logout(name){
             
              if(name === 'Sign out'){

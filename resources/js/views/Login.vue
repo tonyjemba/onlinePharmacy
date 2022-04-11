@@ -33,7 +33,7 @@
             >
                 <input type="hidden" name="remember" value="true" />
                 <div class="rounded-md shadow-sm -space-y-px">
-                    <div >
+                    <div>
                         <label for="email-address" class="sr-only"
                             >Email address</label
                         >
@@ -49,7 +49,7 @@
                         />
                     </div>
                     <div>
-                        <label for="password" class="sr-only" >Password</label>
+                        <label for="password" class="sr-only">Password</label>
                         <input
                             id="password"
                             name="password"
@@ -79,13 +79,25 @@
                         </label>
                     </div>
 
-                    <div class="text-sm">
-                        <a
-                            href="#"
-                            class="font-medium text-indigo-600 hover:text-indigo-500"
-                        >
-                            {{ invalidCredentials }}
-                        </a>
+                    <div v-if="invalidCredentials">
+                        <div class="text-sm">
+                            <a
+                                href="#"
+                                class="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                                {{ invalidCredentials }}
+                            </a>
+                        </div>
+                    </div>
+                    <div v-if="registerMsg">
+                        <div class="text-sm">
+                            <a
+                                href="#"
+                                class="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                                {{ registerMsg }}
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -131,6 +143,7 @@ export default {
             //accessing state
             invalidCredentials: computed(() => store.state.login.errorMessage),
             isLoading: computed(() => store.state.login.routeLoading),
+            registerMsg: computed(() => state.getters["register/registerMsg"]),
         };
     },
     components: {

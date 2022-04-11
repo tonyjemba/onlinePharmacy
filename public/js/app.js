@@ -19744,17 +19744,9 @@ var tab = "Dashboard";
   setup: function setup() {
     var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.useStore)(); //if the user is logged then we use the logged in emain but registered we use the registered email
 
-    var resgistered = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
-      return store.getters['register/isregigister'];
-    });
-    var loggedinEmail = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+    var loggedEmail = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
       return store.getters['login/getLoggedUser'];
     });
-    var registeredEmail = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
-      return store.getters['register/registered'];
-    });
-    var loggedEmail = resgistered ? loggedinEmail : registeredEmail;
-    console.log(loggedEmail.value);
 
     function logout(name) {
       if (name === 'Sign out') {
@@ -19847,6 +19839,9 @@ __webpack_require__.r(__webpack_exports__);
       }),
       isLoading: (0,vue__WEBPACK_IMPORTED_MODULE_2__.computed)(function () {
         return store.state.login.routeLoading;
+      }),
+      registerMsg: (0,vue__WEBPACK_IMPORTED_MODULE_2__.computed)(function () {
+        return state.getters["register/registerMsg"];
       })
     };
   },
@@ -20549,14 +20544,27 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_14 = {
-  "class": "text-sm"
+  key: 0
 };
 var _hoisted_15 = {
+  "class": "text-sm"
+};
+var _hoisted_16 = {
+  href: "#",
+  "class": "font-medium text-indigo-600 hover:text-indigo-500"
+};
+var _hoisted_17 = {
+  key: 1
+};
+var _hoisted_18 = {
+  "class": "text-sm"
+};
+var _hoisted_19 = {
   href: "#",
   "class": "font-medium text-indigo-600 hover:text-indigo-500"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   "class": "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -20618,9 +20626,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.credentials.password]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.invalidCredentials), 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.credentials.password]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, $setup.invalidCredentials ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.invalidCredentials), 1
   /* TEXT */
-  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_16, $setup.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.registerMsg ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.registerMsg), 1
+  /* TEXT */
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_20, $setup.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Loading, {
     key: 0,
     height: 80,
     width: 80
@@ -21320,8 +21330,7 @@ var actions = {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://online-pharmacy-project.herokuapp.com/api/register", payload).then(function (response) {
       commit("REG_DATA", response);
       commit("REGISTERED");
-      _index__WEBPACK_IMPORTED_MODULE_1__["default"].commit("login/ISLOGGED");
-      _router_index__WEBPACK_IMPORTED_MODULE_2__["default"].push("/dashboard");
+      _router_index__WEBPACK_IMPORTED_MODULE_2__["default"].push("/login");
     })["catch"](function (error) {
       commit("Error", error.response.data.message);
       commit("ROUTE_LOADING", false);
@@ -21330,11 +21339,8 @@ var actions = {
 }; // getters are functions.
 
 var getters = {
-  registered: function registered(state) {
-    return state.registeredUser.user.email;
-  },
-  isregigister: function isregigister(state) {
-    return state.registered;
+  registerMsg: function registerMsg(state) {
+    return state.registeredUser;
   }
 }; // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.

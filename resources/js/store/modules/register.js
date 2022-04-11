@@ -48,8 +48,7 @@ CLEARREGISTERDATA(state){
             .then((response) => {
                 commit("REG_DATA", response);
                 commit("REGISTERED");
-                store.commit("login/ISLOGGED");
-                router.push("/dashboard");
+                router.push("/login");
             })
             .catch((error) => {
                 commit("Error", error.response.data.message);
@@ -60,11 +59,8 @@ CLEARREGISTERDATA(state){
   
   // getters are functions.
   const getters = {
-    registered(state){
-      return state.registeredUser.user.email;
-    },
-    isregigister(state){
-      return state.registered;
+    registerMsg(state){
+      return state.registeredUser;
     }
  
   }
