@@ -21060,7 +21060,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
     logout: _modules_logout__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   strict: debug,
-  plugins: debug ? [(0,vuex__WEBPACK_IMPORTED_MODULE_4__.createLogger)(), vuexLocalStorage.plugin] : [vuexLocalStorage.plugin]
+  plugins: debug ? [(0,vuex__WEBPACK_IMPORTED_MODULE_4__.createLogger)(), vuexLocalStorage.plugin] : [(0,vuex__WEBPACK_IMPORTED_MODULE_4__.createLogger)(), vuexLocalStorage.plugin]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 

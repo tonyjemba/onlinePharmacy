@@ -21,7 +21,7 @@ const store = createStore({
     logout
   },
   strict: debug,
-  plugins: debug ? [createLogger(),vuexLocalStorage.plugin] : [vuexLocalStorage.plugin]
+  plugins: debug ? [createLogger(),vuexLocalStorage.plugin] : [createLogger(),vuexLocalStorage.plugin]
 })
 
 export default store;
