@@ -114,6 +114,7 @@
                     </button>
 
                     <Loading v-if="isLoading" :height="80" :width="80" />
+                 
                 </div>
             </form>
         </div>
@@ -143,7 +144,7 @@ export default {
             //accessing state
             invalidCredentials: computed(() => store.state.login.errorMessage),
             isLoading: computed(() => store.state.login.routeLoading),
-            registerMsg: computed(() => store.getters["register/registerMsg"]),
+            registerMsg: computed(() => store.state.register.msg),
         };
     },
     components: {

@@ -8,6 +8,7 @@ const state = {
     routeLoading: false,
     registered:false,
     errorMessage2: "",
+    msg:""
   }
   
   // mutations are operations that actually mutate the state.
@@ -25,6 +26,9 @@ const state = {
     ROUTE_LOADING(state, data) {
       state.routeLoading = data;
   },
+  MSG(state, data) {
+    state.msg= data;
+},
   NOTREGISTERED(state){
     state.registered = false;
 },
@@ -47,6 +51,7 @@ CLEARREGISTERDATA(state){
             .post("https://online-pharmacy-project.herokuapp.com/api/register", payload)
             .then((response) => {
                 commit("REG_DATA", response);
+                commit("MSG", response.data.message);
                 commit("REGISTERED");
                 router.push("/login");
             })

@@ -19841,7 +19841,7 @@ __webpack_require__.r(__webpack_exports__);
         return store.state.login.routeLoading;
       }),
       registerMsg: (0,vue__WEBPACK_IMPORTED_MODULE_2__.computed)(function () {
-        return store.getters["register/registerMsg"];
+        return store.state.register.msg;
       })
     };
   },
@@ -21291,7 +21291,8 @@ var state = {
   registeredUser: [],
   routeLoading: false,
   registered: false,
-  errorMessage2: ""
+  errorMessage2: "",
+  msg: ""
 }; // mutations are operations that actually mutate the state.
 // each mutation handler gets the entire state tree as the
 // first argument, followed by additional payload arguments.
@@ -21307,6 +21308,9 @@ var mutations = {
   },
   ROUTE_LOADING: function ROUTE_LOADING(state, data) {
     state.routeLoading = data;
+  },
+  MSG: function MSG(state, data) {
+    state.msg = data;
   },
   NOTREGISTERED: function NOTREGISTERED(state) {
     state.registered = false;
@@ -21329,6 +21333,7 @@ var actions = {
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://online-pharmacy-project.herokuapp.com/api/register", payload).then(function (response) {
       commit("REG_DATA", response);
+      commit("MSG", response.data.message);
       commit("REGISTERED");
       _router_index__WEBPACK_IMPORTED_MODULE_2__["default"].push("/login");
     })["catch"](function (error) {
