@@ -19841,7 +19841,7 @@ __webpack_require__.r(__webpack_exports__);
         return store.state.login.routeLoading;
       }),
       registerMsg: (0,vue__WEBPACK_IMPORTED_MODULE_2__.computed)(function () {
-        return state.getters["register/registerMsg"];
+        return store.getters["register/registerMsg"];
       })
     };
   },

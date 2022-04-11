@@ -143,7 +143,7 @@ export default {
             //accessing state
             invalidCredentials: computed(() => store.state.login.errorMessage),
             isLoading: computed(() => store.state.login.routeLoading),
-            registerMsg: computed(() => state.getters["register/registerMsg"]),
+            registerMsg: computed(() => store.getters["register/registerMsg"]),
         };
     },
     components: {
