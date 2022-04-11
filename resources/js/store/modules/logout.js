@@ -32,7 +32,7 @@ const actions = {
        commit("ROUTE_LOADING", true);
        // making api request
         axios
-            .post("http://localhost:8000/api/logout", email)
+            .post("https://online-pharmacy-project.herokuapp.com/api/logout", email)
             .then((response) => {
                 commit("MSG", response.data);
                 store.commit("login/NOTLOGGED");

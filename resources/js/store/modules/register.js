@@ -38,7 +38,7 @@ const state = {
         commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post("http://localhost:8000/api/register", payload)
+            .post("https://online-pharmacy-project.herokuapp.com/api/register", payload)
             .then((response) => {
                 commit("REG_DATA", response);
                 commit("REGISTERED");

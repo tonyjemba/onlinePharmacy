@@ -44,7 +44,7 @@ const actions = {
         commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post("http://localhost:8000/api/login", payload)
+            .post("https://online-pharmacy-project.herokuapp.com/api/login", payload)
             .then((response) => {
                 commit("LOGGED_DATA", response.data);
                 commit("ISLOGGED");

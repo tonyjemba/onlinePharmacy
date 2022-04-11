@@ -16,7 +16,7 @@ export default {
 
     setup() {
        function prod(){
-            axios.get('http://localhost:8000/api/products').then(
+            axios.get('https://online-pharmacy-project.herokuapp.com/api/products').then(
             (res)=>console.log(res)
         ).catch(
             err=>console.log(err)
