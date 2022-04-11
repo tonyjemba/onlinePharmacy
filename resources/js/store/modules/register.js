@@ -60,7 +60,7 @@ CLEARREGISTERDATA(state){
   // getters are functions.
   const getters = {
     registerMsg(state){
-      return state.registeredUser.data.message;
+      return state.registeredUser.message;
     }
  
   }
