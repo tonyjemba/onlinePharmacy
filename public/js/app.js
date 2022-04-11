@@ -19745,7 +19745,7 @@ var tab = "Dashboard";
     var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.useStore)(); //if the user is logged then we use the logged in emain but registered we use the registered email
 
     var loggedEmail = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
-      return store.getters['login/islogged'];
+      return store.getters['register/isregigister'];
     }) ? (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
       return store.getters['login/getLoggedUser'];
     }) : (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
@@ -21328,6 +21328,9 @@ var actions = {
 var getters = {
   registered: function registered(state) {
     return state.registeredUser.user.email;
+  },
+  isregigister: function isregigister(state) {
+    return state.registered;
   }
 }; // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.
