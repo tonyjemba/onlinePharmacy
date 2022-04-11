@@ -25,6 +25,12 @@ const state = {
     ROUTE_LOADING(state, data) {
       state.routeLoading = data;
   },
+  NOTREGISTERED(state){
+    state.registered = false;
+},
+CLEARREGISTERDATA(state){
+    state.registeredUser = [];
+},
   Error(state, data) {
     state.errorMessage2 = data;
 },

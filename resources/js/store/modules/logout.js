@@ -35,8 +35,11 @@ const actions = {
             .post("https://online-pharmacy-project.herokuapp.com/api/logout", email)
             .then((response) => {
                 commit("MSG", response.data);
+                //on signout the user will neither be logged in or registered
                 store.commit("login/NOTLOGGED");
                 store.commit("login/CLEARLOGGEDDATA");
+                store.commit("register/NOTREGISTERED");
+                store.commit("register/CLEARREGISTERDATA");
                 router.push("/");
             })
             .catch((error) => {
