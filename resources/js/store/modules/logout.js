@@ -40,6 +40,8 @@ const actions = {
                 store.commit("login/CLEARLOGGEDDATA");
                 store.commit("register/NOTREGISTERED");
                 store.commit("register/CLEARREGISTERDATA");
+                //clearing the local storage too
+                window.localStorage.removeItem('vuex');
                 router.push("/");
             })
             .catch((error) => {

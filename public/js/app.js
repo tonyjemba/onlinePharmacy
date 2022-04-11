@@ -21220,7 +21220,9 @@ var actions = {
       _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("login/NOTLOGGED");
       _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("login/CLEARLOGGEDDATA");
       _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("register/NOTREGISTERED");
-      _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("register/CLEARREGISTERDATA");
+      _index__WEBPACK_IMPORTED_MODULE_2__["default"].commit("register/CLEARREGISTERDATA"); //clearing the local storage too
+
+      window.localStorage.removeItem('vuex');
       _router_index__WEBPACK_IMPORTED_MODULE_1__["default"].push("/");
     })["catch"](function (error) {
       commit("MSG", error.response.data.message);
