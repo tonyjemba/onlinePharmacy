@@ -33,7 +33,6 @@
         "vue": "^3.2.31",
         "vue-loader": "^17.0.0",
         "vue-router": "^4.0.14",
-        "vue-upload-component": "^2.8.22",
         "vue3-lottie": "^2.1.0",
         "vuex": "^4.0.2",
         "vuex-persist": "^3.1.3"
