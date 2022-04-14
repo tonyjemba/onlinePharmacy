@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('disease');
             $table->string('descprition');
             $table->string('contact');
+            $table->string('image_url');
             $table->timestamps();
         });
     }
