@@ -24,6 +24,16 @@
                     </a>
                 </p>
             </div>
+            <div v-if="registerMsg">
+                <div class="text-sm">
+                    <a
+                        href="#"
+                        class="font-medium text-indigo-600 hover:text-indigo-500"
+                    >
+                        {{ registerMsg }}
+                    </a>
+                </div>
+            </div>
 
             <form
                 class="mt-8 space-y-6"
@@ -89,16 +99,6 @@
                             </a>
                         </div>
                     </div>
-                    <div v-if="registerMsg">
-                        <div class="text-sm">
-                            <a
-                                href="#"
-                                class="font-medium text-indigo-600 hover:text-indigo-500"
-                            >
-                                {{ registerMsg }}
-                            </a>
-                        </div>
-                    </div>
                 </div>
 
                 <div>
@@ -114,7 +114,6 @@
                     </button>
 
                     <Loading v-if="isLoading" :height="80" :width="80" />
-                 
                 </div>
             </form>
         </div>
