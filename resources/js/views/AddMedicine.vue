@@ -84,7 +84,7 @@
                         <textarea id="description" cols={30} rows={10}
                         placeholder="Talk more about the Product.." className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
-                        defaultValue={""} />
+                         />
                     </div>
 
                     <button
