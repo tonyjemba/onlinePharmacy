@@ -83,13 +83,16 @@
                         <label htmlFor="image" className="text-lx font-serif"
                             >Add Image:</label
                         >
-                        <input
-                            type="file"
-                            accept=".jpg,.jpeg,.png"
-                            onchange="validateFileType(e)"
-                            id="image"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        />
+                        <div>
+                            <v-btn @click="click1">choose a photo</v-btn>
+                            <input
+                                type="file"
+                                ref="input1"
+                                style="display: none"
+                                @change="previewImage"
+                                accept="image/*"
+                            />
+                        </div>
                     </div>
 
                     <div>
@@ -121,10 +124,31 @@
 <script>
 export default {
     setup() {
-        function validateFileType(e) {
-            const file = e.target.value;
-            console.log(file);
-        }
+        click1() {
+  this.$refs.input1.click()   
+},
+
+previewImage(event) {
+  this.uploadValue=0;
+  this.img1=null;
+  this.imageData = event.target.files[0];
+  this.onUpload()
+},
+
+onUpload(){
+  this.img1=null;
+  const storageRef=firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
+  storageRef.on(`state_changed`,snapshot=>{
+  this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+    }, error=>{console.log(error.message)},
+  ()=>{this.uploadValue=100;
+      storageRef.snapshot.ref.getDownloadURL().then((url)=>{
+          this.img1 =url;
+          console.log(this.img1)
+        });
+      }      
+    );
+ }
         return {
             validateFileType,
         };
