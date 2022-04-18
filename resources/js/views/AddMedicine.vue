@@ -1,4 +1,5 @@
 <template>
+
     <form>
         <div className="bg-indigo-50 min-h-screen md:px-20 pt-6">
             <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
@@ -78,27 +79,7 @@
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                         />
                     </div>
-                    <div>
-                        <label className="text-lx font-serif">Add image:</label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            @change="previewImage"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        />
-                    </div>
-                    <!-- image preview section -->
-                    <div v-if="state.imageData">
-                        <img height="268" width="356" :src="state.imageData" />
-                        <br />
-                        <button
-                            @click="upload"
-                            className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
-                        >
-                            Upload
-                        </button>
-                        {{ state.imageUrl }}
-                    </div>
+                   
                     <div>
                         <label
                             htmlFor="description"
@@ -124,6 +105,27 @@
             </div>
         </div>
     </form>
+     <div>
+                        <label className="text-lx font-serif">Add image:</label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            @change="previewImage"
+                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
+                        />
+                    </div>
+                    <!-- image preview section -->
+                    <div v-if="state.imageData">
+                        <img height="268" width="356" :src="state.imageData" />
+                        <br />
+                        <button
+                            @click="upload"
+                            className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
+                        >
+                            Upload
+                        </button>
+                        {{ state.imageUrl }}
+                    </div>
 </template>
 <script>
 import { reactive } from "vue";
