@@ -125,8 +125,11 @@ export default {
     function previewImage(event){
         const image = event.target.files[0];
          const reader = new FileReader();
-          const url = reader.readAsDataURL(image);
-          console.log(url)
+            reader.readAsDataURL(image);
+            reader.loadend = e =>{
+                   
+                    console.log(e);
+                };
           
     }
 
