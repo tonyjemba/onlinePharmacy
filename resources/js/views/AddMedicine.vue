@@ -90,7 +90,9 @@
                         />
                     </div>
 
-                   
+                   <div v-if="state.imageData">
+                       {{ state.imageData }}
+                   </div>
 
                     <div>
                         <label
@@ -119,22 +121,25 @@
     </form>
 </template>
 <script>
+import { reactive } from 'vue'
 export default {
     
     setup() {
+        const state = reactive({ imageData: null });
     function previewImage(event){
         const image = event.target.files[0];
          const reader = new FileReader();
             reader.readAsDataURL(image);
              reader.onload = e =>{
-                    console.log(e.target.result);
+                    state.imageData = e.target.result;
                 };
           
     }
 
 
         return {
-          previewImage
+          previewImage,
+          state
         };
     },
 };
