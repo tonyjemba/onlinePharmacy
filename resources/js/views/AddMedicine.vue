@@ -79,9 +79,7 @@
                         />
                     </div>
                     <div>
-                        <label  className="text-lx font-serif"
-                            >Add image:</label
-                        >
+                        <label className="text-lx font-serif">Add image:</label>
                         <input
                             type="file"
                             accept="image/*"
@@ -90,10 +88,10 @@
                         />
                     </div>
 
-                   <div v-if="state.imageData">
-                       {{ state.imageData }}
-                   </div>
-
+                    <div v-if="state.imageData">
+                        <img height="268" width="356" :src="state.imageData" />
+                        <br />
+                    </div>
                     <div>
                         <label
                             htmlFor="description"
@@ -121,25 +119,22 @@
     </form>
 </template>
 <script>
-import { reactive } from 'vue'
+import { reactive } from "vue";
 export default {
-    
     setup() {
         const state = reactive({ imageData: null });
-    function previewImage(event){
-        const image = event.target.files[0];
-         const reader = new FileReader();
+        function previewImage(event) {
+            const image = event.target.files[0];
+            const reader = new FileReader();
             reader.readAsDataURL(image);
-             reader.onload = e =>{
-                    state.imageData = e.target.result;
-                };
-          
-    }
-
+            reader.onload = (e) => {
+                state.imageData = e.target.result;
+            };
+        }
 
         return {
-          previewImage,
-          state
+            previewImage,
+            state,
         };
     },
 };
