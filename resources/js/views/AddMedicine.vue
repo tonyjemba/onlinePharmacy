@@ -91,15 +91,7 @@
                                 accept="image/*"
                             />
                         </div>
-                        <!-- <div v-if="imageData != null">
-                            <img
-                                class="preview"
-                                height="268"
-                                width="356"
-                                :src="img1"
-                            />
-                            <br />
-                        </div> -->
+                     
                     </div>
 
                     <div>
@@ -135,8 +127,6 @@ export default {
     function previewImage(event){
         console.log(event.target.files[0])
     }
-
-
         return {
           previewImage
         };
