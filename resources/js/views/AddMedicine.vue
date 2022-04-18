@@ -126,9 +126,8 @@ export default {
         const image = event.target.files[0];
          const reader = new FileReader();
             reader.readAsDataURL(image);
-            reader.loadend = e =>{
-                   
-                    console.log(e);
+             reader.onload = e =>{
+                    console.log(e.target.result);
                 };
           
     }
