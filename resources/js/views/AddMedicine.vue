@@ -120,9 +120,14 @@
 </template>
 <script>
 export default {
+    
     setup() {
     function previewImage(event){
-        console.log(event.target.files[0])
+        console.log(event.target.files[0]);
+         const reader = new FileReader();
+          const url = reader.readAsDataURL(image);
+          console.log(url)
+          
     }
 
 
