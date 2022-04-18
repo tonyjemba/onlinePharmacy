@@ -87,7 +87,6 @@
                             <v-btn @click="click1">choose a photo</v-btn>
                             <input
                                 type="file"
-                                ref="input1"
                                 style="display: none"
                                 @change="previewImage"
                                 accept="image/*"
@@ -131,7 +130,6 @@
     </form>
 </template>
 <script>
-import { ref } from 'vue'
 export default {
     setup() {
       const imageData = null;
