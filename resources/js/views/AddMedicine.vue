@@ -84,15 +84,14 @@
                             >Add Image:</label
                         >
                         <div>
-                            <v-btn @click="click1">choose a photo</v-btn>
                             <input
                                 type="file"
                                 style="display: none"
-                                @change="previewImage"
+                                @change=previewImage
                                 accept="image/*"
                             />
                         </div>
-                        <div v-if="imageData != null">
+                        <!-- <div v-if="imageData != null">
                             <img
                                 class="preview"
                                 height="268"
@@ -100,7 +99,7 @@
                                 :src="img1"
                             />
                             <br />
-                        </div>
+                        </div> -->
                     </div>
 
                     <div>
@@ -132,14 +131,13 @@
 <script>
 export default {
     setup() {
-      const imageData = null;
+    //   const imageData = null;
     function previewImage(event){
         console.log(event.target.files[0])
     }
 
 
         return {
-          imageData,
           previewImage
         };
     },
