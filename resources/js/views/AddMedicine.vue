@@ -98,6 +98,7 @@
                         Upload
                     </button>
                     {{ state.imageUrl }}
+                    {{ state.imageName }}
                     </div>
                     <div>
                         <label
@@ -130,11 +131,12 @@ import { reactive } from "vue";
 import { getStorage, ref,  uploadString,getDownloadURL } from "firebase/storage";
 export default {
     setup() {
-        const state = reactive({ imageData: null, imageUrl: null });
+        const state = reactive({ imageData: null, imageUrl: null,imageName:null });
         const storage = getStorage();
-        const storageRef = ref(storage, "images");
+        const storageRef = ref(storage, state.imageName);
         function previewImage(event) {
             const image = event.target.files[0];
+            state.imageName = image.name;
             const reader = new FileReader();
             reader.readAsDataURL(image);
             reader.onload = (e) => {
