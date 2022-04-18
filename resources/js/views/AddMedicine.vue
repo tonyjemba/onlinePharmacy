@@ -78,25 +78,19 @@
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                         />
                     </div>
-
                     <div>
-                        <label htmlFor="image" className="text-lx font-serif"
-                            >Add Image:</label
+                        <label  className="text-lx font-serif"
+                            >Add image:</label
                         >
-                        <div>
-                            <v-btn >choose a photo</v-btn>
-                            <input
-                                type="file"
-                                style="display: none"
-                                @change="previewImage"
-                                accept="image/*"
-                            />
-                        </div>
-                        <div v-if="imageData != null">
-                           Image will be here
-                            <br />
-                        </div>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            @change="previewImage"
+                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
+                        />
                     </div>
+
+                   
 
                     <div>
                         <label
@@ -127,15 +121,12 @@
 <script>
 export default {
     setup() {
-      const imageData = null;
     function previewImage(event){
-        imageData = event.target.files[0];
         console.log(event.target.files[0])
     }
 
 
         return {
-          imageData,
           previewImage
         };
     },
