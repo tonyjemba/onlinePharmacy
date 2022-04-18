@@ -133,7 +133,7 @@ export default {
     setup() {
         const state = reactive({ imageData: null, imageUrl: null,imageName:null });
         const storage = getStorage();
-        const storageRef = ref(storage, state.imageName);
+        const storageRef = ref(storage, `images/${state.imageName}`);
         function previewImage(event) {
             const image = event.target.files[0];
             state.imageName = image.name;
