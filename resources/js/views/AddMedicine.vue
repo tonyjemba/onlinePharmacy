@@ -92,7 +92,7 @@
                         <img height="268" width="356" :src="state.imageData" />
                         <br />
                         <button
-                        @click.prevent="upload"
+                        @click.prevent="upload(state.imageName)"
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
                         Upload
@@ -133,7 +133,7 @@ export default {
     setup() {
         const state = reactive({ imageData: null, imageUrl: null,imageName:null });
         const storage = getStorage();
-        const storageRef = ref(storage, `images/${state.imageName}`);
+        
         function previewImage(event) {
             const image = event.target.files[0];
             state.imageName = image.name;
@@ -143,12 +143,12 @@ export default {
                 state.imageData = e.target.result;
             };
         }
-        function upload() {
-            uploadString(storageRef, state.imageData, "data_url").then((snapshot) => {
+        function upload(imageName) {
+            uploadString(ref(storage, `images/${imageName}`), state.imageData, "data_url").then((snapshot) => {
                 console.log(snapshot);
             }).then(
                 ()=>{
-                    getDownloadURL(storageRef).then(
+                    getDownloadURL(ref(storage, `images/${imageName}`)).then(
                         (url)=> state.imageUrl = url
                     )
                 }
