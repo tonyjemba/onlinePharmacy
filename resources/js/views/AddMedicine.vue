@@ -87,7 +87,7 @@
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                         />
                     </div>
-
+<!-- image preview section -->
                     <div v-if="state.imageData">
                         <img height="268" width="356" :src="state.imageData" />
                         <br />
