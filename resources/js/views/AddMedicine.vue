@@ -93,6 +93,15 @@
                                 accept="image/*"
                             />
                         </div>
+                        <div v-if="imageData != null">
+                            <img
+                                class="preview"
+                                height="268"
+                                width="356"
+                                :src="img1"
+                            />
+                            <br />
+                        </div>
                     </div>
 
                     <div>
@@ -122,46 +131,18 @@
     </form>
 </template>
 <script>
+import { ref } from 'vue'
 export default {
     setup() {
-        function click1() {
-            this.$refs.input1.click();
-        }
+      const imageData = null;
+    function previewImage(event){
+        console.log(event.target.files[0])
+    }
 
-        function previewImage(event) {
-            this.uploadValue = 0;
-            this.img1 = null;
-            this.imageData = event.target.files[0];
-            this.onUpload();
-        }
 
-        function onUpload() {
-            this.img1 = null;
-            const storageRef = firebase
-                .storage()
-                .ref(`${this.imageData.name}`)
-                .put(this.imageData);
-            storageRef.on(
-                `state_changed`,
-                (snapshot) => {
-                    this.uploadValue =
-                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                },
-                (error) => {
-                    console.log(error.message);
-                },
-                () => {
-                    this.uploadValue = 100;
-                    storageRef.snapshot.ref.getDownloadURL().then((url) => {
-                        this.img1 = url;
-                        console.log(this.img1);
-                    });
-                }
-            );
-        }
         return {
-            validateFileType,
-            click1
+          imageData,
+          previewImage
         };
     },
 };

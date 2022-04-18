@@ -26,6 +26,7 @@
         "@vue-hero-icons/outline": "^1.7.2",
         "autoprefixer": "^10.4.4",
         "axios": "^0.25",
+        "firebase": "^9.6.11",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.4.12",
