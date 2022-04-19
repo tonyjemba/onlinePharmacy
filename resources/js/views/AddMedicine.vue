@@ -132,7 +132,6 @@
                 </div>
             </div>
         </div>
-                    <input type="hidden" value="{{state.imageUrl}}" v-model="productData.image_url"/>
 
     </form>
 </template>
@@ -155,7 +154,7 @@ export default {
             disease:"",
             descprition:"",
             contact:"",
-            image_url: ""
+            
         });
         console.log(productData);
         function previewImage(event) {
@@ -188,7 +187,7 @@ export default {
             state,
             productData,
              addProduct: () =>
-                store.dispatch("products/addProduct", productData.value)
+                store.dispatch("products/addProduct", {image_url: state.imageUrl ,...productData.value})
         };
     },
 };
