@@ -143,6 +143,7 @@ export default {
                 state.imageData = e.target.result;
             };
         }
+        //uploading function
         function upload(imageName) {
             state.btnState = "uploding"
             uploadString(ref(storage, `images/${imageName}`), state.imageData, "data_url").then((snapshot) => {
