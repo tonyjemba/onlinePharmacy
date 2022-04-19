@@ -19,6 +19,7 @@
                             placeholder="Medicine Name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
+                        v-model="productData.product_name"
                         />
                     </div>
                     <div>
@@ -32,6 +33,7 @@
                             placeholder="Pharmacy"
                             id="pharmacyname"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
+                        v-model="productData.Pharmacy_name"
                         />
                     </div>
                     <div>
@@ -43,6 +45,7 @@
                             placeholder="Location"
                             id="location"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
+                        v-model="productData.location"
                         />
                     </div>
                     <div>
@@ -54,6 +57,7 @@
                             placeholder="UGX"
                             id="price"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
+                        v-model="productData.price"
                         />
                     </div>
                     <div>
@@ -65,6 +69,7 @@
                             placeholder="What does the medicine treat"
                             id="disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
+                        v-model="productData.disease"
                         />
                     </div>
                     <div>
@@ -76,6 +81,7 @@
                             placeholder="Phone Number"
                             id="contact"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
+                        v-model="productData.contact"
                         />
                     </div>
                     <div>
@@ -85,7 +91,7 @@
                             accept="image/*"
                             @change="previewImage"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        />
+                    />
                     </div>
                     <!-- image preview section -->
                     <div v-if="state.imageData">
@@ -113,6 +119,7 @@
                             placeholder="Talk more about the Product.."
                             className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
+                        v-model="productData.descprition"
                         />
                     </div>
 
@@ -129,11 +136,25 @@
 <script>
 import { reactive } from "vue";
 import { getStorage, ref,  uploadString,getDownloadURL } from "firebase/storage";
+import { useStore } from "vuex";
+import { computed, ref } from "vue";
+
 export default {
     setup() {
+         const store = useStore();
         const state = reactive({ imageData: null, imageUrl: null,imageName:null, btnState:"upload" });
         const storage = getStorage();
-        
+        const productData = ref({
+            product_name: "",
+            Pharmacy_name: "",
+            location: "",
+            price: "",
+            disease:"",
+            descprition:"",
+            contact:"",
+            image_url: state.imageUrl
+        });
+        console.log(productData);
         function previewImage(event) {
             const image = event.target.files[0];
             state.imageName = image.name;
@@ -162,6 +183,9 @@ export default {
             previewImage,
             upload,
             state,
+            productData,
+             addProduct: () =>
+                store.dispatch("products/addProduct", productData.value)
         };
     },
 };

@@ -33,6 +33,7 @@ class ProductController extends Controller
             'disease' => 'required',
             'descprition' => 'required',
             'contact' => 'required',
+            'image_url' => 'required'
         ]);
 
         return Product::create($request->all());
