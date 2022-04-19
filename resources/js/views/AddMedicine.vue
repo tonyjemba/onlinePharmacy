@@ -137,14 +137,14 @@
 import { reactive } from "vue";
 import { getStorage, ref,  uploadString,getDownloadURL } from "firebase/storage";
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
+import { computed, ref as vueref } from "vue";
 
 export default {
     setup() {
          const store = useStore();
         const state = reactive({ imageData: null, imageUrl: null,imageName:null, btnState:"upload" });
         const storage = getStorage();
-        const productData = ref({
+        const productData = vueref({
             product_name: "",
             Pharmacy_name: "",
             location: "",
