@@ -144,7 +144,7 @@ import { computed, ref as vueref } from "vue";
 export default {
     setup() {
          const store = useStore();
-        const state = reactive({ imageData: null, imageUrl: null,imageName:null, btnState:"upload" });
+        const state = reactive({ imageData: null, imageUrl: "",imageName:null, btnState:"upload" });
         const storage = getStorage();
         const productData = vueref({
             product_name: "",
