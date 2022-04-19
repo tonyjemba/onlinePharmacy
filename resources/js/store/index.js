@@ -1,7 +1,7 @@
 import { createStore, createLogger } from 'vuex';
 import register from './modules/register';
 import login from './modules/login';
-import logout from "./modules/logout";z
+import logout from "./modules/logout";
 // for state persistence
 import VuexPersist from 'vuex-persist';
 

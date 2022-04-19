@@ -95,10 +95,10 @@
                         @click.prevent="upload(state.imageName)"
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
-                        {{ state.btnState }}
+                        Upload
                     </button>
-                   
-                  
+                    {{ state.imageUrl }}
+                    {{ state.imageName }}
                     </div>
                     <div>
                         <label
@@ -131,7 +131,7 @@ import { reactive } from "vue";
 import { getStorage, ref,  uploadString,getDownloadURL } from "firebase/storage";
 export default {
     setup() {
-        const state = reactive({ imageData: null, imageUrl: null,imageName:null, btnState:"upload" });
+        const state = reactive({ imageData: null, imageUrl: null,imageName:null });
         const storage = getStorage();
         
         function previewImage(event) {
@@ -144,13 +144,10 @@ export default {
             };
         }
         function upload(imageName) {
-            state.btnState = "Uploading"
             uploadString(ref(storage, `images/${imageName}`), state.imageData, "data_url").then((snapshot) => {
-               
-               console.log(snapshot);
+                console.log(snapshot);
             }).then(
                 ()=>{
-                    state.btnState = "Uploaded"
                     getDownloadURL(ref(storage, `images/${imageName}`)).then(
                         (url)=> state.imageUrl = url
                     )
