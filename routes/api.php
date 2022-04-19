@@ -25,7 +25,7 @@ Route::post('register',[AuthController::class, 'register']);
 Route::post('login',[AuthController::class, 'login']);
 Route::post('logout',[AuthController::class, 'logout']);
 
-Route::resource('add-product',[ ProductController::class, "store"]);
+Route::resource('products', ProductController::class);
 
 //protected routes group (post products)
 Route::group(['middleware' => ['auth:sanctum']], function(){
