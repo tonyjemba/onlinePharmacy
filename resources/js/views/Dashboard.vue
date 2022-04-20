@@ -3,10 +3,11 @@
 </template>
 
 <script>
-import DashboardItemCard from "../components/DashboardItemCard.vue";
+import DashboardItemCard from "../components/dashboard-item-card.vue";
+
 export default{
   components:{
-DashboardItemCard
-  },
+    DashboardItemCard
+  }
 }
 </script>
