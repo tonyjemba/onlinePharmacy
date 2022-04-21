@@ -16,6 +16,7 @@ class Product extends Model
         'price',
         'disease',
         'descprition',
-        'contact'
+        'contact',
+        'image_url'
     ];
 }

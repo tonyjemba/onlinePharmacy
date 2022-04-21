@@ -1,6 +1,5 @@
 <template>
-    <form @submit.prevent="addProduct"
-                method="POST">
+    <form @submit.prevent="addProduct" method="POST">
         <div className="bg-indigo-50 min-h-screen md:px-20 pt-6">
             <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
                 <h1
@@ -20,7 +19,7 @@
                             placeholder="Medicine Name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        v-model="productData.product_name"
+                            v-model="productData.product_name"
                         />
                     </div>
                     <div>
@@ -34,7 +33,7 @@
                             placeholder="Pharmacy"
                             id="pharmacyname"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        v-model="productData.Pharmacy_name"
+                            v-model="productData.Pharmacy_name"
                         />
                     </div>
                     <div>
@@ -46,7 +45,7 @@
                             placeholder="Location"
                             id="location"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        v-model="productData.location"
+                            v-model="productData.location"
                         />
                     </div>
                     <div>
@@ -58,7 +57,7 @@
                             placeholder="UGX"
                             id="price"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        v-model="productData.price"
+                            v-model="productData.price"
                         />
                     </div>
                     <div>
@@ -70,9 +69,10 @@
                             placeholder="What does the medicine treat"
                             id="disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        v-model="productData.disease"
+                            v-model="productData.disease"
                         />
                     </div>
+                    <!-- add contact for your drug shop -->
                     <div>
                         <label htmlFor="contact" className="text-lx font-serif"
                             >Contact:</label
@@ -82,9 +82,10 @@
                             placeholder="Phone Number"
                             id="contact"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                        v-model="productData.contact"
+                            v-model="productData.contact"
                         />
                     </div>
+                    <!-- add image for the product -->
                     <div>
                         <label className="text-lx font-serif">Add image:</label>
                         <input
@@ -92,21 +93,20 @@
                             accept="image/*"
                             @change="previewImage"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                    />
+                        />
                     </div>
                     <!-- image preview section -->
                     <div v-if="state.imageData">
                         <img height="268" width="356" :src="state.imageData" />
                         <br />
                         <button
-                        @click.prevent="upload(state.imageName)"
-                        className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
-                    >
-                        {{ state.btnState }}
-                    </button>
-                   
-                  
+                            @click.prevent="upload(state.imageName)"
+                            className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
+                        >
+                            {{ state.btnState }}
+                        </button>
                     </div>
+                    <!-- prescriptions for the medicine -->
                     <div>
                         <label
                             htmlFor="description"
@@ -120,7 +120,7 @@
                             placeholder="Talk more about the Product.."
                             className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
-                        v-model="productData.descprition"
+                            v-model="productData.descprition"
                         />
                     </div>
 
@@ -132,29 +132,38 @@
                 </div>
             </div>
         </div>
-
     </form>
 </template>
 <script>
 import { reactive } from "vue";
-import { getStorage, ref,  uploadString,getDownloadURL } from "firebase/storage";
+import {
+    getStorage,
+    ref,
+    uploadString,
+    getDownloadURL,
+} from "firebase/storage";
 import { useStore } from "vuex";
 import { computed, ref as vueref } from "vue";
 
 export default {
     setup() {
-         const store = useStore();
-        const state = reactive({ imageData: null, imageUrl: "",imageName:null, btnState:"upload" });
+        const store = useStore();
+        const state = reactive({
+            imageData: null,
+            imageUrl: "",
+            imageName: null,
+            btnState: "upload",
+        });
         const storage = getStorage();
         const productData = vueref({
             product_name: "",
             Pharmacy_name: "",
             location: "",
             price: "",
-            disease:"",
-            descprition:"",
-            contact:"",
-            
+            disease: "",
+            descprition: "",
+            contact: "",
+            image_url: "",
         });
         console.log(productData);
         function previewImage(event) {
@@ -168,17 +177,21 @@ export default {
         }
         //uploading function
         function upload(imageName) {
-            state.btnState = "uploding"
-            uploadString(ref(storage, `images/${imageName}`), state.imageData, "data_url").then((snapshot) => {
-                console.log(snapshot);
-            }).then(
-                ()=>{
-                    state.btnState = "uploaded"
+            state.btnState = "uploding";
+            uploadString(
+                ref(storage, `images/${imageName}`),
+                state.imageData,
+                "data_url"
+            )
+                .then((snapshot) => {
+                    console.log(snapshot);
+                })
+                .then(() => {
+                    state.btnState = "uploaded";
                     getDownloadURL(ref(storage, `images/${imageName}`)).then(
-                        (url)=> state.imageUrl = url
-                    )
-                }
-            );
+                        (url) => (state.imageUrl = url)
+                    );
+                });
         }
 
         return {
@@ -186,8 +199,8 @@ export default {
             upload,
             state,
             productData,
-             addProduct: () =>
-                store.dispatch("products/addProduct", {image_url: state.imageUrl ,...productData.value})
+            addProduct: () =>
+                store.dispatch("products/addProduct", productData.value),
         };
     },
 };

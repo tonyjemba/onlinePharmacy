@@ -18,7 +18,6 @@
           <div className="flex items-center justify-end mt-4 top-auto">
             <button className="bg-white text-red-500 px-4 py-2 rounded mr-auto hover:underline">Delete</button>
             <button className=" bg-gray-200 text-blue-600 px-2 py-2 rounded-md mr-2">Edit</button>
-            <button className=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Publish</button>
           </div>
         </div>
       </div>
