@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from "../../router/index";
 
 // root state object.
 // each Vuex instance is just a single state tree.
@@ -26,9 +27,9 @@ const state = {
         //making api request
         axios
             .post("https://online-pharmacy-project.herokuapp.com/api/products", payload)
-            .then((response) => {
-               console.log("added");
-               
+            .then(() => {
+              //on success push back to the dashboard
+              router.push("/dashboard");
             })
             .catch((error) => {
                 commit("ERROR", error.response.data.message);
