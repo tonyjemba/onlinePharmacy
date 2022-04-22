@@ -2,7 +2,8 @@ import { createStore, createLogger } from 'vuex';
 import register from './modules/register';
 import login from './modules/login';
 import logout from "./modules/logout";
-import products from "./modules/products"
+import products from "./modules/products";
+import services  from './modules/services';
 // for state persistence
 import VuexPersist from 'vuex-persist';
 
@@ -20,7 +21,8 @@ const store = createStore({
     register,
     login,
     logout,
-    products
+    products,
+    services
   },
   strict: debug,
   plugins: debug ? [createLogger(),vuexLocalStorage.plugin] : [createLogger(),vuexLocalStorage.plugin]
