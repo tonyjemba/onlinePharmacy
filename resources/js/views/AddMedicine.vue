@@ -163,9 +163,9 @@ export default {
             disease: "",
             descprition: "",
             contact: "",
-            image_url: "",
+            image_url: state.imageUrl,
         });
-        console.log(productData);
+        
         function previewImage(event) {
             const image = event.target.files[0];
             state.imageName = image.name;
@@ -189,11 +189,14 @@ export default {
                 .then(() => {
                     state.btnState = "uploaded";
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
-                        (url) => (state.imageUrl = url)
+                        (url) => {
+                            console.log(url)
+                            state.imageUrl = url
+                        } 
                     );
                 });
         }
-
+console.log(productData.value);
         return {
             previewImage,
             upload,
