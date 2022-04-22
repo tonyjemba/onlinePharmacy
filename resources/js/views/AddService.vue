@@ -143,7 +143,7 @@ import {
     getDownloadURL,
 } from "firebase/storage";
 import { useStore } from "vuex";
-import { computed, ref as vueref } from "vue";
+import {  ref as vueref } from "vue";
 
 export default {
     setup() {
