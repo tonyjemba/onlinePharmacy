@@ -66,7 +66,7 @@
                         >
                         <input
                             type="text"
-                            placeholder="What does the medicine treat"
+                            placeholder=""
                             id="disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="productData.disease"
@@ -179,7 +179,7 @@ export default {
         function upload(imageName) {
             state.btnState = "uploding";
             uploadString(
-                ref(storage, `images/${imageName}`),
+                ref(storage, `products/${imageName}`),
                 state.imageData,
                 "data_url"
             )
@@ -188,7 +188,7 @@ export default {
                 })
                 .then(() => {
                     state.btnState = "uploaded";
-                    getDownloadURL(ref(storage, `images/${imageName}`)).then(
+                    getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) => (state.imageUrl = url)
                     );
                 });

@@ -16,7 +16,7 @@
                         >
                         <input
                             type="text"
-                            placeholder="Medicine Name"
+                            placeholder="Service Name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="serviceData.service_name"
@@ -66,7 +66,7 @@
                         >
                         <input
                             type="text"
-                            placeholder="What does the medicine treat"
+                            placeholder=""
                             id="disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="serviceData.disease"
@@ -117,7 +117,7 @@
                             id="description"
                             cols="{30}"
                             rows="{10}"
-                            placeholder="Talk more about the Product.."
+                            placeholder="Talk more about the Service.."
                             className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
                             v-model="serviceData.descprition"
@@ -179,7 +179,7 @@ export default {
         function upload(imageName) {
             state.btnState = "uploding";
             uploadString(
-                ref(storage, `images/${imageName}`),
+                ref(storage, `services/${imageName}`),
                 state.imageData,
                 "data_url"
             )
@@ -188,7 +188,7 @@ export default {
                 })
                 .then(() => {
                     state.btnState = "uploaded";
-                    getDownloadURL(ref(storage, `images/${imageName}`)).then(
+                    getDownloadURL(ref(storage, `Services/${imageName}`)).then(
                         (url) => (state.imageUrl = url)
                     );
                 });
