@@ -5,7 +5,7 @@
                 <h1
                     className="text-center text-2xl font-bold text-gray-500 mb-10"
                 >
-                    ADD POST
+                    ADD PRODUCT
                 </h1>
                 <div className="space-y-4">
                     <div>
