@@ -178,7 +178,7 @@ export default {
         function upload(imageName) {
             state.btnState = "uploding";
             uploadString(
-                ref(storage, `services/${imageName}`),
+                ref(storage, `products/${imageName}`),
                 state.imageData,
                 "data_url"
             )
@@ -187,7 +187,7 @@ export default {
                 })
                 .then(() => {
                     state.btnState = "uploaded";
-                    getDownloadURL(ref(storage, `Services/${imageName}`)).then(
+                    getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) =>{
                             state.imageUrl = url
                          
