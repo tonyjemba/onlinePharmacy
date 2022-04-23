@@ -190,13 +190,15 @@ export default {
                     state.btnState = "uploaded";
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) => {
-                            console.log(url)
+                           
+                           
                             state.imageUrl = url
+                            console.log(productData.value);
                         } 
                     );
                 });
         }
-console.log(productData.value);
+
         return {
             previewImage,
             upload,

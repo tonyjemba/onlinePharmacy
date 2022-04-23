@@ -189,13 +189,12 @@ export default {
                     state.btnState = "uploaded";
                     getDownloadURL(ref(storage, `Services/${imageName}`)).then(
                         (url) =>{
-                            console.log(url)
                             state.imageUrl = url
+                            console.log(serviceData.value);
                         } 
                     );
                 });
         }
-        console.log(serviceData.value);
 
         return {
             previewImage,
