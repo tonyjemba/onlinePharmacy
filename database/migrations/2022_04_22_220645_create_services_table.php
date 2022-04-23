@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('location');
             $table->integer('price');
             $table->string('disease');
-            $table->string('descprition');
+            $table->longText('descprition');
             $table->string('contact');
             $table->string('image_url');
             $table->timestamps();
