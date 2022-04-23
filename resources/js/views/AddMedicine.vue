@@ -165,7 +165,7 @@ export default {
             contact: "",
             image_url: state.imageUrl,
         });
-        
+
         function previewImage(event) {
             const image = event.target.files[0];
             state.imageName = image.name;
@@ -190,11 +190,9 @@ export default {
                     state.btnState = "uploaded";
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) => {
-                           
-                           
-                            state.imageUrl = url
+                            state.imageUrl = url;
                             console.log(productData.value);
-                        } 
+                        }
                     );
                 });
         }

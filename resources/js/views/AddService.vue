@@ -190,6 +190,7 @@ export default {
                     getDownloadURL(ref(storage, `Services/${imageName}`)).then(
                         (url) =>{
                             state.imageUrl = url
+                            //seeing the payload
                             console.log(serviceData.value);
                         } 
                     );
