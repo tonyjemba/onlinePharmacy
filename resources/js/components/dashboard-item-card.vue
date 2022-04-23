@@ -1,26 +1,24 @@
 
 
 <template>
-  <div className="md:flex shadow-lg   md:mx-auto my-40 max-w-lg md:max-w-2xl h-64">
-        <img className="h-full w-full md:w-1/3  object-cover rounded-lg rounded-r-none pb-5/6" src="https://ik.imagekit.io/q5edmtudmz/FB_IMG_15658659197157667_wOd8n5yFyXI.jpg" alt="bag" />
-        <div className="w-full md:w-2/3 px-4 py-4 bg-white rounded-lg">
-          <div className="flex items-center">
-            <h2 className="text-xl text-gray-800 font-medium mr-auto">Your Travel Buddy</h2>
-            <p className="text-gray-800 font-semibold tracking-tighter">
-              only
-              <i className="text-gray-600 line-through">60$</i>
-              48$
-            </p>
-          </div>
-          <p className="text-sm text-gray-700 mt-4">
-            Lorem, ipsum dolor sit amet consectetur Amet veritatis ipsam reiciendis numquam tempore commodi ipsa suscipit laboriosam, sit earum at sequ adipisicing elit. Amet veritatis ipsam reiciendis numquam tempore commodi ipsa suscipit laboriosam, sit earum at sequi.
-          </p>
-          <div className="flex items-center justify-end mt-4 top-auto">
+ <div class="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
+            <img class="h-56 lg:h-60 w-full object-cover" src="https://images.unsplash.com/photo-1523289217630-0dd16184af8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8d29tZW4lMjBlbXBvd2VybWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+            <div class="p-3">
+                <span class="text-sm text-primary">November 19, 2022</span>
+                <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
+                International Women's Day 2022: Date, history, significance, theme this year
+                </h3>
+                <p class="paragraph-normal text-gray-600">
+                Happy Women's Day 2022: Read on to know all about the history and significance...
+                </p>
+                <a class="mt-3 block" href="#">Read More >></a>
+                <div className="flex items-center justify-end mt-4 top-auto">
             <button className="bg-white text-red-500 px-4 py-2 rounded mr-auto hover:underline">Delete</button>
             <button className=" bg-gray-200 text-blue-600 px-2 py-2 rounded-md mr-2">Edit</button>
           </div>
+            </div>
         </div>
-      </div>
+
 </template>
 
 <script>
