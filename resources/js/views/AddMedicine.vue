@@ -191,7 +191,7 @@ export default {
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) => {
                             state.imageUrl = url;
-                            console.log(state.imageUrl);
+                     
                         }
                     );
                 });

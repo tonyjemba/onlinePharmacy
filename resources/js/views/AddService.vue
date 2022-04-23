@@ -163,7 +163,7 @@ export default {
             disease: "",
             descprition: "",
             contact: "",
-            image_url: state.imageUrl,
+            
         });
         function previewImage(event) {
             const image = event.target.files[0];
@@ -190,8 +190,7 @@ export default {
                     getDownloadURL(ref(storage, `Services/${imageName}`)).then(
                         (url) =>{
                             state.imageUrl = url
-                            //seeing the payload
-                            console.log(serviceData.value);
+                         
                         } 
                     );
                 });
@@ -203,7 +202,7 @@ export default {
             state,
             serviceData,
             addService: () =>
-                store.dispatch("services/addService", serviceData.value),
+                store.dispatch("services/addService", {image_url: state.imageUrl,...serviceData.value}),
         };
     },
 };
