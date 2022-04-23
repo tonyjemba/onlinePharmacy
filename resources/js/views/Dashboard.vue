@@ -1,5 +1,22 @@
 <template>
-  <DashboardItemCard/>
+<div class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10">
+        <!-- Card 1 -->
+       <DashboardItemCard/>
+
+        <!-- Card 2 -->
+       <DashboardItemCard/>
+        <!-- Card 3 -->
+        <DashboardItemCard/>
+
+        <!-- Card 4 -->
+      <DashboardItemCard/>
+
+        <!-- Card 5 -->
+     <DashboardItemCard/>
+
+        <!-- Card 6 -->
+       <DashboardItemCard/>
+    </div>
 </template>
 
 <script>
