@@ -163,7 +163,7 @@ export default {
             disease: "",
             descprition: "",
             contact: "",
-            image_url: state.imageUrl,
+           
         });
 
         function previewImage(event) {
@@ -191,7 +191,7 @@ export default {
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) => {
                             state.imageUrl = url;
-                            console.log(productData.value);
+                            console.log(state.imageUrl);
                         }
                     );
                 });
@@ -203,7 +203,7 @@ export default {
             state,
             productData,
             addProduct: () =>
-                store.dispatch("products/addProduct", productData.value),
+                store.dispatch("products/addProduct",{  image_url: state.imageUrl,...productData.value}),
         };
     },
 };
