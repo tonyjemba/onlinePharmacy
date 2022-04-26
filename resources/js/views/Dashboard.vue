@@ -31,7 +31,7 @@
     <div
         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
     >
-        
+       <!-- display data from databese in dashbaord item  -->
         <!-- Card 1 -->
         <DashboardItemCard />
 
