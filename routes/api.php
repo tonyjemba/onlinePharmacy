@@ -31,7 +31,7 @@ Route::resource('products', ProductController::class);
 Route::resource('services', ServicesController::class);
 
 
-//protected routes group (post products)
+//protected routes group (post products, and services)
 Route::group(['middleware' => ['auth:sanctum']], function(){
 
 });

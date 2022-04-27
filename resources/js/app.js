@@ -9,6 +9,7 @@ import { initializeApp } from "firebase/app";
 
 createApp(App).use(store).use(router).mount('#app');
 
+//Firebase configuration needs to be in a .env file
 const firebaseConfig = {
     apiKey: "AIzaSyB8QfjMzpGR8zokG8cUsvGwiJDZb4bQ6Oc",
     authDomain: "online-pharmacy-d7579.firebaseapp.com",
