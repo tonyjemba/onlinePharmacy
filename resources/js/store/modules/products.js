@@ -40,7 +40,7 @@ const state = {
       
         //making api request
         axios
-            .post("https://online-pharmacy-project.herokuapp.com/api/products")
+            .get("https://online-pharmacy-project.herokuapp.com/api/products")
             .then((res) => {
                 console.log(res.data);
             })
