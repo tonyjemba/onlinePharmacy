@@ -46,6 +46,7 @@ export default {
         const store = useStore();
         onMounted(() => {
             store.dispatch("products/fetchProcucts");
+            store.dispatch("services/fetchServices");
         });
         return {
             products: computed(() => store.state.products.products),
