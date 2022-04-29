@@ -60,10 +60,8 @@ export default {
     setup() {
         const store = useStore();
         onMounted(() => {
-            if (computed(() => store.state.products.products) === []) {
+         
                 store.dispatch("products/fetchProcucts");
-            }
-            return;
         });
         return {
           products: computed(() => store.state.products.products)
