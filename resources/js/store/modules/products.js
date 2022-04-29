@@ -35,6 +35,20 @@ const state = {
                 commit("ERROR", error.response.data.message);
             });
     },
+    fetchProcucts({ commit, state }) {
+
+      
+        //making api request
+        axios
+            .post("https://online-pharmacy-project.herokuapp.com/api/products")
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((error) => {
+                commit("ERROR", error.response.data.message);
+            });
+    },
+    
   }
   
   // getters are functions.

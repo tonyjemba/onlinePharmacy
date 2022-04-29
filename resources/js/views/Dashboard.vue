@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h1 class="text-1xl md:text-2xl text-white ">My products</h1>
+            <h1 class="text-1xl md:text-2xl text-black ">My products</h1>
             <div
                 class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
             >
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div>
-            <h1 class="text-1xltext-2xl  md:text-white ">My services</h1>
+            <h1 class="text-1xltext-2xl  md:text-black ">My services</h1>
             <div
         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
     >
@@ -52,8 +52,21 @@
 
 <script>
 import DashboardItemCard from "../components/dashboard-item-card.vue";
+import { useStore } from "vuex";
+import { onMounted } from 'vue'
 
 export default {
+
+    setup() {
+       const store = useStore();
+       onMounted(() => {
+ store.dispatch("products/fetchProcucts")
+})
+      return{
+    
+      
+      }
+    },
     components: {
         DashboardItemCard,
     },
