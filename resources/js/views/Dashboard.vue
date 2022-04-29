@@ -21,22 +21,15 @@
             <div
                 class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
             >
-                <!-- Card 1 -->
-                <DashboardItemCard />
-
-                <!-- Card 2 -->
-                <DashboardItemCard />
-                <!-- Card 3 -->
-                <DashboardItemCard />
-
-                <!-- Card 4 -->
-                <DashboardItemCard />
-
-                <!-- Card 5 -->
-                <DashboardItemCard />
-
-                <!-- Card 6 -->
-                <DashboardItemCard />
+                <div v-for="service in services" :key="service.id">
+                    <DashboardItemCard
+                        :product_name="service.service_name"
+                        :descprition="service.descprition"
+                        :image_url="service.image_url"
+                        :price="service.price"
+                        :updated_at="service.updated_at"
+                    />
+                </div>
               
             </div>
         </div>
@@ -56,6 +49,7 @@ export default {
         });
         return {
             products: computed(() => store.state.products.products),
+            services: computed(() => store.state.services.services),
         };
     },
     components: {
