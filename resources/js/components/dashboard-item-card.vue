@@ -9,7 +9,7 @@
                 <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
                 {{product_name }}
                 </h3>
-                <p class="paragraph-normal text-gray-600">
+                <p class="paragraph-normal text-gray-600 line-clamp-2">
                {{ descprition }}
                 </p>
                 <div class="mt-3 block" >UGX: {{price}}</div>

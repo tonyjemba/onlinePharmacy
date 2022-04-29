@@ -37,7 +37,7 @@
 
                 <!-- Card 6 -->
                 <DashboardItemCard />
-                {{ products }}
+              
             </div>
         </div>
     </div>
