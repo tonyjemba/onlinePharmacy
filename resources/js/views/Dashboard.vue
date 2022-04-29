@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h1 class="text-1xl md:text-2xl text-black ">My products</h1>
+            <h1 class="text-1xl md:text-2xl text-black">My products</h1>
             <div
                 class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
             >
@@ -25,27 +25,28 @@
             </div>
         </div>
         <div>
-            <h1 class="text-1xltext-2xl  md:text-black ">My services</h1>
+            <h1 class="text-1xltext-2xl md:text-black">My services</h1>
             <div
-        class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
-    >
-        <!-- Card 1 -->
-        <DashboardItemCard />
+                class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
+            >
+                <!-- Card 1 -->
+                <DashboardItemCard />
 
-        <!-- Card 2 -->
-        <DashboardItemCard />
-        <!-- Card 3 -->
-        <DashboardItemCard />
+                <!-- Card 2 -->
+                <DashboardItemCard />
+                <!-- Card 3 -->
+                <DashboardItemCard />
 
-        <!-- Card 4 -->
-        <DashboardItemCard />
+                <!-- Card 4 -->
+                <DashboardItemCard />
 
-        <!-- Card 5 -->
-        <DashboardItemCard />
+                <!-- Card 5 -->
+                <DashboardItemCard />
 
-        <!-- Card 6 -->
-        <DashboardItemCard />
-    </div>
+                <!-- Card 6 -->
+                <DashboardItemCard />
+                {{ products }}
+            </div>
         </div>
     </div>
 </template>
@@ -53,19 +54,20 @@
 <script>
 import DashboardItemCard from "../components/dashboard-item-card.vue";
 import { useStore } from "vuex";
-import { onMounted } from 'vue'
+import { onMounted ,computed} from "vue";
 
 export default {
-
     setup() {
-       const store = useStore();
-       onMounted(() => {
- store.dispatch("products/fetchProcucts")
-})
-      return{
-    
-      
-      }
+        const store = useStore();
+        onMounted(() => {
+            if (computed(() => store.state.products.products) === []) {
+                store.dispatch("products/fetchProcucts");
+            }
+            return;
+        });
+        return {
+          products: computed(() => store.state.products.products)
+        };
     },
     components: {
         DashboardItemCard,

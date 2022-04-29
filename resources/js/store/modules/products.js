@@ -4,6 +4,7 @@ import router from "../../router/index";
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
+  products:[],
     error:"",
   }
   
@@ -13,6 +14,9 @@ const state = {
   // mutations must be synchronous and can be recorded by plugins
   // for debugging purposes.
   const mutations = {
+    STOREPRODUCTS(state,data){
+      state.products = data;
+    },
     ERROR(state, data) {
         state.error= data;
     },
@@ -42,7 +46,8 @@ const state = {
         axios
             .get("https://online-pharmacy-project.herokuapp.com/api/products")
             .then((res) => {
-                console.log(res.data);
+              //Store data in vuex store
+                commit("STOREPRODUCTS",res.data)
             })
             .catch((error) => {
                 commit("ERROR", error.response.data.message);
