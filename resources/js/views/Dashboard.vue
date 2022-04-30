@@ -1,7 +1,6 @@
 <template>
     <div>
         <div>
-            <h1 class="text-1xl md:text-2xl text-black">My products</h1>
             <div class="box pt-6">
                 <div class="box-wrapper">
                     <div
@@ -29,7 +28,6 @@
                             type="search"
                             name=""
                             id=""
-                           
                             placeholder="search for products"
                             x-model="q"
                             class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
@@ -42,16 +40,16 @@
                                 class="text-sm outline-none focus:outline-none bg-transparent"
                             >
                                 <option value="all" selected>All</option>
-                                <option value="photo">Photo</option>
-                                <option value="illustration">
-                                    Illustration
-                                </option>
-                                <option value="vector">Vector</option>
+                                <option value="products">Products</option>
+                                <option value="services">Servives</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <h1 class="text-1xl md:text-2xl text-black">My products</h1>
+
             <div
                 class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
             >
