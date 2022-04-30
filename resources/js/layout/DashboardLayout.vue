@@ -83,7 +83,7 @@
                                                 ]"
                                                 @click="logout(item.name)"
                                             >
-                                                <router-link :to="item.route" >{{
+                                                <router-link :to="item.route">{{
                                                     item.name
                                                 }}</router-link>
                                             </div>
@@ -205,7 +205,7 @@ import {
 import { HomeIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
 import Icon from "../components/Icon.vue";
 import { useStore } from "vuex";
-import { computed} from "vue";
+import { computed } from "vue";
 
 const user = {
     name: "Tom Cook",
@@ -220,7 +220,7 @@ const navigation = [
 const userNavigation = [
     { name: "My Profile", route: "/myprofile" },
 
-    { name: "Sign out", route:"/" },
+    { name: "Sign out", route: "/" },
 ];
 
 const tab = "Dashboard";
@@ -242,14 +242,15 @@ export default {
     setup() {
         const store = useStore();
         //if the user is logged then we use the logged in emain but registered we use the registered email
-        const loggedEmail =  computed(() => store.getters['login/getLoggedUser']);
+        const loggedEmail = computed(
+            () => store.getters["login/getLoggedUser"]
+        );
 
-        function logout(name){
-            
-             if(name === 'Sign out'){
-                 store.dispatch("logout/submitLogout", loggedEmail.value)
-             }
-          return null;      
+        function logout(name) {
+            if (name === "Sign out") {
+                store.dispatch("logout/submitLogout", loggedEmail.value);
+            }
+            return null;
         }
         return {
             //dispatch logout action

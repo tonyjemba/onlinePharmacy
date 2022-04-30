@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <div class="box pt-6">
+            <div class="box pt-6 pb-6">
                 <div class="box-wrapper">
                     <div
                         class="bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200"
@@ -28,7 +28,7 @@
                             type="search"
                             name=""
                             id=""
-                            placeholder="search for products"
+                            placeholder="search for items"
                             x-model="q"
                             class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
                         />
@@ -41,7 +41,7 @@
                             >
                                 <option value="all" selected>All</option>
                                 <option value="products">Products</option>
-                                <option value="services">Servives</option>
+                                <option value="services">Services</option>
                             </select>
                         </div>
                     </div>

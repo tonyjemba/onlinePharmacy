@@ -5,6 +5,7 @@ import Dashboard from "../views/Dashboard.vue";
 import DashboardLayout from "../layout/DashboardLayout.vue";
 import Main from "../views/Main.vue";
 import AddMedicine from "../views/AddMedicine.vue";
+import UpdateItem from "../views/UpdateItem.vue";
 import MyProfile from "../views/MyProfile.vue";
 import AddService from "../views/AddService.vue";
 import store from "../store/index";
@@ -41,6 +42,11 @@ const routes = [
                 name: "MyProfile",
                 component: MyProfile,
             },
+            {
+                path: "/edit",
+                name: "EditItem",
+                component: UpdateItem,
+            }
         ],
     },
     {
