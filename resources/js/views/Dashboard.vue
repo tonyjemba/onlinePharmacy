@@ -2,33 +2,54 @@
     <div>
         <div>
             <h1 class="text-1xl md:text-2xl text-black">My products</h1>
-            <div
-                class="flex min-h-screen w-full items-center justify-center bg-gray-900"
-            >
-                <!-- component -->
-                <div
-                    class="flex rounded bg-white w-[30rem]"
-                    x-data="{ search: '' }"
-                >
-                    <input
-                        type="search"
-                        class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none"
-                        placeholder="Find product"
-                        x-model="search"
-                    />
-
-                    <button
-                        type="button"
-                        class="m-2 rounded px-4 px-4 py-2 font-semibold text-gray-100"
-                        :class="
-                            search.length > 0
-                                ? 'bg-purple-500'
-                                : 'bg-gray-500 cursor-not-allowed'
-                        "
-                        :disabled="search.length == 0"
+            <div class="box pt-6">
+                <div class="box-wrapper">
+                    <div
+                        class="bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200"
                     >
-                        search
-                    </button>
+                        <button
+                            @click="getImages()"
+                            class="outline-none focus:outline-none"
+                        >
+                            <svg
+                                class="w-5 text-gray-600 h-5 cursor-pointer"
+                                fill="none"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                ></path>
+                            </svg>
+                        </button>
+                        <input
+                            type="search"
+                            name=""
+                            id=""
+                           
+                            placeholder="search for products"
+                            x-model="q"
+                            class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
+                        />
+                        <div class="select">
+                            <select
+                                name=""
+                                id=""
+                                x-model="image_type"
+                                class="text-sm outline-none focus:outline-none bg-transparent"
+                            >
+                                <option value="all" selected>All</option>
+                                <option value="photo">Photo</option>
+                                <option value="illustration">
+                                    Illustration
+                                </option>
+                                <option value="vector">Vector</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div
@@ -47,35 +68,6 @@
         </div>
         <div>
             <h1 class="text-1xl md:text-2xl text-black">My services</h1>
-               <div
-                class="flex min-h-screen w-full items-center justify-center bg-gray-900"
-            >
-                <!-- component -->
-                <div
-                    class="flex rounded bg-white w-[30rem]"
-                    x-data="{ search: '' }"
-                >
-                    <input
-                        type="search"
-                        class="w-full border-none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none"
-                        placeholder="Find service"
-                        x-model="search"
-                    />
-
-                    <button
-                        type="button"
-                        class="m-2 rounded px-4 px-4 py-2 font-semibold text-gray-100"
-                        :class="
-                            search.length > 0
-                                ? 'bg-purple-500'
-                                : 'bg-gray-500 cursor-not-allowed'
-                        "
-                        :disabled="search.length == 0"
-                    >
-                        search
-                    </button>
-                </div>
-            </div>
             <div
                 class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
             >
