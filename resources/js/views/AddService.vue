@@ -154,7 +154,8 @@ export default {
             imageName: null,
             btnState: "upload",
         });
-         const userId = computed(()=>store.getters['login/getLoggedId']);
+         const userId = computed(()=>store.state.login.loginUser.user.id);
+         
         const storage = getStorage();
         const serviceData = vueref({
             service_name: "",
