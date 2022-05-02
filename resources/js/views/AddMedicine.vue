@@ -154,7 +154,9 @@ export default {
             imageName: null,
             btnState: "upload",
         });
-         const userId = computed(()=>store.state.login.loginUser.user.id);
+        //logged user is stored in localstorage, we get his id
+        const ls = JSON.parse(localStorage.getItem('vuex'));
+        const userId = ls.login.loginUser.user.id;
         const storage = getStorage();
         const productData = vueref({
             product_name: "",
