@@ -72,6 +72,9 @@ const getters = {
     getLoggedUser(state) {
         return state.loginUser.user.email;
     },
+    getLoggedId(state) {
+        return state.loginUser.user.id;
+    },
     getRouteLoadingState(state) {
         return state.routeLoading;
     },

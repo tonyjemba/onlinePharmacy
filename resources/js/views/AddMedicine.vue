@@ -143,7 +143,7 @@ import {
     getDownloadURL,
 } from "firebase/storage";
 import { useStore } from "vuex";
-import { ref as vueref } from "vue";
+import { ref as vueref ,computed} from "vue";
 
 export default {
     setup() {
@@ -154,6 +154,7 @@ export default {
             imageName: null,
             btnState: "upload",
         });
+        const userId = computed(()=>store.getters['login/getLoggedId']);
         const storage = getStorage();
         const productData = vueref({
             product_name: "",
@@ -203,7 +204,7 @@ export default {
             state,
             productData,
             addProduct: () =>
-                store.dispatch("products/addProduct",{  image_url: state.imageUrl,...productData.value}),
+                store.dispatch("products/addProduct",{  image_url: state.imageUrl,user_id:userId,...productData.value}),
         };
     },
 };

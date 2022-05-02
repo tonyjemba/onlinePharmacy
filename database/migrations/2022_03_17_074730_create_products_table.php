@@ -23,6 +23,7 @@ return new class extends Migration
             $table->longText('descprition');
             $table->string('contact');
             $table->string('image_url');
+            $table->foreignId('user_id')->nullable()->constrained();//constrained is same as references(id)->on('users')
             $table->timestamps();
         });
     }

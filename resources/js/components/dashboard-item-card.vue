@@ -24,7 +24,7 @@
                 <button
                     className=" bg-gray-200 text-blue-600 px-2 py-2 rounded-md mr-2"
                 >
-                    <router-link to="/edit">Edit</router-link>
+                    <router-link :to=to>Edit</router-link>
                 </button>
             </div>
         </div>
@@ -33,6 +33,6 @@
 
 <script>
 export default {
-    props: ["product_name", "updated_at", "descprition", "price", "image_url"],
+    props: ["product_name", "updated_at", "descprition", "price", "image_url","to"],
 };
 </script>
