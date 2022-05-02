@@ -93,4 +93,24 @@ class AuthController extends Controller
    return response(['message'=> ' user doesnot  exist']);
 
   }
+
+  //get all products for current user
+  public function getProducts(Request $request){
+    $fields = $request->validate([
+        'id' => 'required',
+    ]);
+      $products = User::find($fields['id'])->products;
+
+      return $products;
+  }
+
+    //get all services for current user
+    public function getServices(Request $request){
+        $fields = $request->validate([
+            'id' => 'required',
+        ]);
+          $products = User::find($fields['id'])->services;
+    
+          return $products;
+      }
 }

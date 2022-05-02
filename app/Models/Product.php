@@ -20,4 +20,6 @@ class Product extends Model
         'image_url',
         'user_id'
     ];
+
+    
 }

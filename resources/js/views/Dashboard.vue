@@ -92,13 +92,19 @@ import { onMounted, computed } from "vue";
 export default {
     setup() {
         const store = useStore();
+           
+           //on mount get the products and services for the registered user
         onMounted(() => {
-            store.dispatch("products/fetchProcucts");
-            store.dispatch("services/fetchServices");
+                //logged user is stored in localstorage, we get his id
+        const ls = JSON.parse(localStorage.getItem('vuex'));
+        const userId = ls.login.loginUser.user.id;
+            store.dispatch("login/getProducts",{id:userId});
+            store.dispatch("login/getServices",{id:userId});
+            
         });
         return {
-            products: computed(() => store.state.products.products),
-            services: computed(() => store.state.services.services),
+            products: computed(() => store.state.login.myProducts),
+            services: computed(() => store.state.login.myServices),
         };
     },
     components: {

@@ -5,6 +5,8 @@ import router from "../../router/index";
 // each Vuex instance is just a single state tree.
 const state = {
     loginUser: [],
+    myProducts:[],
+    myServices:[],
     islogged: false,
     routeLoading: false,
     errorMessage: "",
@@ -24,6 +26,12 @@ const mutations = {
     },
     NOTLOGGED(state){
         state.islogged = false;
+    },
+    MYPRODUCTS(state,data){
+        state.myProducts = data;
+    },
+    MYSERVICES(state,data){
+        state.myServices = data;
     },
     CLEARLOGGEDDATA(state){
         state.loginUser = [];
@@ -54,6 +62,32 @@ const actions = {
             .catch((error) => {
                 commit("Error", error.response.data.message);
                 commit("ROUTE_LOADING", false);
+            });
+    },
+    getProducts({ commit, state }, payload) {
+  
+          //making api request
+          axios
+              .post("https://online-pharmacy-project.herokuapp.com/api/myProducts", payload)
+              .then((response) => {
+                  commit("MYPRODUCTS", response.data);
+              })
+              .catch((error) => {
+                  console.log(error.response.data.message);
+
+              });
+      },
+      getServices({ commit, state }, payload) {
+  
+        //making api request
+        axios
+            .post("https://online-pharmacy-project.herokuapp.com/api/myServices", payload)
+            .then((response) => {
+                commit("MYSERVICES", response.data);
+            })
+            .catch((error) => {
+                console.log(error.response.data.message);
+
             });
     },
 };
