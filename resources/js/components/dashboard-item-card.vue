@@ -24,7 +24,7 @@
                 <button
                     className=" bg-gray-200 text-blue-600 px-2 py-2 rounded-md mr-2"
                 >
-                    <router-link :to="EditItem">Edit</router-link>
+                    <router-link to="/edit">Edit</router-link>
                 </button>
             </div>
         </div>
