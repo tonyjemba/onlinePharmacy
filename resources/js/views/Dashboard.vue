@@ -60,7 +60,7 @@
                         :image_url="product.image_url"
                         :price="product.price"
                         :updated_at="product.updated_at"
-                        
+                        @delEvent = "deleteProduct(product.id)"
                     />
                 </div>
             </div>
@@ -77,6 +77,7 @@
                         :image_url="service.image_url"
                         :price="service.price"
                         :updated_at="service.updated_at"
+                        @delEvent = "deleteService(service.id)"
                     />
                 </div>
             </div>
@@ -107,6 +108,8 @@ export default {
             services: computed(() => store.state.login.myServices),
              deleteProduct: (id) =>
                 store.dispatch("products/deleteProduct", id),
+             deleteService: (id) =>
+                store.dispatch("services/deleteService", id),
         };
     },
     components: {
