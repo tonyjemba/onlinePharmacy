@@ -55,7 +55,7 @@ const actions = {
             });
     },
     editService({ commit, state }, payload) {
-      
+      router.push({name:"editproduct", params:{payload}});
         //making api request to service deatils
         // axios
         //     .get(
