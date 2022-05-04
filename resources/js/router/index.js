@@ -43,7 +43,7 @@ const routes = [
                 component: MyProfile,
             },
             {
-                path: "/edit/:item/:id",
+                path: "/edit/product/:id",
                 name: "EditItem",
                 component: UpdateItem,
             }

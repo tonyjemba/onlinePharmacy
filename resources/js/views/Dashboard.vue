@@ -112,8 +112,8 @@ export default {
                 store.dispatch("products/deleteProduct", id),
              deleteService: (id) =>
                 store.dispatch("services/deleteService", id),
-            editProduct:(id)=> store.dispatch("products/editProduct",{id:id,item:"product"}),
-            editService:(id)=> store.dispatch("products/editService",{id:id,item:"service"}),
+            editProduct:(id)=> store.dispatch("products/editProduct",id),
+            editService:(id)=> store.dispatch("products/editService",id),
         };
     },
     components: {
