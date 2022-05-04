@@ -61,6 +61,7 @@
                         :price="product.price"
                         :updated_at="product.updated_at"
                         @delItem = "deleteProduct(product.id)"
+                        @edit="editProduct(product.id)"
                     />
                 </div>
             </div>
@@ -78,6 +79,7 @@
                         :price="service.price"
                         :updated_at="service.updated_at"
                         @delItem = "deleteService(service.id)"
+                        @edit="editService(service.id)"
                     />
                 </div>
             </div>
@@ -110,6 +112,8 @@ export default {
                 store.dispatch("products/deleteProduct", id),
              deleteService: (id) =>
                 store.dispatch("services/deleteService", id),
+            editProduct:(id)=> store.dispatch("products/editProduct",{id:id,item:"product"}),
+            editService:(id)=> store.dispatch("products/editService",{id:id,item:"service"}),
         };
     },
     components: {
