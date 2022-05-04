@@ -6,7 +6,7 @@
             <button @click="prod">get products</button>
             <router-link to="/login">Login</router-link>
 
-            <router-link :to=path><div>Edit</div></router-link>
+            
         </div>
     </div>
 </template>
@@ -14,7 +14,7 @@
 import axios from "axios";
 export default {
     setup() {
-        const path = "/editproduct/1"
+      
         function prod() {
             axios
                 .get(
@@ -26,7 +26,7 @@ export default {
 
         return {
             prod,
-            path,
+            
         };
     },
 };
