@@ -56,7 +56,7 @@ const state = {
   deleteService({ commit, state }, payload) {
     //making api request
     axios
-        .delete("https://online-pharmacy-project.herokuapp.com/api/services", payload)
+        .delete("https://online-pharmacy-project.herokuapp.com/api/services/"+`${payload}`)
         .then(() => {
           //refreshes currrent page
           router.go();
