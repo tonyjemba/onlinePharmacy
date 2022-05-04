@@ -18,14 +18,14 @@
             <div className="flex items-center justify-end mt-4 top-auto">
                 <button
                     className="bg-white text-red-500 px-4 py-2 rounded mr-auto hover:underline"
-                    @click="delEvent"
+                    @click="$emit('delItem')"
                 >
                     Delete
                 </button>
                 <button
                     className=" bg-gray-200 text-blue-600 px-2 py-2 rounded-md mr-2"
                 >
-                    <router-link >Edit</router-link>
+                    <router-link>Edit</router-link>
                 </button>
             </div>
         </div>
@@ -36,15 +36,15 @@
 import { emit } from "process";
 
 export default {
-    props: ["product_name", "updated_at", "descprition", "price", "image_url","to"],
-    setup(){
-        const delEvent = ()=>{
-            return emit('delEvent')
-        }
-
-        return {
-            delEvent
-        }
-    }
+    props: {
+        product_name: String,
+        updated_at: String,
+        descprition: String,
+        price: String,
+        image_url: String,
+    },
+    setup() {
+      
+    },
 };
 </script>

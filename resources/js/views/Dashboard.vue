@@ -60,7 +60,7 @@
                         :image_url="product.image_url"
                         :price="product.price"
                         :updated_at="product.updated_at"
-                        @delEvent = "deleteProduct(product.id)"
+                        @delItem = "deleteProduct(product.id)"
                     />
                 </div>
             </div>
@@ -77,7 +77,7 @@
                         :image_url="service.image_url"
                         :price="service.price"
                         :updated_at="service.updated_at"
-                        @delEvent = "deleteService(service.id)"
+                        @delItem = "deleteService(service.id)"
                     />
                 </div>
             </div>
