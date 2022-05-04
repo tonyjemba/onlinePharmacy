@@ -1,32 +1,33 @@
 <template>
-    <div>Main Page is here again
+    <div>
+        Main Page is here again
 
         <div>
-    <button @click="prod">get products</button>
-       <router-link to="/login"
-                            >Login</router-link
-                        >
+            <button @click="prod">get products</button>
+            <router-link to="/login">Login</router-link>
 
+            <router-link :to=path>{{ Edit }}</router-link>
         </div>
     </div>
 </template>
 <script>
-import axios from "axios"
+import axios from "axios";
 export default {
-
     setup() {
-       function prod(){
-            axios.get('https://online-pharmacy-project.herokuapp.com/api/products').then(
-            (res)=>console.log(res)
-        ).catch(
-            err=>console.log(err)
-        )
-       }
+        const path = "/editproduct/1"
+        function prod() {
+            axios
+                .get(
+                    "https://online-pharmacy-project.herokuapp.com/api/products"
+                )
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
+        }
 
-       return {
-           prod
-       }
-    }
-    
-}
+        return {
+            prod,
+            path,
+        };
+    },
+};
 </script>
