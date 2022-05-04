@@ -6,7 +6,7 @@
             <button @click="prod">get products</button>
             <router-link to="/login">Login</router-link>
 
-            <router-link :to=path>{{ Edit }}</router-link>
+            <router-link :to=path><div>Edit</div></router-link>
         </div>
     </div>
 </template>
