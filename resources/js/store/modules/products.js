@@ -56,9 +56,9 @@ const actions = {
     },
     editProduct({ commit, state }, payload) {
 
-      const id = payload.toString();
+
         
-      router.push({name:"editproduct", params:{id}});
+      router.push(`/editproduct/${payload}`);
       
       //making api request to product deatils
         // axios
