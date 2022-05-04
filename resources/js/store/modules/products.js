@@ -56,7 +56,7 @@ const actions = {
     },
     editProduct({ commit, state }, payload) {
         
-      router.push({name:"editproduct", params:{payload}});
+      router.push({name:"/dashboard/editproduct", params:{payload}});
       
       //making api request to product deatils
         // axios
