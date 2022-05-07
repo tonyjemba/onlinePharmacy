@@ -8,6 +8,7 @@ import AddMedicine from "../views/AddMedicine.vue";
 import UpdateItem from "../views/UpdateItem.vue";
 import MyProfile from "../views/MyProfile.vue";
 import AddService from "../views/AddService.vue";
+import UpdateService from "../views/UpdateService.vue"
 import store from "../store/index";
 
 const routes = [
@@ -46,6 +47,11 @@ const routes = [
                 path: "/editproduct/:id",
                 name: "EditItem",
                 component: UpdateItem,
+            },
+            {
+                path: "/editservice/:id",
+                name: "EditService",
+                component: UpdateService,
             }
         ],
     },
