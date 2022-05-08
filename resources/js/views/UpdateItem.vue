@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="addProduct" method="POST">
+    <form @submit.prevent="updateProduct" method="POST">
         <div className="bg-indigo-50 min-h-screen md:px-20 pt-6">
             <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
                 <h1
@@ -202,8 +202,9 @@ export default {
             upload,
             state,
             productData,
-            addProduct: () =>
-                store.dispatch("products/addProduct",{  image_url: state.imageUrl,...productData.value}),
+            //dispacth update function
+            updateProduct: () =>
+                store.dispatch("products/",{  image_url: state.imageUrl,...productData.value}),
         };
     },
 };
