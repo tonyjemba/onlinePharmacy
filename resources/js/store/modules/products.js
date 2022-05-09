@@ -5,6 +5,7 @@ import router from "../../router/index";
 // each Vuex instance is just a single state tree.
 const state = {
     products: [],
+    editProduct:{},
     error: "",
 };
 
@@ -16,6 +17,9 @@ const state = {
 const mutations = {
     STOREPRODUCTS(state, data) {
         state.products = data;
+    },
+    EDITDATA(state, data){
+        state.editProduct = data
     },
     ERROR(state, data) {
         state.error = data;
@@ -66,8 +70,9 @@ const actions = {
                 "https://online-pharmacy-project.herokuapp.com/api/products/"+`${payload}` 
             )
             .then((res) => {
-                //go to edit page
-                console.log(res.data)
+                //accessing data that needs to be edited
+                commit("EDITDATA",res.data);
+               
             })
             .catch((error) => {
                 console.log("ERROR", error.response.data.message);
