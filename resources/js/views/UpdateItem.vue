@@ -127,7 +127,7 @@
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
-                        EDIT PRODUCT
+                        EDIT PRODUCT {{ routeId }}
                     </button>
                 </div>
             </div>
@@ -144,10 +144,15 @@ import {
 } from "firebase/storage";
 import { useStore } from "vuex";
 import { ref as vueref } from "vue";
+import { useRoute } from "vue-router";
 
 export default {
     setup() {
-        const store = useStore();
+        const store = useStore(); 
+        const route = useRoute();
+     
+      const routeId = route.params.id
+    
         const state = reactive({
             imageData: null,
             imageUrl: "",
@@ -202,6 +207,7 @@ export default {
             upload,
             state,
             productData,
+            routeId,
             //dispacth update function
             updateProduct: () =>
                 store.dispatch("products/",{  image_url: state.imageUrl,...productData.value}),
