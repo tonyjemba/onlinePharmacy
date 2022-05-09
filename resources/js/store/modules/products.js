@@ -60,19 +60,18 @@ const actions = {
         
       router.push(`/editproduct/${payload}`);
       
-      //making api request to product deatils
-        // axios
-        //     .get(
-        //         "https://online-pharmacy-project.herokuapp.com/api/products/" +
-        //             `${payload}`
-        //     )
-        //     .then(() => {
-        //         //go to edit page
-        //         router.push("/edit");
-        //     })
-        //     .catch((error) => {
-        //         commit("ERROR", error.response.data.message);
-        //     });
+      //making api request to get product deatils to edit
+        axios
+            .get(
+                "https://online-pharmacy-project.herokuapp.com/api/products/"+`${payload}` 
+            )
+            .then((res) => {
+                //go to edit page
+                console.log(res.data)
+            })
+            .catch((error) => {
+                console.log("ERROR", error.response.data.message);
+            });
     },
     deleteProduct({ commit, state }, payload) {
         //making api request

@@ -127,7 +127,7 @@
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
-                        EDIT PRODUCT {{ routeId }}
+                        EDIT PRODUCT
                     </button>
                 </div>
             </div>
@@ -207,7 +207,7 @@ export default {
             upload,
             state,
             productData,
-            routeId,
+           
             //dispacth update function
             updateProduct: () =>
                 store.dispatch("products/",{  image_url: state.imageUrl,...productData.value}),
