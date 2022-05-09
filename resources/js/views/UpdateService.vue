@@ -202,7 +202,7 @@ export default {
             upload,
             state,
             productData,
-            //dispacth update function
+            //dispacth update function to access the data to edit
             updateService: () =>
                 store.dispatch("products/",{  image_url: state.imageUrl,...productData.value}),
         };
