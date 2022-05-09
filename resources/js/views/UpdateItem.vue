@@ -135,7 +135,7 @@
     </form>
 </template>
 <script>
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import {
     getStorage,
     ref,
@@ -152,7 +152,7 @@ export default {
         const route = useRoute();
      
       const routeId = route.params.id
-    
+     onMounted(()=>console.log(routeId))
         const state = reactive({
             imageData: null,
             imageUrl: "",
