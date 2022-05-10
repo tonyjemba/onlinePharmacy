@@ -164,6 +164,7 @@ export default {
             .then((res) => {
                 //accessing data that needs to be edited
                const data = res.data
+               console.log(data);
                return data;
             })
     })
