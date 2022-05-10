@@ -123,7 +123,7 @@
                             v-model="productData.descprition"
                         />
                     </div>
-
+<div>{{editData}}</div>
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
@@ -145,6 +145,7 @@ import {
 import { useStore } from "vuex";
 import { ref as vueref } from "vue";
 import { useRoute } from "vue-router";
+import axios from "axios";
 
 export default {
     setup() {
@@ -152,7 +153,20 @@ export default {
         const route = useRoute();
      
       const routeId = route.params.id
- 
+    
+
+   const editData =  onMounted(()=>{
+         axios
+            .get(
+                "https://online-pharmacy-project.herokuapp.com/api/products/" +
+                    `${routeId}`
+            )
+            .then((res) => {
+                //accessing data that needs to be edited
+               const data = res.data
+               return data;
+            })
+    })
         const state = reactive({
             imageData: null,
             imageUrl: "",
@@ -160,11 +174,8 @@ export default {
             btnState: "upload",
         });
         const storage = getStorage();
-        //data to edit
-            
-         onMounted(()=>{
-             const editData= computed(()=>store.state.products.editProduct);
-             console.log(editData)})
+       
+
         const productData = vueref({
             product_name: "default data",
             Pharmacy_name: "",
@@ -212,7 +223,8 @@ export default {
             upload,
             state,
             productData,
-           
+             //data to edit
+          editData,
             //edit the product
             updateProduct: () =>
                 store.dispatch("products/updateProduct",{  image_url: state.imageUrl,id:routeId,...productData.value}),
