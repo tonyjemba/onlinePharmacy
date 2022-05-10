@@ -159,7 +159,7 @@ export default {
         const route = useRoute();
      
       const routeId = route.params.id
-     onMounted(()=>console.log(routeId))
+ 
         const state = reactive({
             imageData: null,
             imageUrl: "",
@@ -216,9 +216,9 @@ export default {
             productData,
            //data to edit
             editData: computed(()=>store.state.products.editProduct),
-            //dispacth update function
+            //edit the product
             updateProduct: () =>
-                store.dispatch("products/",{  image_url: state.imageUrl,...productData.value}),
+                store.dispatch("products/updateProduct",{  image_url: state.imageUrl,id:routeId,...productData.value}),
             
         };
     },

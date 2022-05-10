@@ -5,7 +5,7 @@ import router from "../../router/index";
 // each Vuex instance is just a single state tree.
 const state = {
     products: [],
-    editProduct:{},
+    editProduct: {},
     error: "",
 };
 
@@ -18,8 +18,8 @@ const mutations = {
     STOREPRODUCTS(state, data) {
         state.products = data;
     },
-    EDITDATA(state, data){
-        state.editProduct = data
+    EDITDATA(state, data) {
+        state.editProduct = data;
     },
     ERROR(state, data) {
         state.error = data;
@@ -59,21 +59,29 @@ const actions = {
             });
     },
     editProduct({ commit, state }, payload) {
+        router.push(`/editproduct/${payload}`);
 
-
-        
-      router.push(`/editproduct/${payload}`);
-      
-      //making api request to get product deatils to edit
+        //making api request to get product deatils to edit
         axios
             .get(
-                "https://online-pharmacy-project.herokuapp.com/api/products/"+`${payload}` 
+                "https://online-pharmacy-project.herokuapp.com/api/products/" +
+                    `${payload}`
             )
             .then((res) => {
                 //accessing data that needs to be edited
-                commit("EDITDATA",res.data);
-               
+                commit("EDITDATA", res.data);
             })
+            .catch((error) => {
+                console.log("ERROR", error.response.data.message);
+            });
+    },
+    updateProduct({ commit, state }, payload) {
+        axios
+            .put(
+                "https://online-pharmacy-project.herokuapp.com/api/products/" +
+                    `${payload.id}`
+            )
+            .then((res) => console.log(res.data))
             .catch((error) => {
                 console.log("ERROR", error.response.data.message);
             });
