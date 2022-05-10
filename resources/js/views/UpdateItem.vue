@@ -17,7 +17,6 @@
                         <input
                             type="text"
                             placeholder="Medicine Name"
-                            value="editData.product_name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="productData.product_name"
@@ -32,7 +31,6 @@
                         <input
                             type="text"
                             placeholder="Pharmacy"
-                             :value="editData.Pharmacy_name"
                             id="pharmacyname"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="productData.Pharmacy_name"
@@ -46,7 +44,6 @@
                             type="text"
                             placeholder="Location"
                             id="location"
-                            :value="editData.location"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="productData.location"
                         />
@@ -58,7 +55,6 @@
                         <input
                             type="text"
                             placeholder="UGX"
-                            :value="editData.price"
                             id="price"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="productData.price"
@@ -72,7 +68,6 @@
                             type="text"
                             placeholder=""
                             id="disease"
-                            :value="editData.disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="productData.disease"
                         />
@@ -86,7 +81,6 @@
                             type="text"
                             placeholder="Phone Number"
                             id="contact"
-                            :value="editData.contact"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="productData.contact"
                         />
@@ -123,7 +117,6 @@
                             id="description"
                             cols="{30}"
                             rows="{10}"
-                            :value="editData.descprition"
                             placeholder="Type here"
                             className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
@@ -171,8 +164,8 @@ export default {
             const editData= computed(()=>store.state.products.editProduct);
          
         const productData = vueref({
-            product_name: "",
-            Pharmacy_name: editData.Pharmacy_name,
+            product_name: "default data",
+            Pharmacy_name: "",
             location: "",
             price: "",
             disease: "",
