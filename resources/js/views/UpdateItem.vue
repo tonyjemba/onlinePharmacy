@@ -161,8 +161,10 @@ export default {
         });
         const storage = getStorage();
         //data to edit
-            const editData= computed(()=>store.state.products.editProduct);
-         
+            
+         onMounted(()=>{
+             const editData= computed(()=>store.state.products.editProduct);
+             console.log(editData)})
         const productData = vueref({
             product_name: "default data",
             Pharmacy_name: "",
