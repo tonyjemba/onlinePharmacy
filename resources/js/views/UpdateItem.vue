@@ -17,7 +17,7 @@
                         <input
                             type="text"
                             placeholder="Medicine Name"
-                            :value="editData.product_name"
+                            value="editData.product_name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
                             v-model="productData.product_name"
@@ -167,9 +167,12 @@ export default {
             btnState: "upload",
         });
         const storage = getStorage();
+        //data to edit
+            const editData= computed(()=>store.state.products.editProduct);
+         
         const productData = vueref({
             product_name: "",
-            Pharmacy_name: "",
+            Pharmacy_name: editData.Pharmacy_name,
             location: "",
             price: "",
             disease: "",
@@ -214,8 +217,7 @@ export default {
             upload,
             state,
             productData,
-           //data to edit
-            editData: computed(()=>store.state.products.editProduct),
+           
             //edit the product
             updateProduct: () =>
                 store.dispatch("products/updateProduct",{  image_url: state.imageUrl,id:routeId,...productData.value}),
