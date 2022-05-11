@@ -20,7 +20,7 @@
                             placeholder="Medicine Name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.product_name"
+                            v-model="state.toedit.product_name"
                         />
                     </div>
                     <div>
@@ -34,7 +34,7 @@
                             placeholder="Pharmacy"
                             id="pharmacyname"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.Pharmacy_name"
+                            v-model="state.toedit.Pharmacy_name"
                         />
                     </div>
                     <div>
@@ -46,7 +46,7 @@
                             placeholder="Location"
                             id="location"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.location"
+                            v-model="state.toedit.location"
                         />
                     </div>
                     <div>
@@ -58,7 +58,7 @@
                             placeholder="UGX"
                             id="price"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.price"
+                            v-model="state.toedit.price"
                         />
                     </div>
                     <div>
@@ -70,7 +70,7 @@
                             placeholder=""
                             id="disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.disease"
+                            v-model="state.toedit.disease"
                         />
                     </div>
                     <!-- add contact for your drug shop -->
@@ -83,7 +83,7 @@
                             placeholder="Phone Number"
                             id="contact"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.contact"
+                            v-model="state.toedit.contact"
                         />
                     </div>
                     <!-- add image for the product -->
@@ -121,7 +121,7 @@
                             placeholder="Type here"
                             className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
-                            v-model="state.descprition"
+                            v-model="state.toedit.descprition"
                         />
                     </div>
 
