@@ -12,7 +12,8 @@
                         <label
                             htmlFor="productName"
                             className="text-lx font-serif"
-                            > Product Name:</label
+                        >
+                            Product Name:</label
                         >
                         <input
                             type="text"
@@ -123,7 +124,7 @@
                             v-model="productData.descprition"
                         />
                     </div>
-<div>{{editData}}</div>
+                    <div>{{ editData }}</div>
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
@@ -149,43 +150,40 @@ import axios from "axios";
 
 export default {
     setup() {
-        const store = useStore(); 
+        const store = useStore();
         const route = useRoute();
-     
-      const routeId = route.params.id
-    
 
-   const editData =  onMounted(()=>{
-         axios
-            .get(
-                "https://online-pharmacy-project.herokuapp.com/api/products/" +
-                    `${routeId}`
-            )
-            .then((res) => {
-                //accessing data that needs to be edited
-               const data = res.data
-               console.log(data);
-               return data;
-            })
-    })
+        const routeId = route.params.id;
+
         const state = reactive({
             imageData: null,
             imageUrl: "",
             imageName: null,
             btnState: "upload",
+            toEdit:{
+                id:""
+            }
         });
+
+        const editData = onMounted(async () => {
+            const res = await axios.get(
+                "https://online-pharmacy-project.herokuapp.com/api/products/" +
+                    `${routeId}`
+            );
+            console.log(res.data)
+            state.toEdit = res.data;
+        });
+
         const storage = getStorage();
-       
 
         const productData = vueref({
-            product_name: "default data",
+            product_name: state.toEdit.id,
             Pharmacy_name: "",
             location: "",
             price: "",
             disease: "",
             descprition: "",
             contact: "",
-           
         });
 
         function previewImage(event) {
@@ -213,7 +211,6 @@ export default {
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) => {
                             state.imageUrl = url;
-                     
                         }
                     );
                 });
@@ -224,12 +221,15 @@ export default {
             upload,
             state,
             productData,
-             //data to edit
-          editData,
+            //data to edit
+            editData,
             //edit the product
             updateProduct: () =>
-                store.dispatch("products/updateProduct",{  image_url: state.imageUrl,id:routeId,...productData.value}),
-            
+                store.dispatch("products/updateProduct", {
+                    image_url: state.imageUrl,
+                    id: routeId,
+                    ...productData.value,
+                }),
         };
     },
 };
