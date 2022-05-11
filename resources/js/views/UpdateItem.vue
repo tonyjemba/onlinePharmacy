@@ -34,7 +34,7 @@
                             placeholder="Pharmacy"
                             id="pharmacyname"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.Pharmacy_name"
+                            v-model="state.Pharmacy_name"
                         />
                     </div>
                     <div>
@@ -46,7 +46,7 @@
                             placeholder="Location"
                             id="location"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.location"
+                            v-model="state.location"
                         />
                     </div>
                     <div>
@@ -58,7 +58,7 @@
                             placeholder="UGX"
                             id="price"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.price"
+                            v-model="state.price"
                         />
                     </div>
                     <div>
@@ -70,7 +70,7 @@
                             placeholder=""
                             id="disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.disease"
+                            v-model="state.disease"
                         />
                     </div>
                     <!-- add contact for your drug shop -->
@@ -83,7 +83,7 @@
                             placeholder="Phone Number"
                             id="contact"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.contact"
+                            v-model="state.contact"
                         />
                     </div>
                     <!-- add image for the product -->
@@ -121,10 +121,10 @@
                             placeholder="Type here"
                             className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
-                            v-model="productData.descprition"
+                            v-model="state.descprition"
                         />
                     </div>
-                    <div>{{ editData }}</div>
+
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
@@ -160,29 +160,29 @@ export default {
             imageUrl: "",
             imageName: null,
             btnState: "upload",
-           product_name: "b",
+            //properties of product to edit
+            toedit: {
+                product_name: "",
+                Pharmacy_name: "",
+                location: "",
+                price: "",
+                disease: "",
+                descprition: "",
+                contact: "",
+            },
         });
 
-        const editData = onMounted(async () => {
+      onMounted(async () => {
             const res = await axios.get(
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
                     `${routeId}`
             );
-            console.log(res.data)
-            state.product_name= res.data.product_name;
+            console.log(res.data);
+            state.toedit = res.data;
+
         });
 
         const storage = getStorage();
-
-        const productData = vueref({
-            
-            Pharmacy_name: "",
-            location: "",
-            price: "",
-            disease: "",
-            descprition: "",
-            contact: "",
-        });
 
         function previewImage(event) {
             const image = event.target.files[0];
@@ -219,15 +219,14 @@ export default {
             upload,
             state,
             productData,
-            //data to edit
-            editData,
+
             //edit the product
-            updateProduct: () =>
-                store.dispatch("products/updateProduct", {
-                    image_url: state.imageUrl,
-                    id: routeId,
-                    ...productData.value,
-                }),
+            // updateProduct: () =>
+            //     store.dispatch("products/updateProduct", {
+            //         image_url: state.imageUrl,
+            //         id: routeId,
+            //         ...productData.value,
+            //     }),
         };
     },
 };
