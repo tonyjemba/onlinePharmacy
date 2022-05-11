@@ -20,7 +20,7 @@
                             placeholder="Medicine Name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.toedit.product_name"
+                            v-model="state.product_name"
                         />
                     </div>
                     <div>
@@ -34,7 +34,7 @@
                             placeholder="Pharmacy"
                             id="pharmacyname"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.toedit.Pharmacy_name"
+                            v-model="state.Pharmacy_name"
                         />
                     </div>
                     <div>
@@ -46,7 +46,7 @@
                             placeholder="Location"
                             id="location"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.toedit.location"
+                            v-model="state.location"
                         />
                     </div>
                     <div>
@@ -58,7 +58,7 @@
                             placeholder="UGX"
                             id="price"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.toedit.price"
+                            v-model="state.price"
                         />
                     </div>
                     <div>
@@ -70,7 +70,7 @@
                             placeholder=""
                             id="disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.toedit.disease"
+                            v-model="state.disease"
                         />
                     </div>
                     <!-- add contact for your drug shop -->
@@ -83,7 +83,7 @@
                             placeholder="Phone Number"
                             id="contact"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.toedit.contact"
+                            v-model="state.contact"
                         />
                     </div>
                     <!-- add image for the product -->
@@ -97,14 +97,14 @@
                         />
                     </div>
                     <!-- image preview section -->
-                    <div v-if="state.imageData">
-                        <img height="268" width="356" :src="state.imageData" />
+                    <div v-if="stateimageData">
+                        <img height="268" width="356" :src="stateimageData" />
                         <br />
                         <button
-                            @click.prevent="upload(state.imageName)"
+                            @click.prevent="upload(stateimageName)"
                             className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                         >
-                            {{ state.btnState }}
+                            {{ statebtnState }}
                         </button>
                     </div>
                     <!-- prescriptions for the medicine -->
@@ -121,7 +121,7 @@
                             placeholder="Type here"
                             className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
-                            v-model="state.toedit.descprition"
+                            v-model="state.descprition"
                         />
                     </div>
 
@@ -161,7 +161,7 @@ export default {
             imageName: null,
             btnState: "upload",
             //properties of product to edit
-            toedit: {
+            
                 product_name: "",
                 Pharmacy_name: "",
                 location: "",
@@ -169,7 +169,7 @@ export default {
                 disease: "",
                 descprition: "",
                 contact: "",
-            },
+            
         });
 
       onMounted(async () => {
@@ -177,8 +177,14 @@ export default {
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
                     `${routeId}`
             );
-            console.log(res.data);
-            state.toedit = res.data;
+        
+            state.product_name = res.data.product_name;
+            state.Pharmacy_name = res.data.Pharmacy_name;
+            state.location = res.data.location;
+            state.price = res.data.price;
+            state.disease = res.data.disease;
+            state.descprition = res.data.descprition;
+            state.contact = res.data.contact;
 
         });
 
@@ -218,7 +224,7 @@ export default {
             previewImage,
             upload,
             state,
-            productData,
+           
 
             //edit the product
             // updateProduct: () =>
