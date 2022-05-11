@@ -20,7 +20,7 @@
                             placeholder="Medicine Name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.product_name"
+                            v-model="state.product_name"
                         />
                     </div>
                     <div>
@@ -160,9 +160,7 @@ export default {
             imageUrl: "",
             imageName: null,
             btnState: "upload",
-            toEdit:{
-                id:""
-            }
+           product_name: "b",
         });
 
         const editData = onMounted(async () => {
@@ -171,13 +169,13 @@ export default {
                     `${routeId}`
             );
             console.log(res.data)
-            state.toEdit = res.data;
+            state.product_name= res.data.product_name;
         });
 
         const storage = getStorage();
 
         const productData = vueref({
-            product_name: state.toEdit.id,
+            
             Pharmacy_name: "",
             location: "",
             price: "",
