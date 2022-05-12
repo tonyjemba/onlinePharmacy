@@ -228,7 +228,7 @@ export default {
             updateProduct: () =>
                 store.dispatch("products/updateProduct", {
                     image_url: state.imageUrl,
-                    //id: routeId,
+                    id: routeId,
                     product_name: state.product_name,
                     Pharmacy_name: state.Pharmacy_name,
                     location: state.location,
