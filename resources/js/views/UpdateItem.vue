@@ -161,23 +161,22 @@ export default {
             imageName: null,
             btnState: "upload",
             //properties of product to edit
-            
-                product_name: "",
-                Pharmacy_name: "",
-                location: "",
-                price: "",
-                disease: "",
-                descprition: "",
-                contact: "",
-            
+
+            product_name: "",
+            Pharmacy_name: "",
+            location: "",
+            price: "",
+            disease: "",
+            descprition: "",
+            contact: "",
         });
 
-      onMounted(async () => {
+        onMounted(async () => {
             const res = await axios.get(
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
                     `${routeId}`
             );
-        
+
             state.product_name = res.data.product_name;
             state.Pharmacy_name = res.data.Pharmacy_name;
             state.location = res.data.location;
@@ -185,7 +184,7 @@ export default {
             state.disease = res.data.disease;
             state.descprition = res.data.descprition;
             state.contact = res.data.contact;
-
+            state.imageUrl = res.data.image_url;
         });
 
         const storage = getStorage();
@@ -224,15 +223,21 @@ export default {
             previewImage,
             upload,
             state,
-           
 
             //edit the product
-            // updateProduct: () =>
-            //     store.dispatch("products/updateProduct", {
-            //         image_url: state.imageUrl,
-            //         id: routeId,
-            //         ...productData.value,
-            //     }),
+            updateProduct: () =>
+                store.dispatch("products/updateProduct", {
+                    image_url: state.imageUrl,
+                    //id: routeId,
+                    product_name: state.product_name,
+                    Pharmacy_name: state.Pharmacy_name,
+                    location: state.location,
+                    price: state.price,
+                    disease: state.disease,
+                    descprition: state.descprition,
+                    contact: state.contact,
+                    image_url: state.imageUrl,
+                }),
         };
     },
 };
