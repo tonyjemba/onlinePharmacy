@@ -58,13 +58,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $product = Product::find($id);
+        dd($request);
+        // $product = Product::find($id);
 
-        $product->update($request->all());
+        // $product->update($request->all());
 
-        return $product;
+        // return $product;
     }
 
     /**
