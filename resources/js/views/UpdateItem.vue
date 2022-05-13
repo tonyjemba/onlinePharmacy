@@ -97,11 +97,11 @@
                         />
                     </div>
                     <!-- image preview section -->
-                    <div v-if="stateimageData">
-                        <img height="268" width="356" :src="stateimageData" />
+                    <div v-if="state.imageData">
+                        <img height="268" width="356" :src="state.imageData" />
                         <br />
                         <button
-                            @click.prevent="upload(stateimageName)"
+                            @click.prevent="upload(state.imageName)"
                             className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                         >
                             {{ statebtnState }}
