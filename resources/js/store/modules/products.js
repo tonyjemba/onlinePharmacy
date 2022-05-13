@@ -81,7 +81,9 @@ const actions = {
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
                     `${payload.id}`,payload,payload.id
             )
-            .then((res) => console.log(res.data))
+            .then((res) =>{
+                router.push("/dashboard");
+            })
             .catch((error) => {
                 console.log("ERROR", error.response.data.message);
             });
