@@ -63,17 +63,9 @@ class ProductController extends Controller
         
         $product = Product::find($id);
 
-        $product->product_name = $request->product_name;
-        $product->Pharmacy_name = $request->Pharmacy_name;
-        $product->location = $request->location;
-        $product->price = $request->price;
-        $product->disease = $request->disease;
-        $product->descprition = $request->descprition;
-        $product->contact = $request->contact;
-        $product->image_url = $request->image_url;
-        $product->user_id = $request->user_id;
+        $product->update($request->all());
 
-        $product->save();
+        return $product;
     }
 
     /**

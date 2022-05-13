@@ -79,7 +79,7 @@ const actions = {
         axios
             .put(
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
-                    `${payload.id}`
+                    `${payload.id}`,payload,payload.id
             )
             .then((res) => console.log(res.data))
             .catch((error) => {
