@@ -136,7 +136,7 @@
     </form>
 </template>
 <script>
-import { computed, onMounted, reactive } from "vue";
+import {  onMounted, reactive } from "vue";
 import {
     getStorage,
     ref,
@@ -144,7 +144,6 @@ import {
     getDownloadURL,
 } from "firebase/storage";
 import { useStore } from "vuex";
-import { ref as vueref } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 
@@ -161,7 +160,6 @@ export default {
             imageName: null,
             btnState: "upload",
             //properties of product to edit
-
             product_name: "",
             Pharmacy_name: "",
             location: "",
