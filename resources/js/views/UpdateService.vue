@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="updateService" method="POST">
+    <form @submit.prevent="updateProduct" method="POST">
         <div className="bg-indigo-50 min-h-screen md:px-20 pt-6">
             <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
                 <h1
@@ -12,28 +12,29 @@
                         <label
                             htmlFor="productName"
                             className="text-lx font-serif"
-                            > Name:</label
+                        >
+                            Product Name:</label
                         >
                         <input
                             type="text"
                             placeholder="Medicine Name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.product_name"
+                            v-model="state.product_name"
                         />
                     </div>
                     <div>
                         <label
                             htmlFor="pharmacyname"
                             className="text-lx font-serif"
-                            > Name:</label
+                            >Pharmacy Name:</label
                         >
                         <input
                             type="text"
                             placeholder="Pharmacy"
                             id="pharmacyname"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.Pharmacy_name"
+                            v-model="state.Pharmacy_name"
                         />
                     </div>
                     <div>
@@ -45,7 +46,7 @@
                             placeholder="Location"
                             id="location"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.location"
+                            v-model="state.location"
                         />
                     </div>
                     <div>
@@ -57,7 +58,7 @@
                             placeholder="UGX"
                             id="price"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.price"
+                            v-model="state.price"
                         />
                     </div>
                     <div>
@@ -69,7 +70,7 @@
                             placeholder=""
                             id="disease"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.disease"
+                            v-model="state.disease"
                         />
                     </div>
                     <!-- add contact for your drug shop -->
@@ -82,7 +83,7 @@
                             placeholder="Phone Number"
                             id="contact"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.contact"
+                            v-model="state.contact"
                         />
                     </div>
                     <!-- add image for the product -->
@@ -120,14 +121,14 @@
                             placeholder="Type here"
                             className="w-full font-serif
                         p-4 text-gray-600 bg-indigo-50 outline-none rounded-md"
-                            v-model="productData.descprition"
+                            v-model="state.descprition"
                         />
                     </div>
 
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
-                        EDIT SERVICE
+                        EDIT PRODUCT
                     </button>
                 </div>
             </div>
@@ -135,7 +136,7 @@
     </form>
 </template>
 <script>
-import { reactive } from "vue";
+import {  onMounted, reactive } from "vue";
 import {
     getStorage,
     ref,
@@ -143,19 +144,22 @@ import {
     getDownloadURL,
 } from "firebase/storage";
 import { useStore } from "vuex";
-import { ref as vueref } from "vue";
+import { useRoute } from "vue-router";
+import axios from "axios";
 
 export default {
     setup() {
         const store = useStore();
+        const route = useRoute();
+
+        const routeId = route.params.id;
+
         const state = reactive({
             imageData: null,
             imageUrl: "",
             imageName: null,
             btnState: "upload",
-        });
-        const storage = getStorage();
-        const productData = vueref({
+            //properties of product to edit
             product_name: "",
             Pharmacy_name: "",
             location: "",
@@ -163,8 +167,25 @@ export default {
             disease: "",
             descprition: "",
             contact: "",
-           
         });
+
+        onMounted(async () => {
+            const res = await axios.get(
+                "https://online-pharmacy-project.herokuapp.com/api/products/" +
+                    `${routeId}`
+            );
+
+            state.product_name = res.data.product_name;
+            state.Pharmacy_name = res.data.Pharmacy_name;
+            state.location = res.data.location;
+            state.price = res.data.price;
+            state.disease = res.data.disease;
+            state.descprition = res.data.descprition;
+            state.contact = res.data.contact;
+            state.imageUrl = res.data.image_url;
+        });
+
+        const storage = getStorage();
 
         function previewImage(event) {
             const image = event.target.files[0];
@@ -191,7 +212,6 @@ export default {
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) => {
                             state.imageUrl = url;
-                     
                         }
                     );
                 });
@@ -201,10 +221,19 @@ export default {
             previewImage,
             upload,
             state,
-            productData,
-            //dispacth update function to access the data to edit
-            updateService: () =>
-                store.dispatch("products/",{  image_url: state.imageUrl,...productData.value}),
+            //edit the product
+            updateProduct: () =>
+                store.dispatch("services/updateProduct", {
+                    id: routeId,
+                    product_name: state.product_name,
+                    Pharmacy_name: state.Pharmacy_name,
+                    location: state.location,
+                    price: state.price,
+                    disease: state.disease,
+                    descprition: state.descprition,
+                    contact: state.contact,
+                    image_url: state.imageUrl,
+                }),
         };
     },
 };

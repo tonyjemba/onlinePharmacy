@@ -5,6 +5,7 @@ import router from "../../router/index";
 // each Vuex instance is just a single state tree.
 const state = {
     services: [],
+    editService:{},
     error: "",
 };
 
@@ -16,6 +17,9 @@ const state = {
 const mutations = {
     STORESERVICES(state, data) {
         state.services = data;
+    },
+    EDITDATA(state, data) {
+        state.editService = data;
     },
     ERROR(state, data) {
         state.error = data;
@@ -55,20 +59,20 @@ const actions = {
             });
     },
     editService({ commit, state }, payload) {
-      router.push({name:"editservice", params:{payload}});
-        //making api request to service deatils
-        // axios
-        //     .get(
-        //         "https://online-pharmacy-project.herokuapp.com/api/products/" +
-        //             `${payload}`
-        //     )
-        //     .then(() => {
-        //         //go to edit page
-        //         router.push("/edit");
-        //     })
-        //     .catch((error) => {
-        //         commit("ERROR", error.response.data.message);
-        //     });
+        router.push(`/editservice/${payload}`);
+        //making api request to get product deatils to edit
+        axios
+            .get(
+                "https://online-pharmacy-project.herokuapp.com/api/services/" +
+                    `${payload}`
+            )
+            .then((res) => {
+                //accessing data that needs to be edited
+                commit("EDITDATA", res.data);
+            })
+            .catch((error) => {
+                console.log("ERROR", error.response.data.message);
+            });
     },
     deleteService({ commit, state }, payload) {
         //making api request
