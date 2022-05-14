@@ -5,7 +5,7 @@ import router from "../../router/index";
 // each Vuex instance is just a single state tree.
 const state = {
     services: [],
-    editService:{},
+    editService: {},
     error: "",
 };
 
@@ -69,6 +69,21 @@ const actions = {
             .then((res) => {
                 //accessing data that needs to be edited
                 commit("EDITDATA", res.data);
+            })
+            .catch((error) => {
+                console.log("ERROR", error.response.data.message);
+            });
+    },
+    updateService({ commit, state }, payload) {
+        axios
+            .put(
+                "https://online-pharmacy-project.herokuapp.com/api/services/" +
+                    `${payload.id}`,
+                payload,
+                payload.id
+            )
+            .then((res) => {
+                router.push("/dashboard");
             })
             .catch((error) => {
                 console.log("ERROR", error.response.data.message);

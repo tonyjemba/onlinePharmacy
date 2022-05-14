@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="updateProduct" method="POST">
+    <form @submit.prevent="updateService" method="POST">
         <div className="bg-indigo-50 min-h-screen md:px-20 pt-6">
             <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
                 <h1
@@ -160,7 +160,7 @@ export default {
             imageName: null,
             btnState: "upload",
             //properties of product to edit
-            product_name: "",
+            service_name: "",
             Pharmacy_name: "",
             location: "",
             price: "",
@@ -175,7 +175,7 @@ export default {
                     `${routeId}`
             );
 
-            state.product_name = res.data.product_name;
+            state.service_name = res.data.service_name;
             state.Pharmacy_name = res.data.Pharmacy_name;
             state.location = res.data.location;
             state.price = res.data.price;
@@ -222,10 +222,10 @@ export default {
             upload,
             state,
             //edit the product
-            updateProduct: () =>
-                store.dispatch("services/updateProduct", {
+            updateService: () =>
+                store.dispatch("services/updateService", {
                     id: routeId,
-                    product_name: state.product_name,
+                    service_name: state.service_name,
                     Pharmacy_name: state.Pharmacy_name,
                     location: state.location,
                     price: state.price,
