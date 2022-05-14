@@ -171,7 +171,7 @@ export default {
 
         onMounted(async () => {
             const res = await axios.get(
-                "https://online-pharmacy-project.herokuapp.com/api/products/" +
+                "https://online-pharmacy-project.herokuapp.com/api/services/" +
                     `${routeId}`
             );
 
