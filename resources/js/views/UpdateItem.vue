@@ -221,7 +221,6 @@ export default {
             previewImage,
             upload,
             state,
-
             //edit the product
             updateProduct: () =>
                 store.dispatch("products/updateProduct", {
