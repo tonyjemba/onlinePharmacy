@@ -13,14 +13,14 @@
                             htmlFor="productName"
                             className="text-lx font-serif"
                         >
-                            Product Name:</label
+                            Service Name:</label
                         >
                         <input
                             type="text"
                             placeholder="Medicine Name"
                             id="productName"
                             className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="state.product_name"
+                            v-model="state.service_name"
                         />
                     </div>
                     <div>
