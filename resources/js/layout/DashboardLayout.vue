@@ -181,7 +181,7 @@
                         <div
                             class="text-sm pt-2 font-medium leading-none text-gray-400"
                         >
-                            Authentication token: {{ user.token }}
+                            Token: {{ user.token }}
                         </div>
 
                         <div class="pt-4">
