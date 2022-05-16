@@ -157,7 +157,19 @@
                             >
                                 Email: {{ user.user.email }}
                             </div>
-                            <div
+                           
+                        </div>
+                        <button
+                            type="button"
+                            class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                        >
+                            <router-link to="/">
+                                <HomeIcon class="h-6 w-6" aria-hidden="true" />
+                            </router-link>
+                        </button>
+                    </div>
+                    <div>
+                         <div
                                 class="text-sm pt-2 font-medium leading-none text-gray-400"
                             >
                                 created at: {{ user.user.updated_at }}
@@ -173,21 +185,11 @@
                                 class="pt-4"
                             >
                                 <DisclosureButton
-                                    @click="logout(item.name)"
+                                    @click="logout('Sign out')"
                                     class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
                                     >Sign out</DisclosureButton>
                             </div>
-                        </div>
-                        <button
-                            type="button"
-                            class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                        >
-                            <router-link to="/">
-                                <HomeIcon class="h-6 w-6" aria-hidden="true" />
-                            </router-link>
-                        </button>
                     </div>
-                    
                 </div>
             </DisclosurePanel>
         </Disclosure>
