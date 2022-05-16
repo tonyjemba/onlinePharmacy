@@ -128,7 +128,7 @@
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
-                        EDIT PRODUCT
+                        EDIT SERVICE
                     </button>
                 </div>
             </div>
