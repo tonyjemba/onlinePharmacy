@@ -7,7 +7,7 @@
                         <div class="flex-shrink-0">
                             <Icon :height="50" :width="50" :autoPlay="false" />
                         </div>
-                        <div class="hidden">
+                        <div >
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <div>Online Pharmacy</div>
                             </div>
@@ -47,7 +47,6 @@
                                             <MenuItem
                                                 v-for="item in userNavigation"
                                                 :key="item.name"
-                                               
                                                 v-slot="{ active }"
                                             >
                                                 <div
@@ -58,7 +57,7 @@
                                                             : '',
                                                         'block px-4 py-2 text-sm text-gray-800',
                                                     ]"
-                                                    @click="logout('Sign out')"
+                                                    @click="logout(item.name)"
                                                 >
                                                     <router-link
                                                         :to="item.route"
