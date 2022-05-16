@@ -10,8 +10,9 @@
                             >
                                 <img
                                     id="image"
+                                    alt="profile picture"
                                     className="object-cover w-full h-32 rounded-full"
-                                    :src="image"
+                                    :src="'../assets/user.png'"
                                 />
                             </div>
                         </div>
@@ -22,7 +23,7 @@
                             >
                             <input
                                 type="text"
-                                value="uname"
+                                :value="user.user.name"
                                 disabled
                                 className="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                 placeholder="Enter your firstname..."
@@ -35,7 +36,7 @@
                             >
                             <input
                                 type="text"
-                                value="uname@gmail.com"
+                                value="user.user.email"
                                 disabled
                                 className="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                 placeholder="Enter your email address..."
@@ -48,7 +49,20 @@
                             >
                             <input
                                 type="text"
-                                value="2020"
+                                :value="user.user.updated_at"
+                                disabled
+                                className="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                placeholder="Enter your email address..."
+                            />
+                        </div>
+                        <div className="mb-5">
+                            <label
+                                className="font-bold mb-1 text-gray-700 block"
+                                >Authentication token</label
+                            >
+                            <input
+                                type="text"
+                                :value="user.token"
                                 disabled
                                 className="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                 placeholder="Enter your email address..."
@@ -61,5 +75,13 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    setup() {
+        return {
+            //accessing  logged in user state
+            user: computed(() => store.state.login.loginUser),
+        };
+    },
+    
+};
 </script>
