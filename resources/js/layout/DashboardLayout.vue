@@ -39,7 +39,12 @@
                                 class="bg-indigo-500 p-1 rounded-full text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                             >
                                 <span class="sr-only">Go Home</span>
-                                <HomeIcon class="h-6 w-6" aria-hidden="true" />
+                                <router-link to="/">
+                                    <HomeIcon
+                                        class="h-6 w-6"
+                                        aria-hidden="true"
+                                    />
+                                </router-link>
                             </button>
 
                             <!-- Profile dropdown -->
@@ -53,7 +58,7 @@
                                         >
                                         <img
                                             class="h-8 w-8 rounded-full"
-                                            :src="user.imageUrl"
+                                            :src="imageUrl"
                                             alt=""
                                         />
                                     </MenuButton>
@@ -137,7 +142,7 @@
                         <div class="flex-shrink-0">
                             <img
                                 class="h-10 w-10 rounded-full"
-                                :src="user.imageUrl"
+                                :src="imageUrl"
                                 alt=""
                             />
                         </div>
@@ -145,27 +150,30 @@
                             <div
                                 class="text-base font-medium leading-none text-white"
                             >
-                                {{ user.name }}
+                                {{ user.user.name }}
                             </div>
                             <div
                                 class="text-sm font-medium leading-none text-gray-400"
                             >
-                                {{ user.email }}
+                                {{ user.user.email }}
                             </div>
                         </div>
                         <button
                             type="button"
                             class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                         >
-                            <span class="sr-only">View notifications</span>
-                            <HomeIcon class="h-6 w-6" aria-hidden="true" />
+                           
+                            <router-link to="/">
+                                   <HomeIcon class="h-6 w-6" aria-hidden="true" />
+                                </router-link>
+                            
                         </button>
                     </div>
                     <div class="mt-3 px-2 space-y-1">
                         <DisclosureButton
                             v-for="item in userNavigation"
                             :key="item.name"
-                            as="a"
+                         
                             :href="item.href"
                             class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
                             >{{ item.name }}</DisclosureButton
@@ -207,11 +215,6 @@ import Icon from "../components/Icon.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 
-const user = {
-    name: "Tom Cook",
-    email: "tom@example.com",
-    imageUrl: "https://firebasestorage.googleapis.com/v0/b/online-pharmacy-d7579.appspot.com/o/products%2Fuser.png?alt=media&token=5dce7c32-3c59-4e71-860e-96c9f84392cb",
-};
 const navigation = [
     { name: "Dashboard", route: "/dashboard" },
     { name: "Add Medicine", route: "/addMedicine" },
@@ -255,7 +258,10 @@ export default {
         return {
             //dispatch logout action
             logout,
-            user,
+            //accessing  logged in user state
+            user: computed(() => store.state.login.loginUser),
+            imageUrl:
+                "https://firebasestorage.googleapis.com/v0/b/online-pharmacy-d7579.appspot.com/o/products%2Fuser.png?alt=media&token=5dce7c32-3c59-4e71-860e-96c9f84392cb",
             navigation,
             userNavigation,
             tab,
