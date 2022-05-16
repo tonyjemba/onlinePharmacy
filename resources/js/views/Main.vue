@@ -126,9 +126,9 @@
             </div>
 
             <DisclosurePanel class="md:hidden">
-                <h1 class="text-3xl font-bold text-gray-900">
+                <h2 class="ml-3 text-3xl font-bold text-gray-900">
                     Online Pharmacy
-                </h1>
+                </h2>
                 <div v-if="islogged === true">
                     <div class="pt-4 pb-3 border-t border-gray-700">
                         <div class="flex items-center px-5">
@@ -186,7 +186,7 @@
                         </div>
                     </div>
                 </div>
-                 <div v-if="islogged === false">
+                 <div v-if="islogged === false" class="pt-4">
                             <div>
                                 <router-link to="/login">
                                     <div
@@ -212,7 +212,7 @@
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-6 sm:px-0">
-                    <router-view></router-view>
+                    <Products/>
                 </div>
                 <!-- /End replace -->
             </div>
@@ -232,6 +232,7 @@ import {
 } from "@headlessui/vue";
 import { HomeIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
 import Icon from "../components/Icon.vue";
+import Products from "./Products.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 
@@ -261,6 +262,7 @@ export default {
         MenuIcon,
         XIcon,
         Icon,
+        Products
     },
     setup() {
         const store = useStore();
