@@ -210,7 +210,7 @@ import { computed } from "vue";
 const user = {
     name: "Tom Cook",
     email: "tom@example.com",
-    imageUrl: "https://randomuser.me/api/portraits/men/53.jpg",
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/online-pharmacy-d7579.appspot.com/o/products%2Fuser.png?alt=media&token=5dce7c32-3c59-4e71-860e-96c9f84392cb",
 };
 const navigation = [
     { name: "Dashboard", route: "/dashboard" },

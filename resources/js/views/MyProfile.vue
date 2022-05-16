@@ -12,7 +12,7 @@
                                     id="image"
                                     alt="profile picture"
                                     className="object-cover w-full h-32 rounded-full"
-                                    :src="'../assets/user.png'"
+                                    :src="image"
                                 />
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                             >
                             <input
                                 type="text"
-                                value="user.user.email"
+                                :value="user.user.email"
                                 disabled
                                 className="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                 placeholder="Enter your email address..."
@@ -83,6 +83,7 @@ export default {
         return {
             //accessing  logged in user state
             user: computed(() => store.state.login.loginUser),
+            image:"https://firebasestorage.googleapis.com/v0/b/online-pharmacy-d7579.appspot.com/o/products%2Fuser.png?alt=media&token=5dce7c32-3c59-4e71-860e-96c9f84392cb"
         };
     },
     
