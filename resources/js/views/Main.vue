@@ -58,7 +58,7 @@
                                                             : '',
                                                         'block px-4 py-2 text-sm text-gray-800',
                                                     ]"
-                                                    @click="logout(item.name)"
+                                                    @click="logout('Sign out')"
                                                 >
                                                     <router-link
                                                         :to="item.route"
