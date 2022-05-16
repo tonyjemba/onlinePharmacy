@@ -75,8 +75,11 @@
     </div>
 </template>
 <script>
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
     setup() {
+        const store = useStore();
         return {
             //accessing  logged in user state
             user: computed(() => store.state.login.loginUser),
