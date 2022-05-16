@@ -150,7 +150,7 @@
                             <div
                                 class="text-base font-medium leading-none text-gray-400"
                             >
-                               Username: {{ user.user.name }}
+                                Username: {{ user.user.name }}
                             </div>
                             <div
                                 class="text-sm pt-2 font-medium leading-none text-gray-400"
@@ -169,9 +169,13 @@
                                 Authentication token: {{ user.token }}
                             </div>
 
-                            <div  @click="logout(item.name)" class="text-sm pt-4 font-medium leading-none text-gray-900">
-                            Sign out
-
+                            <div
+                                class="pt-4"
+                            >
+                                <DisclosureButton
+                                    @click="logout(item.name)"
+                                    class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                                    >Sign out</DisclosureButton>
                             </div>
                         </div>
                         <button
@@ -183,16 +187,7 @@
                             </router-link>
                         </button>
                     </div>
-                    <div class="mt-3 px-2 space-y-1">
-                        
-                        <DisclosureButton
-                            v-for="item in userNavigation"
-                            :key="item.name"
-                            :href="item.href"
-                            class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                            >{{ item.name }}</DisclosureButton
-                        >
-                    </div>
+                    
                 </div>
             </DisclosurePanel>
         </Disclosure>
