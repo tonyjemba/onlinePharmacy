@@ -148,7 +148,7 @@
                         </div>
                         <div class="ml-3">
                             <div
-                                class="text-base font-medium leading-none text-white"
+                                class="text-base font-medium leading-none text-gray-400"
                             >
                                 {{ user.user.name }}
                             </div>
@@ -162,22 +162,35 @@
                             type="button"
                             class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                         >
-                           
                             <router-link to="/">
-                                   <HomeIcon class="h-6 w-6" aria-hidden="true" />
-                                </router-link>
-                            
+                                <HomeIcon class="h-6 w-6" aria-hidden="true" />
+                            </router-link>
                         </button>
                     </div>
                     <div class="mt-3 px-2 space-y-1">
-                        <DisclosureButton
-                            v-for="item in userNavigation"
-                            :key="item.name"
-                         
-                            :href="item.href"
-                            class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                            >{{ item.name }}</DisclosureButton
-                        >
+                      <MenuItems
+                                        class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                    >
+                                        <MenuItem
+                                            v-for="item in userNavigation"
+                                            :key="item.name"
+                                            @click="tab = item.name"
+                                            v-slot="{ active }"
+                                        >
+                                            <div
+                                                :href="item.href"
+                                                :class="[
+                                                    active ? 'bg-gray-100' : '',
+                                                    'block px-4 py-2 text-sm text-gray-800',
+                                                ]"
+                                                @click="logout(item.name)"
+                                            >
+                                                <router-link :to="item.route">{{
+                                                    item.name
+                                                }}</router-link>
+                                            </div>
+                                        </MenuItem>
+                                    </MenuItems>
                     </div>
                 </div>
             </DisclosurePanel>
