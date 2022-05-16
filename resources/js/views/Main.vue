@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="hidden md:block">
-                        <div v-if="user !== []">
+                        <div v-if="islogged === true">
                             <div class="ml-4 flex items-center md:ml-6">
                                 <button
                                     type="button"
@@ -86,7 +86,7 @@
                                 </Menu>
                             </div>
                         </div>
-                        <div v-else>
+                        <div v-if="islogged === false">
                             <div>
                                 <router-link to="/login">
                                     <div
@@ -129,7 +129,7 @@
                 <h1 class="text-3xl font-bold text-gray-900">
                     Online Pharmacy
                 </h1>
-                <div v-if="user !== []">
+                <div v-if="islogged === true">
                     <div class="pt-4 pb-3 border-t border-gray-700">
                         <div class="flex items-center px-5">
                             <div class="flex-shrink-0">
@@ -186,7 +186,7 @@
                         </div>
                     </div>
                 </div>
-                 <div v-else>
+                 <div v-if="islogged === false">
                             <div>
                                 <router-link to="/login">
                                     <div
@@ -280,6 +280,7 @@ export default {
             logout,
             //accessing  logged in user state
             user: computed(() => store.state.login.loginUser),
+            islogged:computed(() => store.state.login.islogged),
             imageUrl:
                 "https://firebasestorage.googleapis.com/v0/b/online-pharmacy-d7579.appspot.com/o/products%2Fuser.png?alt=media&token=5dce7c32-3c59-4e71-860e-96c9f84392cb",
             navigation,
