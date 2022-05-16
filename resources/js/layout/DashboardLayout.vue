@@ -133,7 +133,11 @@
                             'block px-3 py-2 rounded-md text-base font-medium',
                         ]"
                         :aria-current="item.current ? 'page' : undefined"
-                        >{{ item.name }}</DisclosureButton
+                        ><router-link
+                            :to="item.route"
+                            @click="tab = item.name"
+                            >{{ item.name }}</router-link
+                        ></DisclosureButton
                     >
                 </div>
 
@@ -157,7 +161,6 @@
                             >
                                 Email: {{ user.user.email }}
                             </div>
-                           
                         </div>
                         <button
                             type="button"
@@ -168,27 +171,26 @@
                             </router-link>
                         </button>
                     </div>
-                    <div>
-                         <div
-                                class="text-sm pt-2 font-medium leading-none text-gray-400"
-                            >
-                                created at: {{ user.user.updated_at }}
-                            </div>
+                    <div class="ml-3 mt-2">
+                        <div
+                            class="text-sm pt-2 font-medium leading-none text-gray-400"
+                        >
+                            Created: {{ user.user.updated_at }}
+                        </div>
 
-                            <div
-                                class="text-sm pt-2 font-medium leading-none text-gray-400"
-                            >
-                                Authentication token: {{ user.token }}
-                            </div>
+                        <div
+                            class="text-sm pt-2 font-medium leading-none text-gray-400"
+                        >
+                            Authentication token: {{ user.token }}
+                        </div>
 
-                            <div
-                                class="pt-4"
+                        <div class="pt-4">
+                            <DisclosureButton
+                                @click="logout('Sign out')"
+                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                                >Sign out</DisclosureButton
                             >
-                                <DisclosureButton
-                                    @click="logout('Sign out')"
-                                    class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                    >Sign out</DisclosureButton>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </DisclosurePanel>
