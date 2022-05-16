@@ -60,6 +60,7 @@
                         :image_url="product.image_url"
                         :price="product.price"
                         :updated_at="product.updated_at"
+                        :buttons=false
                     />
                 </div>
             </div>
@@ -76,6 +77,7 @@
                         :image_url="service.image_url"
                         :price="service.price"
                         :updated_at="service.updated_at"
+                        :buttons=false
                     />
                 </div>
             </div>

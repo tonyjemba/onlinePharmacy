@@ -15,7 +15,7 @@
                 {{ descprition }}
             </p>
             <div class="mt-3 block">UGX: {{ price }}</div>
-            <div className="flex items-center justify-end mt-4 top-auto">
+            <div v-if="buttons === true" className="flex items-center justify-end mt-4 top-auto">
                 <button
                     className="bg-white text-red-500 px-4 py-2 rounded mr-auto hover:underline"
                     @click="$emit('delItem')"
@@ -45,6 +45,7 @@ export default {
         descprition: String,
         price: String,
         image_url: String,
+        buttons: Boolean
     },
     setup() {
       
