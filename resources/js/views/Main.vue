@@ -47,7 +47,7 @@
                                             <MenuItem
                                                 v-for="item in userNavigation"
                                                 :key="item.name"
-                                                @click="tab = item.name"
+                                               
                                                 v-slot="{ active }"
                                             >
                                                 <div
@@ -90,7 +90,7 @@
                                 >
                                     <router-link
                                         :to="item.route"
-                                        @click="tab = item.name"
+                                        
                                         >{{ item.name }}</router-link
                                     >
                                 </div>
@@ -178,11 +178,11 @@
             </DisclosurePanel>
         </Disclosure>
 
-        <!-- <header class="bg-white shadow">
+        <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold text-gray-900">{{ tab }}</h1>
+                <h1 class="text-3xl font-bold text-gray-900"></h1>
             </div>
-        </header> -->
+        </header>
         <main>
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
@@ -272,7 +272,7 @@ export default {
                 "https://firebasestorage.googleapis.com/v0/b/online-pharmacy-d7579.appspot.com/o/products%2Fuser.png?alt=media&token=5dce7c32-3c59-4e71-860e-96c9f84392cb",
             navigation,
             userNavigation,
-            tab,
+         
             prod,
         };
     },
