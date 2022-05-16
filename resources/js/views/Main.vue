@@ -89,17 +89,16 @@
                         <div v-else>
                             <div>
                                 <router-link to="/login">
-                                    <DisclosureButton
+                                    <div
                                         class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                        >Login</DisclosureButton
-                                    >
+                                        >Login</div >
                                 </router-link>
                             </div>
                             <div>
                                 <router-link to="/register">
-                                    <DisclosureButton
+                                    <div
                                         class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                        >Create Account</DisclosureButton
+                                        >Create Account</div
                                     >
                                 </router-link>
                             </div>
@@ -190,16 +189,16 @@
                  <div v-else>
                             <div>
                                 <router-link to="/login">
-                                    <DisclosureButton
+                                    <div
                                         class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                        >Login</DisclosureButton>
+                                        >Login</div>
                                 </router-link>
                             </div>
                             <div>
                                 <router-link to="/register">
-                                    <DisclosureButton
+                                    <div
                                         class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                        >Create Account</DisclosureButton>
+                                        >Create Account</div>
                                 </router-link>
                             </div>
                         </div>
@@ -207,9 +206,7 @@
         </Disclosure>
 
         <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold text-gray-900">{{ tab }}</h1>
-            </div>
+          
         </header>
         <main>
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
