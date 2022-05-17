@@ -69,11 +69,9 @@
                                         products
                                     </div>
                                     <div
-                                     v-if="searchedProducts"
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
                                         <div
-                                       
                                             v-for="product in searchedProducts"
                                             :key="product.id"
                                         >
@@ -88,10 +86,10 @@
                                                 :price="product.price"
                                                 :updated_at="product.updated_at"
                                                 :buttons="false"
+                                                @view="viewProduct(product.id)"
                                             />
                                         </div>
                                     </div>
-                                    <div v-else class="text-base text-center">No Results in Products</div>
                                 </div>
 
                                 <div class="pt-4">
@@ -102,7 +100,6 @@
                                         Services
                                     </div>
                                     <div
-                                    v-if="searchedServices"
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
                                         <div
@@ -120,10 +117,10 @@
                                                 :price="product.price"
                                                 :updated_at="product.updated_at"
                                                 :buttons="false"
+                                                 @view="viewProduct(product.id)"
                                             />
                                         </div>
                                     </div>
-                                    <div v-else class="text-base text-center">No Results in Services</div>
                                 </div>
                             </div>
                         </div>
@@ -144,6 +141,7 @@
                         :price="product.price"
                         :updated_at="product.updated_at"
                         :buttons="false"
+                         @view="viewProduct(product.id)"
                     />
                 </div>
             </div>
@@ -161,6 +159,7 @@
                         :price="service.price"
                         :updated_at="service.updated_at"
                         :buttons="false"
+                         @view="viewProduct(product.id)"
                     />
                 </div>
             </div>
@@ -191,12 +190,16 @@ export default {
             store.dispatch("products/searchProduct", state.itemName);
             store.dispatch("sevices/searchService", state.itemName);
         }
+        function viewProduct(id){
+            console.log(id);
+        }
         return {
             products: computed(() => store.state.products.products),
             services: computed(() => store.state.services.services),
             searchedProducts: computed(() => store.state.products.searched),
             searchedServices: computed(() => store.state.services.searched),
             getSearchedData,
+            viewProduct,
             state,
         };
     },

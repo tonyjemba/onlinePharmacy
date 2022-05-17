@@ -14,7 +14,11 @@
             <p class="paragraph-normal text-gray-600 line-clamp-2">
                 {{ descprition }}
             </p>
-            <div class="mt-3 block">UGX: {{ price }}</div>
+            <div class="w-full flex flex-row justify-between mt-3">
+                <div class=" block">UGX: {{ price }}</div>
+                <div v-if="buttons === false" class="hover:bg-sky-700"  @click="$emit('view')">view</div>
+            </div>
+            
             <div v-if="buttons === true" className="flex items-center justify-end mt-4 top-auto">
                 <button
                     className="bg-white text-red-500 px-4 py-2 rounded mr-auto hover:underline"
