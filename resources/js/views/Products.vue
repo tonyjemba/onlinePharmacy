@@ -8,7 +8,7 @@
                     >
                         <div class="flex flex-col">
                             <!-- search bar -->
-                            <div>
+                            <div class="flex flex-row">
                                 <button
                                     @click="getSearchedData"
                                     class="outline-none focus:outline-none"
@@ -59,14 +59,14 @@
                             <div class="pt-4 flex flex-col">
                                 <div v-if="searchedProducts">
                                     <div
+                                        class="text-1xl md:text-2xl text-black"
+                                    >
+                                        Results of {{ state.itemName }} in
+                                        products
+                                    </div>
+                                    <div
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
-                                        <div
-                                            class="text-1xl md:text-2xl text-black"
-                                        >
-                                            Results of {{ state.itemName }} in
-                                            products
-                                        </div>
                                         <div
                                             v-for="product in searchedProducts"
                                             :key="product.id"
@@ -88,14 +88,14 @@
                                 </div>
                                 <div v-if="searchedServices" class="pt-4">
                                     <div
+                                        class="text-1xl md:text-2xl text-black"
+                                    >
+                                        Results of {{ state.itemName }} in
+                                        Services
+                                    </div>
+                                    <div
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
-                                        <div
-                                            class="text-1xl md:text-2xl text-black"
-                                        >
-                                            Results of {{ state.itemName }} in
-                                            Services
-                                        </div>
                                         <div
                                             v-for="product in searchedServices"
                                             :key="product.id"
