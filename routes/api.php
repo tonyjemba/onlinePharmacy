@@ -27,9 +27,13 @@ Route::post('login',[AuthController::class, 'login']);
 Route::post('logout',[AuthController::class, 'logout']);
 Route::post('myProducts',[AuthController::class, 'getProducts']);
 Route::post('myServices',[AuthController::class, 'getServices']);
+Route::post('searchProducts',[ProductController::class, 'search']);
+Route::post('searchServices',[ServicesController::class, 'search']);
+
 
 //products route
 Route::resource('products', ProductController::class);
+
 //Services route
 Route::resource('services', ServicesController::class);
 
