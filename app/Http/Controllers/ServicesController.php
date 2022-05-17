@@ -78,14 +78,5 @@ class ServicesController extends Controller
         return Services::destroy($id);
     }
 
-    /*
-    search for a specific product
-    */
-
-    public function search($name){
-
-        $Service = Services::where('service_name','like','%'.$name.'%');
-
-        return $Service;
-    }
+    
 }
