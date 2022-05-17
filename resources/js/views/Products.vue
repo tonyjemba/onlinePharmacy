@@ -175,14 +175,16 @@ export default {
         const store = useStore();
         const state = reactive({
             itemName: "",
+            show:false
         });
-        const show = false
+       
         //on mount get the products and services
         onMounted(() => {
             store.dispatch("products/fetchProcucts");
             store.dispatch("sevices/fetchServices");
         });
         function getSearchedData() {
+            state.itemName === ""?state.show = false: state.show = true;
             store.dispatch("products/searchProduct", state.itemName);
             store.dispatch("sevices/searchService", state.itemName);
         }
@@ -193,7 +195,7 @@ export default {
             searchedServices: computed(() => store.state.services.searched),
             getSearchedData,
             state,
-            show
+           
         };
     },
     components: {
