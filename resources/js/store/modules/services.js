@@ -83,7 +83,7 @@ const actions = {
 
         //making api request to get product results
         axios
-            .get(
+            .post(
                 "https://online-pharmacy-project.herokuapp.com/api/searchServices",payload 
             )
             .then((res) => {
