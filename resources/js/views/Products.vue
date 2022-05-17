@@ -58,10 +58,10 @@
 
                             <!-- search results -->
                             <div class="pt-4 flex flex-col" >
-                                <div v-if="searchedProducts">
+                                <div >
                                     <div
                                         class="text-1xl md:text-2xl text-black"
-                                        
+                                        v-if="show === true"
                                     >
                                         Results of {{ state.itemName }} in
                                         products
@@ -88,12 +88,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-else></div>
                                 
-                                <div  class="pt-4" v-if="searchedServices">
+                                
+                                <div  class="pt-4" >
                                     <div
                                         class="text-1xl md:text-2xl text-black"
-                                        
+                                        v-if="show === true"
                                     >
                                         Results of {{ state.itemName }} in
                                         Services
@@ -120,7 +120,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-else></div>
+                               
                             </div>
                             
                         </div>
@@ -176,6 +176,7 @@ export default {
         const state = reactive({
             itemName: "",
         });
+        const show = false
         //on mount get the products and services
         onMounted(() => {
             store.dispatch("products/fetchProcucts");
@@ -192,6 +193,7 @@ export default {
             searchedServices: computed(() => store.state.services.searched),
             getSearchedData,
             state,
+            show
         };
     },
     components: {
