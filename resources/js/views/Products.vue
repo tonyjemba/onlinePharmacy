@@ -58,7 +58,7 @@
 
                             <!-- search results -->
                             <div class="pt-4 flex flex-col" >
-                                <div v-if="searchedProducts !== []">
+                                <div v-if="searchedProducts">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
                                         
@@ -90,7 +90,7 @@
                                 </div>
                                 <div v-else></div>
                                 
-                                <div  class="pt-4" v-if="searchedServices !== []">
+                                <div  class="pt-4" v-if="searchedServices">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
                                         
