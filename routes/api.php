@@ -3,8 +3,6 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServicesController;
-use App\Models\Product;
-use App\Models\Services;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,16 +27,8 @@ Route::post('login',[AuthController::class, 'login']);
 Route::post('logout',[AuthController::class, 'logout']);
 Route::post('myProducts',[AuthController::class, 'getProducts']);
 Route::post('myServices',[AuthController::class, 'getServices']);
-Route::get('searchProducts/{name}',function($name){
-    $product = Product::where('product_name','like','%'.$name.'%');
-
-    return $product;
-});
-Route::get('searchServices/{name}',function($name){
-    $product = Services::where('product_name','like','%'.$name.'%');
-
-    return $product;
-});
+Route::get('searchProducts/{name}',[ProductController::class, 'search']);
+Route::get('searchServices/{name}',[ServicesController::class, 'search']);
 
 
 //products route

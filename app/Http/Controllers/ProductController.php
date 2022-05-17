@@ -79,5 +79,14 @@ class ProductController extends Controller
         return Product::destroy($id);
     }
 
-   
+    /*
+    search for a specific product
+    */
+
+    public function search($name){
+
+        $product = Product::where('product_name','like','%'.$name.'%')->first();
+
+        return $product;
+    }
 }
