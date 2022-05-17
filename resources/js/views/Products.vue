@@ -57,7 +57,7 @@
                             </div>
 
                             <!-- search results -->
-                            <div class="pt-4 flex flex-col" v-if="show === true" >
+                            <div class="pt-4 flex flex-col" v-if="state.show === true" >
                                 <div >
                                     <div
                                         class="text-1xl md:text-2xl text-black"
