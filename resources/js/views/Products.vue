@@ -6,7 +6,7 @@
                     <div
                         class="bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200"
                     >
-                        <div class="flex flex-col">
+                        <div class="flex flex-col w-full">
                             <!-- search bar -->
                             <div class="flex flex-row w-full">
                                 <button
@@ -34,6 +34,7 @@
                                     placeholder="search for items"
                                     class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
                                     v-model="state.itemName"
+                                    v-on:input="getSearchedData"
                                 />
                                 <div class="select">
                                     <select
@@ -60,6 +61,7 @@
                                 <div v-if="searchedProducts !== []">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
+                                        v-if="searchedProducts !== []"
                                     >
                                         Results of {{ state.itemName }} in
                                         products
@@ -89,6 +91,7 @@
                                 <div v-if="searchedServices !== []" class="pt-4">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
+                                        v-if="searchedServices !== []"
                                     >
                                         Results of {{ state.itemName }} in
                                         Services
