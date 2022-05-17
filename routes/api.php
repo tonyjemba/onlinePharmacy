@@ -27,8 +27,8 @@ Route::post('login',[AuthController::class, 'login']);
 Route::post('logout',[AuthController::class, 'logout']);
 Route::post('myProducts',[AuthController::class, 'getProducts']);
 Route::post('myServices',[AuthController::class, 'getServices']);
-Route::get('searchProducts',[ProductController::class, 'search']);
-Route::get('searchServices',[ServicesController::class, 'search']);
+Route::get('searchProducts/{name}',[ProductController::class, 'search']);
+Route::get('searchServices/{name}',[ServicesController::class, 'search']);
 
 
 //products route
