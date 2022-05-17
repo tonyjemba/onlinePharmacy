@@ -6,86 +6,114 @@
                     <div
                         class="bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200"
                     >
-                        <button
-                            @click="getSearchedData"
-                            class="outline-none focus:outline-none"
-                        >
-                            <svg
-                                class="w-5 text-gray-600 h-5 cursor-pointer"
-                                fill="none"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                ></path>
-                            </svg>
-                        </button>
-                        <input
-                            type="search"
-                            name=""
-                            id=""
-                            placeholder="search for items"
-                            class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
-                            v-model="state.itemName"
-                        />
-                        <div class="select">
-                            <select
-                                name=""
-                                id=""
-                                x-model="image_type"
-                                class="text-sm outline-none focus:outline-none bg-transparent"
-                            >
-                                <option value="all" selected>All</option>
-                                <option value="products">Products</option>
-                                <option value="services">Services</option>
-                            </select>
-                        </div>
-                        <!-- search results -->
-                        <div v-if="searchedProducts">
-                            <div
-                                class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
-                            >
-                                <h2 class="text-1xl md:text-2xl text-black">
-                                    Results of {{  state. itemName }} in products
-                                </h2>
-                                <div
-                                    v-for="product in searchedProducts"
-                                    :key="product.id"
+                        <div class="flex flex-col">
+                            <!-- search bar -->
+                            <div>
+                                <button
+                                    @click="getSearchedData"
+                                    class="outline-none focus:outline-none"
                                 >
-                                    <DashboardItemCard
-                                        :product_name="product.product_name"
-                                        :descprition="product.descprition"
-                                        :image_url="product.image_url"
-                                        :price="product.price"
-                                        :updated_at="product.updated_at"
-                                        :buttons="false"
-                                    />
+                                    <svg
+                                        class="w-5 text-gray-600 h-5 cursor-pointer"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                        ></path>
+                                    </svg>
+                                </button>
+                                <input
+                                    type="search"
+                                    name=""
+                                    id=""
+                                    placeholder="search for items"
+                                    class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
+                                    v-model="state.itemName"
+                                />
+                                <div class="select">
+                                    <select
+                                        name=""
+                                        id=""
+                                        x-model="image_type"
+                                        class="text-sm outline-none focus:outline-none bg-transparent"
+                                    >
+                                        <option value="all" selected>
+                                            All
+                                        </option>
+                                        <option value="products">
+                                            Products
+                                        </option>
+                                        <option value="services">
+                                            Services
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
-                        </div>
-                        <div v-if="searchedServices">
-                            <div
-                                class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
-                            >
-                                <h2 class="text-1xl md:text-2xl text-black">
-                                    Results of {{  state. itemName }} in Services
-                                </h2>
-                                <div
-                                    v-for="product in searchedServices"
-                                    :key="product.id"
-                                >
-                                    <DashboardItemCard
-                                        :product_name="product.product_name"
-                                        :descprition="product.descprition"
-                                        :image_url="product.image_url"
-                                        :price="product.price"
-                                        :updated_at="product.updated_at"
-                                        :buttons="false"
-                                    />
+
+                            <!-- search results -->
+                            <div class="pt-4 flex flex-col">
+                                <div v-if="searchedProducts">
+                                    <div
+                                        class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
+                                    >
+                                        <div
+                                            class="text-1xl md:text-2xl text-black"
+                                        >
+                                            Results of {{ state.itemName }} in
+                                            products
+                                        </div>
+                                        <div
+                                            v-for="product in searchedProducts"
+                                            :key="product.id"
+                                        >
+                                            <DashboardItemCard
+                                                :product_name="
+                                                    product.product_name
+                                                "
+                                                :descprition="
+                                                    product.descprition
+                                                "
+                                                :image_url="product.image_url"
+                                                :price="product.price"
+                                                :updated_at="product.updated_at"
+                                                :buttons="false"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-if="searchedServices" class="pt-4">
+                                    <div
+                                        class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
+                                    >
+                                        <div
+                                            class="text-1xl md:text-2xl text-black"
+                                        >
+                                            Results of {{ state.itemName }} in
+                                            Services
+                                        </div>
+                                        <div
+                                            v-for="product in searchedServices"
+                                            :key="product.id"
+                                        >
+                                            <DashboardItemCard
+                                                :product_name="
+                                                    product.product_name
+                                                "
+                                                :descprition="
+                                                    product.descprition
+                                                "
+                                                :image_url="product.image_url"
+                                                :price="product.price"
+                                                :updated_at="product.updated_at"
+                                                :buttons="false"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
