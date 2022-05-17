@@ -84,7 +84,7 @@ class ServicesController extends Controller
 
     public function search($name){
 
-        $Service = Services::where('service_name','like','%'.$name.'%')->first();
+        $Service = Services::where('service_name','like','%'.$name.'%')->get();
 
         return $Service;
     }
