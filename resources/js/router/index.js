@@ -10,6 +10,7 @@ import MyProfile from "../views/MyProfile.vue";
 import AddService from "../views/AddService.vue";
 import UpdateService from "../views/UpdateService.vue"
 import store from "../store/index";
+import ViewItem from "../views/ViewItem.vue";
 
 const routes = [
     {
@@ -66,6 +67,11 @@ const routes = [
         name: "Register",
         component: Register,
     },
+    {
+        path:"/view/:id",
+        name:"ViewProduct",
+        component: ViewItem
+    }
 ];
 
 const router = createRouter({

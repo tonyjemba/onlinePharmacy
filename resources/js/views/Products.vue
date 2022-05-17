@@ -171,6 +171,7 @@
 import DashboardItemCard from "../components/dashboard-item-card.vue";
 import { useStore } from "vuex";
 import { onMounted, computed, reactive } from "vue";
+import router from "../router/index"
 
 export default {
     setup() {
@@ -191,7 +192,7 @@ export default {
             store.dispatch("sevices/searchService", state.itemName);
         }
         function viewProduct(id){
-            console.log(id);
+             router.push(`/view/${id}`);
         }
         return {
             products: computed(() => store.state.products.products),
