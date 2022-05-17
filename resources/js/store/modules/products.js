@@ -6,7 +6,7 @@ import router from "../../router/index";
 const state = {
     products: [],
     editProduct: {},
-    searched:{},
+    searched:[],
     error: "",
 };
 

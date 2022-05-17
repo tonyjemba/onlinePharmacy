@@ -6,7 +6,7 @@ import router from "../../router/index";
 const state = {
     services: [],
     editService: {},
-    searched:{},
+    searched:[],
     error: "",
 };
 

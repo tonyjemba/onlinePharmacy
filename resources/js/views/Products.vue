@@ -8,7 +8,7 @@
                     >
                         <div class="flex flex-col">
                             <!-- search bar -->
-                            <div class="flex flex-row">
+                            <div class="flex flex-row w-full">
                                 <button
                                     @click="getSearchedData"
                                     class="outline-none focus:outline-none"
@@ -57,7 +57,7 @@
 
                             <!-- search results -->
                             <div class="pt-4 flex flex-col">
-                                <div v-if="searchedProducts">
+                                <div v-if="searchedProducts !== []">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
                                     >
@@ -86,7 +86,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="searchedServices" class="pt-4">
+                                <div v-if="searchedServices !== []" class="pt-4">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
                                     >

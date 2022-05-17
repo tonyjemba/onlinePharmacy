@@ -86,7 +86,7 @@
                                 </Menu>
                             </div>
                         </div>
-                        <div v-if="islogged === false">
+                        <div v-if="islogged === false" class="flex flex-row">
                             <div>
                                 <router-link to="/login">
                                     <div
