@@ -7,7 +7,7 @@
                         class="bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200"
                     >
                         <button
-                            @click="getImages()"
+                            @click="getSearchedData"
                             class="outline-none focus:outline-none"
                         >
                             <svg
@@ -29,8 +29,9 @@
                             name=""
                             id=""
                             placeholder="search for items"
-                            x-model="q"
+                            
                             class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
+                            v-model="state.itemName"
                         />
                         <div class="select">
                             <select
@@ -44,6 +45,8 @@
                                 <option value="services">Services</option>
                             </select>
                         </div>
+                        {{ searchedProducts }}
+                        {{ searchedServices  }}
                     </div>
                 </div>
             </div>
@@ -88,20 +91,30 @@
 <script>
 import DashboardItemCard from "../components/dashboard-item-card.vue";
 import { useStore } from "vuex";
-import { onMounted, computed } from "vue";
+import { onMounted, computed,reactive } from "vue";
 
 export default {
     setup() {
         const store = useStore();
-
+         const state = reactive({
+            itemName:""
+        });
         //on mount get the products and services
         onMounted(() => {
-            store.dispatch("products/fetchProcucts");
+            store.dispatch("products/fetchProcucts",);
             store.dispatch("sevices/fetchServices");
         });
+        function getSearchedData(){
+             store.dispatch("products/searchProduct",state.itemName);
+            store.dispatch("sevices/searchService",state.itemName);
+        }
         return {
             products: computed(() => store.state.products.products),
             services: computed(() => store.state.services.services),
+            searchedProducts: computed(() => store.state.products.searched),
+            searchedServices: computed(() => store.state.services.searched),
+            getSearchedData,
+            state
         };
     },
     components: {
