@@ -57,19 +57,23 @@
                             </div>
 
                             <!-- search results -->
-                            <div class="pt-4 flex flex-col" v-if="state.show === true" >
-                                <div >
+                            <div
+                                class="pt-4 flex flex-col"
+                                v-if="state.show === true"
+                            >
+                                <div>
                                     <div
                                         class="text-1xl md:text-2xl text-black"
-                                        
                                     >
                                         Results of {{ state.itemName }} in
                                         products
                                     </div>
                                     <div
+                                     v-if="searchedProducts"
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
                                         <div
+                                       
                                             v-for="product in searchedProducts"
                                             :key="product.id"
                                         >
@@ -87,18 +91,18 @@
                                             />
                                         </div>
                                     </div>
+                                    <div v-else class="text-base text-center">No Results in Products</div>
                                 </div>
-                                
-                                
-                                <div  class="pt-4" >
+
+                                <div class="pt-4">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
-                                       
                                     >
                                         Results of {{ state.itemName }} in
                                         Services
                                     </div>
                                     <div
+                                    v-if="searchedServices"
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
                                         <div
@@ -119,10 +123,9 @@
                                             />
                                         </div>
                                     </div>
+                                    <div v-else class="text-base text-center">No Results in Services</div>
                                 </div>
-                               
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -175,16 +178,16 @@ export default {
         const store = useStore();
         const state = reactive({
             itemName: "",
-            show:false
+            show: false,
         });
-       
+
         //on mount get the products and services
         onMounted(() => {
             store.dispatch("products/fetchProcucts");
             store.dispatch("sevices/fetchServices");
         });
         function getSearchedData() {
-            state.itemName === ""?state.show = false: state.show = true;
+            state.itemName === "" ? (state.show = false) : (state.show = true);
             store.dispatch("products/searchProduct", state.itemName);
             store.dispatch("sevices/searchService", state.itemName);
         }
@@ -195,7 +198,6 @@ export default {
             searchedServices: computed(() => store.state.services.searched),
             getSearchedData,
             state,
-           
         };
     },
     components: {
