@@ -57,11 +57,11 @@
                             </div>
 
                             <!-- search results -->
-                            <div class="pt-4 flex flex-col">
+                            <div class="pt-4 flex flex-col" >
                                 <div v-if="searchedProducts !== []">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
-                                        v-if="searchedProducts !== []"
+                                        
                                     >
                                         Results of {{ state.itemName }} in
                                         products
@@ -88,10 +88,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="searchedServices !== []" class="pt-4">
+                                <div v-else></div>
+                                
+                                <div  class="pt-4" v-if="searchedServices !== []">
                                     <div
                                         class="text-1xl md:text-2xl text-black"
-                                        v-if="searchedServices !== []"
+                                        
                                     >
                                         Results of {{ state.itemName }} in
                                         Services
@@ -118,7 +120,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div v-else></div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
