@@ -84,7 +84,7 @@ class ProductController extends Controller
     */
 
     public function search($name){
-
+       //ilike the i is for case insesitivity
         $product = Product::where('product_name','ilike','%'.$name.'%')->get();
 
         return $product;

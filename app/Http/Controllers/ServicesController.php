@@ -83,8 +83,9 @@ class ServicesController extends Controller
     */
 
     public function search($name){
-
-        $Service = Services::where('service_name','like','%'.$name.'%')->get();
+        
+         //ilike the i is for case insesitivity
+        $Service = Services::where('service_name','ilike','%'.$name.'%')->get();
 
         return $Service;
     }
