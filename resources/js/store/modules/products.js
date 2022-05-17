@@ -83,10 +83,11 @@ const actions = {
         
 
         //making api request to get product results
-        console.log(payload);
+       
         axios
-            .post(
-                "https://online-pharmacy-project.herokuapp.com/api/searchProducts",payload 
+            .get(
+                "https://online-pharmacy-project.herokuapp.com/api/searchProducts/"+
+                `${payload}`
             )
             .then((res) => {
                 //accessing data that needs to be edited
