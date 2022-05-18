@@ -60,7 +60,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $product = Product::find($id);
 
         $product->update($request->all());
@@ -83,9 +83,10 @@ class ProductController extends Controller
     search for a specific product
     */
 
-    public function search($name){
-       //ilike the i is for case insesitivity
-        $product = Product::where('product_name','ilike','%'.$name.'%')->get();
+    public function search($name)
+    {
+        //ilike the i is for case insesitivity
+        $product = Product::where('product_name', 'ilike', '%' . $name . '%')->orWhere('descprition', 'ilike', '%' . $name . '%')->get();
 
         return $product;
     }
