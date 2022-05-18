@@ -74,7 +74,7 @@ export default {
         //get data to edit when the component is mounted
         onMounted(async () => {
             const res = await axios.get(
-                "https://online-pharmacy-project.herokuapp.com/api/services/" +
+                "https://online-pharmacy-project.herokuapp.com/api/products/" +
                     `${routeId}`
             );
 
