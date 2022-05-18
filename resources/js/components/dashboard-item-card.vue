@@ -16,7 +16,7 @@
             </p>
             <div class="w-full flex flex-row justify-between mt-3">
                 <div class=" block">UGX: {{ price }}</div>
-                <div v-if="buttons === false" class="hover:bg-sky-700"  @click="$emit('view')">view</div>
+                <div v-if="buttons === false" class="hover:text-blue-600"  @click="$emit('view')">view</div>
             </div>
             
             <div v-if="buttons === true" className="flex items-center justify-end mt-4 top-auto">

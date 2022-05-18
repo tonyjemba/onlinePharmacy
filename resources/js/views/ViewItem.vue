@@ -5,7 +5,7 @@
         <div class="w-11/12 sm:w-4/5 md:w-2/4 my-10 space-y-4">
             <div>
                 <img
-                    src="https://firebasestorage.googleapis.com/v0/b/online-pharmacy-d7579.appspot.com/o/products%2Fpanadol_paracetamol_pain_relief_tablets_500mg_adva-front.jpg?alt=media&token=5f86cf93-b6ef-47ee-988f-0aab2438c883"
+                    :src="state.imageUrl"
                     class="object-cover shadow-lg h-64 sm:h-80 w-full"
                     alt="product image"
                 />
