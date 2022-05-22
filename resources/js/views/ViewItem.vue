@@ -77,7 +77,7 @@ export default {
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
                     `${routeId}`
             );
-
+//update state on component mount
             state.name = res.data.product_name;
             state.Pharmacy_name = res.data.Pharmacy_name;
             state.location = res.data.location;
