@@ -34,7 +34,7 @@
                         :image_url="service.image_url"
                         :price="service.price"
                         :buttons = true
-                        :updated_at="service.updated_at"
+                        :updated_at="service.updated_at "
                         @delItem = "deleteService(service.id)"
                         @edit="editService(service.id)"
                     />

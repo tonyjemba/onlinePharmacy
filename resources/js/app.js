@@ -6,18 +6,6 @@ import router from './router';
 import store from './store';
 import App from './App.vue';
 import { initializeApp } from "firebase/app";
-import moment from "moment";
-
-
-/**
- * @params {date} date to be converted to timeago
- * @returns returns timeAgo
- */
- app.config.globalProperties.$filters = {
-  timeAgo(date) {
-    return moment(date).fromNow()
-  },
-}
 
 createApp(App).use(store).use(router).mount('#app');
 

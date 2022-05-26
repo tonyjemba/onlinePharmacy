@@ -41,7 +41,7 @@
 
 <script>
 import { emit } from "process";
-
+//using vueUse to change how time is displayed
 export default {
     props: {
         product_name: String,
