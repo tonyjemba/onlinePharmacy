@@ -8,7 +8,7 @@
             <span class="text-sm text-primary"
                 >Last Update:{{ updated_at }} </span
             >
-            <div>{{timeAgo}}</div>
+            
             <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
                 {{ product_name }}
             </h3>
@@ -57,11 +57,11 @@ export default {
         buttons: Boolean
     },
     setup() {
-      const timeAgo = useTimeAgo(new Date(2021, 0, 1));
+    //   const timeAgo = useTimeAgo(new Date(2021, 0, 1));
 
 
       return {
-          timeAgo
+        //   timeAgo
       }
     },
 };
