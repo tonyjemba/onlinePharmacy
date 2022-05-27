@@ -13,7 +13,7 @@
 
             <div class="flex w-full flex-row justify-between">
                 <div class="text-neutral-300 font-light">
-                    Updated: {{ timeAgoit  }}
+                    Updated: {{ timeAgo  }}
                 </div>
                 <div class="text-neutral-300 font-light">
                     {{ state.disease }}
