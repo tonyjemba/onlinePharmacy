@@ -6,7 +6,7 @@
         <img class="h-56 lg:h-60 w-full object-cover" :src="image_url" alt="" />
         <div class="p-3">
             <span class="text-sm text-primary"
-                >Last Update:{{ updated_at }} </span
+                >Last Update:{{ timeAgo }} </span
             >
             
             <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
@@ -56,12 +56,12 @@ export default {
         image_url: String,
         buttons: Boolean
     },
-    setup() {
-    //   const timeAgo = useTimeAgo(new Date(2021, 0, 1));
+    setup(props) {
+      const timeAgo = useTimeAgo(props.updated_at);
 
 
       return {
-        //   timeAgo
+          timeAgo
       }
     },
 };
