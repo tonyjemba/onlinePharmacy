@@ -6,8 +6,9 @@
         <img class="h-56 lg:h-60 w-full object-cover" :src="image_url" alt="" />
         <div class="p-3">
             <span class="text-sm text-primary"
-                >Last Update:{{ updated_at }}</span
+                >Last Update:{{ updated_at }} </span
             >
+            <div>{{timeAgo}}</div>
             <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
                 {{ product_name }}
             </h3>
@@ -41,8 +42,12 @@
 
 <script>
 import { emit } from "process";
-//using vueUse to change how time is displayed
+import { useTimeAgo } from '@vueuse/core'
+//using vueUse to change how time is displayed.
+
+
 export default {
+    
     props: {
         product_name: String,
         updated_at: String,
@@ -52,7 +57,12 @@ export default {
         buttons: Boolean
     },
     setup() {
-      
+      const timeAgo = useTimeAgo(new Date(2021, 0, 1));
+
+
+      return {
+          timeAgo
+      }
     },
 };
 </script>
