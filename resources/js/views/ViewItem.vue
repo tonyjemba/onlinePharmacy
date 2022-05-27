@@ -13,7 +13,7 @@
 
             <div class="flex w-full flex-row justify-between">
                 <div class="text-neutral-300 font-light">
-                    Updated: {{ timeAgo  }}
+                    Updated: {{ state.date  }}
                 </div>
                 <div class="text-neutral-300 font-light">
                     {{ state.disease }}
@@ -88,13 +88,13 @@ export default {
             state.descprition = res.data.descprition;
             state.contact = res.data.contact;
             state.imageUrl = res.data.image_url;
-            state.date = res.data.updated_at;
+            state.date = useTimeAgo(useTimeAgo(state.date));
         });
-        const timeAgo = useTimeAgo(state.date);
+        
         return {
             routeId,
             state,
-            timeAgo
+            
         };
     },
 };
