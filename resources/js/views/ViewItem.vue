@@ -13,7 +13,7 @@
 
             <div class="flex w-full flex-row justify-between">
                 <div class="text-neutral-300 font-light">
-                    Updated: {{ state.date }}
+                    Updated: {{ timeAgoit  }}
                 </div>
                 <div class="text-neutral-300 font-light">
                     {{ state.disease }}
@@ -55,6 +55,8 @@
 <script>
 import { useRoute } from "vue-router";
 import { onMounted, reactive } from "vue";
+import { useTimeAgo } from '@vueuse/core';
+
 export default {
     setup() {
         const route = useRoute();
@@ -88,10 +90,11 @@ export default {
             state.imageUrl = res.data.image_url;
             state.date = res.data.updated_at;
         });
-
+        const timeAgo = useTimeAgo(state.date);
         return {
             routeId,
             state,
+            timeAgo
         };
     },
 };

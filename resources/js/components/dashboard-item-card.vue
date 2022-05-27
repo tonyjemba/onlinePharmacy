@@ -42,7 +42,7 @@
 
 <script>
 //using vueUse to change how time is displayed.
-import { useTimeAgo } from '@vueuse/core'
+import { useTimeAgo } from '@vueuse/core';
 
 
 
