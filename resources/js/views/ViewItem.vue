@@ -88,7 +88,7 @@ export default {
             state.descprition = res.data.descprition;
             state.contact = res.data.contact;
             state.imageUrl = res.data.image_url;
-            state.date = useTimeAgo(useTimeAgo(state.date));
+            state.date = useTimeAgo(res.data.updated_at);
         });
         
         return {
