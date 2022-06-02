@@ -1,16 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "../views/Login.vue";
-import Register from "../views/Register.vue";
-import Dashboard from "../views/Dashboard.vue";
 import DashboardLayout from "../layout/DashboardLayout.vue";
 import Main from "../views/Main.vue";
-import AddMedicine from "../views/AddMedicine.vue";
-import UpdateItem from "../views/UpdateItem.vue";
-import MyProfile from "../views/MyProfile.vue";
-import AddService from "../views/AddService.vue";
-import UpdateService from "../views/UpdateService.vue"
 import store from "../store/index";
-import ViewItem from "../views/ViewItem.vue";
+
 
 const routes = [
     {
@@ -24,53 +16,54 @@ const routes = [
         component: DashboardLayout,
         meta: { auth: true },
         children: [
+            //using route-level code splitting
             {
                 path: "/dashboard",
                 name: "Dashboard",
-                component: Dashboard,
+                component: ()=> import("../views/Dashboard.vue"),
             },
             {
                 path: "/addMedicine",
                 name: "AddMedicine",
-                component: AddMedicine,
+                component: ()=> import ("../views/AddMedicine.vue"),
             },
             {
                 path: "/addService",
                 name: "AddService",
-                component: AddService,
+                component:()=> import("../views/AddService.vue"),
             },
             {
                 path: "/myprofile",
                 name: "MyProfile",
-                component: MyProfile,
+                component: ()=> import("../views/MyProfile.vue"),
             },
             {
                 path: "/editproduct/:id",
                 name: "EditItem",
-                component: UpdateItem,
+                component: ()=> import("../views/UpdateItem.vue"),
             },
             {
                 path: "/editservice/:id",
                 name: "EditService",
-                component: UpdateService,
+                component: ()=> import("../views/UpdateService.vue"),
             }
         ],
     },
     {
         path: "/login",
         name: "Login",
-        component: Login,
+        component:  ()=> import("../views/Login.vue"),
         meta: {},
     },
     {
         path: "/register",
         name: "Register",
-        component: Register,
+        component: ()=> import("../views/Register.vue"),
     },
     {
         path:"/view/:id",
         name:"ViewProduct",
-        component: ViewItem
+        component: ()=> import("../views/ViewItem.vue")
     }
 ];
 
