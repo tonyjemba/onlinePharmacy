@@ -222,6 +222,7 @@
                 <!-- /End replace -->
             </div>
         </main>
+        <TheFooterVue/>
     </div>
 </template>
 
@@ -238,6 +239,7 @@ import {
 import { HomeIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
 import Icon from "../components/Icon.vue";
 import Products from "./Products.vue";
+import TheFooterVue from "../components/TheFooter.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 
@@ -268,6 +270,7 @@ export default {
         XIcon,
         Icon,
         Products,
+        TheFooterVue
     },
     setup() {
         const store = useStore();
