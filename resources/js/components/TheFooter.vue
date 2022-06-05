@@ -1,9 +1,9 @@
 
 <template>
-<footer class="bg-gray-100 w-full py-6 text-center mb-auto">
+<footer class="bg-gray-100 w-full py-6  mb-auto">
             <!-- marging just for display-->
         
-            <div class="flex items-center ">
+            <div class="flex items-center w-full text-center">
                 <p class="inline-flex text-blue-500 ">
                     Built with
                     <svg
