@@ -3,8 +3,8 @@
 <footer class="bg-gray-100 w-full py-6  mb-auto">
             <!-- marging just for display-->
         
-            <div class="flex items-center w-full text-center">
-                <p class="inline-flex text-blue-500 ">
+            <div class="flex items-center w-full ">
+                <p class="inline-flex text-blue-500  pl-4">
                     Built with
                     <svg
                         fill="#e53e3e"
