@@ -143,7 +143,7 @@ import {
     getDownloadURL,
 } from "firebase/storage";
 import { useStore } from "vuex";
-import { ref as vueref ,computed} from "vue";
+import { ref as vueref, computed } from "vue";
 
 export default {
     setup() {
@@ -155,7 +155,7 @@ export default {
             btnState: "upload",
         });
         //logged user is stored in localstorage, we get his id
-        const ls = JSON.parse(localStorage.getItem('vuex'));
+        const ls = JSON.parse(localStorage.getItem("vuex"));
         const userId = ls.login.loginUser.user.id;
         const storage = getStorage();
         const productData = vueref({
@@ -166,7 +166,6 @@ export default {
             disease: "",
             descprition: "",
             contact: "",
-           
         });
 
         function previewImage(event) {
@@ -180,7 +179,7 @@ export default {
         }
         //uploading function
         function upload(imageName) {
-            state.btnState = "uploding";
+            state.btnState = "uploading";
             uploadString(
                 ref(storage, `products/${imageName}`),
                 state.imageData,
@@ -194,7 +193,6 @@ export default {
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
                         (url) => {
                             state.imageUrl = url;
-                     
                         }
                     );
                 });
@@ -206,7 +204,11 @@ export default {
             state,
             productData,
             addProduct: () =>
-                store.dispatch("products/addProduct",{  image_url: state.imageUrl,user_id:userId,...productData.value}),
+                store.dispatch("products/addProduct", {
+                    image_url: state.imageUrl,
+                    user_id: userId,
+                    ...productData.value,
+                }),
         };
     },
 };

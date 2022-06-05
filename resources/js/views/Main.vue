@@ -91,15 +91,18 @@
                                 <router-link to="/login">
                                     <div
                                         class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                        >Login</div >
+                                    >
+                                        Login
+                                    </div>
                                 </router-link>
                             </div>
                             <div>
                                 <router-link to="/register">
                                     <div
                                         class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                        >Create Account</div
                                     >
+                                        Create Account
+                                    </div>
                                 </router-link>
                             </div>
                         </div>
@@ -186,33 +189,35 @@
                         </div>
                     </div>
                 </div>
-                 <div v-if="islogged === false" class="pt-4">
-                            <div>
-                                <router-link to="/login">
-                                    <div
-                                        class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                        >Login</div>
-                                </router-link>
+                <div v-if="islogged === false" class="pt-4">
+                    <div>
+                        <router-link to="/login">
+                            <div
+                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                            >
+                                Login
                             </div>
-                            <div>
-                                <router-link to="/register">
-                                    <div
-                                        class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
-                                        >Create Account</div>
-                                </router-link>
+                        </router-link>
+                    </div>
+                    <div>
+                        <router-link to="/register">
+                            <div
+                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                            >
+                                Create Account
                             </div>
-                        </div>
+                        </router-link>
+                    </div>
+                </div>
             </DisclosurePanel>
         </Disclosure>
 
-        <header class="bg-white shadow">
-          
-        </header>
+        <header class="bg-white shadow"></header>
         <main>
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-6 sm:px-0">
-                    <Products/>
+                    <Products />
                 </div>
                 <!-- /End replace -->
             </div>
@@ -262,7 +267,7 @@ export default {
         MenuIcon,
         XIcon,
         Icon,
-        Products
+        Products,
     },
     setup() {
         const store = useStore();
@@ -282,7 +287,7 @@ export default {
             logout,
             //accessing  logged in user state
             user: computed(() => store.state.login.loginUser),
-            islogged:computed(() => store.state.login.islogged),
+            islogged: computed(() => store.state.login.islogged),
             imageUrl:
                 "https://firebasestorage.googleapis.com/v0/b/online-pharmacy-d7579.appspot.com/o/products%2Fuser.png?alt=media&token=5dce7c32-3c59-4e71-860e-96c9f84392cb",
             navigation,

@@ -13,7 +13,7 @@
 
             <div class="flex w-full flex-row justify-between">
                 <div class="text-neutral-300 font-light">
-                    Updated: {{ state.date  }}
+                    Updated: {{ state.date }}
                 </div>
                 <div class="text-neutral-300 font-light">
                     {{ state.disease }}
@@ -55,7 +55,7 @@
 <script>
 import { useRoute } from "vue-router";
 import { onMounted, reactive } from "vue";
-import { useTimeAgo } from '@vueuse/core';
+import { useTimeAgo } from "@vueuse/core";
 
 export default {
     setup() {
@@ -79,7 +79,7 @@ export default {
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
                     `${routeId}`
             );
-//update state on component mount
+            //update state on component mount
             state.name = res.data.product_name;
             state.Pharmacy_name = res.data.Pharmacy_name;
             state.location = res.data.location;
@@ -90,11 +90,10 @@ export default {
             state.imageUrl = res.data.image_url;
             state.date = useTimeAgo(res.data.updated_at);
         });
-        
+
         return {
             routeId,
             state,
-            
         };
     },
 };

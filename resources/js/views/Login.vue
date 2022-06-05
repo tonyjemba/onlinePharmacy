@@ -123,7 +123,7 @@
 <script>
 import Icon from "../components/Icon.vue";
 
-import { computed, ref,defineAsyncComponent } from "vue";
+import { computed, ref, defineAsyncComponent } from "vue";
 import { useStore } from "vuex";
 
 export default {
@@ -148,7 +148,9 @@ export default {
     },
     components: {
         Icon,
-        Loading: defineAsyncComponent(()=>import("../components/Loading.vue")),
+        Loading: defineAsyncComponent(() =>
+            import("../components/Loading.vue")
+        ),
     },
 };
 </script>

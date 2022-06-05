@@ -1,13 +1,12 @@
-require('./bootstrap');
+require("./bootstrap");
 
-
-import { createApp } from 'vue';
-import router from './router';
-import store from './store';
-import App from './App.vue';
+import { createApp } from "vue";
+import router from "./router";
+import store from "./store";
+import App from "./App.vue";
 import { initializeApp } from "firebase/app";
 
-createApp(App).use(store).use(router).mount('#app');
+createApp(App).use(store).use(router).mount("#app");
 
 //Firebase configuration needs to be in a .env file
 const firebaseConfig = {
@@ -17,9 +16,8 @@ const firebaseConfig = {
     storageBucket: "online-pharmacy-d7579.appspot.com",
     messagingSenderId: "505849769684",
     appId: "1:505849769684:web:c99a5273d41446f602d541",
-    measurementId: "G-SPK833DJ5Z"
-  };
-  
-// Initialize Firebase
- initializeApp(firebaseConfig);
+    measurementId: "G-SPK833DJ5Z",
+};
 
+// Initialize Firebase
+initializeApp(firebaseConfig);

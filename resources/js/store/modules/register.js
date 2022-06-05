@@ -4,51 +4,54 @@ import router from "../../router/index";
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
-    registeredUser:[],
+    registeredUser: [],
     routeLoading: false,
-    registered:false,
+    registered: false,
     errorMessage2: "",
-    msg:""
-  }
-  
-  // mutations are operations that actually mutate the state.
-  // each mutation handler gets the entire state tree as the
-  // first argument, followed by additional payload arguments.
-  // mutations must be synchronous and can be recorded by plugins
-  // for debugging purposes.
-  const mutations = {
-    REG_DATA(state,data){
-            state.registeredUser = data;
+    msg: "",
+};
+
+// mutations are operations that actually mutate the state.
+// each mutation handler gets the entire state tree as the
+// first argument, followed by additional payload arguments.
+// mutations must be synchronous and can be recorded by plugins
+// for debugging purposes.
+const mutations = {
+    REG_DATA(state, data) {
+        state.registeredUser = data;
     },
-    REGISTERED(state){
-        state.registered = true
+    REGISTERED(state) {
+        state.registered = true;
     },
     ROUTE_LOADING(state, data) {
-      state.routeLoading = data;
-  },
-  MSG(state, data) {
-    state.msg= data;
-},
-  NOTREGISTERED(state){
-    state.registered = false;
-},
-CLEARREGISTERDATA(state){
-    state.registeredUser = [];
-},
-  Error(state, data) {
-    state.errorMessage2 = data;
-},
-  }
-  
-  // actions are functions that cause side effects and can involve
-  // asynchronous operations.
-  const actions = {
+        state.routeLoading = data;
+    },
+    MSG(state, data) {
+        state.msg = data;
+    },
+    NOTREGISTERED(state) {
+        state.registered = false;
+    },
+    CLEARREGISTERDATA(state) {
+        state.registeredUser = [];
+    },
+    Error(state, data) {
+        state.errorMessage2 = data;
+    },
+};
+
+// actions are functions that cause side effects and can involve
+// asynchronous operations.
+const actions = {
     submitRegForm({ commit, state }, payload) {
-      //displays a loading indicator
+        //displays a loading indicator
         commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post("https://online-pharmacy-project.herokuapp.com/api/register", payload)
+            .post(
+                "https://online-pharmacy-project.herokuapp.com/api/register",
+                payload
+            )
             .then((response) => {
                 commit("REG_DATA", response);
                 commit("MSG", response.data.message);
@@ -60,24 +63,23 @@ CLEARREGISTERDATA(state){
                 commit("ROUTE_LOADING", false);
             });
     },
-  }
-  
-  // getters are functions.
-  const getters = {
-    registerMsg(state){
-      return state.registeredUser.message;
-    }
- 
-  }
-  
-  // A Vuex instance is created by combining the state, mutations, actions,
-  // and getters.
-  const register =  {
-      namespaced: true,
-      state,
-      getters,
-      actions,
-      mutations
-    };
-  
-    export default register;
+};
+
+// getters are functions.
+const getters = {
+    registerMsg(state) {
+        return state.registeredUser.message;
+    },
+};
+
+// A Vuex instance is created by combining the state, mutations, actions,
+// and getters.
+const register = {
+    namespaced: true,
+    state,
+    getters,
+    actions,
+    mutations,
+};
+
+export default register;

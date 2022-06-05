@@ -117,7 +117,7 @@
                                                 :price="product.price"
                                                 :updated_at="product.updated_at"
                                                 :buttons="false"
-                                                 @view="viewProduct(product.id)"
+                                                @view="viewProduct(product.id)"
                                             />
                                         </div>
                                     </div>
@@ -141,7 +141,7 @@
                         :price="product.price"
                         :updated_at="product.updated_at"
                         :buttons="false"
-                         @view="viewProduct(product.id)"
+                        @view="viewProduct(product.id)"
                     />
                 </div>
             </div>
@@ -159,7 +159,7 @@
                         :price="service.price"
                         :updated_at="service.updated_at"
                         :buttons="false"
-                         @view="viewProduct(service.id)"
+                        @view="viewProduct(service.id)"
                     />
                 </div>
             </div>
@@ -171,7 +171,7 @@
 import DashboardItemCard from "../components/dashboard-item-card.vue";
 import { useStore } from "vuex";
 import { onMounted, computed, reactive } from "vue";
-import router from "../router/index"
+import router from "../router/index";
 
 export default {
     setup() {
@@ -191,8 +191,8 @@ export default {
             store.dispatch("products/searchProduct", state.itemName);
             store.dispatch("sevices/searchService", state.itemName);
         }
-        function viewProduct(id){
-             router.push(`/view/${id}`);
+        function viewProduct(id) {
+            router.push(`/view/${id}`);
         }
         return {
             products: computed(() => store.state.products.products),

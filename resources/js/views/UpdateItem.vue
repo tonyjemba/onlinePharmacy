@@ -136,7 +136,7 @@
     </form>
 </template>
 <script>
-import {  onMounted, reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import {
     getStorage,
     ref,

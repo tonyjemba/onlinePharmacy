@@ -5,8 +5,8 @@ import store from "../index";
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
-   resMsg:"",
-   loading: false
+    resMsg: "",
+    loading: false,
 };
 
 // mutations are operations that actually mutate the state.
@@ -15,24 +15,27 @@ const state = {
 // mutations must be synchronous and can be recorded by plugins
 // for debugging purposes.
 const mutations = {
- MSG(state,data){
-     state.resMsg = data;
- },
- ROUTE_LOADING(state,data){
-     state.loading =data;
- }
+    MSG(state, data) {
+        state.resMsg = data;
+    },
+    ROUTE_LOADING(state, data) {
+        state.loading = data;
+    },
 };
 
 // actions are functions that cause side effects and can involve
 // asynchronous operations.
 const actions = {
     submitLogout({ commit, state }, payload) {
-        const email = {'email': payload}
-      //displays a loading indicator
-       commit("ROUTE_LOADING", true);
-       // making api request
+        const email = { email: payload };
+        //displays a loading indicator
+        commit("ROUTE_LOADING", true);
+        // making api request
         axios
-            .post("https://online-pharmacy-project.herokuapp.com/api/logout", email)
+            .post(
+                "https://online-pharmacy-project.herokuapp.com/api/logout",
+                email
+            )
             .then((response) => {
                 commit("MSG", response.data);
                 //on signout the user will neither be logged in or registered
@@ -41,7 +44,7 @@ const actions = {
                 store.commit("register/NOTREGISTERED");
                 store.commit("register/CLEARREGISTERDATA");
                 //clearing the local storage too
-                window.localStorage.removeItem('vuex');
+                window.localStorage.removeItem("vuex");
                 router.push("/");
             })
             .catch((error) => {
@@ -52,9 +55,7 @@ const actions = {
 };
 
 // getters are functions.
-const getters = {
-
-};
+const getters = {};
 
 // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.

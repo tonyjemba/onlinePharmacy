@@ -6,7 +6,7 @@ import router from "../../router/index";
 const state = {
     products: [],
     editProduct: {},
-    searched:[],
+    searched: [],
     error: "",
 };
 
@@ -25,9 +25,9 @@ const mutations = {
     ERROR(state, data) {
         state.error = data;
     },
-    SEARCHDATA(state, data){
-        state.searched = data
-    }
+    SEARCHDATA(state, data) {
+        state.searched = data;
+    },
 };
 
 // actions are functions that cause side effects and can involve
@@ -80,14 +80,12 @@ const actions = {
             });
     },
     searchProduct({ commit, state }, payload) {
-        
-
         //making api request to get product results
-       
+
         axios
             .get(
-                "https://online-pharmacy-project.herokuapp.com/api/searchProducts/"+
-                `${payload}`
+                "https://online-pharmacy-project.herokuapp.com/api/searchProducts/" +
+                    `${payload}`
             )
             .then((res) => {
                 //accessing data that needs to be edited
@@ -101,9 +99,11 @@ const actions = {
         axios
             .put(
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
-                    `${payload.id}`,payload,payload.id
+                    `${payload.id}`,
+                payload,
+                payload.id
             )
-            .then((res) =>{
+            .then((res) => {
                 router.push("/dashboard");
             })
             .catch((error) => {

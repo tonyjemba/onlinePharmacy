@@ -5,8 +5,8 @@ import router from "../../router/index";
 // each Vuex instance is just a single state tree.
 const state = {
     loginUser: [],
-    myProducts:[],
-    myServices:[],
+    myProducts: [],
+    myServices: [],
     islogged: false,
     routeLoading: false,
     errorMessage: "",
@@ -24,16 +24,16 @@ const mutations = {
     ISLOGGED(state) {
         state.islogged = true;
     },
-    NOTLOGGED(state){
+    NOTLOGGED(state) {
         state.islogged = false;
     },
-    MYPRODUCTS(state,data){
+    MYPRODUCTS(state, data) {
         state.myProducts = data;
     },
-    MYSERVICES(state,data){
+    MYSERVICES(state, data) {
         state.myServices = data;
     },
-    CLEARLOGGEDDATA(state){
+    CLEARLOGGEDDATA(state) {
         state.loginUser = [];
     },
     ROUTE_LOADING(state, data) {
@@ -48,11 +48,14 @@ const mutations = {
 // asynchronous operations.
 const actions = {
     submitLoginForm({ commit, state }, payload) {
-      //displays a loading indicator
+        //displays a loading indicator
         commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post("https://online-pharmacy-project.herokuapp.com/api/login", payload)
+            .post(
+                "https://online-pharmacy-project.herokuapp.com/api/login",
+                payload
+            )
             .then((response) => {
                 commit("LOGGED_DATA", response.data);
                 commit("ISLOGGED");
@@ -65,29 +68,31 @@ const actions = {
             });
     },
     getProducts({ commit, state }, payload) {
-  
-          //making api request
-          axios
-              .post("https://online-pharmacy-project.herokuapp.com/api/myProducts", payload)
-              .then((response) => {
-                  commit("MYPRODUCTS", response.data);
-              })
-              .catch((error) => {
-                  console.log(error.response.data.message);
-
-              });
-      },
-      getServices({ commit, state }, payload) {
-  
         //making api request
         axios
-            .post("https://online-pharmacy-project.herokuapp.com/api/myServices", payload)
+            .post(
+                "https://online-pharmacy-project.herokuapp.com/api/myProducts",
+                payload
+            )
+            .then((response) => {
+                commit("MYPRODUCTS", response.data);
+            })
+            .catch((error) => {
+                console.log(error.response.data.message);
+            });
+    },
+    getServices({ commit, state }, payload) {
+        //making api request
+        axios
+            .post(
+                "https://online-pharmacy-project.herokuapp.com/api/myServices",
+                payload
+            )
             .then((response) => {
                 commit("MYSERVICES", response.data);
             })
             .catch((error) => {
                 console.log(error.response.data.message);
-
             });
     },
 };
@@ -100,7 +105,7 @@ const getters = {
     getMessage(state) {
         return state.loginUser.message;
     },
-    islogged(state){
+    islogged(state) {
         return state.islogged;
     },
     getLoggedUser(state) {

@@ -143,7 +143,7 @@ import {
     getDownloadURL,
 } from "firebase/storage";
 import { useStore } from "vuex";
-import {  ref as vueref,computed } from "vue";
+import { ref as vueref, computed } from "vue";
 
 export default {
     setup() {
@@ -154,10 +154,10 @@ export default {
             imageName: null,
             btnState: "upload",
         });
-         //logged user is stored in localstorage, we get his id
-        const ls = JSON.parse(localStorage.getItem('vuex'));
+        //logged user is stored in localstorage, we get his id
+        const ls = JSON.parse(localStorage.getItem("vuex"));
         const userId = ls.login.loginUser.user.id;
-         
+
         const storage = getStorage();
         const serviceData = vueref({
             service_name: "",
@@ -167,7 +167,6 @@ export default {
             disease: "",
             descprition: "",
             contact: "",
-            
         });
         function previewImage(event) {
             const image = event.target.files[0];
@@ -180,7 +179,7 @@ export default {
         }
         //uploading function
         function upload(imageName) {
-            state.btnState = "uploding";
+            state.btnState = "uploading";
             uploadString(
                 ref(storage, `products/${imageName}`),
                 state.imageData,
@@ -192,10 +191,9 @@ export default {
                 .then(() => {
                     state.btnState = "uploaded";
                     getDownloadURL(ref(storage, `products/${imageName}`)).then(
-                        (url) =>{
-                            state.imageUrl = url
-                         
-                        } 
+                        (url) => {
+                            state.imageUrl = url;
+                        }
                     );
                 });
         }
@@ -206,7 +204,11 @@ export default {
             state,
             serviceData,
             addService: () =>
-                store.dispatch("services/addService", {image_url: state.imageUrl,user_id:userId,...serviceData.value}),
+                store.dispatch("services/addService", {
+                    image_url: state.imageUrl,
+                    user_id: userId,
+                    ...serviceData.value,
+                }),
         };
     },
 };

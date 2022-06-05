@@ -136,7 +136,7 @@
     </form>
 </template>
 <script>
-import {  onMounted, reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import {
     getStorage,
     ref,
@@ -169,7 +169,7 @@ export default {
             contact: "",
         });
 
-//get data to edit when the component is mounted
+        //get data to edit when the component is mounted
         onMounted(async () => {
             const res = await axios.get(
                 "https://online-pharmacy-project.herokuapp.com/api/services/" +
