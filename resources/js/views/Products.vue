@@ -159,7 +159,7 @@
                         :price="service.price"
                         :updated_at="service.updated_at"
                         :buttons="false"
-                         @view="viewProduct(product.id)"
+                         @view="viewProduct(service.id)"
                     />
                 </div>
             </div>
@@ -184,7 +184,7 @@ export default {
         //on mount get the products and services
         onMounted(() => {
             store.dispatch("products/fetchProcucts");
-            store.dispatch("sevices/fetchServices");
+            store.dispatch("services/fetchServices");
         });
         function getSearchedData() {
             state.itemName === "" ? (state.show = false) : (state.show = true);
