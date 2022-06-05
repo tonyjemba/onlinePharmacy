@@ -1,11 +1,11 @@
 
 <template>
-<footer class="bg-gray-300 w-full py-6 px-4 my-32">
+<footer class="bg-gray-200 text-center w-full py-6 px-4 my-32 mb-auto">
             <!-- marging just for display-->
         
-            <div class="flex items-center justify-between my-4">
-                <p class="text-blue-500">All rights reserved</p>
-                <p class="inline-flex text-blue-500 px-2 pt-6">
+            <div class=" my-4">
+               
+                <p class=" text-blue-500 ">
                     Built with
                     <svg
                         fill="#e53e3e"
