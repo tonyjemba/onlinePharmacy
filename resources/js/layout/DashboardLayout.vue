@@ -183,6 +183,23 @@
                         >
                             Token: {{ user.token }}
                         </div>
+                        <router-link to="/addMedicine">
+                            <div class="pt-4">
+                            <DisclosureButton
+                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                                >Add Medicine</DisclosureButton
+                            >
+                        </div>
+                        </router-link>
+                        
+                        <router-link to="/addService">
+                            <div class="pt-4">
+                            <DisclosureButton
+                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                                >Add Service</DisclosureButton
+                            >
+                        </div>
+                        </router-link>
 
                         <div class="pt-4">
                             <DisclosureButton
