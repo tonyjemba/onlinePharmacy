@@ -1,3 +1,6 @@
+<script setup>
+const author = "Tony Jemba."
+</script>
 
 <template>
 <footer class="bg-gray-100 w-full py-6  mb-auto">
@@ -18,7 +21,7 @@
                             stroke-width="2"
                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                         /></svg
-                    >by <span><a :href="`https://github.com/tonyjemba`" target="_blank"> Tony Jemba.</a></span>
+                    >by <span><a :href="`https://github.com/tonyjemba`" target="_blank"> {{ author }}</a></span>
                 </p>
                
             </div>
