@@ -1,4 +1,5 @@
 <script setup>
+// using the setup in the script
 const author = "Tony Jemba."
 </script>
 
