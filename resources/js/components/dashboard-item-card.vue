@@ -1,3 +1,25 @@
+<script>
+//using vueUse to change how time is displayed.
+import { useTimeAgo } from "@vueuse/core";
+
+export default {
+    props: {
+        product_name: String,
+        updated_at: String,
+        descprition: String,
+        price: String,
+        image_url: String,
+        buttons: Boolean,
+    },
+    setup(props) {
+        const timeAgo = useTimeAgo(props.updated_at);
+
+        return {
+            timeAgo,
+        };
+    },
+};
+</script>
 <template>
     <!-- component for dashboard item -->
     <div
@@ -48,25 +70,4 @@
     </div>
 </template>
 
-<script>
-//using vueUse to change how time is displayed.
-import { useTimeAgo } from "@vueuse/core";
 
-export default {
-    props: {
-        product_name: String,
-        updated_at: String,
-        descprition: String,
-        price: String,
-        image_url: String,
-        buttons: Boolean,
-    },
-    setup(props) {
-        const timeAgo = useTimeAgo(props.updated_at);
-
-        return {
-            timeAgo,
-        };
-    },
-};
-</script>
