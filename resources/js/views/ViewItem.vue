@@ -1,14 +1,8 @@
 <template>
-    <div
-        class="container w-full flex justify-center items-center text-sm md:text-base"
-    >
+    <div class="container w-full flex justify-center items-center text-sm md:text-base">
         <div class="w-11/12 sm:w-4/5 md:w-2/4 my-10 space-y-4">
             <div>
-                <img
-                    :src="state.imageUrl"
-                    class="object-cover shadow-lg h-64 sm:h-80 w-full"
-                    alt="product image"
-                />
+                <img :src="state.imageUrl" class="object-cover shadow-lg h-64 sm:h-80 w-full" alt="product image" />
             </div>
 
             <div class="flex w-full flex-row justify-between">
@@ -20,14 +14,10 @@
                 </div>
             </div>
             <div class="flex flex-row justify-between">
-                <div
-                    class="text-neutral-600 leading-tight tracking-tight font-bold"
-                >
+                <div class="text-neutral-600 leading-tight tracking-tight font-bold">
                     {{ state.name }}
                 </div>
-                <div
-                    class="text-neutral-600 leading-tight tracking-tight font-bold"
-                >
+                <div class="text-neutral-600 leading-tight tracking-tight font-bold">
                     UGX: {{ state.price }}
                 </div>
             </div>
@@ -38,8 +28,7 @@
                 {{ state.descprition }}
             </div>
             <div
-                class="flex w-full justify-end text-neutral-600 leading-tight tracking-tight font-bold hover:text-blue-600"
-            >
+                class="flex w-full justify-end text-neutral-600 leading-tight tracking-tight font-bold hover:text-blue-600">
                 <div>
                     Contact: {{ state.contact }}
                     <div></div>
@@ -77,7 +66,7 @@ export default {
         onMounted(async () => {
             const res = await axios.get(
                 "https://online-pharmacy-project.herokuapp.com/api/products/" +
-                    `${routeId}`
+                `${routeId}`
             );
             //update state on component mount
             state.name = res.data.product_name;

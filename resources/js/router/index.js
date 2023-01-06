@@ -91,7 +91,6 @@ router.beforeEach((to, from, next) => {
     
 else {
       //the loading state of the rout will be set to true  
-      
         next();
     }
 });

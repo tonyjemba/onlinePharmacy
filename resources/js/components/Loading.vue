@@ -1,10 +1,5 @@
 <template>
-    <Vue3Lottie
-        :animationData="loading"
-        :height="height"
-        :width="width"
-        :speed="1"
-    />
+    <Vue3Lottie :animationData="loading" :height="height" :width="width" :speed="1" />
 </template>
 
 <script>
