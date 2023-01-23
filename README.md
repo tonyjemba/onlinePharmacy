@@ -1,5 +1,5 @@
 
 ## Online Pharmacy
 
-This is an online Pharmacy store
+This is an online Pharmacy store(DEMO PROJECT)
 
