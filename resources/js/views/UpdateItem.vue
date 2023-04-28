@@ -110,8 +110,7 @@ export default {
 
         onMounted(async () => {
             const res = await axios.get(
-                "https://online-pharmacy-project.herokuapp.com/api/products/" +
-                `${routeId}`
+                `${process.env.MIX_APP_URL}/api/products/${routeId}`
             );
 
             state.product_name = res.data.product_name;

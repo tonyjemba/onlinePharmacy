@@ -33,7 +33,7 @@ const actions = {
         // making api request
         axios
             .post(
-                "https://online-pharmacy-project.herokuapp.com/api/logout",
+                `${process.env.MIX_APP_URL}/api/logout`,
                 email
             )
             .then((response) => {

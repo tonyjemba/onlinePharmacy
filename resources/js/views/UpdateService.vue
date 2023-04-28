@@ -111,8 +111,7 @@ export default {
         //get data to edit when the component is mounted
         onMounted(async () => {
             const res = await axios.get(
-                "https://online-pharmacy-project.herokuapp.com/api/services/" +
-                `${routeId}`
+                `${process.env.MIX_APP_URL}/api/services/${routeId}`
             );
 
             state.service_name = res.data.service_name;

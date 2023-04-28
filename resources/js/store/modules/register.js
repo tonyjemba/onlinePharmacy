@@ -9,6 +9,7 @@ const state = {
     registered: false,
     errorMessage2: "",
     msg: "",
+    appURL: "",
 };
 
 // mutations are operations that actually mutate the state.
@@ -38,6 +39,9 @@ const mutations = {
     Error(state, data) {
         state.errorMessage2 = data;
     },
+    SET_APP_URL(state,data){
+        state.appURL = data;
+    }
 };
 
 // actions are functions that cause side effects and can involve
@@ -48,10 +52,7 @@ const actions = {
         commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post(
-                "https://online-pharmacy-project.herokuapp.com/api/register",
-                payload
-            )
+            .post(`http://127.0.0.1:8000/api/register`, payload)
             .then((response) => {
                 commit("REG_DATA", response);
                 commit("MSG", response.data.message);

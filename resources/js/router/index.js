@@ -69,6 +69,7 @@ const routes = [
 
 const router = createRouter({
     history: createWebHistory(),
+    mode: "history",
     routes,
 });
 
@@ -90,7 +91,7 @@ router.beforeEach((to, from, next) => {
     }
     
 else {
-      //the loading state of the rout will be set to true  
+      //the loading state of the route will be set to true  
         next();
     }
 });

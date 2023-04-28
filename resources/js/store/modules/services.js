@@ -38,10 +38,7 @@ const actions = {
         commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post(
-                "https://online-pharmacy-project.herokuapp.com/api/services",
-                payload
-            )
+            .post(`${process.env.MIX_APP_URL}/api/services`, payload)
             .then(() => {
                 //on success push back to the dashboard
                 router.push("/dashboard");
@@ -53,7 +50,7 @@ const actions = {
     fetchServices({ commit, state }) {
         //making api request
         axios
-            .get("https://online-pharmacy-project.herokuapp.com/api/services")
+            .get(`${process.env.MIX_APP_URL}/api/services`)
             .then((res) => {
                 //Store data in vuex store
                 commit("STORESERVICES", res.data);
@@ -66,10 +63,7 @@ const actions = {
         router.push(`/editservice/${payload}`);
         //making api request to get product deatils to edit
         axios
-            .get(
-                "https://online-pharmacy-project.herokuapp.com/api/services/" +
-                    `${payload}`
-            )
+            .get(`${process.env.MIX_APP_URL}/api/services/${payload}`)
             .then((res) => {
                 //accessing data that needs to be edited
                 commit("EDITDATA", res.data);
@@ -81,10 +75,7 @@ const actions = {
     searchService({ commit, state }, payload) {
         //making api request to get product results
         axios
-            .get(
-                "https://online-pharmacy-project.herokuapp.com/api/searchServices/" +
-                    `${payload}`
-            )
+            .get(`${process.env.MIX_APP_URL}/api/searchServices/${payload}`)
             .then((res) => {
                 //accessing data that needs to be edited
                 commit("SEARCHDATA", res.data);
@@ -96,8 +87,7 @@ const actions = {
     updateService({ commit, state }, payload) {
         axios
             .put(
-                "https://online-pharmacy-project.herokuapp.com/api/services/" +
-                    `${payload.id}`,
+                `${process.env.MIX_APP_URL}/api/services/${payload.id}`,
                 payload,
                 payload.id
             )
@@ -111,10 +101,7 @@ const actions = {
     deleteService({ commit, state }, payload) {
         //making api request
         axios
-            .delete(
-                "https://online-pharmacy-project.herokuapp.com/api/services/" +
-                    `${payload}`
-            )
+            .delete(`${process.env.MIX_APP_URL}/api/services/${payload}`)
             .then(() => {
                 //refreshes currrent page
                 router.go();

@@ -4,12 +4,13 @@
             <div>
                 <div className="py-10">
                     <div>
-                        <div className="mb-5 text-center">
-                            <div
+                        <div className="mb-5 text-center w-full  flex justify-center cursor-pointer">
+                            <!-- <div
                                 className="mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
                                 <img id="image" alt="profile picture" className="object-cover w-full h-32 rounded-full"
                                     :src="image" />
-                            </div>
+                            </div> -->
+                            <ProfilePicture :width="'120px'" :height="'120px'"/>
                         </div>
                         <div className="mb-5">
                             <label className="font-bold mb-1 text-gray-700 block">Username</label>
@@ -44,7 +45,11 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import ProfilePicture from "../components/ProfilePicture.vue"
 export default {
+    components:{
+        ProfilePicture
+    },
     setup() {
         const store = useStore();
         return {

@@ -41,6 +41,8 @@ export default {
             const userId = ls.login.loginUser.user.id;
             store.dispatch("login/getProducts", { id: userId });
             store.dispatch("login/getServices", { id: userId });
+
+           
         });
         return {
             products: computed(() => store.state.login.myProducts),

@@ -10,6 +10,7 @@ const state = {
     islogged: false,
     routeLoading: false,
     errorMessage: "",
+    appURL: process.env.MIX_APP_URL,
 };
 
 // mutations are operations that actually mutate the state.
@@ -52,10 +53,7 @@ const actions = {
         commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post(
-                "https://online-pharmacy-project.herokuapp.com/api/login",
-                payload
-            )
+            .post(`/api/login`, payload)
             .then((response) => {
                 commit("LOGGED_DATA", response.data);
                 commit("ISLOGGED");
@@ -71,7 +69,7 @@ const actions = {
         //making api request
         axios
             .post(
-                "https://online-pharmacy-project.herokuapp.com/api/myProducts",
+                `/api/myProducts`,
                 payload
             )
             .then((response) => {
@@ -85,7 +83,7 @@ const actions = {
         //making api request
         axios
             .post(
-                "https://online-pharmacy-project.herokuapp.com/api/myServices",
+                `/api/myServices`,
                 payload
             )
             .then((response) => {

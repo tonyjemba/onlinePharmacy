@@ -36,14 +36,13 @@
                         <div class="ml-4 flex items-center md:ml-6">
                             <button
                                 type="button"
-                                class="bg-indigo-500 p-1 rounded-full text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                                class="bg-[#4F46E5] p-1 rounded-full text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-white"
                             >
                                 <span class="sr-only">Go Home</span>
                                 <router-link to="/">
-                                    <HomeIcon
-                                        class="h-6 w-6"
-                                        aria-hidden="true"
-                                    />
+                                    <div class="rounded-full bg-[#4F46E5]">
+                                            <IconHome :width="'25px'" :height="'25px'" />
+                                        </div>
                                 </router-link>
                             </button>
 
@@ -51,16 +50,17 @@
                             <Menu as="div" class="ml-6 relative">
                                 <div>
                                     <MenuButton
-                                        class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                                        class="max-w-xs bg-slate-50 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-white"
                                     >
                                         <span class="sr-only"
                                             >Open user menu</span
                                         >
-                                        <img
+                                        <!-- <img
                                             class="h-8 w-8 rounded-full"
                                             :src="imageUrl"
                                             alt=""
-                                        />
+                                        /> -->
+                                            <ProfilePicture :height="'32px'" :width="'32px'"/>
                                     </MenuButton>
                                 </div>
                                 <transition
@@ -241,6 +241,8 @@ import {
     MenuItems,
 } from "@headlessui/vue";
 import { HomeIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
+import ProfilePicture from "../components/ProfilePicture.vue"
+import IconHome from "../components/IconHome.vue";
 import Icon from "../components/Icon.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
@@ -271,6 +273,8 @@ export default {
         MenuIcon,
         XIcon,
         Icon,
+        ProfilePicture,
+        IconHome
     },
     setup() {
         const store = useStore();

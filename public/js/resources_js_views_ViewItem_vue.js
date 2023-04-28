@@ -152,13 +152,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ViewItem_vue_vue_type_template_id_7f9ae777__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ViewItem.vue?vue&type=template&id=7f9ae777 */ "./resources/js/views/ViewItem.vue?vue&type=template&id=7f9ae777");
 /* harmony import */ var _ViewItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ViewItem.vue?vue&type=script&lang=js */ "./resources/js/views/ViewItem.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_jemyk_Desktop_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_tony_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_jemyk_Desktop_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ViewItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ViewItem_vue_vue_type_template_id_7f9ae777__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/ViewItem.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_tony_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ViewItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ViewItem_vue_vue_type_template_id_7f9ae777__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/ViewItem.vue"]])
 /* hot reload */
 if (false) {}
 
