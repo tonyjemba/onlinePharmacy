@@ -8,6 +8,7 @@ const state = {
     editProduct: {},
     searched: [],
     error: "",
+    uploadedProductImage: null
 };
 
 // mutations are operations that actually mutate the state.
@@ -16,6 +17,10 @@ const state = {
 // mutations must be synchronous and can be recorded by plugins
 // for debugging purposes.
 const mutations = {
+    //storing the uploaded product image to the store
+    storeProductImage(state,data){
+        state.uploadedProductImage = data; 
+    },
     STOREPRODUCTS(state, data) {
         state.products = data;
     },
@@ -37,9 +42,26 @@ const actions = {
         //displays a loading indicator
         commit("ROUTE_LOADING", true);
         //making api request
+        // puting data in a formdata object
+          const formData = new FormData();
+          formData.append("productImage", payload.product_image);
+          formData.append("user_id", payload.user_id);
+          formData.append("product_name", payload.product_name);
+          formData.append("Pharmacy_name", payload.phamacy_name);
+          formData.append("location", payload.location);
+          formData.append("price", payload.price);
+          formData.append("disease", payload.disease);
+          formData.append("descprition", payload.description);
+          formData.append("contact", payload.contact);
+
         axios
-            .post(`${process.env.MIX_APP_URL}/api/products`, payload)
-            .then(() => {
+            .post(`${process.env.MIX_APP_URL}/api/products`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then((response) => {
+                console.log(response);
                 //on success push back to the dashboard
                 router.push("/dashboard");
             })

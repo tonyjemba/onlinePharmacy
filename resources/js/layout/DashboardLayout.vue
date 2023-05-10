@@ -167,7 +167,7 @@
                             class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                         >
                             <router-link to="/">
-                                <HomeIcon class="h-6 w-6" aria-hidden="true" />
+                                <HomeIcon class="h-6 w-6 cursor-pointer" aria-hidden="true" />
                             </router-link>
                         </button>
                     </div>
@@ -227,6 +227,9 @@
                 <!-- /End replace -->
             </div>
         </main>
+        <footer>
+            <the-footer/>
+        </footer>
     </div>
 </template>
 
@@ -246,6 +249,7 @@ import IconHome from "../components/IconHome.vue";
 import Icon from "../components/Icon.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
+import TheFooter from "../components/TheFooter.vue";
 
 const navigation = [
     { name: "Dashboard", route: "/dashboard" },
@@ -274,7 +278,8 @@ export default {
         XIcon,
         Icon,
         ProfilePicture,
-        IconHome
+        IconHome,
+        TheFooter
     },
     setup() {
         const store = useStore();

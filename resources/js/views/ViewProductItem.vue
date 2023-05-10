@@ -76,7 +76,7 @@ export default {
             state.location = res.data.location;
             state.price = res.data.price;
             state.disease = res.data.disease;
-            state.descprition = res.data.description;
+            state.descprition = res.data.descprition;
             state.contact = res.data.contact;
             state.imageUrl = res.data.image_url;
             state.date = useTimeAgo(res.data.updated_at);

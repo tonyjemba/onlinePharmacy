@@ -20,51 +20,56 @@ const routes = [
             {
                 path: "/dashboard",
                 name: "Dashboard",
-                component: ()=> import("../views/Dashboard.vue"),
+                component: () => import("../views/Dashboard.vue"),
             },
             {
                 path: "/addMedicine",
                 name: "AddMedicine",
-                component: ()=> import ("../views/AddMedicine.vue"),
+                component: () => import("../views/AddMedicine.vue"),
             },
             {
                 path: "/addService",
                 name: "AddService",
-                component:()=> import("../views/AddService.vue"),
+                component: () => import("../views/AddService.vue"),
             },
             {
                 path: "/myprofile",
                 name: "MyProfile",
-                component: ()=> import("../views/MyProfile.vue"),
+                component: () => import("../views/MyProfile.vue"),
             },
             {
                 path: "/editproduct/:id",
                 name: "EditItem",
-                component: ()=> import("../views/UpdateItem.vue"),
+                component: () => import("../views/UpdateItem.vue"),
             },
             {
                 path: "/editservice/:id",
                 name: "EditService",
-                component: ()=> import("../views/UpdateService.vue"),
-            }
+                component: () => import("../views/UpdateService.vue"),
+            },
         ],
     },
     {
         path: "/login",
         name: "Login",
-        component:  ()=> import("../views/Login.vue"),
+        component: () => import("../views/Login.vue"),
         meta: {},
     },
     {
         path: "/register",
         name: "Register",
-        component: ()=> import("../views/Register.vue"),
+        component: () => import("../views/Register.vue"),
     },
     {
-        path:"/view/:id",
-        name:"ViewProduct",
-        component: ()=> import("../views/ViewItem.vue")
-    }
+        path: "/view-product/:id",
+        name: "ViewProduct",
+        component: () => import("../views/ViewProductItem.vue"),
+    },
+    {
+        path: "/view-service/:id",
+        name: "ViewService",
+        component: () => import("../views/ViewServiceItem.vue"),
+    },
 ];
 
 const router = createRouter({

@@ -8,6 +8,7 @@ const state = {
     editService: {},
     searched: [],
     error: "",
+    uploadedServiceImage: null,
 };
 
 // mutations are operations that actually mutate the state.
@@ -16,6 +17,9 @@ const state = {
 // mutations must be synchronous and can be recorded by plugins
 // for debugging purposes.
 const mutations = {
+    storeServiceImage(state, data){
+        state.uploadedServiceImage = data; 
+    },
     STORESERVICES(state, data) {
         state.services = data;
     },
@@ -36,9 +40,25 @@ const actions = {
     addService({ commit, state }, payload) {
         //displays a loading indicator
         commit("ROUTE_LOADING", true);
+        // puting data in a formdata object
+        const formData = new FormData();
+        formData.append("serviceImage", payload.service_image);
+        formData.append("user_id", payload.user_id);
+        formData.append("service_name", payload.service_name);
+        formData.append("Pharmacy_name", payload.phamacy_name);
+        formData.append("location", payload.location);
+        formData.append("price", payload.price);
+        formData.append("disease", payload.disease);
+        formData.append("descprition", payload.description);
+        formData.append("contact", payload.contact);
+
         //making api request
         axios
-            .post(`${process.env.MIX_APP_URL}/api/services`, payload)
+            .post(`${process.env.MIX_APP_URL}/api/services`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
             .then(() => {
                 //on success push back to the dashboard
                 router.push("/dashboard");

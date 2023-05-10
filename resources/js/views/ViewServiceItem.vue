@@ -67,16 +67,16 @@ export default {
         //get data to edit when the component is mounted
         onMounted(async () => {
             const res = await axios.get(
-                `${process.env.MIX_APP_URL}/api/products/${routeId}`
+                `${process.env.MIX_APP_URL}/api/services/${routeId}`
             );
             console.log(res);
             //update state on component mount
-            state.name = res.data.product_name;
+            state.name = res.data.service_name;
             state.Pharmacy_name = res.data.Pharmacy_name;
             state.location = res.data.location;
             state.price = res.data.price;
             state.disease = res.data.disease;
-            state.descprition = res.data.description;
+            state.descprition = res.data.descprition;
             state.contact = res.data.contact;
             state.imageUrl = res.data.image_url;
             state.date = useTimeAgo(res.data.updated_at);

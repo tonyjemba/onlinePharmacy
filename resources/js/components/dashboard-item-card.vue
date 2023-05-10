@@ -7,15 +7,18 @@ export default {
         product_name: String,
         updated_at: String,
         descprition: String,
-        price: String,
+        price: Number,
         image_url: String,
         buttons: Boolean,
     },
     setup(props) {
         const timeAgo = useTimeAgo(props.updated_at);
+        const appUrl =  process.env.MIX_APP_URL;
+        const imageUrl = appUrl+props.image_url;
 
         return {
             timeAgo,
+            imageUrl
         };
     },
 };
@@ -23,12 +26,12 @@ export default {
 <template>
     <!-- component for dashboard item -->
     <div class="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
-        <img class="h-56 lg:h-60 w-full object-cover" :src="image_url" alt="" />
+        <img class="h-56 lg:h-60 w-full object-cover cursor-pointer" :src="imageUrl" alt="" @click="$emit('view')"/>
         <div class="p-3">
-            <span class="text-sm text-primary">Last Update: {{ timeAgo }}
+            <span class="text-sm text-primary">Last Updated: {{ timeAgo }}
             </span>
 
-            <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
+            <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2 cursor-pointer" @click="$emit('view')">
                 {{ product_name }}
             </h3>
             <p class="paragraph-normal text-gray-600 line-clamp-2">

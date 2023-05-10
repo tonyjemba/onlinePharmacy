@@ -1,156 +1,200 @@
 <template>
-    <form @submit.prevent="addProduct" method="POST">
-        <div className="bg-indigo-50 min-h-screen md:px-20 pt-6">
-            <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
-                <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">
-                    ADD PRODUCT
-                </h1>
-                <div className="space-y-4">
-                    <div>
-                        <label htmlFor="productName" className="text-lx font-serif">Product Name:</label>
-                        <input type="text" placeholder="Medicine Name" id="productName"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.product_name" />
+    <div className="bg-indigo-50 min-h-screen md:px-20 pt-6 pb-12">
+        <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
+            <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">
+                ADD PRODUCT
+            </h1>
+            <VeeForm
+                v-slot="{ handleSubmit }"
+                :validation-schema="schema"
+                as="div"
+            >
+                <form
+                    @submit="handleSubmit($event, onSubmit)"
+                    class="flex flex-col gap-y-5"
+                >
+                    <div class="flex flex-col">
+                        <div>
+                            <label for="product_name" class="font-bold"
+                                >Product Name</label
+                            >
+                        </div>
+                        <div>
+                            <Field
+                                name="product_name"
+                                type="text"
+                                class="rounded w-4/5"
+                            />
+                        </div>
+                        <div class="text-red-500 text-sm">
+                            <ErrorMessage name="product_name" />
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="pharmacyname" className="text-lx font-serif">Pharmacy Name:</label>
-                        <input type="text" placeholder="Pharmacy" id="pharmacyname"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.Pharmacy_name" />
+                    <div class="flex flex-col">
+                        <div>
+                            <label for="phamacy_name" class="font-bold"
+                                >Pharmacy Name</label
+                            >
+                        </div>
+                        <div>
+                            <Field
+                                name="phamacy_name"
+                                type="text"
+                                class="rounded w-4/5"
+                            />
+                        </div>
+                        <div class="text-red-500 text-sm">
+                            <ErrorMessage name="phamacy_name" />
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="location" className="text-lx font-serif">Location:</label>
-                        <input type="text" placeholder="Location" id="location"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.location" />
+                    <div class="flex flex-col">
+                        <div>
+                            <label for="location" class="font-bold"
+                                >Location</label
+                            >
+                        </div>
+                        <div>
+                            <Field
+                                name="location"
+                                type="text"
+                                class="rounded w-4/5"
+                            />
+                        </div>
+                        <div class="text-red-500 text-sm">
+                            <ErrorMessage name="location" />
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="price" className="text-lx font-serif">Price:</label>
-                        <input type="text" placeholder="UGX" id="price"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.price" />
+                    <div class="flex flex-col">
+                        <div>
+                            <label for="price" class="font-bold">Price</label>
+                        </div>
+                        <div>
+                            <Field
+                                name="price"
+                                type="text"
+                                class="rounded w-4/5"
+                            />
+                        </div>
+                        <div class="text-red-500 text-sm">
+                            <ErrorMessage name="price" />
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="disease" className="text-lx font-serif">Disease:</label>
-                        <input type="text" placeholder="" id="disease"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.disease" />
+                    <div class="flex flex-col">
+                        <div>
+                            <label for="disease" class="font-bold"
+                                >Disease</label
+                            >
+                        </div>
+                        <div>
+                            <Field
+                                name="disease"
+                                type="text"
+                                class="rounded w-4/5"
+                            />
+                        </div>
+                        <div class="text-red-500 text-sm">
+                            <ErrorMessage name="disease" />
+                        </div>
                     </div>
-                    <!-- add contact for your drug shop -->
-                    <div>
-                        <label htmlFor="contact" className="text-lx font-serif">Contact:</label>
-                        <input type="text" placeholder="Phone Number" id="contact"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md"
-                            v-model="productData.contact" />
+                    <div class="flex flex-col">
+                        <div>
+                            <label for="contact" class="font-bold"
+                                >Contact</label
+                            >
+                        </div>
+                        <div>
+                            <Field
+                                name="contact"
+                                type="text"
+                                class="rounded w-4/5"
+                            />
+                        </div>
+                        <div class="text-red-500 text-sm">
+                            <ErrorMessage name="contact" />
+                        </div>
                     </div>
-                    <!-- add image for the product -->
-                    <div>
-                        <label className="text-lx font-serif">Add image:</label>
-                        <input type="file" accept="image/*" @change="previewImage"
-                            className="ml-2 outline-none py-1 px-2 text-md border-2 rounded-md" />
+                    <div class="flex flex-col">
+                        <div>
+                            <label for="product_image" class="font-bold"
+                                >Add Image</label
+                            >
+                        </div>
+                        <div>
+                            <Field
+                                name="product_image"
+                                v-slot="{ handleChange }"
+                            >
+                                <input type="file" @change="handleChange" />
+                            </Field>
+                        </div>
+                        <div class="text-red-500 text-sm">
+                            <ErrorMessage name="product_image" />
+                        </div>
                     </div>
-                    <!-- image preview section -->
-                    <div v-if="state.imageData">
-                        <img height="268" width="356" :src="state.imageData" />
-                        <br />
-                        <button @click.prevent="upload(state.imageName)"
-                            className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">
-                            {{ state.btnState }}
-                        </button>
-                    </div>
-                    <!-- prescriptions for the medicine -->
-                    <div>
-                        <label htmlFor="description" className="block mb-2 text-lg font-serif">Description:</label>
-                        <textarea id="description" cols="{30}" rows="{10}" placeholder="Talk more about the Product.."
-                            className="w-full font-serif
-                        p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" v-model="productData.descprition" />
+                    <div class="flex flex-col">
+                        <div>
+                            <label for="description" class="font-bold"
+                                >Description</label
+                            >
+                        </div>
+                        <div>
+                            <Field
+                                name="description"
+                                as="textarea"
+                                type="text"
+                                class="rounded w-4/5"
+                            />
+                        </div>
+                        <div class="text-red-500 text-sm">
+                            <ErrorMessage name="description" />
+                        </div>
                     </div>
 
                     <button
-                        className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">
-                        ADD MEDICINE
+                        className=" px-6 py-2 mt-10 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
+                    >
+                        Add Product
                     </button>
-                </div>
-            </div>
+                </form>
+            </VeeForm>
         </div>
-    </form>
+    </div>
 </template>
-<script>
-import { reactive } from "vue";
-import {
-    getStorage,
-    ref,
-    uploadString,
-    getDownloadURL,
-} from "firebase/storage";
-import { useStore } from "vuex";
-import { ref as vueref, computed } from "vue";
 
-export default {
-    setup() {
-        const store = useStore();
-        const state = reactive({
-            imageData: null,
-            imageUrl: "",
-            imageName: null,
-            btnState: "upload",
-        });
-        //logged user is stored in localstorage, we get his id
+<script setup>
+import { Form as VeeForm, Field, ErrorMessage } from "vee-validate";
+import * as yup from "yup";
+import { useStore } from "vuex";
+
+//vuex store
+const store = useStore();
+
+  //logged user is stored in localstorage, we get his id
         const ls = JSON.parse(localStorage.getItem("vuex"));
         const userId = ls.login.loginUser.user.id;
-        const storage = getStorage();
-        const productData = vueref({
-            product_name: "",
-            Pharmacy_name: "",
-            location: "",
-            price: "",
-            disease: "",
-            descprition: "",
-            contact: "",
-        });
 
-        function previewImage(event) {
-            const image = event.target.files[0];
-            state.imageName = image.name;
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = (e) => {
-                state.imageData = e.target.result;
-            };
-        }
-        //uploading function
-        function upload(imageName) {
-            state.btnState = "uploading";
-            uploadString(
-                ref(storage, `products/${imageName}`),
-                state.imageData,
-                "data_url"
-            )
-                .then((snapshot) => {
-                    console.log(snapshot);
-                })
-                .then(() => {
-                    state.btnState = "uploaded";
-                    getDownloadURL(ref(storage, `products/${imageName}`)).then(
-                        (url) => {
-                            state.imageUrl = url;
-                        }
-                    );
-                });
-        }
+const schema = yup.object({
+    product_name: yup.string().required('The Product Name is a required field'),
+    phamacy_name: yup.string().required('The Pharmacy Name is a required field'),
+    location: yup.string().required('The Location is a required field'),
+    price: yup.number().required('The Price is a required field').positive().integer(),
+    disease: yup.string().required('The Disease is a required field'),
+    contact: yup.string('The  Contact is a required field')
+    .matches(/^\+?\d{10,20}$/, 'Please enter a valid Phone number')
+    .required('The Phone number is required'),
+    product_image: yup
+        .mixed()
+        .required("The Product Image is required")
+        .test("fileSize", "File too large", (value) => {
+            return value && value.size <= 10000000; //file should be less or equal to 10MB
+        }),
+    description: yup.string().required('The Product Description is a required field'),
+});
 
-        return {
-            previewImage,
-            upload,
-            state,
-            productData,
-            addProduct: () =>
-                store.dispatch("products/addProduct", {
-                    image_url: state.imageUrl,
-                    user_id: userId,
-                    ...productData.value,
-                }),
-        };
-    },
-};
+
+const onSubmit = (values) => {
+    // Submit values to API...
+    store.dispatch("products/addProduct",{...values, user_id: userId,})
+
+}
 </script>

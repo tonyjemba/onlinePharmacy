@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Services;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServicesController extends Controller
 {
@@ -25,19 +26,33 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'service_name' => 'required',
-            'Pharmacy_name' => 'required',
-            'location' => 'required',
-            'price' => 'required',
-            'disease' => 'required',
-            'descprition' => 'required',
-            'contact' => 'required',
-            'image_url' => 'required',
-            'user_id' => 'required|exists:users,id'
+        //request details
+        $requestDetails = [];
+
+        //get the service details from the request and push them into the request details array
+        foreach ($request->all() as $key => $value) {
+            $requestDetails[$key] = $value;
+        }
+
+        //save the service image in storage and return its path then generate a url from the path
+        $serviceImageFile = $request->file('serviceImage');
+        $serviceImagePath = $serviceImageFile->store('public/service_images');
+        $serviceImageUrl = Storage::url($serviceImagePath);
+
+        //store the service details in the database
+        Services::create([
+            'service_name' => $requestDetails['service_name'],
+            'Pharmacy_name' => $requestDetails['Pharmacy_name'],
+            'location' => $requestDetails['location'],
+            'price' => $requestDetails['price'],
+            'disease' => $requestDetails['disease'],
+            'descprition' => $requestDetails['descprition'],
+            'contact' => $requestDetails['contact'],
+            'image_url' => $serviceImageUrl,
+            'user_id' => $requestDetails['user_id'],
         ]);
 
-        return Services::create($request->all());
+        return response()->json('success'); 
     }
 
     /**

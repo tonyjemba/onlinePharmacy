@@ -3717,7 +3717,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default().get("https://online-pharmacy-project.herokuapp.com/api/products/" + "".concat(routeId));
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat("http://127.0.0.1:8000", "/api/products/").concat(routeId));
           case 2:
             res = _context.sent;
             state.product_name = res.data.product_name;

@@ -4,10 +4,10 @@ const author = "Tony Jemba."
 </script>
 
 <template>
-    <footer class="bg-gray-100 w-full py-6  bottom-0 fixed">
+    <footer class="bg-gray-100 w-full py-6  mt-auto ">
         <!-- marging just for display-->
 
-        <div class="flex items-center w-full justify-center  ">
+        <div class="flex items-center w-full justify-center ">
             <p class="inline-flex text-blue-500  pl-6">
               Demo Project Built with
                 <svg fill="#e53e3e" viewBox="0 0 24 24" class="w-5 h-5 mx-1 pt-px text-red-600" stroke="currentColor">

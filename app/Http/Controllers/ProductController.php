@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -25,19 +26,33 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'product_name' => 'required',
-            'Pharmacy_name' => 'required',
-            'location' => 'required',
-            'price' => 'required',
-            'disease' => 'required',
-            'descprition' => 'required',
-            'contact' => 'required',
-            'image_url' => 'required',
-            'user_id' => 'required|exists:users,id'
+        //request details
+        $requestDetails = [];
+
+        //get the product details from the request and push them into the request details array
+        foreach ($request->all() as $key => $value) {
+            $requestDetails[$key] = $value;
+        }
+       
+        //save the product image in storage and return its path then generate a url from the path
+        $productImageFile = $request->file('productImage');
+        $productImagePath = $productImageFile->store('public/product_images');
+        $productImageUrl = Storage::url($productImagePath);
+
+        //store the product details in the database
+        Product::create([
+            'product_name' => $requestDetails['product_name'],
+            'Pharmacy_name' => $requestDetails['Pharmacy_name'] ,
+            'location' => $requestDetails['location'],
+            'price' => $requestDetails['price'] ,
+            'disease' => $requestDetails['disease'] ,
+            'descprition' => $requestDetails['descprition'],
+            'contact' => $requestDetails['contact'],
+            'image_url' => $productImageUrl,
+            'user_id' => $requestDetails['user_id'],
         ]);
 
-        return Product::create($request->all());
+        return response()->json('success');   
     }
 
     /**

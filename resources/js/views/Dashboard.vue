@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div>
-            <h1 class="pt-4 text-1xl md:text-2xl text-black">My products</h1>
+        <div v-if="products.length != 0">
+            <h1 class="pt-4 text-1xl md:text-2xl text-black" >My products</h1>
 
             <div class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10">
                 <div v-for="product in products" :key="product.id">
@@ -11,8 +11,8 @@
                 </div>
             </div>
         </div>
-        <div>
-            <h1 class="text-1xl md:text-2xl text-black">My services</h1>
+        <div v-if="services.length != 0">
+            <h1 class="text-1xl md:text-2xl text-black" >My services</h1>
             <div class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10">
                 <div v-for="service in services" :key="service.id">
                     <DashboardItemCard :product_name="service.service_name" :descprition="service.descprition"
@@ -21,6 +21,9 @@
                         @edit="editService(service.id)" />
                 </div>
             </div>
+        </div>
+        <div class=" w-full h-[28rem] flex justify-center " v-if="products.length == 0 && services.length == 0">
+            <div class="font-bold text-slate-500">You dont have any Products :)</div>
         </div>
     </div>
 </template>
