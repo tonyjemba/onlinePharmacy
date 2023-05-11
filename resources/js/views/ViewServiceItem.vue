@@ -24,7 +24,7 @@
             <div class="text-neutral-600 font-light">
                 {{ state.Pharmacy_name }}
             </div>
-            <div class="text-neutral-600 font-light">
+            <div class="text-neutral-600 font-light text-lg ">
                 {{ state.descprition }}
             </div>
             <div

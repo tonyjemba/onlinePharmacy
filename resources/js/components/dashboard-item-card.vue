@@ -34,7 +34,7 @@ export default {
             <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2 cursor-pointer" @click="$emit('view')">
                 {{ product_name }}
             </h3>
-            <p class="paragraph-normal text-gray-600 line-clamp-2">
+            <p class="paragraph-normal text-gray-600 line-clamp-1">
                 {{ descprition }}
             </p>
             <div class="w-full flex flex-row justify-between mt-3">

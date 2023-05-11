@@ -6,6 +6,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use function PHPUnit\Framework\isNull;
+
 class ProductController extends Controller
 {
     /**
@@ -73,14 +75,38 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateProduct(Request $request)
     {
+        //request details
+        $requestDetails = [];
 
-        $product = Product::find($id);
+        //get the product details from the request and push them into the request details array
+        foreach ($request->all() as $key => $value) {
+            $requestDetails[$key] = $value;
+        }
+         $product = Product::find($requestDetails['id']);
 
-        $product->update($request->all());
+        $product->product_name = $requestDetails['product_name'];
+        $product->Pharmacy_name = $requestDetails['Pharmacy_name'];
+        $product->location = $requestDetails['location'];
+        $product->price = $requestDetails['price'] ;
+        $product->disease = $requestDetails['disease'] ;
+        $product->descprition = $requestDetails['descprition'];
+        $product->contact = $requestDetails['contact'];
+        $product->image_url = $requestDetails['image_url'];
 
-        return $product;
+        if ($requestDetails["productImage"] != "null") {
+            //save the new product image in storage and return its path then generate a url from the path
+            $productImageFile = $request->file('productImage');
+            $productImagePath = $productImageFile->store('public/product_images');
+            $productImageUrl = Storage::url($productImagePath);
+            $product->image_url = $productImageUrl;
+        }
+       $product->save();
+      
+
+
+        return response()->json($product);
     }
 
     /**

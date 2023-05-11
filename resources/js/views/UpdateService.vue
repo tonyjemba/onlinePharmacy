@@ -1,6 +1,11 @@
 <template>
     <form @submit.prevent="updateService" method="POST">
         <div className="bg-indigo-50 min-h-screen md:px-20 pt-6">
+             <div>
+                <router-link to="/dashboard">
+                        <IconBack :width="'30px'" :height="'25px'" class="cursor-pointer"/>
+                </router-link>
+            </div>
             <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
                 <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">
                     Edit
@@ -53,10 +58,11 @@
                     <div v-if="state.imageData">
                         <img height="268" width="356" :src="state.imageData" />
                         <br />
-                        <button @click.prevent="upload(state.imageName)"
-                            className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">
-                            {{ state.btnState }}
-                        </button>
+                        
+                    </div>
+                    <div v-else>
+                        <img height="268" width="356" :src="`${state.imageUrl}`" />
+                        <br />
                     </div>
                     <!-- prescriptions for the medicine -->
                     <div>
@@ -76,17 +82,16 @@
 </template>
 <script>
 import { onMounted, reactive } from "vue";
-import {
-    getStorage,
-    ref,
-    uploadString,
-    getDownloadURL,
-} from "firebase/storage";
+
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import axios from "axios";
+import IconBack from "../components/IconBack.vue"
+
 
 export default {
+    components:{IconBack},
+
     setup() {
         const store = useStore();
         const route = useRoute();
@@ -106,6 +111,8 @@ export default {
             disease: "",
             descprition: "",
             contact: "",
+            imageFile: null
+
         });
 
         //get data to edit when the component is mounted
@@ -124,10 +131,10 @@ export default {
             state.imageUrl = res.data.image_url;
         });
 
-        const storage = getStorage();
 
         function previewImage(event) {
             const image = event.target.files[0];
+            state.imageFile = image
             state.imageName = image.name;
             const reader = new FileReader();
             reader.readAsDataURL(image);
@@ -135,30 +142,9 @@ export default {
                 state.imageData = e.target.result;
             };
         }
-        //uploading function
-        function upload(imageName) {
-            state.btnState = "uploding";
-            uploadString(
-                ref(storage, `products/${imageName}`),
-                state.imageData,
-                "data_url"
-            )
-                .then((snapshot) => {
-                    console.log(snapshot);
-                })
-                .then(() => {
-                    state.btnState = "uploaded";
-                    getDownloadURL(ref(storage, `products/${imageName}`)).then(
-                        (url) => {
-                            state.imageUrl = url;
-                        }
-                    );
-                });
-        }
 
         return {
             previewImage,
-            upload,
             state,
             //edit the product
             updateService: () =>
@@ -172,6 +158,7 @@ export default {
                     descprition: state.descprition,
                     contact: state.contact,
                     image_url: state.imageUrl,
+                    imageFile:state.imageFile
                 }),
         };
     },

@@ -109,16 +109,39 @@ const actions = {
             });
     },
     updateProduct({ commit, state }, payload) {
+        // puting data in a formdata object
+        const formData = new FormData();
+        //updated image file
+        formData.append("productImage", payload.imageFile);
+        
+        formData.append("product_name", payload.product_name);
+        formData.append("Pharmacy_name", payload.Pharmacy_name);
+        formData.append("location", payload.location);
+        formData.append("price", payload.price);
+        formData.append("disease", payload.disease);
+        formData.append("descprition", payload.descprition);
+        formData.append("contact", payload.contact);
+        formData.append("image_url", payload.image_url);
+        formData.append("id",payload.id);
+        
         axios
-            .put(
-                `${process.env.MIX_APP_URL}/api/products/${payload.id}`,
-                payload,
-                payload.id
+            .post(
+                `${process.env.MIX_APP_URL}/api/update-product`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                }
             )
             .then((res) => {
-                router.push("/dashboard");
+                 router.push("/dashboard").then(()=>{
+                    //refresh the path to see the latest changes
+                  window.location.reload();
+                 });
             })
             .catch((error) => {
+
                 console.log("ERROR", error.response.data.message);
             });
     },

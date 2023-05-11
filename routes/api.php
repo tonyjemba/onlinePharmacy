@@ -37,6 +37,11 @@ Route::resource('products', ProductController::class);
 //Services route
 Route::resource('services', ServicesController::class);
 
+//updating the product
+Route::post('update-product',[ ProductController::class, 'updateProduct']);
+
+//updating the product
+Route::post('update-service', [ServicesController::class, 'updateService']);
 
 //protected routes group (post products, and services)
 Route::group(['middleware' => ['auth:sanctum']], function(){

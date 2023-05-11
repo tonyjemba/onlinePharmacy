@@ -1,5 +1,10 @@
 <template>
     <div className="bg-indigo-50 min-h-screen md:px-20 pt-6 pb-12">
+        <div>
+                <router-link to="/dashboard">
+                        <IconBack :width="'30px'" :height="'25px'" class="cursor-pointer"/>
+                </router-link>
+            </div>
         <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
             <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">
                 ADD PRODUCT
@@ -165,6 +170,8 @@
 import { Form as VeeForm, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import { useStore } from "vuex";
+import IconBack from "../components/IconBack.vue"
+
 
 //vuex store
 const store = useStore();

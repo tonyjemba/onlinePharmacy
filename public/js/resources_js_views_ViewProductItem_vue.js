@@ -113,7 +113,7 @@ var _hoisted_10 = {
   "class": "text-neutral-600 font-light"
 };
 var _hoisted_11 = {
-  "class": "text-neutral-600 font-light"
+  "class": "text-neutral-600 font-light text-lg"
 };
 var _hoisted_12 = {
   "class": "flex w-full justify-end text-neutral-600 leading-tight tracking-tight font-bold hover:text-blue-600"

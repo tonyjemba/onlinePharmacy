@@ -73,13 +73,39 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateService(Request $request)
     {
-        $service = Services::find($id);
+        //request details
+        $requestDetails = [];
 
-        $service->update($request->all());
+        //get the product details from the request and push them into the request details array
+        foreach ($request->all() as $key => $value) {
+            $requestDetails[$key] = $value;
+        }
+        $product = Services::find($requestDetails['id']);
 
-        return $service;
+        $product->service_name = $requestDetails['service_name'];
+        $product->Pharmacy_name = $requestDetails['Pharmacy_name'];
+        $product->location = $requestDetails['location'];
+        $product->price = $requestDetails['price'];
+        $product->disease = $requestDetails['disease'];
+        $product->descprition = $requestDetails['descprition'];
+        $product->contact = $requestDetails['contact'];
+        $product->image_url = $requestDetails['image_url'];
+
+        if ($requestDetails["productImage"] != "null") {
+            //save the new product image in storage and return its path then generate a url from the path
+            $productImageFile = $request->file('productImage');
+            $productImagePath = $productImageFile->store('public/service_images');
+            $productImageUrl = Storage::url($productImagePath);
+            $product->image_url = $productImageUrl;
+        }
+        $product->save();
+
+
+
+        return response()->json($request);
+    
     }
 
     /**

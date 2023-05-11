@@ -22824,7 +22824,7 @@ var _hoisted_4 = {
   "class": "text-sm text-primary"
 };
 var _hoisted_5 = {
-  "class": "paragraph-normal text-gray-600 line-clamp-2"
+  "class": "paragraph-normal text-gray-600 line-clamp-1"
 };
 var _hoisted_6 = {
   "class": "w-full flex flex-row justify-between mt-3"
@@ -24324,8 +24324,28 @@ var actions = {
   updateProduct: function updateProduct(_ref5, payload) {
     var commit = _ref5.commit,
       state = _ref5.state;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().put("".concat("http://127.0.0.1:8000", "/api/products/").concat(payload.id), payload, payload.id).then(function (res) {
-      _router_index__WEBPACK_IMPORTED_MODULE_1__["default"].push("/dashboard");
+    // puting data in a formdata object
+    var formData = new FormData();
+    //updated image file
+    formData.append("productImage", payload.imageFile);
+    formData.append("product_name", payload.product_name);
+    formData.append("Pharmacy_name", payload.Pharmacy_name);
+    formData.append("location", payload.location);
+    formData.append("price", payload.price);
+    formData.append("disease", payload.disease);
+    formData.append("descprition", payload.descprition);
+    formData.append("contact", payload.contact);
+    formData.append("image_url", payload.image_url);
+    formData.append("id", payload.id);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat("http://127.0.0.1:8000", "/api/update-product"), formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(function (res) {
+      _router_index__WEBPACK_IMPORTED_MODULE_1__["default"].push("/dashboard").then(function () {
+        //refresh the path to see the latest changes
+        window.location.reload();
+      });
     })["catch"](function (error) {
       console.log("ERROR", error.response.data.message);
     });
@@ -24580,8 +24600,28 @@ var actions = {
   updateService: function updateService(_ref5, payload) {
     var commit = _ref5.commit,
       state = _ref5.state;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().put("".concat("http://127.0.0.1:8000", "/api/services/").concat(payload.id), payload, payload.id).then(function (res) {
-      _router_index__WEBPACK_IMPORTED_MODULE_1__["default"].push("/dashboard");
+    // puting data in a formdata object
+    var formData = new FormData();
+    //updated image
+    formData.append("productImage", payload.imageFile);
+    formData.append("service_name", payload.service_name);
+    formData.append("Pharmacy_name", payload.Pharmacy_name);
+    formData.append("location", payload.location);
+    formData.append("price", payload.price);
+    formData.append("disease", payload.disease);
+    formData.append("descprition", payload.descprition);
+    formData.append("contact", payload.contact);
+    formData.append("image_url", payload.image_url);
+    formData.append("id", payload.id);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat("http://127.0.0.1:8000", "/api/update-service"), formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(function (res) {
+      _router_index__WEBPACK_IMPORTED_MODULE_1__["default"].push("/dashboard").then(function () {
+        //refresh the path to see the latest changes
+        window.location.reload();
+      });
     })["catch"](function (error) {
       console.log("ERROR", error.response.data.message);
     });

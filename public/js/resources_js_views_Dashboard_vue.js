@@ -20,6 +20,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
     var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.useStore)();
+    var refreshed = false;
 
     //on mount get the products and services for the registered user
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(function () {

@@ -36,6 +36,7 @@ import { onMounted, computed } from "vue";
 export default {
     setup() {
         const store = useStore();
+        const refreshed = false;
 
         //on mount get the products and services for the registered user
         onMounted(() => {
@@ -45,6 +46,7 @@ export default {
             store.dispatch("login/getProducts", { id: userId });
             store.dispatch("login/getServices", { id: userId });
 
+            
            
         });
         return {
