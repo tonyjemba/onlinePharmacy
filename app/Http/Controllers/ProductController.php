@@ -35,7 +35,7 @@ class ProductController extends Controller
         foreach ($request->all() as $key => $value) {
             $requestDetails[$key] = $value;
         }
-       
+
         //save the product image in storage and return its path then generate a url from the path
         $productImageFile = $request->file('productImage');
         $productImagePath = $productImageFile->store('public/product_images');
@@ -44,17 +44,17 @@ class ProductController extends Controller
         //store the product details in the database
         Product::create([
             'product_name' => $requestDetails['product_name'],
-            'Pharmacy_name' => $requestDetails['Pharmacy_name'] ,
+            'Pharmacy_name' => $requestDetails['Pharmacy_name'],
             'location' => $requestDetails['location'],
-            'price' => $requestDetails['price'] ,
-            'disease' => $requestDetails['disease'] ,
+            'price' => $requestDetails['price'],
+            'disease' => $requestDetails['disease'],
             'descprition' => $requestDetails['descprition'],
             'contact' => $requestDetails['contact'],
             'image_url' => $productImageUrl,
             'user_id' => $requestDetails['user_id'],
         ]);
 
-        return response()->json('success');   
+        return response()->json('success');
     }
 
     /**
@@ -84,13 +84,13 @@ class ProductController extends Controller
         foreach ($request->all() as $key => $value) {
             $requestDetails[$key] = $value;
         }
-         $product = Product::find($requestDetails['id']);
+        $product = Product::find($requestDetails['id']);
 
         $product->product_name = $requestDetails['product_name'];
         $product->Pharmacy_name = $requestDetails['Pharmacy_name'];
         $product->location = $requestDetails['location'];
-        $product->price = $requestDetails['price'] ;
-        $product->disease = $requestDetails['disease'] ;
+        $product->price = $requestDetails['price'];
+        $product->disease = $requestDetails['disease'];
         $product->descprition = $requestDetails['descprition'];
         $product->contact = $requestDetails['contact'];
         $product->image_url = $requestDetails['image_url'];
@@ -102,8 +102,8 @@ class ProductController extends Controller
             $productImageUrl = Storage::url($productImagePath);
             $product->image_url = $productImageUrl;
         }
-       $product->save();
-      
+        $product->save();
+
 
 
         return response()->json($product);
@@ -127,7 +127,13 @@ class ProductController extends Controller
     public function search($name)
     {
         //ilike the i is for case insesitivity
-        $product = Product::where('product_name', 'ilike', '%' . $name . '%')->orWhere('descprition', 'ilike', '%' . $name . '%')->get();
+        $product = Product::where('product_name', 'LIKE', '%'.$name.'%')
+        ->orWhere('descprition', 'LIKE', '%'.$name.'%')
+            ->orWhere('Pharmacy_name', 'LIKE', '%'.$name.'%')
+            ->orWhere('disease', 'LIKE', '%'.$name.'%')
+            ->orWhere('location', 'LIKE', '%'.$name.'%')
+            ->orWhere('contact', 'LIKE', '%'.$name.'%')
+            ->get();
 
         return $product;
     }

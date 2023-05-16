@@ -40,7 +40,7 @@
                                     <select
                                         name=""
                                         id=""
-                                        x-model="image_type"
+                                        v-model="state.category"
                                         class="text-sm outline-none focus:outline-none bg-transparent"
                                     >
                                         <option value="all" selected>
@@ -61,7 +61,12 @@
                                 class="pt-4 flex flex-col"
                                 v-if="state.show === true"
                             >
-                                <div>
+                                <div
+                                    v-if="
+                                        state.category == 'all' ||
+                                        state.category == 'products'
+                                    "
+                                >
                                     <div
                                         class="text-1xl md:text-2xl text-black"
                                     >
@@ -69,6 +74,7 @@
                                         products
                                     </div>
                                     <div
+                                        v-if="searchedProducts != ''"
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
                                         <div
@@ -90,9 +96,23 @@
                                             />
                                         </div>
                                     </div>
+                                    <div
+                                        v-else
+                                        class="flex w-full text-center items-center justify-center"
+                                    >
+                                        <div class="pt-6 pb-6">
+                                            Nothing Found in Products :)
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="pt-4">
+                                <div
+                                    class="pt-4"
+                                    v-if="
+                                        state.category == 'all' ||
+                                        state.category == 'services'
+                                    "
+                                >
                                     <div
                                         class="text-1xl md:text-2xl text-black"
                                     >
@@ -100,6 +120,7 @@
                                         Services
                                     </div>
                                     <div
+                                        v-if="searchedServices != ''"
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
                                         <div
@@ -121,6 +142,14 @@
                                             />
                                         </div>
                                     </div>
+                                    <div
+                                        v-else
+                                        class="flex w-full text-center items-center justify-center"
+                                    >
+                                        <div class="pt-6 pb-6">
+                                            Nothing Found in Services :)
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +157,12 @@
                 </div>
             </div>
 
-            <h1 class="text-1xl md:text-2xl text-black" v-if="products.length != 0">Products</h1>
+            <h1
+                class="text-1xl md:text-2xl text-black"
+                v-if="products.length != 0"
+            >
+                Products
+            </h1>
 
             <div
                 class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
@@ -148,7 +182,12 @@
             </div>
         </div>
         <div>
-            <h1 class="text-1xl md:text-2xl text-black" v-if="services.length != 0">Services</h1>
+            <h1
+                class="text-1xl md:text-2xl text-black"
+                v-if="services.length != 0"
+            >
+                Services
+            </h1>
             <div
                 class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                 v-if="services.length != 0"
@@ -166,8 +205,13 @@
                 </div>
             </div>
         </div>
-         <div class=" w-full h-100  flex justify-center items-center mt-6" v-if="products.length == 0 && services.length == 0">
-            <div class="font-bold text-slate-500">No Item has been added :)</div>
+        <div
+            class="w-full h-100 flex justify-center items-center mt-6"
+            v-if="products.length == 0 && services.length == 0"
+        >
+            <div class="font-bold text-slate-500">
+                No Item has been added :)
+            </div>
         </div>
     </div>
 </template>
@@ -177,6 +221,8 @@ import DashboardItemCard from "../components/dashboard-item-card.vue";
 import { useStore } from "vuex";
 import { onMounted, computed, reactive } from "vue";
 import router from "../router/index";
+import products from "../store/modules/products";
+import services from "../store/modules/services";
 
 export default {
     setup() {
@@ -184,6 +230,7 @@ export default {
         const state = reactive({
             itemName: "",
             show: false,
+            category: "all",
         });
 
         //on mount get the products and services
@@ -194,7 +241,7 @@ export default {
         function getSearchedData() {
             state.itemName === "" ? (state.show = false) : (state.show = true);
             store.dispatch("products/searchProduct", state.itemName);
-            store.dispatch("sevices/searchService", state.itemName);
+            store.dispatch("services/searchService", state.itemName);
         }
         function viewProduct(id) {
             router.push(`/view-product/${id}`);

@@ -1,6 +1,9 @@
 <template>
-    <Vue3Lottie :animationData="icon" :height="height" :width="width" :speed="0.4" :loop="false" :delay="6000"
+<router-link to="/">
+ <Vue3Lottie :animationData="icon" :height="height" :width="width" :speed="0.4" :loop="false" :delay="6000"
         :autoPlay="autoPlay" />
+</router-link>
+   
 </template>
 
 <script>

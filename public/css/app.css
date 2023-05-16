@@ -1083,10 +1083,6 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
-.bg-red-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1231,9 +1227,6 @@ select {
 }
 .font-light {
   font-weight: 300;
-}
-.font-normal {
-  font-weight: 400;
 }
 .leading-7 {
   line-height: 1.75rem;
@@ -1405,12 +1398,6 @@ select {
 }
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-}
-.line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 .line-clamp-1 {
   overflow: hidden;

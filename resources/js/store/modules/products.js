@@ -90,6 +90,8 @@ const actions = {
             .then((res) => {
                 //accessing data that needs to be edited
                 commit("EDITDATA", res.data);
+        state.products = res.data;
+
             })
             .catch((error) => {
                 console.log("ERROR", error.response.data.message);

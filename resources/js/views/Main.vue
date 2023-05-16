@@ -5,7 +5,9 @@
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
+                             <router-link to="/">
                             <Icon :height="50" :width="50" :autoPlay="false" />
+                             </router-link>
                         </div>
                         <div class="hidden md:block">
                             <h1 class="text-3xl font-bold text-gray-900">

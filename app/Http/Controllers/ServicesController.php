@@ -126,7 +126,7 @@ class ServicesController extends Controller
     public function search($name){
         
          //ilike the i is for case insesitivity
-        $Service = Services::where('service_name','ilike','%'.$name.'%')->orWhere('descprition', 'ilike', '%' . $name . '%')->get();
+        $Service = Services::where('service_name','LIKE','%'.$name.'%')->orWhere('descprition', 'LIKE', '%'.$name.'%')->get();
 
         return $Service;
     }
