@@ -98,7 +98,7 @@ var _hoisted_7 = {
 };
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "font-bold text-slate-500"
-}, "You dont have any Products :)", -1 /* HOISTED */);
+}, "You don't have any Products :)", -1 /* HOISTED */);
 var _hoisted_9 = [_hoisted_8];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_DashboardItemCard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DashboardItemCard");
