@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class=" w-full h-[28rem] flex justify-center " v-if="products.length == 0 && services.length == 0">
-            <div class="font-bold text-slate-500">You dont have any Products :)</div>
+            <div class="font-bold text-slate-500">You don't have any Products :)</div>
         </div>
     </div>
 </template>
