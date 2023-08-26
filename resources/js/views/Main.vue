@@ -96,7 +96,7 @@
                             <div>
                                 <router-link to="/login">
                                     <div
-                                        class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                                        class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700 cursor-pointer"
                                     >
                                         Login
                                     </div>
@@ -105,7 +105,7 @@
                             <div>
                                 <router-link to="/register">
                                     <div
-                                        class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                                        class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700 cursor-pointer"
                                     >
                                         Create Account
                                     </div>
@@ -199,7 +199,7 @@
                     <div>
                         <router-link to="/login">
                             <div
-                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700 cursor-pointer"
                             >
                                 Login
                             </div>
@@ -208,7 +208,7 @@
                     <div>
                         <router-link to="/register">
                             <div
-                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+                                class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700 cursor-pointer"
                             >
                                 Create Account
                             </div>

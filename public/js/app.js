@@ -22555,10 +22555,15 @@ __webpack_require__.r(__webpack_exports__);
       store.dispatch("products/fetchProcucts");
       store.dispatch("services/fetchServices");
     });
-    function getSearchedData() {
-      state.itemName === "" ? state.show = false : state.show = true;
-      store.dispatch("products/searchProduct", state.itemName);
-      store.dispatch("services/searchService", state.itemName);
+    function getSearchedData(e) {
+      var searchValue = e.target.value;
+
+      // searchValue.length>3 ? state.show = false : state.show = true;
+      if (searchValue.length > 3) {
+        store.dispatch("products/searchProduct", searchValue);
+        store.dispatch("services/searchService", searchValue);
+        state.show = true;
+      }
     }
     function viewProduct(id) {
       _router_index__WEBPACK_IMPORTED_MODULE_2__["default"].push("/view-product/".concat(id));
@@ -23296,10 +23301,10 @@ var _hoisted_15 = {
   "class": "flex flex-row"
 };
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+  "class": "block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700 cursor-pointer"
 }, " Login ", -1 /* HOISTED */);
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+  "class": "block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700 cursor-pointer"
 }, " Create Account ", -1 /* HOISTED */);
 var _hoisted_18 = {
   "class": "-mr-2 flex md:hidden"
@@ -23356,10 +23361,10 @@ var _hoisted_35 = {
   "class": "pt-4"
 };
 var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+  "class": "block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700 cursor-pointer"
 }, " Login ", -1 /* HOISTED */);
 var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700"
+  "class": "block px-3 py-2 rounded-md text-base font-medium text-indigo-400 hover:text-white hover:bg-indigo-700 cursor-pointer"
 }, " Create Account ", -1 /* HOISTED */);
 var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
   "class": "bg-white shadow"
@@ -23625,9 +23630,9 @@ var _hoisted_13 = {
 var _hoisted_14 = {
   key: 0
 };
-var _hoisted_15 = {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "text-1xl md:text-2xl text-black"
-};
+}, " Results in products ", -1 /* HOISTED */);
 var _hoisted_16 = {
   key: 0,
   "class": "grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
@@ -23644,9 +23649,9 @@ var _hoisted_20 = {
   key: 1,
   "class": "pt-4"
 };
-var _hoisted_21 = {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "text-1xl md:text-2xl text-black"
-};
+}, " Results in Services ", -1 /* HOISTED */);
 var _hoisted_22 = {
   key: 0,
   "class": "grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
@@ -23690,26 +23695,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.getSearchedData && $setup.getSearchedData.apply($setup, arguments);
     }),
     "class": "outline-none focus:outline-none"
-  }, _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "search",
     name: "",
     id: "",
     placeholder: "search for items",
     "class": "w-full pl-4 text-sm outline-none focus:outline-none bg-transparent",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $setup.state.itemName = $event;
-    }),
-    onInput: _cache[2] || (_cache[2] = function () {
-      return $setup.getSearchedData && $setup.getSearchedData.apply($setup, arguments);
+    onInput: _cache[1] || (_cache[1] = function ($event) {
+      return $setup.getSearchedData($event);
     })
-  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.state.itemName]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     name: "",
     id: "",
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.state.category = $event;
     }),
     "class": "text-sm outline-none focus:outline-none bg-transparent"
-  }, _hoisted_12, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.state.category]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" search results "), $setup.state.show === true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [$setup.state.category == 'all' || $setup.state.category == 'products' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, " Results of " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.state.itemName) + " in products ", 1 /* TEXT */), $setup.searchedProducts != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.searchedProducts, function (product) {
+  }, _hoisted_12, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.state.category]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" search results "), $setup.state.show === true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [$setup.state.category == 'all' || $setup.state.category == 'products' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [_hoisted_15, $setup.searchedProducts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.searchedProducts, function (product) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: product.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DashboardItemCard, {
@@ -23723,7 +23725,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $setup.viewProduct(product.id);
       }
     }, null, 8 /* PROPS */, ["product_name", "descprition", "image_url", "price", "updated_at", "onView"])]);
-  }), 128 /* KEYED_FRAGMENT */))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, _hoisted_19))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.state.category == 'all' || $setup.state.category == 'services' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, " Results of " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.state.itemName) + " in Services ", 1 /* TEXT */), $setup.searchedServices != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.searchedServices, function (product) {
+  }), 128 /* KEYED_FRAGMENT */))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, _hoisted_19))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.state.category == 'all' || $setup.state.category == 'services' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [_hoisted_21, $setup.searchedServices.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.searchedServices, function (product) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: product.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DashboardItemCard, {
@@ -24364,7 +24366,7 @@ var actions = {
     //making api request to get product results
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat("http://127.0.0.1:8000", "/api/searchProducts/").concat(payload)).then(function (res) {
-      //accessing data that needs to be edited
+      console.log(res.data);
       commit("SEARCHDATA", res.data);
     })["catch"](function (error) {
       console.log("ERROR", error.response.data.message);
@@ -24454,7 +24456,7 @@ var state = {
   registered: false,
   errorMessage2: "",
   msg: "",
-  appURL: ""
+  appURL: "http://127.0.0.1:8000"
 };
 
 // mutations are operations that actually mutate the state.
@@ -24498,10 +24500,11 @@ var actions = {
     //displays a loading indicator
     commit("ROUTE_LOADING", true);
     //making api request
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://127.0.0.1:8000/api/register", payload).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("".concat(state.appURL, "/api/register"), payload).then(function (response) {
       commit("REG_DATA", response);
       commit("MSG", response.data.message);
       commit("REGISTERED");
+      commit("ROUTE_LOADING", false);
       _router_index__WEBPACK_IMPORTED_MODULE_2__["default"].push("/login");
     })["catch"](function (error) {
       commit("Error", error.response.data.message);

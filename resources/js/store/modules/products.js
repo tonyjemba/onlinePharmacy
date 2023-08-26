@@ -103,7 +103,7 @@ const actions = {
         axios
             .get(`${process.env.MIX_APP_URL}/api/searchProducts/${payload}`)
             .then((res) => {
-                //accessing data that needs to be edited
+                console.log(res.data);
                 commit("SEARCHDATA", res.data);
             })
             .catch((error) => {

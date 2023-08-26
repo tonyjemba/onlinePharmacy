@@ -127,11 +127,11 @@ class ServicesController extends Controller
         
          //ilike the i is for case insesitivity
         $Service = Services::where('service_name','LIKE','%'.$name.'%')
-        ->orWhere('descprition', 'LIKE', '%'.$name.'%')->get()
-            ->orWhere('Pharmacy_name', 'LIKE', '%'.$name.'%')
-            ->orWhere('disease', 'LIKE', '%'.$name.'%')
-            ->orWhere('location', 'LIKE', '%'.$name.'%')
-            ->orWhere('contact', 'LIKE', '%'.$name.'%');
+        ->orWhere('descprition', 'LIKE', '%'.$name.'%')->get();
+            // ->orWhere('Pharmacy_name', 'LIKE', '%'.$name.'%')
+            // ->orWhere('disease', 'LIKE', '%'.$name.'%')
+            // ->orWhere('location', 'LIKE', '%'.$name.'%')
+            // ->orWhere('contact', 'LIKE', '%'.$name.'%');
 
         return $Service;
     }
