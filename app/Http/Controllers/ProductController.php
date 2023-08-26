@@ -129,10 +129,10 @@ class ProductController extends Controller
         //ilike the i is for case insesitivity
         $product = Product::where('product_name', 'LIKE', '%'.$name.'%')
         ->orWhere('descprition', 'LIKE', '%'.$name.'%')
-            ->orWhere('Pharmacy_name', 'LIKE', '%'.$name.'%')
-            ->orWhere('disease', 'LIKE', '%'.$name.'%')
-            ->orWhere('location', 'LIKE', '%'.$name.'%')
-            ->orWhere('contact', 'LIKE', '%'.$name.'%')
+            // ->orWhere('Pharmacy_name', 'LIKE', '%'.$name.'%')
+            // ->orWhere('disease', 'LIKE', '%'.$name.'%')
+            // ->orWhere('location', 'LIKE', '%'.$name.'%')
+            // ->orWhere('contact', 'LIKE', '%'.$name.'%')
             ->get();
 
         return $product;

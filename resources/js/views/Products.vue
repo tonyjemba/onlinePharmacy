@@ -33,8 +33,7 @@
                                     id=""
                                     placeholder="search for items"
                                     class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent"
-                                    v-model="state.itemName"
-                                    v-on:input="getSearchedData"
+                                    v-on:input="getSearchedData($event)"
                                 />
                                 <div class="select">
                                     <select
@@ -70,11 +69,10 @@
                                     <div
                                         class="text-1xl md:text-2xl text-black"
                                     >
-                                        Results of {{ state.itemName }} in
-                                        products
+                                        Results in products
                                     </div>
                                     <div
-                                        v-if="searchedProducts != ''"
+                                        v-if="searchedProducts.length > 0"
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
                                         <div
@@ -116,11 +114,10 @@
                                     <div
                                         class="text-1xl md:text-2xl text-black"
                                     >
-                                        Results of {{ state.itemName }} in
-                                        Services
+                                        Results in Services
                                     </div>
                                     <div
-                                        v-if="searchedServices != ''"
+                                        v-if="searchedServices.length > 0"
                                         class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10"
                                     >
                                         <div
@@ -238,10 +235,15 @@ export default {
             store.dispatch("products/fetchProcucts");
             store.dispatch("services/fetchServices");
         });
-        function getSearchedData() {
-            state.itemName === "" ? (state.show = false) : (state.show = true);
-            store.dispatch("products/searchProduct", state.itemName);
-            store.dispatch("services/searchService", state.itemName);
+        function getSearchedData(e) {
+            let searchValue = e.target.value;
+
+            // searchValue.length>3 ? state.show = false : state.show = true;
+            if (searchValue.length > 3) {
+                store.dispatch("products/searchProduct", searchValue);
+                store.dispatch("services/searchService", searchValue);
+                state.show = true;
+            }
         }
         function viewProduct(id) {
             router.push(`/view-product/${id}`);

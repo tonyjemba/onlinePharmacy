@@ -9,7 +9,7 @@ const state = {
     registered: false,
     errorMessage2: "",
     msg: "",
-    appURL: "",
+    appURL: process.env.MIX_APP_URL,
 };
 
 // mutations are operations that actually mutate the state.
@@ -39,9 +39,9 @@ const mutations = {
     Error(state, data) {
         state.errorMessage2 = data;
     },
-    SET_APP_URL(state,data){
+    SET_APP_URL(state, data) {
         state.appURL = data;
-    }
+    },
 };
 
 // actions are functions that cause side effects and can involve
@@ -52,11 +52,13 @@ const actions = {
         commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post(`http://127.0.0.1:8000/api/register`, payload)
+            .post(`${state.appURL}/api/register`, payload)
             .then((response) => {
                 commit("REG_DATA", response);
                 commit("MSG", response.data.message);
                 commit("REGISTERED");
+                commit("ROUTE_LOADING", false);
+
                 router.push("/login");
             })
             .catch((error) => {
