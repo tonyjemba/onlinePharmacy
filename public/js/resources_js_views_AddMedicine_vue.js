@@ -42,27 +42,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! yup */ "./node_modules/yup/index.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _components_IconBack_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/IconBack.vue */ "./resources/js/components/IconBack.vue");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
-
-//vuex store
+ //vuex store
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'AddMedicine',
   setup: function setup(__props, _ref) {
-    var expose = _ref.expose;
-    expose();
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.useStore)();
+    var __expose = _ref.expose;
 
-    //logged user is stored in localstorage, we get his id
+    __expose();
+
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.useStore)(); //logged user is stored in localstorage, we get his id
+
     var ls = JSON.parse(localStorage.getItem("vuex"));
     var userId = ls.login.loginUser.user.id;
     var schema = yup__WEBPACK_IMPORTED_MODULE_0__.object({
@@ -75,36 +74,43 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       product_image: yup__WEBPACK_IMPORTED_MODULE_0__.mixed().required("The Product Image is required").test("fileSize", "File too large", function (value) {
         return value && value.size <= 10000000; //file should be less or equal to 10MB
       }),
-
       description: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('The Product Description is a required field')
     });
+
     var onSubmit = function onSubmit(values) {
       // Submit values to API...
       store.dispatch("products/addProduct", _objectSpread(_objectSpread({}, values), {}, {
         user_id: userId
       }));
     };
+
     var __returned__ = {
       store: store,
       ls: ls,
       userId: userId,
       schema: schema,
       onSubmit: onSubmit,
+
       get VeeForm() {
         return vee_validate__WEBPACK_IMPORTED_MODULE_3__.Form;
       },
+
       get Field() {
         return vee_validate__WEBPACK_IMPORTED_MODULE_3__.Field;
       },
+
       get ErrorMessage() {
         return vee_validate__WEBPACK_IMPORTED_MODULE_3__.ErrorMessage;
       },
+
       get yup() {
         return yup__WEBPACK_IMPORTED_MODULE_0__;
       },
+
       get useStore() {
         return vuex__WEBPACK_IMPORTED_MODULE_2__.useStore;
       },
+
       IconBack: _components_IconBack_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -131,20 +137,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = ["width", "height"];
+
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("g", {
   id: "SVGRepo_bgCarrier",
   "stroke-width": "0"
-}, null, -1 /* HOISTED */);
+}, null, -1
+/* HOISTED */
+);
+
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("g", {
   id: "SVGRepo_tracerCarrier",
   "stroke-linecap": "round",
   "stroke-linejoin": "round"
-}, null, -1 /* HOISTED */);
+}, null, -1
+/* HOISTED */
+);
+
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("g", {
   id: "SVGRepo_iconCarrier"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
   d: "M48.6,23H15.4c-0.9,0-1.3-1.1-0.7-1.7l9.6-9.6c0.6-0.6,0.6-1.5,0-2.1l-2.2-2.2c-0.6-0.6-1.5-0.6-2.1,0 L2.5,25c-0.6,0.6-0.6,1.5,0,2.1L20,44.6c0.6,0.6,1.5,0.6,2.1,0l2.1-2.1c0.6-0.6,0.6-1.5,0-2.1l-9.6-9.6C14,30.1,14.4,29,15.3,29 h33.2c0.8,0,1.5-0.6,1.5-1.4v-3C50,23.8,49.4,23,48.6,23z"
-})], -1 /* HOISTED */);
+})], -1
+/* HOISTED */
+);
+
 var _hoisted_5 = [_hoisted_2, _hoisted_3, _hoisted_4];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
@@ -157,7 +173,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "xml:space": "preserve",
     stroke: "#4f46e5",
     "stroke-width": "0.9359999999999999"
-  }, _hoisted_5, 8 /* PROPS */, _hoisted_1);
+  }, [].concat(_hoisted_5), 8
+  /* PROPS */
+  , _hoisted_1);
 }
 
 /***/ }),
@@ -181,77 +199,109 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   className: " bg-white rounded-md px-6 py-10 max-w-2xl mx-auto"
 };
+
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   className: "text-center text-2xl font-bold text-gray-500 mb-10"
-}, " ADD PRODUCT ", -1 /* HOISTED */);
+}, " ADD PRODUCT ", -1
+/* HOISTED */
+);
+
 var _hoisted_4 = ["onSubmit"];
 var _hoisted_5 = {
   "class": "flex flex-col"
 };
+
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "product_name",
   "class": "font-bold"
-}, "Product Name")], -1 /* HOISTED */);
+}, "Product Name")], -1
+/* HOISTED */
+);
+
 var _hoisted_7 = {
   "class": "text-red-500 text-sm"
 };
 var _hoisted_8 = {
   "class": "flex flex-col"
 };
+
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "phamacy_name",
   "class": "font-bold"
-}, "Pharmacy Name")], -1 /* HOISTED */);
+}, "Pharmacy Name")], -1
+/* HOISTED */
+);
+
 var _hoisted_10 = {
   "class": "text-red-500 text-sm"
 };
 var _hoisted_11 = {
   "class": "flex flex-col"
 };
+
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "location",
   "class": "font-bold"
-}, "Location")], -1 /* HOISTED */);
+}, "Location")], -1
+/* HOISTED */
+);
+
 var _hoisted_13 = {
   "class": "text-red-500 text-sm"
 };
 var _hoisted_14 = {
   "class": "flex flex-col"
 };
+
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "price",
   "class": "font-bold"
-}, "Price")], -1 /* HOISTED */);
+}, "Price")], -1
+/* HOISTED */
+);
+
 var _hoisted_16 = {
   "class": "text-red-500 text-sm"
 };
 var _hoisted_17 = {
   "class": "flex flex-col"
 };
+
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "disease",
   "class": "font-bold"
-}, "Disease")], -1 /* HOISTED */);
+}, "Disease")], -1
+/* HOISTED */
+);
+
 var _hoisted_19 = {
   "class": "text-red-500 text-sm"
 };
 var _hoisted_20 = {
   "class": "flex flex-col"
 };
+
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "contact",
   "class": "font-bold"
-}, "Contact")], -1 /* HOISTED */);
+}, "Contact")], -1
+/* HOISTED */
+);
+
 var _hoisted_22 = {
   "class": "text-red-500 text-sm"
 };
 var _hoisted_23 = {
   "class": "flex flex-col"
 };
+
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "product_image",
   "class": "font-bold"
-}, "Add Image")], -1 /* HOISTED */);
+}, "Add Image")], -1
+/* HOISTED */
+);
+
 var _hoisted_25 = ["onChange"];
 var _hoisted_26 = {
   "class": "text-red-500 text-sm"
@@ -259,19 +309,27 @@ var _hoisted_26 = {
 var _hoisted_27 = {
   "class": "flex flex-col"
 };
+
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "description",
   "class": "font-bold"
-}, "Description")], -1 /* HOISTED */);
+}, "Description")], -1
+/* HOISTED */
+);
+
 var _hoisted_29 = {
   "class": "text-red-500 text-sm"
 };
+
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   className: " px-6 py-2 mt-10 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
-}, " Add Product ", -1 /* HOISTED */);
+}, " Add Product ", -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/dashboard"
   }, {
@@ -282,7 +340,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "cursor-pointer"
       })];
     }),
-    _: 1 /* STABLE */
+    _: 1
+    /* STABLE */
+
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["VeeForm"], {
     "validation-schema": $setup.schema,
     as: "div"
@@ -338,9 +398,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
             type: "file",
             onChange: handleChange
-          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_25)];
+          }, null, 40
+          /* PROPS, NEED_HYDRATION */
+          , _hoisted_25)];
         }),
-        _: 1 /* STABLE */
+        _: 1
+        /* STABLE */
+
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ErrorMessage"], {
         name: "product_image"
       })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Field"], {
@@ -350,10 +414,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "rounded w-4/5"
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ErrorMessage"], {
         name: "description"
-      })])]), _hoisted_30], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4)];
+      })])]), _hoisted_30], 40
+      /* PROPS, NEED_HYDRATION */
+      , _hoisted_4)];
     }),
-    _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["validation-schema"])])]);
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["validation-schema"])])]);
 }
 
 /***/ }),
@@ -700,8 +770,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Form": () => (/* binding */ Form),
 /* harmony export */   "FormContextKey": () => (/* binding */ FormContextKey),
 /* harmony export */   "IS_ABSENT": () => (/* binding */ IS_ABSENT),
+/* harmony export */   "cleanupNonNestedPath": () => (/* binding */ cleanupNonNestedPath),
 /* harmony export */   "configure": () => (/* binding */ configure),
 /* harmony export */   "defineRule": () => (/* binding */ defineRule),
+/* harmony export */   "isNotNestedPath": () => (/* binding */ isNotNestedPath),
+/* harmony export */   "normalizeRules": () => (/* binding */ normalizeRules),
 /* harmony export */   "useField": () => (/* binding */ useField),
 /* harmony export */   "useFieldArray": () => (/* binding */ useFieldArray),
 /* harmony export */   "useFieldError": () => (/* binding */ useFieldError),
@@ -716,7 +789,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "useIsFormTouched": () => (/* binding */ useIsFormTouched),
 /* harmony export */   "useIsFormValid": () => (/* binding */ useIsFormValid),
 /* harmony export */   "useIsSubmitting": () => (/* binding */ useIsSubmitting),
+/* harmony export */   "useIsValidating": () => (/* binding */ useIsValidating),
 /* harmony export */   "useResetForm": () => (/* binding */ useResetForm),
+/* harmony export */   "useSetFieldError": () => (/* binding */ useSetFieldError),
+/* harmony export */   "useSetFieldTouched": () => (/* binding */ useSetFieldTouched),
+/* harmony export */   "useSetFieldValue": () => (/* binding */ useSetFieldValue),
+/* harmony export */   "useSetFormErrors": () => (/* binding */ useSetFormErrors),
+/* harmony export */   "useSetFormTouched": () => (/* binding */ useSetFormTouched),
+/* harmony export */   "useSetFormValues": () => (/* binding */ useSetFormValues),
 /* harmony export */   "useSubmitCount": () => (/* binding */ useSubmitCount),
 /* harmony export */   "useSubmitForm": () => (/* binding */ useSubmitForm),
 /* harmony export */   "useValidateField": () => (/* binding */ useValidateField),
@@ -725,9 +805,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "validateObject": () => (/* binding */ validateObjectSchema)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _vue_devtools_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/devtools-api */ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/index.js");
+/* harmony import */ var _vue_devtools_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/devtools-api */ "./node_modules/@vue/devtools-api/lib/esm/index.js");
 /**
-  * vee-validate v4.8.6
+  * vee-validate v4.12.4
   * (c) 2023 Abdelrahman Awad
   * @license MIT
   */
@@ -747,6 +827,60 @@ function isIndex(value) {
 function toNumber(value) {
     const n = parseFloat(value);
     return isNaN(n) ? value : n;
+}
+function isObjectLike(value) {
+    return typeof value === 'object' && value !== null;
+}
+function getTag(value) {
+    if (value == null) {
+        return value === undefined ? '[object Undefined]' : '[object Null]';
+    }
+    return Object.prototype.toString.call(value);
+}
+// Reference: https://github.com/lodash/lodash/blob/master/isPlainObject.js
+function isPlainObject(value) {
+    if (!isObjectLike(value) || getTag(value) !== '[object Object]') {
+        return false;
+    }
+    if (Object.getPrototypeOf(value) === null) {
+        return true;
+    }
+    let proto = value;
+    while (Object.getPrototypeOf(proto) !== null) {
+        proto = Object.getPrototypeOf(proto);
+    }
+    return Object.getPrototypeOf(value) === proto;
+}
+function merge(target, source) {
+    Object.keys(source).forEach(key => {
+        if (isPlainObject(source[key]) && isPlainObject(target[key])) {
+            if (!target[key]) {
+                target[key] = {};
+            }
+            merge(target[key], source[key]);
+            return;
+        }
+        target[key] = source[key];
+    });
+    return target;
+}
+/**
+ * Constructs a path with dot paths for arrays to use brackets to be compatible with vee-validate path syntax
+ */
+function normalizeFormPath(path) {
+    const pathArr = path.split('.');
+    if (!pathArr.length) {
+        return '';
+    }
+    let fullPath = String(pathArr[0]);
+    for (let i = 1; i < pathArr.length; i++) {
+        if (isIndex(pathArr[i])) {
+            fullPath += `[${pathArr[i]}]`;
+            continue;
+        }
+        fullPath += `.${pathArr[i]}`;
+    }
+    return fullPath;
 }
 
 const RULES = {};
@@ -772,6 +906,60 @@ function guardExtend(id, validator) {
         return;
     }
     throw new Error(`Extension Error: The validator '${id}' must be a function.`);
+}
+
+function set(obj, key, val) {
+	if (typeof val.value === 'object') val.value = klona(val.value);
+	if (!val.enumerable || val.get || val.set || !val.configurable || !val.writable || key === '__proto__') {
+		Object.defineProperty(obj, key, val);
+	} else obj[key] = val.value;
+}
+
+function klona(x) {
+	if (typeof x !== 'object') return x;
+
+	var i=0, k, list, tmp, str=Object.prototype.toString.call(x);
+
+	if (str === '[object Object]') {
+		tmp = Object.create(x.__proto__ || null);
+	} else if (str === '[object Array]') {
+		tmp = Array(x.length);
+	} else if (str === '[object Set]') {
+		tmp = new Set;
+		x.forEach(function (val) {
+			tmp.add(klona(val));
+		});
+	} else if (str === '[object Map]') {
+		tmp = new Map;
+		x.forEach(function (val, key) {
+			tmp.set(klona(key), klona(val));
+		});
+	} else if (str === '[object Date]') {
+		tmp = new Date(+x);
+	} else if (str === '[object RegExp]') {
+		tmp = new RegExp(x.source, x.flags);
+	} else if (str === '[object DataView]') {
+		tmp = new x.constructor( klona(x.buffer) );
+	} else if (str === '[object ArrayBuffer]') {
+		tmp = x.slice(0);
+	} else if (str.slice(-6) === 'Array]') {
+		// ArrayBuffer.isView(x)
+		// ~> `new` bcuz `Buffer.slice` => ref
+		tmp = new x.constructor(x);
+	}
+
+	if (tmp) {
+		for (list=Object.getOwnPropertySymbols(x); i < list.length; i++) {
+			set(tmp, list[i], Object.getOwnPropertyDescriptor(x, list[i]));
+		}
+
+		for (i=0, list=Object.getOwnPropertyNames(x); i < list.length; i++) {
+			if (Object.hasOwnProperty.call(tmp, k=list[i]) && tmp[k] === x[k]) continue;
+			set(tmp, k, Object.getOwnPropertyDescriptor(x, k));
+		}
+	}
+
+	return tmp || x;
 }
 
 const FormContextKey = Symbol('vee-validate-form');
@@ -932,11 +1120,6 @@ function isEqual(a, b) {
             return a.toString() === b.toString();
         keys = Object.keys(a);
         length = keys.length;
-        if (length !== Object.keys(b).length)
-            return false;
-        for (i = length; i-- !== 0;)
-            if (!Object.prototype.hasOwnProperty.call(b, keys[i]))
-                return false;
         for (i = length; i-- !== 0;) {
             // eslint-disable-next-line no-var
             var key = keys[i];
@@ -954,60 +1137,6 @@ function isFile(a) {
         return false;
     }
     return a instanceof File;
-}
-
-function set(obj, key, val) {
-	if (typeof val.value === 'object') val.value = klona(val.value);
-	if (!val.enumerable || val.get || val.set || !val.configurable || !val.writable || key === '__proto__') {
-		Object.defineProperty(obj, key, val);
-	} else obj[key] = val.value;
-}
-
-function klona(x) {
-	if (typeof x !== 'object') return x;
-
-	var i=0, k, list, tmp, str=Object.prototype.toString.call(x);
-
-	if (str === '[object Object]') {
-		tmp = Object.create(x.__proto__ || null);
-	} else if (str === '[object Array]') {
-		tmp = Array(x.length);
-	} else if (str === '[object Set]') {
-		tmp = new Set;
-		x.forEach(function (val) {
-			tmp.add(klona(val));
-		});
-	} else if (str === '[object Map]') {
-		tmp = new Map;
-		x.forEach(function (val, key) {
-			tmp.set(klona(key), klona(val));
-		});
-	} else if (str === '[object Date]') {
-		tmp = new Date(+x);
-	} else if (str === '[object RegExp]') {
-		tmp = new RegExp(x.source, x.flags);
-	} else if (str === '[object DataView]') {
-		tmp = new x.constructor( klona(x.buffer) );
-	} else if (str === '[object ArrayBuffer]') {
-		tmp = x.slice(0);
-	} else if (str.slice(-6) === 'Array]') {
-		// ArrayBuffer.isView(x)
-		// ~> `new` bcuz `Buffer.slice` => ref
-		tmp = new x.constructor(x);
-	}
-
-	if (tmp) {
-		for (list=Object.getOwnPropertySymbols(x); i < list.length; i++) {
-			set(tmp, list[i], Object.getOwnPropertyDescriptor(x, list[i]));
-		}
-
-		for (i=0, list=Object.getOwnPropertyNames(x); i < list.length; i++) {
-			if (Object.hasOwnProperty.call(tmp, k=list[i]) && tmp[k] === x[k]) continue;
-			set(tmp, k, Object.getOwnPropertyDescriptor(x, k));
-		}
-	}
-
-	return tmp || x;
 }
 
 function cleanupNonNestedPath(path) {
@@ -1118,15 +1247,6 @@ function injectWithSelf(symbol, def = undefined) {
 function warn(message) {
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.warn)(`[vee-validate]: ${message}`);
 }
-/**
- * Ensures we deal with a singular field value
- */
-function normalizeField(field) {
-    if (Array.isArray(field)) {
-        return field[0];
-    }
-    return field;
-}
 function resolveNextCheckboxValue(currentValue, checkedValue, uncheckedValue) {
     if (Array.isArray(currentValue)) {
         const newVal = [...currentValue];
@@ -1161,9 +1281,10 @@ function debounceAsync(inner, ms = 0) {
     return function (...args) {
         // Run the function after a certain amount of time
         if (timer) {
-            window.clearTimeout(timer);
+            clearTimeout(timer);
         }
-        timer = window.setTimeout(() => {
+        // @ts-expect-error timer is a number
+        timer = setTimeout(() => {
             // Get the result of the inner function, then apply it to the resolve function of
             // each promise that has been created since the last time the inner function was run
             const result = inner(...args);
@@ -1192,8 +1313,7 @@ function withLatest(fn, onDone) {
             return result;
         }
         latestRun = undefined;
-        onDone(result, args);
-        return result;
+        return onDone(result, args);
     };
 }
 function computedDeep({ get, set }) {
@@ -1216,18 +1336,51 @@ function computedDeep({ get, set }) {
     });
     return baseRef;
 }
-function unravel(value) {
-    if (isCallable(value)) {
-        return value();
-    }
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(value);
+function normalizeErrorItem(message) {
+    return Array.isArray(message) ? message : message ? [message] : [];
 }
-function lazyToRef(value) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => unravel(value));
+function resolveFieldOrPathState(path) {
+    const form = injectWithSelf(FormContextKey);
+    const state = path ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => form === null || form === void 0 ? void 0 : form.getPathState((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path))) : undefined;
+    const field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
+    if (!field && !(state === null || state === void 0 ? void 0 : state.value)) {
+        if ((true)) {
+            warn(`field with name ${(0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)} was not found`);
+        }
+    }
+    return state || field;
+}
+function omit(obj, keys) {
+    const target = {};
+    for (const key in obj) {
+        if (!keys.includes(key)) {
+            target[key] = obj[key];
+        }
+    }
+    return target;
+}
+function debounceNextTick(inner) {
+    let lastTick = null;
+    let resolves = [];
+    return function (...args) {
+        // Run the function after a certain amount of time
+        const thisTick = (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+            if (lastTick !== thisTick) {
+                return;
+            }
+            // Get the result of the inner function, then apply it to the resolve function of
+            // each promise that has been created since the last time the inner function was run
+            const result = inner(...args);
+            resolves.forEach(r => r(result));
+            resolves = [];
+            lastTick = null;
+        });
+        lastTick = thisTick;
+        return new Promise(resolve => resolves.push(resolve));
+    };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const normalizeChildren = (tag, context, slotProps) => {
+function normalizeChildren(tag, context, slotProps) {
     if (!context.slots.default) {
         return context.slots.default;
     }
@@ -1237,7 +1390,7 @@ const normalizeChildren = (tag, context, slotProps) => {
     return {
         default: () => { var _a, _b; return (_b = (_a = context.slots).default) === null || _b === void 0 ? void 0 : _b.call(_a, slotProps()); },
     };
-};
+}
 /**
  * Vue adds a `_value` prop at the moment on the input elements to store the REAL value on them, real values are different than the `value` attribute
  * as they do not get casted to strings unlike `el.value` which preserves user-code behavior
@@ -1256,6 +1409,15 @@ function hasValueBinding(el) {
     return '_value' in el;
 }
 
+function parseInputValue(el) {
+    if (el.type === 'number') {
+        return Number.isNaN(el.valueAsNumber) ? el.value : el.valueAsNumber;
+    }
+    if (el.type === 'range') {
+        return Number.isNaN(el.valueAsNumber) ? el.value : el.valueAsNumber;
+    }
+    return el.value;
+}
 function normalizeEventValue(value) {
     if (!isEvent(value)) {
         return value;
@@ -1281,7 +1443,7 @@ function normalizeEventValue(value) {
         const selectedOption = Array.from(input.options).find(opt => opt.selected);
         return selectedOption ? getBoundValue(selectedOption) : input.value;
     }
-    return input.value;
+    return parseInputValue(input);
 }
 
 /**
@@ -1444,12 +1606,17 @@ async function _validate(field, value) {
         for (let i = 0; i < length; i++) {
             const rule = pipeline[i];
             const result = await rule(value, ctx);
-            const isValid = typeof result !== 'string' && result;
+            const isValid = typeof result !== 'string' && !Array.isArray(result) && result;
             if (isValid) {
                 continue;
             }
-            const message = typeof result === 'string' ? result : _generateFieldError(ctx);
-            errors.push(message);
+            if (Array.isArray(result)) {
+                errors.push(...result);
+            }
+            else {
+                const message = typeof result === 'string' ? result : _generateFieldError(ctx);
+                errors.push(message);
+            }
             if (field.bails) {
                 return {
                     errors,
@@ -1591,7 +1758,7 @@ function fillTargetValues(params, crossTable) {
 }
 async function validateTypedSchema(schema, values) {
     const typedSchema = isTypedSchema(schema) ? schema : yupToTypedSchema(schema);
-    const validationResult = await typedSchema.parse(values);
+    const validationResult = await typedSchema.parse(klona(values));
     const results = {};
     const errors = {};
     for (const error of validationResult.errors) {
@@ -1649,32 +1816,67 @@ async function validateObjectSchema(schema, values, opts) {
 let ID_COUNTER = 0;
 function useFieldState(path, init) {
     const { value, initialValue, setInitialValue } = _useFieldValue(path, init.modelValue, init.form);
-    const { errorMessage, errors, setErrors } = _useFieldErrors(path, init.form);
-    const meta = _useFieldMeta(value, initialValue, errors);
-    const id = ID_COUNTER >= Number.MAX_SAFE_INTEGER ? 0 : ++ID_COUNTER;
+    if (!init.form) {
+        const { errors, setErrors } = createFieldErrors();
+        const id = ID_COUNTER >= Number.MAX_SAFE_INTEGER ? 0 : ++ID_COUNTER;
+        const meta = createFieldMeta(value, initialValue, errors, init.schema);
+        function setState(state) {
+            var _a;
+            if ('value' in state) {
+                value.value = state.value;
+            }
+            if ('errors' in state) {
+                setErrors(state.errors);
+            }
+            if ('touched' in state) {
+                meta.touched = (_a = state.touched) !== null && _a !== void 0 ? _a : meta.touched;
+            }
+            if ('initialValue' in state) {
+                setInitialValue(state.initialValue);
+            }
+        }
+        return {
+            id,
+            path,
+            value,
+            initialValue,
+            meta,
+            flags: { pendingUnmount: { [id]: false }, pendingReset: false },
+            errors,
+            setState,
+        };
+    }
+    const state = init.form.createPathState(path, {
+        bails: init.bails,
+        label: init.label,
+        type: init.type,
+        validate: init.validate,
+        schema: init.schema,
+    });
+    const errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => state.errors);
     function setState(state) {
-        var _a;
+        var _a, _b, _c;
         if ('value' in state) {
             value.value = state.value;
         }
         if ('errors' in state) {
-            setErrors(state.errors);
+            (_a = init.form) === null || _a === void 0 ? void 0 : _a.setFieldError((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), state.errors);
         }
         if ('touched' in state) {
-            meta.touched = (_a = state.touched) !== null && _a !== void 0 ? _a : meta.touched;
+            (_b = init.form) === null || _b === void 0 ? void 0 : _b.setFieldTouched((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), (_c = state.touched) !== null && _c !== void 0 ? _c : false);
         }
         if ('initialValue' in state) {
             setInitialValue(state.initialValue);
         }
     }
     return {
-        id,
+        id: Array.isArray(state.id) ? state.id[state.id.length - 1] : state.id,
         path,
         value,
-        initialValue,
-        meta,
         errors,
-        errorMessage,
+        meta: state,
+        initialValue,
+        flags: state.__flags,
         setState,
     };
 }
@@ -1687,14 +1889,14 @@ function _useFieldValue(path, modelValue, form) {
         if (!form) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(modelRef);
         }
-        return getFromPath(form.meta.value.initialValues, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(modelRef));
+        return getFromPath(form.initialValues.value, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(modelRef));
     }
     function setInitialValue(value) {
         if (!form) {
             modelRef.value = value;
             return;
         }
-        form.stageInitialValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), value, true);
+        form.setFieldInitialValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), value, true);
     }
     const initialValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(resolveInitialValue);
     // if no form is associated, use a regular ref.
@@ -1718,7 +1920,7 @@ function _useFieldValue(path, modelValue, form) {
             return getFromPath(form.values, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path));
         },
         set(newVal) {
-            form.setFieldValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), newVal);
+            form.setFieldValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), newVal, false);
         },
     });
     return {
@@ -1745,11 +1947,14 @@ function resolveModelValue(modelValue, form, initialValue, path) {
 /**
  * Creates meta flags state and some associated effects with them
  */
-function _useFieldMeta(currentValue, initialValue, errors) {
+function createFieldMeta(currentValue, initialValue, errors, schema) {
+    var _a, _b;
+    const isRequired = (_b = (_a = schema === null || schema === void 0 ? void 0 : schema.describe) === null || _a === void 0 ? void 0 : _a.call(schema).required) !== null && _b !== void 0 ? _b : false;
     const meta = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
         touched: false,
         pending: false,
         valid: true,
+        required: isRequired,
         validated: !!(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(errors).length,
         initialValue: (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(initialValue)),
         dirty: (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
@@ -1767,29 +1972,12 @@ function _useFieldMeta(currentValue, initialValue, errors) {
 /**
  * Creates the error message state for the field state
  */
-function _useFieldErrors(path, form) {
-    function normalizeErrors(messages) {
-        if (!messages) {
-            return [];
-        }
-        return Array.isArray(messages) ? messages : [messages];
-    }
-    if (!form) {
-        const errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-        return {
-            errors,
-            errorMessage: (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => errors.value[0]),
-            setErrors: (messages) => {
-                errors.value = normalizeErrors(messages);
-            },
-        };
-    }
-    const errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => form.errorBag.value[(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)] || []);
+function createFieldErrors() {
+    const errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     return {
         errors,
-        errorMessage: (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => errors.value[0]),
         setErrors: (messages) => {
-            form.setFieldErrorBag((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path), normalizeErrors(messages));
+            errors.value = normalizeErrorItem(messages);
         },
     };
 }
@@ -1879,7 +2067,17 @@ function setupApiHooks(api) {
                         console.error('There is not a valid selected vee-validate node or component');
                         return;
                     }
-                    await SELECTED_NODE.validate();
+                    if (SELECTED_NODE.type === 'field') {
+                        await SELECTED_NODE.field.validate();
+                        return;
+                    }
+                    if (SELECTED_NODE.type === 'form') {
+                        await SELECTED_NODE.form.validate();
+                        return;
+                    }
+                    if (SELECTED_NODE.type === 'pathState') {
+                        await SELECTED_NODE.form.validateField(SELECTED_NODE.state.path);
+                    }
                 },
             },
             {
@@ -1890,11 +2088,16 @@ function setupApiHooks(api) {
                         console.error('There is not a valid selected vee-validate node or component');
                         return;
                     }
-                    if ('id' in SELECTED_NODE) {
-                        SELECTED_NODE.resetField();
+                    if (SELECTED_NODE.type === 'field') {
+                        SELECTED_NODE.field.resetField();
                         return;
                     }
-                    SELECTED_NODE.resetForm();
+                    if (SELECTED_NODE.type === 'form') {
+                        SELECTED_NODE.form.resetForm();
+                    }
+                    if (SELECTED_NODE.type === 'pathState') {
+                        SELECTED_NODE.form.resetField(SELECTED_NODE.state.path);
+                    }
                 },
             },
         ],
@@ -1914,29 +2117,37 @@ function setupApiHooks(api) {
         if (payload.inspectorId !== INSPECTOR_ID || ctx.currentTab !== `custom-inspector:${INSPECTOR_ID}`) {
             return;
         }
-        const { form, field, type } = decodeNodeId(payload.nodeId);
+        const { form, field, state, type } = decodeNodeId(payload.nodeId);
         if (form && type === 'form') {
             payload.state = buildFormState(form);
-            SELECTED_NODE = form;
+            SELECTED_NODE = { type: 'form', form };
+            return;
+        }
+        if (state && type === 'pathState' && form) {
+            payload.state = buildFieldState(state);
+            SELECTED_NODE = { type: 'pathState', state, form };
             return;
         }
         if (field && type === 'field') {
-            payload.state = buildFieldState(field);
-            SELECTED_NODE = field;
+            payload.state = buildFieldState({
+                errors: field.errors.value,
+                dirty: field.meta.dirty,
+                valid: field.meta.valid,
+                touched: field.meta.touched,
+                value: field.value.value,
+                initialValue: field.meta.initialValue,
+            });
+            SELECTED_NODE = { field, type: 'field' };
             return;
         }
         SELECTED_NODE = null;
     });
 }
 function mapFormForDevtoolsInspector(form) {
-    const { textColor, bgColor } = getTagTheme(form);
+    const { textColor, bgColor } = getValidityColors(form.meta.value.valid);
     const formTreeNodes = {};
-    Object.values(form.fieldsByPath.value).forEach(field => {
-        const fieldInstance = Array.isArray(field) ? field[0] : field;
-        if (!fieldInstance) {
-            return;
-        }
-        setInPath(formTreeNodes, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(fieldInstance.name), mapFieldForDevtoolsInspector(fieldInstance, form));
+    Object.values(form.getAllPathStates()).forEach(state => {
+        setInPath(formTreeNodes, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(state.path), mapPathForDevtoolsInspector(state, form));
     });
     function buildFormTree(tree, path = []) {
         const key = [...path].pop();
@@ -1971,73 +2182,76 @@ function mapFormForDevtoolsInspector(form) {
                 backgroundColor: bgColor,
             },
             {
-                label: `${Object.keys(form.fieldsByPath.value).length} fields`,
+                label: `${form.getAllPathStates().length} fields`,
                 textColor: COLORS.white,
                 backgroundColor: COLORS.unknown,
             },
         ],
     };
 }
-function mapFieldForDevtoolsInspector(field, form) {
-    const fieldInstance = normalizeField(field);
-    const { textColor, bgColor } = getTagTheme(fieldInstance);
-    const isGroup = Array.isArray(field) && field.length > 1;
+function mapPathForDevtoolsInspector(state, form) {
     return {
-        id: encodeNodeId(form, fieldInstance, !isGroup),
-        label: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(fieldInstance.name),
-        children: Array.isArray(field) ? field.map(fieldItem => mapFieldForDevtoolsInspector(fieldItem, form)) : undefined,
-        tags: [
-            isGroup
-                ? undefined
-                : {
-                    label: 'Field',
-                    textColor,
-                    backgroundColor: bgColor,
-                },
-            !form
-                ? {
-                    label: 'Standalone',
-                    textColor: COLORS.black,
-                    backgroundColor: COLORS.gray,
-                }
-                : undefined,
-            !isGroup && fieldInstance.type === 'checkbox'
-                ? {
-                    label: 'Checkbox',
-                    textColor: COLORS.white,
-                    backgroundColor: COLORS.blue,
-                }
-                : undefined,
-            !isGroup && fieldInstance.type === 'radio'
-                ? {
-                    label: 'Radio',
-                    textColor: COLORS.white,
-                    backgroundColor: COLORS.purple,
-                }
-                : undefined,
-            isGroup
-                ? {
-                    label: 'Group',
-                    textColor: COLORS.black,
-                    backgroundColor: COLORS.orange,
-                }
-                : undefined,
-        ].filter(Boolean),
+        id: encodeNodeId(form, state),
+        label: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(state.path),
+        tags: getFieldNodeTags(state.multiple, state.fieldsCount, state.type, state.valid, form),
     };
 }
-function encodeNodeId(form, field, encodeIndex = true) {
-    const fieldPath = form ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field === null || field === void 0 ? void 0 : field.name) : field === null || field === void 0 ? void 0 : field.id;
-    const fieldGroup = fieldPath ? form === null || form === void 0 ? void 0 : form.fieldsByPath.value[fieldPath] : undefined;
-    let idx;
-    if (encodeIndex && field && Array.isArray(fieldGroup)) {
-        idx = fieldGroup.indexOf(field);
-    }
-    const idObject = { f: form === null || form === void 0 ? void 0 : form.formId, ff: fieldPath, idx, type: field ? 'field' : 'form' };
-    return btoa(JSON.stringify(idObject));
+function mapFieldForDevtoolsInspector(field, form) {
+    return {
+        id: encodeNodeId(form, field),
+        label: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.name),
+        tags: getFieldNodeTags(false, 1, field.type, field.meta.valid, form),
+    };
+}
+function getFieldNodeTags(multiple, fieldsCount, type, valid, form) {
+    const { textColor, bgColor } = getValidityColors(valid);
+    return [
+        multiple
+            ? undefined
+            : {
+                label: 'Field',
+                textColor,
+                backgroundColor: bgColor,
+            },
+        !form
+            ? {
+                label: 'Standalone',
+                textColor: COLORS.black,
+                backgroundColor: COLORS.gray,
+            }
+            : undefined,
+        type === 'checkbox'
+            ? {
+                label: 'Checkbox',
+                textColor: COLORS.white,
+                backgroundColor: COLORS.blue,
+            }
+            : undefined,
+        type === 'radio'
+            ? {
+                label: 'Radio',
+                textColor: COLORS.white,
+                backgroundColor: COLORS.purple,
+            }
+            : undefined,
+        multiple
+            ? {
+                label: 'Multiple',
+                textColor: COLORS.black,
+                backgroundColor: COLORS.orange,
+            }
+            : undefined,
+    ].filter(Boolean);
+}
+function encodeNodeId(form, stateOrField) {
+    const type = stateOrField ? ('path' in stateOrField ? 'pathState' : 'field') : 'form';
+    const fieldPath = stateOrField ? ('path' in stateOrField ? stateOrField === null || stateOrField === void 0 ? void 0 : stateOrField.path : (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(stateOrField === null || stateOrField === void 0 ? void 0 : stateOrField.name)) : '';
+    const idObject = { f: form === null || form === void 0 ? void 0 : form.formId, ff: fieldPath, type };
+    return btoa(encodeURIComponent(JSON.stringify(idObject)));
 }
 function decodeNodeId(nodeId) {
     try {
-        const idObject = JSON.parse(atob(nodeId));
+        const idObject = JSON.parse(decodeURIComponent(atob(nodeId)));
         const form = DEVTOOLS_FORMS[idObject.f];
         if (!form && idObject.ff) {
             const field = DEVTOOLS_FIELDS[idObject.ff];
@@ -2052,11 +2266,11 @@ function decodeNodeId(nodeId) {
         if (!form) {
             return {};
         }
-        const fieldGroup = form.fieldsByPath.value[idObject.ff];
+        const state = form.getPathState(idObject.ff);
         return {
             type: idObject.type,
             form,
-            field: Array.isArray(fieldGroup) ? fieldGroup[idObject.idx || 0] : fieldGroup,
+            state,
         };
     }
     catch (err) {
@@ -2064,36 +2278,35 @@ function decodeNodeId(nodeId) {
     }
     return {};
 }
-function buildFieldState(field) {
-    const { errors, meta, value } = field;
+function buildFieldState(state) {
     return {
         'Field state': [
-            { key: 'errors', value: errors.value },
+            { key: 'errors', value: state.errors },
             {
                 key: 'initialValue',
-                value: meta.initialValue,
+                value: state.initialValue,
             },
             {
                 key: 'currentValue',
-                value: value.value,
+                value: state.value,
             },
             {
                 key: 'touched',
-                value: meta.touched,
+                value: state.touched,
             },
             {
                 key: 'dirty',
-                value: meta.dirty,
+                value: state.dirty,
             },
             {
                 key: 'valid',
-                value: meta.valid,
+                value: state.valid,
             },
         ],
     };
 }
 function buildFormState(form) {
-    const { errorBag, meta, values, isSubmitting, submitCount } = form;
+    const { errorBag, meta, values, isSubmitting, isValidating, submitCount } = form;
     return {
         'Form state': [
             {
@@ -2103,6 +2316,10 @@ function buildFormState(form) {
             {
                 key: 'isSubmitting',
                 value: isSubmitting.value,
+            },
+            {
+                key: 'isValidating',
+                value: isValidating.value,
             },
             {
                 key: 'touched',
@@ -2141,15 +2358,10 @@ function buildFormState(form) {
 /**
  * Resolves the tag color based on the form state
  */
-function getTagTheme(fieldOrForm) {
-    // const fallbackColors = {
-    //   bgColor: COLORS.unknown,
-    //   textColor: COLORS.white,
-    // };
-    const isValid = 'id' in fieldOrForm ? fieldOrForm.meta.valid : fieldOrForm.meta.value.valid;
+function getValidityColors(valid) {
     return {
-        bgColor: isValid ? COLORS.success : COLORS.error,
-        textColor: isValid ? COLORS.black : COLORS.white,
+        bgColor: valid ? COLORS.success : COLORS.error,
+        textColor: valid ? COLORS.black : COLORS.white,
     };
 }
 
@@ -2158,36 +2370,21 @@ function getTagTheme(fieldOrForm) {
  */
 function useField(path, rules, opts) {
     if (hasCheckedAttr(opts === null || opts === void 0 ? void 0 : opts.type)) {
-        return useCheckboxField(path, rules, opts);
+        return useFieldWithChecked(path, rules, opts);
     }
     return _useField(path, rules, opts);
 }
 function _useField(path, rules, opts) {
-    const { initialValue: modelValue, validateOnMount, bails, type, checkedValue, label, validateOnValueUpdate, uncheckedValue, controlled, keepValueOnUnmount, modelPropName, syncVModel, form: controlForm, } = normalizeOptions(opts);
+    const { initialValue: modelValue, validateOnMount, bails, type, checkedValue, label, validateOnValueUpdate, uncheckedValue, controlled, keepValueOnUnmount, syncVModel, form: controlForm, } = normalizeOptions(opts);
     const injectedForm = controlled ? injectWithSelf(FormContextKey) : undefined;
     const form = controlForm || injectedForm;
-    const name = lazyToRef(path);
-    // a flag indicating if the field is about to be removed/unmounted.
-    let markedForRemoval = false;
-    const { id, value, initialValue, meta, setState, errors, errorMessage } = useFieldState(name, {
-        modelValue,
-        form,
-    });
-    if (syncVModel) {
-        useVModel({ value, prop: modelPropName, handleChange });
-    }
-    /**
-     * Handles common onBlur meta update
-     */
-    const handleBlur = () => {
-        meta.touched = true;
-    };
-    const normalizedRules = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-        let rulesValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(rules);
-        const schema = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(form === null || form === void 0 ? void 0 : form.schema);
-        if (schema && !isYupValidator(schema) && !isTypedSchema(schema)) {
-            rulesValue = extractRuleFromSchema(schema, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(name)) || rulesValue;
+    const name = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => normalizeFormPath((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)));
+    const validator = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+        const schema = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(form === null || form === void 0 ? void 0 : form.schema);
+        if (schema) {
+            return undefined;
         }
+        const rulesValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(rules);
         if (isYupValidator(rulesValue) ||
             isTypedSchema(rulesValue) ||
             isCallable(rulesValue) ||
@@ -2196,37 +2393,65 @@ function _useField(path, rules, opts) {
         }
         return normalizeRules(rulesValue);
     });
+    const { id, value, initialValue, meta, setState, errors, flags } = useFieldState(name, {
+        modelValue,
+        form,
+        bails,
+        label,
+        type,
+        validate: validator.value ? validate$1 : undefined,
+        schema: isTypedSchema(rules) ? rules : undefined,
+    });
+    const errorMessage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => errors.value[0]);
+    if (syncVModel) {
+        useVModel({
+            value,
+            prop: syncVModel,
+            handleChange,
+            shouldValidate: () => validateOnValueUpdate && !flags.pendingReset,
+        });
+    }
+    /**
+     * Handles common onBlur meta update
+     */
+    const handleBlur = (evt, shouldValidate = false) => {
+        meta.touched = true;
+        if (shouldValidate) {
+            validateWithStateMutation();
+        }
+    };
     async function validateCurrentValue(mode) {
         var _a, _b;
         if (form === null || form === void 0 ? void 0 : form.validateSchema) {
-            return (_a = (await form.validateSchema(mode)).results[(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(name)]) !== null && _a !== void 0 ? _a : { valid: true, errors: [] };
+            const { results } = await form.validateSchema(mode);
+            return (_a = results[(0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(name)]) !== null && _a !== void 0 ? _a : { valid: true, errors: [] };
         }
-        return validate(value.value, normalizedRules.value, {
-            name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(name),
-            label: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(label),
-            values: (_b = form === null || form === void 0 ? void 0 : form.values) !== null && _b !== void 0 ? _b : {},
-            bails,
-        });
+        if (validator.value) {
+            return validate(value.value, validator.value, {
+                name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(name),
+                label: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(label),
+                values: (_b = form === null || form === void 0 ? void 0 : form.values) !== null && _b !== void 0 ? _b : {},
+                bails,
+            });
+        }
+        return { valid: true, errors: [] };
     }
     const validateWithStateMutation = withLatest(async () => {
         meta.pending = true;
         meta.validated = true;
         return validateCurrentValue('validated-only');
     }, result => {
-        if (markedForRemoval) {
-            result.valid = true;
-            result.errors = [];
+        if (flags.pendingUnmount[field.id]) {
+            return result;
         }
         setState({ errors: result.errors });
         meta.pending = false;
+        meta.valid = result.valid;
         return result;
     });
     const validateValidStateOnly = withLatest(async () => {
         return validateCurrentValue('silent');
     }, result => {
-        if (markedForRemoval) {
-            result.valid = true;
-        }
         meta.valid = result.valid;
         return result;
     });
@@ -2239,10 +2464,7 @@ function _useField(path, rules, opts) {
     // Common input/change event handler
     function handleChange(e, shouldValidate = true) {
         const newValue = normalizeEventValue(e);
-        value.value = newValue;
-        if (!validateOnValueUpdate && shouldValidate) {
-            validateWithStateMutation();
-        }
+        setValue(newValue, shouldValidate);
     }
     // Runs the initial validation
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
@@ -2258,24 +2480,8 @@ function _useField(path, rules, opts) {
     function setTouched(isTouched) {
         meta.touched = isTouched;
     }
-    let unwatchValue;
-    let lastWatchedValue = klona(value.value);
-    function watchValue() {
-        unwatchValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(value, (val, oldVal) => {
-            if (isEqual(val, oldVal) && isEqual(val, lastWatchedValue)) {
-                return;
-            }
-            const validateFn = validateOnValueUpdate ? validateWithStateMutation : validateValidStateOnly;
-            validateFn();
-            lastWatchedValue = klona(val);
-        }, {
-            deep: true,
-        });
-    }
-    watchValue();
     function resetField(state) {
         var _a;
-        unwatchValue === null || unwatchValue === void 0 ? void 0 : unwatchValue();
         const newValue = state && 'value' in state ? state.value : initialValue.value;
         setState({
             value: klona(newValue),
@@ -2286,22 +2492,29 @@ function _useField(path, rules, opts) {
         meta.pending = false;
         meta.validated = false;
         validateValidStateOnly();
-        // need to watch at next tick to avoid triggering the value watcher
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
-            watchValue();
-        });
     }
-    function setValue(newValue) {
-        value.value = newValue;
+    const vm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentInstance)();
+    function setValue(newValue, shouldValidate = true) {
+        value.value = vm && syncVModel ? applyModelModifiers(newValue, vm.props.modelModifiers) : newValue;
+        const validateFn = shouldValidate ? validateWithStateMutation : validateValidStateOnly;
+        validateFn();
     }
     function setErrors(errors) {
         setState({ errors: Array.isArray(errors) ? errors : [errors] });
     }
+    const valueProxy = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
+        get() {
+            return value.value;
+        },
+        set(newValue) {
+            setValue(newValue, validateOnValueUpdate);
+        },
+    });
     const field = {
         id,
         name,
         label,
-        value,
+        value: valueProxy,
         meta,
         errors,
         errorMessage,
@@ -2345,14 +2558,9 @@ function _useField(path, rules, opts) {
         return field;
     }
     // associate the field with the given form
-    form.register(field);
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(() => {
-        markedForRemoval = true;
-        form.unregister(field);
-    });
     // extract cross-field dependencies in a computed prop
     const dependencies = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-        const rulesVal = normalizedRules.value;
+        const rulesVal = validator.value;
         // is falsy, a function schema or a yup schema
         if (!rulesVal ||
             isCallable(rulesVal) ||
@@ -2386,13 +2594,44 @@ function _useField(path, rules, opts) {
             meta.validated ? validateWithStateMutation() : validateValidStateOnly();
         }
     });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(() => {
+        var _a;
+        const shouldKeepValue = (_a = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(field.keepValueOnUnmount)) !== null && _a !== void 0 ? _a : (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(form.keepValuesOnUnmount);
+        const path = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(name);
+        if (shouldKeepValue || !form || flags.pendingUnmount[field.id]) {
+            form === null || form === void 0 ? void 0 : form.removePathState(path, id);
+            return;
+        }
+        flags.pendingUnmount[field.id] = true;
+        const pathState = form.getPathState(path);
+        const matchesId = Array.isArray(pathState === null || pathState === void 0 ? void 0 : pathState.id) && (pathState === null || pathState === void 0 ? void 0 : pathState.multiple)
+            ? pathState === null || pathState === void 0 ? void 0 : pathState.id.includes(field.id)
+            : (pathState === null || pathState === void 0 ? void 0 : pathState.id) === field.id;
+        if (!matchesId) {
+            return;
+        }
+        if ((pathState === null || pathState === void 0 ? void 0 : pathState.multiple) && Array.isArray(pathState.value)) {
+            const valueIdx = pathState.value.findIndex(i => isEqual(i, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(field.checkedValue)));
+            if (valueIdx > -1) {
+                const newVal = [...pathState.value];
+                newVal.splice(valueIdx, 1);
+                form.setFieldValue(path, newVal);
+            }
+            if (Array.isArray(pathState.id)) {
+                pathState.id.splice(pathState.id.indexOf(field.id), 1);
+            }
+        }
+        else {
+            form.unsetPathValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(name));
+        }
+        form.removePathState(path, id);
+    });
     return field;
 }
 /**
  * Normalizes partial field options to include the full options
  */
 function normalizeOptions(opts) {
-    var _a;
     const defaults = () => ({
         initialValue: undefined,
         validateOnMount: false,
@@ -2400,13 +2639,13 @@ function normalizeOptions(opts) {
         label: undefined,
         validateOnValueUpdate: true,
         keepValueOnUnmount: undefined,
-        modelPropName: 'modelValue',
-        syncVModel: true,
+        syncVModel: false,
         controlled: true,
     });
-    const isVModelSynced = (_a = opts === null || opts === void 0 ? void 0 : opts.syncVModel) !== null && _a !== void 0 ? _a : true;
+    const isVModelSynced = !!(opts === null || opts === void 0 ? void 0 : opts.syncVModel);
+    const modelPropName = typeof (opts === null || opts === void 0 ? void 0 : opts.syncVModel) === 'string' ? opts.syncVModel : (opts === null || opts === void 0 ? void 0 : opts.modelPropName) || 'modelValue';
     const initialValue = isVModelSynced && !('initialValue' in (opts || {}))
-        ? getCurrentModelValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentInstance)(), (opts === null || opts === void 0 ? void 0 : opts.modelPropName) || 'modelValue')
+        ? getCurrentModelValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentInstance)(), modelPropName)
         : opts === null || opts === void 0 ? void 0 : opts.initialValue;
     if (!opts) {
         return Object.assign(Object.assign({}, defaults()), { initialValue });
@@ -2414,44 +2653,40 @@ function normalizeOptions(opts) {
     // TODO: Deprecate this in next major release
     const checkedValue = 'valueProp' in opts ? opts.valueProp : opts.checkedValue;
     const controlled = 'standalone' in opts ? !opts.standalone : opts.controlled;
-    return Object.assign(Object.assign(Object.assign({}, defaults()), (opts || {})), { initialValue, controlled: controlled !== null && controlled !== void 0 ? controlled : true, checkedValue });
+    const syncVModel = (opts === null || opts === void 0 ? void 0 : opts.modelPropName) || (opts === null || opts === void 0 ? void 0 : opts.syncVModel) || false;
+    return Object.assign(Object.assign(Object.assign({}, defaults()), (opts || {})), { initialValue, controlled: controlled !== null && controlled !== void 0 ? controlled : true, checkedValue,
+        syncVModel });
 }
-/**
- * Extracts the validation rules from a schema
- */
-function extractRuleFromSchema(schema, fieldName) {
-    // no schema at all
-    if (!schema) {
-        return undefined;
-    }
-    // there is a key on the schema object for this field
-    return schema[fieldName];
-}
-function useCheckboxField(name, rules, opts) {
+function useFieldWithChecked(name, rules, opts) {
     const form = !(opts === null || opts === void 0 ? void 0 : opts.standalone) ? injectWithSelf(FormContextKey) : undefined;
     const checkedValue = opts === null || opts === void 0 ? void 0 : opts.checkedValue;
     const uncheckedValue = opts === null || opts === void 0 ? void 0 : opts.uncheckedValue;
-    function patchCheckboxApi(field) {
+    function patchCheckedApi(field) {
         const handleChange = field.handleChange;
         const checked = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-            const currentValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.value);
-            const checkedVal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(checkedValue);
+            const currentValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(field.value);
+            const checkedVal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(checkedValue);
             return Array.isArray(currentValue)
                 ? currentValue.findIndex(v => isEqual(v, checkedVal)) >= 0
                 : isEqual(checkedVal, currentValue);
         });
         function handleCheckboxChange(e, shouldValidate = true) {
-            var _a;
+            var _a, _b;
             if (checked.value === ((_a = e === null || e === void 0 ? void 0 : e.target) === null || _a === void 0 ? void 0 : _a.checked)) {
                 if (shouldValidate) {
                     field.validate();
                 }
                 return;
             }
-            let newValue = normalizeEventValue(e);
-            // Single checkbox field without a form to toggle it's value
-            if (!form) {
-                newValue = resolveNextCheckboxValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.value), (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(checkedValue), (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(uncheckedValue));
+            const path = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(name);
+            const pathState = form === null || form === void 0 ? void 0 : form.getPathState(path);
+            const value = normalizeEventValue(e);
+            let newValue = (_b = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(checkedValue)) !== null && _b !== void 0 ? _b : value;
+            if (form && (pathState === null || pathState === void 0 ? void 0 : pathState.multiple) && pathState.type === 'checkbox') {
+                newValue = resolveNextCheckboxValue(getFromPath(form.values, path) || [], newValue, undefined);
+            }
+            else if ((opts === null || opts === void 0 ? void 0 : opts.type) === 'checkbox') {
+                newValue = resolveNextCheckboxValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(field.value), newValue, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(uncheckedValue));
             }
             handleChange(newValue, shouldValidate);
         }
@@ -2459,18 +2694,18 @@ function useCheckboxField(name, rules, opts) {
             checkedValue,
             uncheckedValue, handleChange: handleCheckboxChange });
     }
-    return patchCheckboxApi(_useField(name, rules, opts));
+    return patchCheckedApi(_useField(name, rules, opts));
 }
-function useVModel({ prop, value, handleChange }) {
+function useVModel({ prop, value, handleChange, shouldValidate }) {
     const vm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentInstance)();
     /* istanbul ignore next */
-    if (!vm) {
+    if (!vm || !prop) {
         if ((true)) {
             console.warn('Failed to setup model events because `useField` was not called in setup.');
         }
         return;
     }
-    const propName = prop || 'modelValue';
+    const propName = typeof prop === 'string' ? prop : 'modelValue';
     const emitName = `update:${propName}`;
     // Component doesn't have a model prop setup (must be defined on the props)
     if (!(propName in vm.props)) {
@@ -2487,10 +2722,10 @@ function useVModel({ prop, value, handleChange }) {
             return;
         }
         const newValue = propValue === IS_ABSENT ? undefined : propValue;
-        if (isEqual(newValue, applyModelModifiers(value.value, vm.props.modelModifiers))) {
+        if (isEqual(newValue, value.value)) {
             return;
         }
-        handleChange(newValue);
+        handleChange(newValue, shouldValidate());
     });
 }
 function getCurrentModelValue(vm, propName) {
@@ -2500,7 +2735,7 @@ function getCurrentModelValue(vm, propName) {
     return vm.props[propName];
 }
 
-const FieldImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+const FieldImpl = /** #__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
     name: 'Field',
     inheritAttrs: false,
     props: {
@@ -2585,28 +2820,34 @@ const FieldImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             checkedValue: ctx.attrs.value,
             uncheckedValue,
             label,
-            validateOnValueUpdate: false,
+            validateOnValueUpdate: props.validateOnModelUpdate,
             keepValueOnUnmount: keepValue,
+            syncVModel: true,
         });
         // If there is a v-model applied on the component we need to emit the `update:modelValue` whenever the value binding changes
         const onChangeHandler = function handleChangeWithModel(e, shouldValidate = true) {
             handleChange(e, shouldValidate);
-            ctx.emit('update:modelValue', value.value);
         };
-        const handleInput = (e) => {
-            if (!hasCheckedAttr(ctx.attrs.type)) {
-                value.value = normalizeEventValue(e);
-            }
-        };
-        const onInputHandler = function handleInputWithModel(e) {
-            handleInput(e);
-            ctx.emit('update:modelValue', value.value);
-        };
-        const fieldProps = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+        const sharedProps = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
             const { validateOnInput, validateOnChange, validateOnBlur, validateOnModelUpdate } = resolveValidationTriggers(props);
-            const baseOnBlur = [handleBlur, ctx.attrs.onBlur, validateOnBlur ? validateField : undefined].filter(Boolean);
-            const baseOnInput = [(e) => onChangeHandler(e, validateOnInput), ctx.attrs.onInput].filter(Boolean);
-            const baseOnChange = [(e) => onChangeHandler(e, validateOnChange), ctx.attrs.onChange].filter(Boolean);
+            function baseOnBlur(e) {
+                handleBlur(e, validateOnBlur);
+                if (isCallable(ctx.attrs.onBlur)) {
+                    ctx.attrs.onBlur(e);
+                }
+            }
+            function baseOnInput(e) {
+                onChangeHandler(e, validateOnInput);
+                if (isCallable(ctx.attrs.onInput)) {
+                    ctx.attrs.onInput(e);
+                }
+            }
+            function baseOnChange(e) {
+                onChangeHandler(e, validateOnChange);
+                if (isCallable(ctx.attrs.onChange)) {
+                    ctx.attrs.onChange(e);
+                }
+            }
             const attrs = {
                 name: props.name,
                 onBlur: baseOnBlur,
@@ -2614,6 +2855,10 @@ const FieldImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
                 onChange: baseOnChange,
             };
             attrs['onUpdate:modelValue'] = e => onChangeHandler(e, validateOnModelUpdate);
+            return attrs;
+        });
+        const fieldProps = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            const attrs = Object.assign({}, sharedProps.value);
             if (hasCheckedAttr(ctx.attrs.type) && checked) {
                 attrs.checked = checked.value;
             }
@@ -2623,9 +2868,13 @@ const FieldImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             }
             return attrs;
         });
+        const componentProps = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            return Object.assign(Object.assign({}, sharedProps.value), { modelValue: value.value });
+        });
         function slotProps() {
             return {
                 field: fieldProps.value,
+                componentField: componentProps.value,
                 value: value.value,
                 meta,
                 errors: errors.value,
@@ -2633,14 +2882,18 @@ const FieldImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
                 validate: validateField,
                 resetField,
                 handleChange: onChangeHandler,
-                handleInput: onInputHandler,
+                handleInput: e => onChangeHandler(e, false),
                 handleReset,
-                handleBlur,
+                handleBlur: sharedProps.value.onBlur,
                 setTouched,
                 setErrors,
             };
         }
         ctx.expose({
+            value,
+            meta,
+            errors,
+            errorMessage,
             setErrors,
             setTouched,
             reset: resetField,
@@ -2685,8 +2938,9 @@ function resolveInitialValue(props, ctx) {
 const Field = FieldImpl;
 
 let FORM_COUNTER = 0;
+const PRIVATE_PATH_STATE_KEYS = ['bails', 'fieldsCount', 'id', 'multiple', 'type', 'validate'];
 function resolveInitialValues(opts) {
-    const providedValues = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(opts === null || opts === void 0 ? void 0 : opts.initialValues) || {};
+    const providedValues = Object.assign({}, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)((opts === null || opts === void 0 ? void 0 : opts.initialValues) || {}));
     const schema = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(opts === null || opts === void 0 ? void 0 : opts.validationSchema);
     if (schema && isTypedSchema(schema) && isCallable(schema.cast)) {
         return klona(schema.cast(providedValues) || {});
@@ -2696,58 +2950,91 @@ function resolveInitialValues(opts) {
 function useForm(opts) {
     var _a;
     const formId = FORM_COUNTER++;
-    const controlledModelPaths = new Set();
     // Prevents fields from double resetting their values, which causes checkboxes to toggle their initial value
-    // TODO: This won't be needed if we centralize all the state inside the `form` for form inputs
-    let RESET_LOCK = false;
-    // A lookup containing fields or field groups
-    const fieldsByPath = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({});
+    let FIELD_ID_COUNTER = 0;
     // If the form is currently submitting
     const isSubmitting = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    // If the form is currently validating
+    const isValidating = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     // The number of times the user tried to submit the form
     const submitCount = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
     // field arrays managed by this form
     const fieldArrays = [];
     // a private ref for all form values
     const formValues = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)(resolveInitialValues(opts));
-    // the source of errors for the form fields
-    const { errorBag, setErrorBag, setFieldErrorBag } = useErrorBag(opts === null || opts === void 0 ? void 0 : opts.initialErrors);
+    const pathStates = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+    const extraErrorsBag = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({});
+    const pathStateLookup = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({});
+    const rebuildPathLookup = debounceNextTick(() => {
+        pathStateLookup.value = pathStates.value.reduce((names, state) => {
+            names[normalizeFormPath((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(state.path))] = state;
+            return names;
+        }, {});
+    });
+    /**
+     * Manually sets an error message on a specific field
+     */
+    function setFieldError(field, message) {
+        const state = findPathState(field);
+        if (!state) {
+            if (typeof field === 'string') {
+                extraErrorsBag.value[normalizeFormPath(field)] = normalizeErrorItem(message);
+            }
+            return;
+        }
+        // Move the error from the extras path if exists
+        if (typeof field === 'string') {
+            const normalizedPath = normalizeFormPath(field);
+            if (extraErrorsBag.value[normalizedPath]) {
+                delete extraErrorsBag.value[normalizedPath];
+            }
+        }
+        state.errors = normalizeErrorItem(message);
+        state.valid = !state.errors.length;
+    }
+    /**
+     * Sets errors for the fields specified in the object
+     */
+    function setErrors(paths) {
+        keysOf(paths).forEach(path => {
+            setFieldError(path, paths[path]);
+        });
+    }
+    if (opts === null || opts === void 0 ? void 0 : opts.initialErrors) {
+        setErrors(opts.initialErrors);
+    }
+    const errorBag = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+        const pathErrors = pathStates.value.reduce((acc, state) => {
+            if (state.errors.length) {
+                acc[state.path] = state.errors;
+            }
+            return acc;
+        }, {});
+        return Object.assign(Object.assign({}, extraErrorsBag.value), pathErrors);
+    });
     // Gets the first error of each field
     const errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         return keysOf(errorBag.value).reduce((acc, key) => {
-            const bag = errorBag.value[key];
-            if (bag && bag.length) {
-                acc[key] = bag[0];
+            const errors = errorBag.value[key];
+            if (errors === null || errors === void 0 ? void 0 : errors.length) {
+                acc[key] = errors[0];
             }
             return acc;
         }, {});
     });
-    function getFirstFieldAtPath(path) {
-        const fieldOrGroup = fieldsByPath.value[path];
-        return Array.isArray(fieldOrGroup) ? fieldOrGroup[0] : fieldOrGroup;
-    }
-    function fieldExists(path) {
-        return !!fieldsByPath.value[path];
-    }
     /**
      * Holds a computed reference to all fields names and labels
      */
     const fieldNames = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-        return keysOf(fieldsByPath.value).reduce((names, path) => {
-            const field = getFirstFieldAtPath(path);
-            if (field) {
-                names[path] = { name: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.name) || '', label: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.label) || '' };
-            }
+        return pathStates.value.reduce((names, state) => {
+            names[state.path] = { name: state.path || '', label: state.label || '' };
             return names;
         }, {});
     });
     const fieldBailsMap = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-        return keysOf(fieldsByPath.value).reduce((map, path) => {
+        return pathStates.value.reduce((map, state) => {
             var _a;
-            const field = getFirstFieldAtPath(path);
-            if (field) {
-                map[path] = (_a = field.bails) !== null && _a !== void 0 ? _a : true;
-            }
+            map[state.path] = (_a = state.bails) !== null && _a !== void 0 ? _a : true;
             return map;
         }, {});
     });
@@ -2756,17 +3043,99 @@ function useForm(opts) {
     const initialErrors = Object.assign({}, ((opts === null || opts === void 0 ? void 0 : opts.initialErrors) || {}));
     const keepValuesOnUnmount = (_a = opts === null || opts === void 0 ? void 0 : opts.keepValuesOnUnmount) !== null && _a !== void 0 ? _a : false;
     // initial form values
-    const { initialValues, originalInitialValues, setInitialValues } = useFormInitialValues(fieldsByPath, formValues, opts);
+    const { initialValues, originalInitialValues, setInitialValues } = useFormInitialValues(pathStates, formValues, opts);
     // form meta aggregations
-    const meta = useFormMeta(fieldsByPath, formValues, originalInitialValues, errors);
+    const meta = useFormMeta(pathStates, formValues, originalInitialValues, errors);
     const controlledValues = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-        return [...controlledModelPaths, ...keysOf(fieldsByPath.value)].reduce((acc, path) => {
-            const value = getFromPath(formValues, path);
-            setInPath(acc, path, value);
+        return pathStates.value.reduce((acc, state) => {
+            const value = getFromPath(formValues, state.path);
+            setInPath(acc, state.path, value);
             return acc;
         }, {});
     });
     const schema = opts === null || opts === void 0 ? void 0 : opts.validationSchema;
+    function createPathState(path, config) {
+        var _a, _b;
+        const initialValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => getFromPath(initialValues.value, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)));
+        const pathStateExists = pathStateLookup.value[(0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)];
+        const isCheckboxOrRadio = (config === null || config === void 0 ? void 0 : config.type) === 'checkbox' || (config === null || config === void 0 ? void 0 : config.type) === 'radio';
+        if (pathStateExists && isCheckboxOrRadio) {
+            pathStateExists.multiple = true;
+            const id = FIELD_ID_COUNTER++;
+            if (Array.isArray(pathStateExists.id)) {
+                pathStateExists.id.push(id);
+            }
+            else {
+                pathStateExists.id = [pathStateExists.id, id];
+            }
+            pathStateExists.fieldsCount++;
+            pathStateExists.__flags.pendingUnmount[id] = false;
+            return pathStateExists;
+        }
+        const currentValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => getFromPath(formValues, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)));
+        const pathValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path);
+        const unsetBatchIndex = UNSET_BATCH.findIndex(_path => _path === pathValue);
+        if (unsetBatchIndex !== -1) {
+            UNSET_BATCH.splice(unsetBatchIndex, 1);
+        }
+        const isRequired = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            var _a, _b, _c, _d, _e, _f;
+            if (isTypedSchema(schema)) {
+                return (_c = (_b = (_a = schema).describe) === null || _b === void 0 ? void 0 : _b.call(_a, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)).required) !== null && _c !== void 0 ? _c : false;
+            }
+            // Path own schema
+            if (isTypedSchema(config === null || config === void 0 ? void 0 : config.schema)) {
+                return (_f = (_e = (_d = (config === null || config === void 0 ? void 0 : config.schema)).describe) === null || _e === void 0 ? void 0 : _e.call(_d).required) !== null && _f !== void 0 ? _f : false;
+            }
+            return false;
+        });
+        const id = FIELD_ID_COUNTER++;
+        const state = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+            id,
+            path,
+            touched: false,
+            pending: false,
+            valid: true,
+            validated: !!((_a = initialErrors[pathValue]) === null || _a === void 0 ? void 0 : _a.length),
+            required: isRequired,
+            initialValue,
+            errors: (0,vue__WEBPACK_IMPORTED_MODULE_0__.shallowRef)([]),
+            bails: (_b = config === null || config === void 0 ? void 0 : config.bails) !== null && _b !== void 0 ? _b : false,
+            label: config === null || config === void 0 ? void 0 : config.label,
+            type: (config === null || config === void 0 ? void 0 : config.type) || 'default',
+            value: currentValue,
+            multiple: false,
+            __flags: {
+                pendingUnmount: { [id]: false },
+                pendingReset: false,
+            },
+            fieldsCount: 1,
+            validate: config === null || config === void 0 ? void 0 : config.validate,
+            dirty: (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+                return !isEqual((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(currentValue), (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(initialValue));
+            }),
+        });
+        pathStates.value.push(state);
+        pathStateLookup.value[pathValue] = state;
+        rebuildPathLookup();
+        if (errors.value[pathValue] && !initialErrors[pathValue]) {
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+                validateField(pathValue, { mode: 'silent' });
+            });
+        }
+        // Handles when a path changes
+        if ((0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(path)) {
+            (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(path, newPath => {
+                rebuildPathLookup();
+                const nextValue = klona(currentValue.value);
+                pathStateLookup.value[newPath] = state;
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+                    setInPath(formValues, newPath, nextValue);
+                });
+            });
+        }
+        return state;
+    }
     /**
      * Batches validation runs in 5ms batches
      * Must have two distinct batch queues to make sure they don't override each other settings #3783
@@ -2774,47 +3143,91 @@ function useForm(opts) {
     const debouncedSilentValidation = debounceAsync(_validateSchema, 5);
     const debouncedValidation = debounceAsync(_validateSchema, 5);
     const validateSchema = withLatest(async (mode) => {
-        return (await mode) === 'silent' ? debouncedSilentValidation() : debouncedValidation();
+        return (await (mode === 'silent'
+            ? debouncedSilentValidation()
+            : debouncedValidation()));
     }, (formResult, [mode]) => {
         // fields by id lookup
-        const fieldsById = formCtx.fieldsByPath.value || {};
         // errors fields names, we need it to also check if custom errors are updated
         const currentErrorsPaths = keysOf(formCtx.errorBag.value);
         // collect all the keys from the schema and all fields
-        // this ensures we have a complete keymap of all the fields
+        // this ensures we have a complete key map of all the fields
         const paths = [
-            ...new Set([...keysOf(formResult.results), ...keysOf(fieldsById), ...currentErrorsPaths]),
-        ];
+            ...new Set([...keysOf(formResult.results), ...pathStates.value.map(p => p.path), ...currentErrorsPaths]),
+        ].sort();
         // aggregates the paths into a single result object while applying the results on the fields
-        return paths.reduce((validation, path) => {
-            const field = fieldsById[path];
-            const messages = (formResult.results[path] || { errors: [] }).errors;
-            const fieldResult = {
-                errors: messages,
-                valid: !messages.length,
-            };
+        const results = paths.reduce((validation, _path) => {
+            var _a;
+            const expectedPath = _path;
+            const pathState = findPathState(expectedPath) || findHoistedPath(expectedPath);
+            const messages = ((_a = formResult.results[expectedPath]) === null || _a === void 0 ? void 0 : _a.errors) || [];
+            // This is the real path of the field, because it might've been a hoisted field
+            const path = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(pathState === null || pathState === void 0 ? void 0 : pathState.path) || expectedPath);
+            // It is possible that multiple paths are collected across loops
+            // We want to merge them to avoid overriding any iteration's results
+            const fieldResult = mergeValidationResults({ errors: messages, valid: !messages.length }, validation.results[path]);
             validation.results[path] = fieldResult;
             if (!fieldResult.valid) {
                 validation.errors[path] = fieldResult.errors[0];
             }
+            // clean up extra errors if path state exists
+            if (pathState && extraErrorsBag.value[path]) {
+                delete extraErrorsBag.value[path];
+            }
             // field not rendered
-            if (!field) {
+            if (!pathState) {
                 setFieldError(path, messages);
                 return validation;
             }
             // always update the valid flag regardless of the mode
-            applyFieldMutation(field, f => (f.meta.valid = fieldResult.valid));
+            pathState.valid = fieldResult.valid;
             if (mode === 'silent') {
                 return validation;
             }
-            const wasValidated = Array.isArray(field) ? field.some(f => f.meta.validated) : field.meta.validated;
-            if (mode === 'validated-only' && !wasValidated) {
+            if (mode === 'validated-only' && !pathState.validated) {
                 return validation;
             }
-            applyFieldMutation(field, f => f.setState({ errors: fieldResult.errors }));
+            setFieldError(pathState, fieldResult.errors);
             return validation;
         }, { valid: formResult.valid, results: {}, errors: {} });
+        if (formResult.values) {
+            results.values = formResult.values;
+        }
+        return results;
     });
+    function mutateAllPathState(mutation) {
+        pathStates.value.forEach(mutation);
+    }
+    function findPathState(path) {
+        const normalizedPath = typeof path === 'string' ? normalizeFormPath(path) : path;
+        const pathState = typeof normalizedPath === 'string' ? pathStateLookup.value[normalizedPath] : normalizedPath;
+        return pathState;
+    }
+    function findHoistedPath(path) {
+        const candidates = pathStates.value.filter(state => path.startsWith(state.path));
+        return candidates.reduce((bestCandidate, candidate) => {
+            if (!bestCandidate) {
+                return candidate;
+            }
+            return (candidate.path.length > bestCandidate.path.length ? candidate : bestCandidate);
+        }, undefined);
+    }
+    let UNSET_BATCH = [];
+    let PENDING_UNSET;
+    function unsetPathValue(path) {
+        UNSET_BATCH.push(path);
+        if (!PENDING_UNSET) {
+            PENDING_UNSET = (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+                const sortedPaths = [...UNSET_BATCH].sort().reverse();
+                sortedPaths.forEach(p => {
+                    unsetPath(formValues, p);
+                });
+                UNSET_BATCH = [];
+                PENDING_UNSET = null;
+            });
+        }
+        return PENDING_UNSET;
+    }
     function makeSubmissionFactory(onlyControlled) {
         return function submitHandlerFactory(fn, onValidationError) {
             return function submissionHandler(e) {
@@ -2823,10 +3236,7 @@ function useForm(opts) {
                     e.stopPropagation();
                 }
                 // Touch all fields
-                setTouched(keysOf(fieldsByPath.value).reduce((acc, field) => {
-                    acc[field] = true;
-                    return acc;
-                }, {}));
+                mutateAllPathState(s => (s.touched = true));
                 isSubmitting.value = true;
                 submitCount.value++;
                 return validate()
@@ -2834,7 +3244,7 @@ function useForm(opts) {
                     const values = klona(formValues);
                     if (result.valid && typeof fn === 'function') {
                         const controlled = klona(controlledValues.value);
-                        let submittedValues = onlyControlled ? controlled : values;
+                        let submittedValues = (onlyControlled ? controlled : values);
                         if (result.values) {
                             submittedValues = result.values;
                         }
@@ -2874,9 +3284,45 @@ function useForm(opts) {
     const handleSubmitImpl = makeSubmissionFactory(false);
     const handleSubmit = handleSubmitImpl;
     handleSubmit.withControlled = makeSubmissionFactory(true);
+    function removePathState(path, id) {
+        const idx = pathStates.value.findIndex(s => s.path === path);
+        const pathState = pathStates.value[idx];
+        if (idx === -1 || !pathState) {
+            return;
+        }
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+            validateField(path, { mode: 'silent', warn: false });
+        });
+        if (pathState.multiple && pathState.fieldsCount) {
+            pathState.fieldsCount--;
+        }
+        if (Array.isArray(pathState.id)) {
+            const idIndex = pathState.id.indexOf(id);
+            if (idIndex >= 0) {
+                pathState.id.splice(idIndex, 1);
+            }
+            delete pathState.__flags.pendingUnmount[id];
+        }
+        if (!pathState.multiple || pathState.fieldsCount <= 0) {
+            pathStates.value.splice(idx, 1);
+            unsetInitialValue(path);
+            rebuildPathLookup();
+            delete pathStateLookup.value[path];
+        }
+    }
+    function destroyPath(path) {
+        keysOf(pathStateLookup.value).forEach(key => {
+            if (key.startsWith(path)) {
+                delete pathStateLookup.value[key];
+            }
+        });
+        pathStates.value = pathStates.value.filter(s => !s.path.startsWith(path));
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+            rebuildPathLookup();
+        });
+    }
     const formCtx = {
         formId,
-        fieldsByPath,
         values: formValues,
         controlledValues,
         errorBag,
@@ -2885,305 +3331,206 @@ function useForm(opts) {
         submitCount,
         meta,
         isSubmitting,
+        isValidating,
         fieldArrays,
         keepValuesOnUnmount,
         validateSchema: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(schema) ? validateSchema : undefined,
         validate,
-        register: registerField,
-        unregister: unregisterField,
-        setFieldErrorBag,
+        setFieldError,
         validateField,
         setFieldValue,
         setValues,
         setErrors,
-        setFieldError,
         setFieldTouched,
         setTouched,
         resetForm,
         resetField,
         handleSubmit,
+        useFieldModel,
+        defineInputBinds,
+        defineComponentBinds: defineComponentBinds,
+        defineField,
         stageInitialValue,
         unsetInitialValue,
         setFieldInitialValue,
-        useFieldModel,
+        createPathState,
+        getPathState: findPathState,
+        unsetPathValue,
+        removePathState,
+        initialValues: initialValues,
+        getAllPathStates: () => pathStates.value,
+        destroyPath,
+        isFieldTouched,
+        isFieldDirty,
+        isFieldValid,
     };
-    function isFieldGroup(fieldOrGroup) {
-        return Array.isArray(fieldOrGroup);
-    }
-    function applyFieldMutation(fieldOrGroup, mutation) {
-        if (Array.isArray(fieldOrGroup)) {
-            return fieldOrGroup.forEach(mutation);
-        }
-        return mutation(fieldOrGroup);
-    }
-    function mutateAllFields(mutation) {
-        Object.values(fieldsByPath.value).forEach(field => {
-            if (!field) {
-                return;
-            }
-            // avoid resetting the field values, because they should've been reset already.
-            applyFieldMutation(field, mutation);
-        });
-    }
-    /**
-     * Manually sets an error message on a specific field
-     */
-    function setFieldError(field, message) {
-        setFieldErrorBag(field, message);
-    }
-    /**
-     * Sets errors for the fields specified in the object
-     */
-    function setErrors(fields) {
-        setErrorBag(fields);
-    }
     /**
      * Sets a single field value
      */
-    function setFieldValue(field, value, { force } = { force: false }) {
-        var _a;
-        const fieldInstance = fieldsByPath.value[field];
+    function setFieldValue(field, value, shouldValidate = true) {
         const clonedValue = klona(value);
-        // field wasn't found, create a virtual field as a placeholder
-        if (!fieldInstance) {
-            setInPath(formValues, field, clonedValue);
-            return;
+        const path = typeof field === 'string' ? field : field.path;
+        const pathState = findPathState(path);
+        if (!pathState) {
+            createPathState(path);
         }
-        if (isFieldGroup(fieldInstance) && ((_a = fieldInstance[0]) === null || _a === void 0 ? void 0 : _a.type) === 'checkbox' && !Array.isArray(value)) {
-            // Multiple checkboxes, and only one of them got updated
-            const newValue = klona(resolveNextCheckboxValue(getFromPath(formValues, field) || [], value, undefined));
-            setInPath(formValues, field, newValue);
-            return;
+        setInPath(formValues, path, clonedValue);
+        if (shouldValidate) {
+            validateField(path);
         }
-        let newValue = clonedValue;
-        // Single Checkbox: toggles the field value unless the field is being reset then force it
-        if (!isFieldGroup(fieldInstance) && fieldInstance.type === 'checkbox' && !force && !RESET_LOCK) {
-            newValue = klona(resolveNextCheckboxValue(getFromPath(formValues, field), value, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(fieldInstance.uncheckedValue)));
-        }
-        setInPath(formValues, field, newValue);
     }
-    /**
-     * Sets multiple fields values
-     */
-    function setValues(fields) {
+    function forceSetValues(fields, shouldValidate = true) {
         // clean up old values
         keysOf(formValues).forEach(key => {
             delete formValues[key];
         });
         // set up new values
         keysOf(fields).forEach(path => {
-            setFieldValue(path, fields[path]);
+            setFieldValue(path, fields[path], false);
         });
+        if (shouldValidate) {
+            validate();
+        }
+    }
+    /**
+     * Sets multiple fields values
+     */
+    function setValues(fields, shouldValidate = true) {
+        merge(formValues, fields);
         // regenerate the arrays when the form values change
         fieldArrays.forEach(f => f && f.reset());
-    }
-    function createModel(path) {
-        const { value } = _useFieldValue(path, undefined, formCtx);
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(value, () => {
-            if (!fieldExists((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path))) {
-                validate({ mode: 'validated-only' });
-            }
-        }, {
-            deep: true,
-        });
-        controlledModelPaths.add((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path));
-        return value;
-    }
-    function useFieldModel(path) {
-        if (!Array.isArray(path)) {
-            return createModel(path);
+        if (shouldValidate) {
+            validate();
         }
-        return path.map(createModel);
+    }
+    function createModel(path, shouldValidate) {
+        const pathState = findPathState((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)) || createPathState(path);
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
+            get() {
+                return pathState.value;
+            },
+            set(value) {
+                var _a;
+                const pathValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path);
+                setFieldValue(pathValue, value, (_a = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(shouldValidate)) !== null && _a !== void 0 ? _a : false);
+            },
+        });
     }
     /**
      * Sets the touched meta state on a field
      */
     function setFieldTouched(field, isTouched) {
-        const fieldInstance = fieldsByPath.value[field];
-        if (fieldInstance) {
-            applyFieldMutation(fieldInstance, f => f.setTouched(isTouched));
+        const pathState = findPathState(field);
+        if (pathState) {
+            pathState.touched = isTouched;
         }
+    }
+    function isFieldTouched(field) {
+        const pathState = findPathState(field);
+        if (pathState) {
+            return pathState.touched;
+        }
+        // Find all nested paths and consider their touched state
+        return pathStates.value.filter(s => s.path.startsWith(field)).some(s => s.touched);
+    }
+    function isFieldDirty(field) {
+        const pathState = findPathState(field);
+        if (pathState) {
+            return pathState.dirty;
+        }
+        return pathStates.value.filter(s => s.path.startsWith(field)).some(s => s.dirty);
+    }
+    function isFieldValid(field) {
+        const pathState = findPathState(field);
+        if (pathState) {
+            return pathState.valid;
+        }
+        return pathStates.value.filter(s => s.path.startsWith(field)).every(s => s.valid);
     }
     /**
      * Sets the touched meta state on multiple fields
      */
     function setTouched(fields) {
+        if (typeof fields === 'boolean') {
+            mutateAllPathState(state => {
+                state.touched = fields;
+            });
+            return;
+        }
         keysOf(fields).forEach(field => {
             setFieldTouched(field, !!fields[field]);
         });
     }
     function resetField(field, state) {
-        const fieldInstance = fieldsByPath.value[field];
-        if (fieldInstance) {
-            applyFieldMutation(fieldInstance, f => f.resetField(state));
+        var _a;
+        const newValue = state && 'value' in state ? state.value : getFromPath(initialValues.value, field);
+        const pathState = findPathState(field);
+        if (pathState) {
+            pathState.__flags.pendingReset = true;
         }
+        setFieldInitialValue(field, klona(newValue), true);
+        setFieldValue(field, newValue, false);
+        setFieldTouched(field, (_a = state === null || state === void 0 ? void 0 : state.touched) !== null && _a !== void 0 ? _a : false);
+        setFieldError(field, (state === null || state === void 0 ? void 0 : state.errors) || []);
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+            if (pathState) {
+                pathState.__flags.pendingReset = false;
+            }
+        });
     }
     /**
      * Resets all fields
      */
-    function resetForm(state) {
-        RESET_LOCK = true;
-        // Reset all field states first
-        mutateAllFields(f => f.resetField());
-        // reset values
-        const newValues = (state === null || state === void 0 ? void 0 : state.values) ? state.values : originalInitialValues.value;
+    function resetForm(resetState, opts) {
+        let newValues = klona((resetState === null || resetState === void 0 ? void 0 : resetState.values) ? resetState.values : originalInitialValues.value);
+        newValues = (opts === null || opts === void 0 ? void 0 : opts.force) ? newValues : merge(originalInitialValues.value, newValues);
+        newValues = isTypedSchema(schema) && isCallable(schema.cast) ? schema.cast(newValues) : newValues;
         setInitialValues(newValues);
-        setValues(newValues);
-        if (state === null || state === void 0 ? void 0 : state.touched) {
-            setTouched(state.touched);
-        }
-        setErrors((state === null || state === void 0 ? void 0 : state.errors) || {});
-        submitCount.value = (state === null || state === void 0 ? void 0 : state.submitCount) || 0;
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
-            RESET_LOCK = false;
-        });
-    }
-    function insertFieldAtPath(field, path) {
-        const rawField = (0,vue__WEBPACK_IMPORTED_MODULE_0__.markRaw)(field);
-        const fieldPath = path;
-        // first field at that path
-        if (!fieldsByPath.value[fieldPath]) {
-            fieldsByPath.value[fieldPath] = rawField;
-            return;
-        }
-        const fieldAtPath = fieldsByPath.value[fieldPath];
-        if (fieldAtPath && !Array.isArray(fieldAtPath)) {
-            fieldsByPath.value[fieldPath] = [fieldAtPath];
-        }
-        // add the new array to that path
-        fieldsByPath.value[fieldPath] = [...fieldsByPath.value[fieldPath], rawField];
-    }
-    function removeFieldFromPath(field, path) {
-        const fieldPath = path;
-        const fieldAtPath = fieldsByPath.value[fieldPath];
-        if (!fieldAtPath) {
-            return;
-        }
-        // same field at path
-        if (!isFieldGroup(fieldAtPath) && field.id === fieldAtPath.id) {
-            delete fieldsByPath.value[fieldPath];
-            return;
-        }
-        if (isFieldGroup(fieldAtPath)) {
-            const idx = fieldAtPath.findIndex(f => f.id === field.id);
-            if (idx === -1) {
-                return;
-            }
-            fieldAtPath.splice(idx, 1);
-            if (!fieldAtPath.length) {
-                delete fieldsByPath.value[fieldPath];
-            }
-        }
-    }
-    function registerField(field) {
-        const fieldPath = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.name);
-        insertFieldAtPath(field, fieldPath);
-        if ((0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(field.name)) {
-            // ensures when a field's name was already taken that it preserves its same value
-            // necessary for fields generated by loops
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(field.name, async (newPath, oldPath) => {
-                // cache the value
-                await (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)();
-                removeFieldFromPath(field, oldPath);
-                insertFieldAtPath(field, newPath);
-                // re-validate if either path had errors before
-                if (errors.value[oldPath] || errors.value[newPath]) {
-                    // clear up both paths errors
-                    setFieldError(oldPath, undefined);
-                    validateField(newPath);
-                }
-                // clean up the old path if no other field is sharing that name
-                // #3325
-                await (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)();
-                if (!fieldExists(oldPath)) {
-                    unsetPath(formValues, oldPath);
-                }
-            });
-        }
-        // if field already had errors (initial errors) that's not user-set, validate it again to ensure state is correct
-        // the difference being that `initialErrors` will contain the error message while other errors (pre-validated schema) won't have them as initial errors
-        // #3342
-        const initialErrorMessage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.errorMessage);
-        if (initialErrorMessage && (initialErrors === null || initialErrors === void 0 ? void 0 : initialErrors[fieldPath]) !== initialErrorMessage) {
-            validateField(fieldPath);
-        }
-        // marks the initial error as "consumed" so it won't be matched later with same non-initial error
-        delete initialErrors[fieldPath];
-    }
-    function unregisterField(field) {
-        const fieldName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.name);
-        const fieldInstance = fieldsByPath.value[fieldName];
-        const isGroup = !!fieldInstance && isFieldGroup(fieldInstance);
-        removeFieldFromPath(field, fieldName);
-        // clears a field error on unmounted
-        // we wait till next tick to make sure if the field is completely removed and doesn't have any siblings like checkboxes
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+        mutateAllPathState(state => {
             var _a;
-            const shouldKeepValue = (_a = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.keepValueOnUnmount)) !== null && _a !== void 0 ? _a : (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(keepValuesOnUnmount);
-            const currentGroupValue = getFromPath(formValues, fieldName);
-            // The boolean here is we check if the field still belongs to the same control group with that name
-            // if another group claimed the name, we should avoid handling it since it is no longer the same group
-            // this happens with `v-for` over some checkboxes and field arrays.
-            // also if the group no longer exist we can assume this group was the last one that controlled it
-            const isSameGroup = isGroup && (fieldInstance === fieldsByPath.value[fieldName] || !fieldsByPath.value[fieldName]);
-            // group field that still has a dangling value, the field may exist or not after it was removed.
-            // This used to be handled in the useField composable but the form has better context on when it should/not happen.
-            // if it does belong to it that means the group still exists
-            // #3844
-            if (isSameGroup && !shouldKeepValue) {
-                if (Array.isArray(currentGroupValue)) {
-                    const valueIdx = currentGroupValue.findIndex(i => isEqual(i, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.checkedValue)));
-                    if (valueIdx > -1) {
-                        const newVal = [...currentGroupValue];
-                        newVal.splice(valueIdx, 1);
-                        setFieldValue(fieldName, newVal, { force: true });
-                    }
-                }
-                else if (currentGroupValue === (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field.checkedValue)) {
-                    // Remove field if it is a group but does not have an array value, like for radio inputs #3963
-                    unsetPath(formValues, fieldName);
-                }
-            }
-            // Field was removed entirely, we should unset its path
-            // #3384
-            if (!fieldExists(fieldName)) {
-                setFieldError(fieldName, undefined);
-                // Checks if the field was configured to be unset during unmount or not
-                // Checks both the form-level config and field-level one
-                // Field has the priority if it is set, otherwise it goes to the form settings
-                if (shouldKeepValue) {
-                    return;
-                }
-                // Don't apply emptyContainer check unless the current group value is an array
-                if (isGroup && Array.isArray(currentGroupValue) && !isEmptyContainer(currentGroupValue)) {
-                    return;
-                }
-                unsetPath(formValues, fieldName);
-            }
+            state.__flags.pendingReset = true;
+            state.validated = false;
+            state.touched = ((_a = resetState === null || resetState === void 0 ? void 0 : resetState.touched) === null || _a === void 0 ? void 0 : _a[state.path]) || false;
+            setFieldValue(state.path, getFromPath(newValues, state.path), false);
+            setFieldError(state.path, undefined);
+        });
+        (opts === null || opts === void 0 ? void 0 : opts.force) ? forceSetValues(newValues, false) : setValues(newValues, false);
+        setErrors((resetState === null || resetState === void 0 ? void 0 : resetState.errors) || {});
+        submitCount.value = (resetState === null || resetState === void 0 ? void 0 : resetState.submitCount) || 0;
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+            validate({ mode: 'silent' });
+            mutateAllPathState(state => {
+                state.__flags.pendingReset = false;
+            });
         });
     }
     async function validate(opts) {
         const mode = (opts === null || opts === void 0 ? void 0 : opts.mode) || 'force';
         if (mode === 'force') {
-            mutateAllFields(f => (f.meta.validated = true));
+            mutateAllPathState(f => (f.validated = true));
         }
         if (formCtx.validateSchema) {
             return formCtx.validateSchema(mode);
         }
+        isValidating.value = true;
         // No schema, each field is responsible to validate itself
-        const validations = await Promise.all(Object.values(fieldsByPath.value).map(field => {
-            const fieldInstance = Array.isArray(field) ? field[0] : field;
-            if (!fieldInstance) {
-                return Promise.resolve({ key: '', valid: true, errors: [] });
+        const validations = await Promise.all(pathStates.value.map(state => {
+            if (!state.validate) {
+                return Promise.resolve({
+                    key: state.path,
+                    valid: true,
+                    errors: [],
+                });
             }
-            return fieldInstance.validate(opts).then((result) => {
+            return state.validate(opts).then((result) => {
                 return {
-                    key: (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(fieldInstance.name),
+                    key: state.path,
                     valid: result.valid,
                     errors: result.errors,
                 };
             });
         }));
+        isValidating.value = false;
         const results = {};
         const errors = {};
         for (const validation of validations) {
@@ -3201,16 +3548,26 @@ function useForm(opts) {
             errors,
         };
     }
-    async function validateField(field) {
-        const fieldInstance = fieldsByPath.value[field];
-        if (!fieldInstance) {
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.warn)(`field with name ${field} was not found`);
-            return Promise.resolve({ errors: [], valid: true });
+    async function validateField(path, opts) {
+        var _a;
+        const state = findPathState(path);
+        if (state && (opts === null || opts === void 0 ? void 0 : opts.mode) !== 'silent') {
+            state.validated = true;
         }
-        if (Array.isArray(fieldInstance)) {
-            return fieldInstance.map(f => f.validate())[0];
+        if (schema) {
+            const { results } = await validateSchema((opts === null || opts === void 0 ? void 0 : opts.mode) || 'validated-only');
+            return results[path] || { errors: [], valid: true };
         }
-        return fieldInstance.validate();
+        if (state === null || state === void 0 ? void 0 : state.validate) {
+            return state.validate(opts);
+        }
+        const shouldWarn = !state && ((_a = opts === null || opts === void 0 ? void 0 : opts.warn) !== null && _a !== void 0 ? _a : true);
+        if (shouldWarn) {
+            if ((true)) {
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.warn)(`field with path ${path} was not found`);
+            }
+        }
+        return Promise.resolve({ errors: [], valid: true });
     }
     function unsetInitialValue(path) {
         unsetPath(initialValues.value, path);
@@ -3219,26 +3576,31 @@ function useForm(opts) {
      * Sneaky function to set initial field values
      */
     function stageInitialValue(path, value, updateOriginal = false) {
-        setInPath(formValues, path, value);
         setFieldInitialValue(path, value);
+        setInPath(formValues, path, value);
         if (updateOriginal && !(opts === null || opts === void 0 ? void 0 : opts.initialValues)) {
             setInPath(originalInitialValues.value, path, klona(value));
         }
     }
-    function setFieldInitialValue(path, value) {
+    function setFieldInitialValue(path, value, updateOriginal = false) {
         setInPath(initialValues.value, path, klona(value));
+        if (updateOriginal) {
+            setInPath(originalInitialValues.value, path, klona(value));
+        }
     }
     async function _validateSchema() {
         const schemaValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(schema);
         if (!schemaValue) {
             return { valid: true, results: {}, errors: {} };
         }
+        isValidating.value = true;
         const formResult = isYupValidator(schemaValue) || isTypedSchema(schemaValue)
             ? await validateTypedSchema(schemaValue, formValues)
             : await validateObjectSchema(schemaValue, formValues, {
                 names: fieldNames.value,
                 bailsMap: fieldBailsMap.value,
             });
+        isValidating.value = false;
         return formResult;
     }
     const submitForm = handleSubmit((_, { evt }) => {
@@ -3275,16 +3637,107 @@ function useForm(opts) {
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)(FormContextKey, formCtx);
     if ((true)) {
         registerFormWithDevTools(formCtx);
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(() => (Object.assign(Object.assign({ errors: errorBag.value }, meta.value), { values: formValues, isSubmitting: isSubmitting.value, submitCount: submitCount.value })), refreshInspector, {
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(() => (Object.assign(Object.assign({ errors: errorBag.value }, meta.value), { values: formValues, isSubmitting: isSubmitting.value, isValidating: isValidating.value, submitCount: submitCount.value })), refreshInspector, {
             deep: true,
         });
     }
-    return Object.assign(Object.assign({}, formCtx), { handleReset: () => resetForm(), submitForm });
+    function defineField(path, config) {
+        const label = isCallable(config) ? undefined : config === null || config === void 0 ? void 0 : config.label;
+        const pathState = (findPathState((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)) || createPathState(path, { label }));
+        const evalConfig = () => (isCallable(config) ? config(omit(pathState, PRIVATE_PATH_STATE_KEYS)) : config || {});
+        function onBlur() {
+            var _a;
+            pathState.touched = true;
+            const validateOnBlur = (_a = evalConfig().validateOnBlur) !== null && _a !== void 0 ? _a : getConfig().validateOnBlur;
+            if (validateOnBlur) {
+                validateField(pathState.path);
+            }
+        }
+        function onInput() {
+            var _a;
+            const validateOnInput = (_a = evalConfig().validateOnInput) !== null && _a !== void 0 ? _a : getConfig().validateOnInput;
+            if (validateOnInput) {
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+                    validateField(pathState.path);
+                });
+            }
+        }
+        function onChange() {
+            var _a;
+            const validateOnChange = (_a = evalConfig().validateOnChange) !== null && _a !== void 0 ? _a : getConfig().validateOnChange;
+            if (validateOnChange) {
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+                    validateField(pathState.path);
+                });
+            }
+        }
+        const props = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            const base = {
+                onChange,
+                onInput,
+                onBlur,
+            };
+            if (isCallable(config)) {
+                return Object.assign(Object.assign({}, base), (config(omit(pathState, PRIVATE_PATH_STATE_KEYS)).props || {}));
+            }
+            if (config === null || config === void 0 ? void 0 : config.props) {
+                return Object.assign(Object.assign({}, base), config.props(omit(pathState, PRIVATE_PATH_STATE_KEYS)));
+            }
+            return base;
+        });
+        const model = createModel(path, () => { var _a, _b, _c; return (_c = (_a = evalConfig().validateOnModelUpdate) !== null && _a !== void 0 ? _a : (_b = getConfig()) === null || _b === void 0 ? void 0 : _b.validateOnModelUpdate) !== null && _c !== void 0 ? _c : true; });
+        return [model, props];
+    }
+    function useFieldModel(pathOrPaths) {
+        if (!Array.isArray(pathOrPaths)) {
+            return createModel(pathOrPaths);
+        }
+        return pathOrPaths.map(p => createModel(p, true));
+    }
+    /**
+     * @deprecated use defineField instead
+     */
+    function defineInputBinds(path, config) {
+        const [model, props] = defineField(path, config);
+        function onBlur(e) {
+            props.value.onBlur(e);
+        }
+        function onInput(e) {
+            const value = normalizeEventValue(e);
+            setFieldValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path), value, false);
+            props.value.onInput(e);
+        }
+        function onChange(e) {
+            const value = normalizeEventValue(e);
+            setFieldValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path), value, false);
+            props.value.onChange(e);
+        }
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            return Object.assign(Object.assign({}, props.value), { onBlur,
+                onInput,
+                onChange, value: model.value });
+        });
+    }
+    /**
+     * @deprecated use defineField instead
+     */
+    function defineComponentBinds(path, config) {
+        const [model, props] = defineField(path, config);
+        const pathState = findPathState((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path));
+        function onUpdateModelValue(value) {
+            model.value = value;
+        }
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+            const conf = isCallable(config) ? config(omit(pathState, PRIVATE_PATH_STATE_KEYS)) : config || {};
+            return Object.assign({ [conf.model || 'modelValue']: model.value, [`onUpdate:${conf.model || 'modelValue'}`]: onUpdateModelValue }, props.value);
+        });
+    }
+    return Object.assign(Object.assign({}, formCtx), { values: (0,vue__WEBPACK_IMPORTED_MODULE_0__.readonly)(formValues), handleReset: () => resetForm(), submitForm });
 }
 /**
  * Manages form meta aggregation
  */
-function useFormMeta(fieldsByPath, currentValues, initialValues, errors) {
+function useFormMeta(pathsState, currentValues, initialValues, errors) {
     const MERGE_STRATEGIES = {
         touched: 'some',
         pending: 'some',
@@ -3294,10 +3747,10 @@ function useFormMeta(fieldsByPath, currentValues, initialValues, errors) {
         return !isEqual(currentValues, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(initialValues));
     });
     function calculateFlags() {
-        const fields = Object.values(fieldsByPath.value).flat(1).filter(Boolean);
+        const states = pathsState.value;
         return keysOf(MERGE_STRATEGIES).reduce((acc, flag) => {
             const mergeMethod = MERGE_STRATEGIES[flag];
-            acc[flag] = fields[mergeMethod](field => field.meta[flag]);
+            acc[flag] = states[mergeMethod](s => s[flag]);
             return acc;
         }, {});
     }
@@ -3315,9 +3768,8 @@ function useFormMeta(fieldsByPath, currentValues, initialValues, errors) {
 /**
  * Manages the initial values prop
  */
-function useFormInitialValues(fields, formValues, opts) {
+function useFormInitialValues(pathsState, formValues, opts) {
     const values = resolveInitialValues(opts);
-    const providedValues = opts === null || opts === void 0 ? void 0 : opts.initialValues;
     // these are the mutable initial values as the fields are mounted/unmounted
     const initialValues = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(values);
     // these are the original initial value as provided by the user initially, they don't keep track of conditional fields
@@ -3327,8 +3779,8 @@ function useFormInitialValues(fields, formValues, opts) {
     // these only change when the user explicitly changes the initial values or when the user resets them with new values.
     const originalInitialValues = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(klona(values));
     function setInitialValues(values, updateFields = false) {
-        initialValues.value = klona(values);
-        originalInitialValues.value = klona(values);
+        initialValues.value = merge(klona(initialValues.value) || {}, klona(values));
+        originalInitialValues.value = merge(klona(originalInitialValues.value) || {}, klona(values));
         if (!updateFields) {
             return;
         }
@@ -3336,21 +3788,13 @@ function useFormInitialValues(fields, formValues, opts) {
         // those are excluded because it's unlikely you want to change the form values using initial values
         // we mostly watch them for API population or newly inserted fields
         // if the user API is taking too much time before user interaction they should consider disabling or hiding their inputs until the values are ready
-        keysOf(fields.value).forEach(fieldPath => {
-            const field = fields.value[fieldPath];
-            const wasTouched = Array.isArray(field) ? field.some(f => f.meta.touched) : field === null || field === void 0 ? void 0 : field.meta.touched;
-            if (!field || wasTouched) {
+        pathsState.value.forEach(state => {
+            const wasTouched = state.touched;
+            if (wasTouched) {
                 return;
             }
-            const newValue = getFromPath(initialValues.value, fieldPath);
-            setInPath(formValues, fieldPath, klona(newValue));
-        });
-    }
-    if ((0,vue__WEBPACK_IMPORTED_MODULE_0__.isRef)(providedValues)) {
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(providedValues, value => {
-            setInitialValues(value, true);
-        }, {
-            deep: true,
+            const newValue = getFromPath(initialValues.value, state.path);
+            setInPath(formValues, state.path, klona(newValue));
         });
     }
     return {
@@ -3359,49 +3803,22 @@ function useFormInitialValues(fields, formValues, opts) {
         setInitialValues,
     };
 }
-function useErrorBag(initialErrors) {
-    const errorBag = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)({});
-    function normalizeErrorItem(message) {
-        return Array.isArray(message) ? message : message ? [message] : [];
-    }
-    /**
-     * Manually sets an error message on a specific field
-     */
-    function setFieldErrorBag(field, message) {
-        if (!message) {
-            delete errorBag.value[field];
-            return;
-        }
-        errorBag.value[field] = normalizeErrorItem(message);
-    }
-    /**
-     * Sets errors for the fields specified in the object
-     */
-    function setErrorBag(fields) {
-        errorBag.value = keysOf(fields).reduce((acc, key) => {
-            const message = fields[key];
-            if (message) {
-                acc[key] = normalizeErrorItem(message);
-            }
-            return acc;
-        }, {});
-    }
-    if (initialErrors) {
-        setErrorBag(initialErrors);
+function mergeValidationResults(a, b) {
+    if (!b) {
+        return a;
     }
     return {
-        errorBag,
-        setErrorBag,
-        setFieldErrorBag,
+        valid: a.valid && b.valid,
+        errors: [...a.errors, ...b.errors],
     };
 }
 
-const FormImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+const FormImpl = /** #__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
     name: 'Form',
     inheritAttrs: false,
     props: {
         as: {
-            type: String,
+            type: null,
             default: 'form',
         },
         validationSchema: {
@@ -3438,12 +3855,11 @@ const FormImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
         },
     },
     setup(props, ctx) {
-        const initialValues = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(props, 'initialValues');
         const validationSchema = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(props, 'validationSchema');
         const keepValues = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(props, 'keepValues');
-        const { errors, errorBag, values, meta, isSubmitting, submitCount, controlledValues, validate, validateField, handleReset, resetForm, handleSubmit, setErrors, setFieldError, setFieldValue, setValues, setFieldTouched, setTouched, resetField, } = useForm({
+        const { errors, errorBag, values, meta, isSubmitting, isValidating, submitCount, controlledValues, validate, validateField, handleReset, resetForm, handleSubmit, setErrors, setFieldError, setFieldValue, setValues, setFieldTouched, setTouched, resetField, } = useForm({
             validationSchema: validationSchema.value ? validationSchema : undefined,
-            initialValues,
+            initialValues: props.initialValues,
             initialErrors: props.initialErrors,
             initialTouched: props.initialTouched,
             validateOnMount: props.validateOnMount,
@@ -3485,6 +3901,7 @@ const FormImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
                 errorBag: errorBag.value,
                 values,
                 isSubmitting: isSubmitting.value,
+                isValidating: isValidating.value,
                 submitCount: submitCount.value,
                 controlledValues: controlledValues.value,
                 validate,
@@ -3520,16 +3937,19 @@ const FormImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
             getValues,
             getMeta,
             getErrors,
+            values,
+            meta,
+            errors,
         });
         return function renderForm() {
             // avoid resolving the form component as itself
-            const tag = props.as === 'form' ? props.as : (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(props.as);
+            const tag = props.as === 'form' ? props.as : !props.as ? null : (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(props.as);
             const children = normalizeChildren(tag, ctx, slotProps);
-            if (!props.as) {
+            if (!tag) {
                 return children;
             }
             // Attributes to add on a native `form` tag
-            const formAttrs = props.as === 'form'
+            const formAttrs = tag === 'form'
                 ? {
                     // Disables native validation as vee-validate will handle it.
                     novalidate: true,
@@ -3558,11 +3978,15 @@ function useFieldArray(arrayPath) {
         move: noOp,
     };
     if (!form) {
-        warn('FieldArray requires being a child of `<Form/>` or `useForm` being called before it. Array fields may not work correctly');
+        if ((true)) {
+            warn('FieldArray requires being a child of `<Form/>` or `useForm` being called before it. Array fields may not work correctly');
+        }
         return noOpApi;
     }
     if (!(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath)) {
-        warn('FieldArray requires a field path to be provided, did you forget to pass the `name` prop?');
+        if ((true)) {
+            warn('FieldArray requires a field path to be provided, did you forget to pass the `name` prop?');
+        }
         return noOpApi;
     }
     const alreadyExists = form.fieldArrays.find(a => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(a.path) === (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath));
@@ -3571,11 +3995,14 @@ function useFieldArray(arrayPath) {
     }
     let entryCounter = 0;
     function getCurrentValues() {
-        return getFromPath(form === null || form === void 0 ? void 0 : form.values, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath), []) || [];
+        return getFromPath(form === null || form === void 0 ? void 0 : form.values, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath), []) || [];
     }
     function initFields() {
         const currentValues = getCurrentValues();
-        fields.value = currentValues.map(createEntry);
+        if (!Array.isArray(currentValues)) {
+            return;
+        }
+        fields.value = currentValues.map((v, idx) => createEntry(v, idx, fields.value));
         updateEntryFlags();
     }
     initFields();
@@ -3587,25 +4014,33 @@ function useFieldArray(arrayPath) {
             entry.isLast = i === fieldsLength - 1;
         }
     }
-    function createEntry(value) {
+    function createEntry(value, idx, currentFields) {
+        // Skips the work by returning the current entry if it already exists
+        // This should make the `key` prop stable and doesn't cause more re-renders than needed
+        // The value is computed and should update anyways
+        if (currentFields && !isNullOrUndefined(idx) && currentFields[idx]) {
+            return currentFields[idx];
+        }
         const key = entryCounter++;
         const entry = {
             key,
             value: computedDeep({
                 get() {
-                    const currentValues = getFromPath(form === null || form === void 0 ? void 0 : form.values, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath), []) || [];
+                    const currentValues = getFromPath(form === null || form === void 0 ? void 0 : form.values, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath), []) || [];
                     const idx = fields.value.findIndex(e => e.key === key);
                     return idx === -1 ? value : currentValues[idx];
                 },
                 set(value) {
                     const idx = fields.value.findIndex(e => e.key === key);
                     if (idx === -1) {
-                        warn(`Attempting to update a non-existent array item`);
+                        if ((true)) {
+                            warn(`Attempting to update a non-existent array item`);
+                        }
                         return;
                     }
                     update(idx, value);
                 },
-            }),
+            }), // will be auto unwrapped
             isFirst: false,
             isLast: false,
         };
@@ -3617,20 +4052,23 @@ function useFieldArray(arrayPath) {
         form === null || form === void 0 ? void 0 : form.validate({ mode: 'silent' });
     }
     function remove(idx) {
-        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath);
+        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath);
         const pathValue = getFromPath(form === null || form === void 0 ? void 0 : form.values, pathName);
         if (!pathValue || !Array.isArray(pathValue)) {
             return;
         }
         const newValue = [...pathValue];
         newValue.splice(idx, 1);
-        form === null || form === void 0 ? void 0 : form.unsetInitialValue(pathName + `[${idx}]`);
-        form === null || form === void 0 ? void 0 : form.setFieldValue(pathName, newValue);
+        const fieldPath = pathName + `[${idx}]`;
+        form.destroyPath(fieldPath);
+        form.unsetInitialValue(fieldPath);
+        setInPath(form.values, pathName, newValue);
         fields.value.splice(idx, 1);
         afterMutation();
     }
-    function push(value) {
-        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath);
+    function push(initialValue) {
+        const value = klona(initialValue);
+        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath);
         const pathValue = getFromPath(form === null || form === void 0 ? void 0 : form.values, pathName);
         const normalizedPathValue = isNullOrUndefined(pathValue) ? [] : pathValue;
         if (!Array.isArray(normalizedPathValue)) {
@@ -3638,13 +4076,13 @@ function useFieldArray(arrayPath) {
         }
         const newValue = [...normalizedPathValue];
         newValue.push(value);
-        form === null || form === void 0 ? void 0 : form.stageInitialValue(pathName + `[${newValue.length - 1}]`, value);
-        form === null || form === void 0 ? void 0 : form.setFieldValue(pathName, newValue);
+        form.stageInitialValue(pathName + `[${newValue.length - 1}]`, value);
+        setInPath(form.values, pathName, newValue);
         fields.value.push(createEntry(value));
         afterMutation();
     }
     function swap(indexA, indexB) {
-        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath);
+        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath);
         const pathValue = getFromPath(form === null || form === void 0 ? void 0 : form.values, pathName);
         if (!Array.isArray(pathValue) || !(indexA in pathValue) || !(indexB in pathValue)) {
             return;
@@ -3658,12 +4096,13 @@ function useFieldArray(arrayPath) {
         const tempEntry = newFields[indexA];
         newFields[indexA] = newFields[indexB];
         newFields[indexB] = tempEntry;
-        form === null || form === void 0 ? void 0 : form.setFieldValue(pathName, newValue);
+        setInPath(form.values, pathName, newValue);
         fields.value = newFields;
         updateEntryFlags();
     }
-    function insert(idx, value) {
-        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath);
+    function insert(idx, initialValue) {
+        const value = klona(initialValue);
+        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath);
         const pathValue = getFromPath(form === null || form === void 0 ? void 0 : form.values, pathName);
         if (!Array.isArray(pathValue) || pathValue.length < idx) {
             return;
@@ -3672,40 +4111,42 @@ function useFieldArray(arrayPath) {
         const newFields = [...fields.value];
         newValue.splice(idx, 0, value);
         newFields.splice(idx, 0, createEntry(value));
-        form === null || form === void 0 ? void 0 : form.setFieldValue(pathName, newValue);
+        setInPath(form.values, pathName, newValue);
         fields.value = newFields;
         afterMutation();
     }
     function replace(arr) {
-        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath);
-        form === null || form === void 0 ? void 0 : form.setFieldValue(pathName, arr);
+        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath);
+        form.stageInitialValue(pathName, arr);
+        setInPath(form.values, pathName, arr);
         initFields();
         afterMutation();
     }
     function update(idx, value) {
-        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath);
+        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath);
         const pathValue = getFromPath(form === null || form === void 0 ? void 0 : form.values, pathName);
         if (!Array.isArray(pathValue) || pathValue.length - 1 < idx) {
             return;
         }
-        form === null || form === void 0 ? void 0 : form.setFieldValue(`${pathName}[${idx}]`, value);
+        setInPath(form.values, `${pathName}[${idx}]`, value);
         form === null || form === void 0 ? void 0 : form.validate({ mode: 'validated-only' });
     }
-    function prepend(value) {
-        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath);
+    function prepend(initialValue) {
+        const value = klona(initialValue);
+        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath);
         const pathValue = getFromPath(form === null || form === void 0 ? void 0 : form.values, pathName);
         const normalizedPathValue = isNullOrUndefined(pathValue) ? [] : pathValue;
         if (!Array.isArray(normalizedPathValue)) {
             return;
         }
         const newValue = [value, ...normalizedPathValue];
-        form === null || form === void 0 ? void 0 : form.stageInitialValue(pathName + `[${newValue.length - 1}]`, value);
-        form === null || form === void 0 ? void 0 : form.setFieldValue(pathName, newValue);
+        setInPath(form.values, pathName, newValue);
+        form.stageInitialValue(pathName + `[0]`, value);
         fields.value.unshift(createEntry(value));
         afterMutation();
     }
     function move(oldIdx, newIdx) {
-        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath);
+        const pathName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath);
         const pathValue = getFromPath(form === null || form === void 0 ? void 0 : form.values, pathName);
         const newValue = isNullOrUndefined(pathValue) ? [] : [...pathValue];
         if (!Array.isArray(pathValue) || !(oldIdx in pathValue) || !(newIdx in pathValue)) {
@@ -3718,7 +4159,7 @@ function useFieldArray(arrayPath) {
         const movedValue = newValue[oldIdx];
         newValue.splice(oldIdx, 1);
         newValue.splice(newIdx, 0, movedValue);
-        form === null || form === void 0 ? void 0 : form.setFieldValue(pathName, newValue);
+        setInPath(form.values, pathName, newValue);
         fields.value = newFields;
         afterMutation();
     }
@@ -3735,7 +4176,7 @@ function useFieldArray(arrayPath) {
     };
     form.fieldArrays.push(Object.assign({ path: arrayPath, reset: initFields }, fieldArrayCtx));
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(() => {
-        const idx = form.fieldArrays.findIndex(i => (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(i.path) === (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(arrayPath));
+        const idx = form.fieldArrays.findIndex(i => (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(i.path) === (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(arrayPath));
         if (idx >= 0) {
             form.fieldArrays.splice(idx, 1);
         }
@@ -3752,7 +4193,7 @@ function useFieldArray(arrayPath) {
     return fieldArrayCtx;
 }
 
-const FieldArrayImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+const FieldArrayImpl = /** #__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
     name: 'FieldArray',
     inheritAttrs: false,
     props: {
@@ -3762,7 +4203,7 @@ const FieldArrayImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
         },
     },
     setup(props, ctx) {
-        const { push, remove, swap, insert, replace, update, prepend, move, fields } = useFieldArray((0,vue__WEBPACK_IMPORTED_MODULE_0__.toRef)(props, 'name'));
+        const { push, remove, swap, insert, replace, update, prepend, move, fields } = useFieldArray(() => props.name);
         function slotProps() {
             return {
                 fields: fields.value,
@@ -3794,7 +4235,7 @@ const FieldArrayImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
 });
 const FieldArray = FieldArrayImpl;
 
-const ErrorMessageImpl = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+const ErrorMessageImpl = /** #__PURE__ */ (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
     name: 'ErrorMessage',
     props: {
         as: {
@@ -3843,7 +4284,9 @@ const ErrorMessage = ErrorMessageImpl;
 function useResetForm() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return function resetForm(state) {
         if (!form) {
@@ -3857,17 +4300,13 @@ function useResetForm() {
  * If a field is dirty or not
  */
 function useIsFieldDirty(path) {
-    const form = injectWithSelf(FormContextKey);
-    let field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
+    const fieldOrPath = resolveFieldOrPathState(path);
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-        if (path) {
-            field = normalizeField(form === null || form === void 0 ? void 0 : form.fieldsByPath.value[(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)]);
-        }
-        if (!field) {
-            warn(`field with name ${(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)} was not found`);
+        var _a, _b;
+        if (!fieldOrPath) {
             return false;
         }
-        return field.meta.dirty;
+        return (_b = ('meta' in fieldOrPath ? fieldOrPath.meta.dirty : (_a = fieldOrPath === null || fieldOrPath === void 0 ? void 0 : fieldOrPath.value) === null || _a === void 0 ? void 0 : _a.dirty)) !== null && _b !== void 0 ? _b : false;
     });
 }
 
@@ -3875,17 +4314,13 @@ function useIsFieldDirty(path) {
  * If a field is touched or not
  */
 function useIsFieldTouched(path) {
-    const form = injectWithSelf(FormContextKey);
-    let field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
+    const fieldOrPath = resolveFieldOrPathState(path);
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-        if (path) {
-            field = normalizeField(form === null || form === void 0 ? void 0 : form.fieldsByPath.value[(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)]);
-        }
-        if (!field) {
-            warn(`field with name ${(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)} was not found`);
+        var _a, _b;
+        if (!fieldOrPath) {
             return false;
         }
-        return field.meta.touched;
+        return (_b = ('meta' in fieldOrPath ? fieldOrPath.meta.touched : (_a = fieldOrPath === null || fieldOrPath === void 0 ? void 0 : fieldOrPath.value) === null || _a === void 0 ? void 0 : _a.touched)) !== null && _b !== void 0 ? _b : false;
     });
 }
 
@@ -3893,17 +4328,13 @@ function useIsFieldTouched(path) {
  * If a field is validated and is valid
  */
 function useIsFieldValid(path) {
-    const form = injectWithSelf(FormContextKey);
-    let field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
+    const fieldOrPath = resolveFieldOrPathState(path);
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
-        if (path) {
-            field = normalizeField(form === null || form === void 0 ? void 0 : form.fieldsByPath.value[(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)]);
-        }
-        if (!field) {
-            warn(`field with name ${(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)} was not found`);
+        var _a, _b;
+        if (!fieldOrPath) {
             return false;
         }
-        return field.meta.valid;
+        return (_b = ('meta' in fieldOrPath ? fieldOrPath.meta.valid : (_a = fieldOrPath === null || fieldOrPath === void 0 ? void 0 : fieldOrPath.value) === null || _a === void 0 ? void 0 : _a.valid)) !== null && _b !== void 0 ? _b : false;
     });
 }
 
@@ -3913,7 +4344,9 @@ function useIsFieldValid(path) {
 function useIsSubmitting() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         var _a;
@@ -3922,23 +4355,41 @@ function useIsSubmitting() {
 }
 
 /**
+ * If the form is validating or not
+ */
+function useIsValidating() {
+    const form = injectWithSelf(FormContextKey);
+    if (!form) {
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
+    }
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
+        var _a;
+        return (_a = form === null || form === void 0 ? void 0 : form.isValidating.value) !== null && _a !== void 0 ? _a : false;
+    });
+}
+
+/**
  * Validates a single field
  */
 function useValidateField(path) {
     const form = injectWithSelf(FormContextKey);
-    let field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
+    const field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
     return function validateField() {
-        if (path) {
-            field = normalizeField(form === null || form === void 0 ? void 0 : form.fieldsByPath.value[(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)]);
+        if (field) {
+            return field.validate();
         }
-        if (!field) {
+        if (form && path) {
+            return form === null || form === void 0 ? void 0 : form.validateField((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path));
+        }
+        if ((true)) {
             warn(`field with name ${(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)} was not found`);
-            return Promise.resolve({
-                errors: [],
-                valid: true,
-            });
         }
-        return field.validate();
+        return Promise.resolve({
+            errors: [],
+            valid: true,
+        });
     };
 }
 
@@ -3948,7 +4399,9 @@ function useValidateField(path) {
 function useIsFormDirty() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         var _a;
@@ -3962,7 +4415,9 @@ function useIsFormDirty() {
 function useIsFormTouched() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         var _a;
@@ -3976,7 +4431,9 @@ function useIsFormTouched() {
 function useIsFormValid() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         var _a;
@@ -3990,7 +4447,9 @@ function useIsFormValid() {
 function useValidateForm() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return function validateField() {
         if (!form) {
@@ -4006,7 +4465,9 @@ function useValidateForm() {
 function useSubmitCount() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         var _a;
@@ -4023,9 +4484,9 @@ function useFieldValue(path) {
     const field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         if (path) {
-            return getFromPath(form === null || form === void 0 ? void 0 : form.values, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path));
+            return getFromPath(form === null || form === void 0 ? void 0 : form.values, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path));
         }
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(field === null || field === void 0 ? void 0 : field.value);
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(field === null || field === void 0 ? void 0 : field.value);
     });
 }
 
@@ -4035,7 +4496,9 @@ function useFieldValue(path) {
 function useFormValues() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         return (form === null || form === void 0 ? void 0 : form.values) || {};
@@ -4048,7 +4511,9 @@ function useFormValues() {
 function useFormErrors() {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         return ((form === null || form === void 0 ? void 0 : form.errors.value) || {});
@@ -4064,7 +4529,7 @@ function useFieldError(path) {
     const field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => {
         if (path) {
-            return form === null || form === void 0 ? void 0 : form.errors.value[(0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(path)];
+            return form === null || form === void 0 ? void 0 : form.errors.value[(0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)];
         }
         return field === null || field === void 0 ? void 0 : field.errorMessage.value;
     });
@@ -4073,7 +4538,9 @@ function useFieldError(path) {
 function useSubmitForm(cb) {
     const form = injectWithSelf(FormContextKey);
     if (!form) {
-        warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        if ((true)) {
+            warn('No vee-validate <Form /> or `useForm` was detected in the component tree');
+        }
     }
     const onSubmit = form ? form.handleSubmit(cb) : undefined;
     return function submitForm(e) {
@@ -4084,264 +4551,124 @@ function useSubmitForm(cb) {
     };
 }
 
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/const.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/const.js ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HOOK_PLUGIN_SETTINGS_SET": () => (/* binding */ HOOK_PLUGIN_SETTINGS_SET),
-/* harmony export */   "HOOK_SETUP": () => (/* binding */ HOOK_SETUP)
-/* harmony export */ });
-const HOOK_SETUP = 'devtools-plugin:setup';
-const HOOK_PLUGIN_SETTINGS_SET = 'plugin:settings:set';
-
-
-/***/ }),
-
-/***/ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/env.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/env.js ***!
-  \*********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getDevtoolsGlobalHook": () => (/* binding */ getDevtoolsGlobalHook),
-/* harmony export */   "getTarget": () => (/* binding */ getTarget),
-/* harmony export */   "isProxyAvailable": () => (/* binding */ isProxyAvailable)
-/* harmony export */ });
-function getDevtoolsGlobalHook() {
-    return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
-}
-function getTarget() {
-    // @ts-ignore
-    return (typeof navigator !== 'undefined' && typeof window !== 'undefined')
-        ? window
-        : typeof __webpack_require__.g !== 'undefined'
-            ? __webpack_require__.g
-            : {};
-}
-const isProxyAvailable = typeof Proxy === 'function';
-
-
-/***/ }),
-
-/***/ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/index.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/index.js ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isPerformanceSupported": () => (/* reexport safe */ _time_js__WEBPACK_IMPORTED_MODULE_0__.isPerformanceSupported),
-/* harmony export */   "now": () => (/* reexport safe */ _time_js__WEBPACK_IMPORTED_MODULE_0__.now),
-/* harmony export */   "setupDevtoolsPlugin": () => (/* binding */ setupDevtoolsPlugin)
-/* harmony export */ });
-/* harmony import */ var _env_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./env.js */ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/env.js");
-/* harmony import */ var _const_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./const.js */ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/const.js");
-/* harmony import */ var _proxy_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./proxy.js */ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/proxy.js");
-/* harmony import */ var _time_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.js */ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/time.js");
-
-
-
-
-
-
-function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
-    const descriptor = pluginDescriptor;
-    const target = (0,_env_js__WEBPACK_IMPORTED_MODULE_1__.getTarget)();
-    const hook = (0,_env_js__WEBPACK_IMPORTED_MODULE_1__.getDevtoolsGlobalHook)();
-    const enableProxy = _env_js__WEBPACK_IMPORTED_MODULE_1__.isProxyAvailable && descriptor.enableEarlyProxy;
-    if (hook && (target.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !enableProxy)) {
-        hook.emit(_const_js__WEBPACK_IMPORTED_MODULE_2__.HOOK_SETUP, pluginDescriptor, setupFn);
-    }
-    else {
-        const proxy = enableProxy ? new _proxy_js__WEBPACK_IMPORTED_MODULE_3__.ApiProxy(descriptor, hook) : null;
-        const list = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
-        list.push({
-            pluginDescriptor: descriptor,
-            setupFn,
-            proxy,
-        });
-        if (proxy)
-            setupFn(proxy.proxiedTarget);
-    }
+/**
+ * Sets a field's error message
+ */
+function useSetFieldError(path) {
+    const form = injectWithSelf(FormContextKey);
+    // We don't want to use self injected context as it doesn't make sense
+    const field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
+    return function setFieldError(message) {
+        if (path && form) {
+            form.setFieldError((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path), message);
+            return;
+        }
+        if (field) {
+            field.setErrors(message || []);
+            return;
+        }
+        if ((true)) {
+            warn(`Could not set error message since there is no form context or a field named "${(0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)}", did you forget to call "useField" or "useForm"?`);
+        }
+    };
 }
 
-
-/***/ }),
-
-/***/ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/proxy.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/proxy.js ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ApiProxy": () => (/* binding */ ApiProxy)
-/* harmony export */ });
-/* harmony import */ var _const_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const.js */ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/const.js");
-/* harmony import */ var _time_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time.js */ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/time.js");
-
-
-class ApiProxy {
-    constructor(plugin, hook) {
-        this.target = null;
-        this.targetQueue = [];
-        this.onQueue = [];
-        this.plugin = plugin;
-        this.hook = hook;
-        const defaultSettings = {};
-        if (plugin.settings) {
-            for (const id in plugin.settings) {
-                const item = plugin.settings[id];
-                defaultSettings[id] = item.defaultValue;
-            }
+/**
+ * Sets a field's touched meta state
+ */
+function useSetFieldTouched(path) {
+    const form = injectWithSelf(FormContextKey);
+    // We don't want to use self injected context as it doesn't make sense
+    const field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
+    return function setFieldTouched(touched) {
+        if (path && form) {
+            form.setFieldTouched((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path), touched);
+            return;
         }
-        const localSettingsSaveId = `__vue-devtools-plugin-settings__${plugin.id}`;
-        let currentSettings = Object.assign({}, defaultSettings);
-        try {
-            const raw = localStorage.getItem(localSettingsSaveId);
-            const data = JSON.parse(raw);
-            Object.assign(currentSettings, data);
+        if (field) {
+            field.setTouched(touched);
+            return;
         }
-        catch (e) {
-            // noop
+        if ((true)) {
+            warn(`Could not set touched state since there is no form context or a field named "${(0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)}", did you forget to call "useField" or "useForm"?`);
         }
-        this.fallbacks = {
-            getSettings() {
-                return currentSettings;
-            },
-            setSettings(value) {
-                try {
-                    localStorage.setItem(localSettingsSaveId, JSON.stringify(value));
-                }
-                catch (e) {
-                    // noop
-                }
-                currentSettings = value;
-            },
-            now() {
-                return (0,_time_js__WEBPACK_IMPORTED_MODULE_0__.now)();
-            },
-        };
-        if (hook) {
-            hook.on(_const_js__WEBPACK_IMPORTED_MODULE_1__.HOOK_PLUGIN_SETTINGS_SET, (pluginId, value) => {
-                if (pluginId === this.plugin.id) {
-                    this.fallbacks.setSettings(value);
-                }
-            });
+    };
+}
+
+/**
+ * Sets a field's value
+ */
+function useSetFieldValue(path) {
+    const form = injectWithSelf(FormContextKey);
+    // We don't want to use self injected context as it doesn't make sense
+    const field = path ? undefined : (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)(FieldContextKey);
+    return function setFieldValue(value, shouldValidate = true) {
+        if (path && form) {
+            form.setFieldValue((0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path), value, shouldValidate);
+            return;
         }
-        this.proxiedOn = new Proxy({}, {
-            get: (_target, prop) => {
-                if (this.target) {
-                    return this.target.on[prop];
-                }
-                else {
-                    return (...args) => {
-                        this.onQueue.push({
-                            method: prop,
-                            args,
-                        });
-                    };
-                }
-            },
-        });
-        this.proxiedTarget = new Proxy({}, {
-            get: (_target, prop) => {
-                if (this.target) {
-                    return this.target[prop];
-                }
-                else if (prop === 'on') {
-                    return this.proxiedOn;
-                }
-                else if (Object.keys(this.fallbacks).includes(prop)) {
-                    return (...args) => {
-                        this.targetQueue.push({
-                            method: prop,
-                            args,
-                            resolve: () => { },
-                        });
-                        return this.fallbacks[prop](...args);
-                    };
-                }
-                else {
-                    return (...args) => {
-                        return new Promise(resolve => {
-                            this.targetQueue.push({
-                                method: prop,
-                                args,
-                                resolve,
-                            });
-                        });
-                    };
-                }
-            },
-        });
-    }
-    async setRealTarget(target) {
-        this.target = target;
-        for (const item of this.onQueue) {
-            this.target.on[item.method](...item.args);
+        if (field) {
+            field.setValue(value, shouldValidate);
+            return;
         }
-        for (const item of this.targetQueue) {
-            item.resolve(await this.target[item.method](...item.args));
+        if ((true)) {
+            warn(`Could not set value since there is no form context or a field named "${(0,vue__WEBPACK_IMPORTED_MODULE_0__.toValue)(path)}", did you forget to call "useField" or "useForm"?`);
+        }
+    };
+}
+
+/**
+ * Sets multiple fields errors
+ */
+function useSetFormErrors() {
+    const form = injectWithSelf(FormContextKey);
+    function setFormErrors(fields) {
+        if (form) {
+            form.setErrors(fields);
+            return;
+        }
+        if ((true)) {
+            warn(`Could not set errors because a form was not detected, did you forget to use "useForm" in a parent component?`);
         }
     }
+    return setFormErrors;
+}
+
+/**
+ * Sets multiple fields touched or all fields in the form
+ */
+function useSetFormTouched() {
+    const form = injectWithSelf(FormContextKey);
+    function setFormTouched(fields) {
+        if (form) {
+            form.setTouched(fields);
+            return;
+        }
+        if ((true)) {
+            warn(`Could not set touched state because a form was not detected, did you forget to use "useForm" in a parent component?`);
+        }
+    }
+    return setFormTouched;
+}
+
+/**
+ * Sets multiple fields values
+ */
+function useSetFormValues() {
+    const form = injectWithSelf(FormContextKey);
+    function setFormValues(fields, shouldValidate = true) {
+        if (form) {
+            form.setValues(fields, shouldValidate);
+            return;
+        }
+        if ((true)) {
+            warn(`Could not set form values because a form was not detected, did you forget to use "useForm" in a parent component?`);
+        }
+    }
+    return setFormValues;
 }
 
 
-/***/ }),
-
-/***/ "./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/time.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/vee-validate/node_modules/@vue/devtools-api/lib/esm/time.js ***!
-  \**********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isPerformanceSupported": () => (/* binding */ isPerformanceSupported),
-/* harmony export */   "now": () => (/* binding */ now)
-/* harmony export */ });
-let supported;
-let perf;
-function isPerformanceSupported() {
-    var _a;
-    if (supported !== undefined) {
-        return supported;
-    }
-    if (typeof window !== 'undefined' && window.performance) {
-        supported = true;
-        perf = window.performance;
-    }
-    else if (typeof __webpack_require__.g !== 'undefined' && ((_a = __webpack_require__.g.perf_hooks) === null || _a === void 0 ? void 0 : _a.performance)) {
-        supported = true;
-        perf = __webpack_require__.g.perf_hooks.performance;
-    }
-    else {
-        supported = false;
-    }
-    return supported;
-}
-function now() {
-    return isPerformanceSupported() ? perf.now() : Date.now();
-}
 
 
 /***/ }),
@@ -4359,13 +4686,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _IconBack_vue_vue_type_template_id_0bfb332a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IconBack.vue?vue&type=template&id=0bfb332a */ "./resources/js/components/IconBack.vue?vue&type=template&id=0bfb332a");
 /* harmony import */ var _IconBack_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IconBack.vue?vue&type=script&lang=js */ "./resources/js/components/IconBack.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_tony_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_tony_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_IconBack_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_IconBack_vue_vue_type_template_id_0bfb332a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/IconBack.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_IconBack_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_IconBack_vue_vue_type_template_id_0bfb332a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/IconBack.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -4387,13 +4714,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AddMedicine_vue_vue_type_template_id_0af8a7a8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddMedicine.vue?vue&type=template&id=0af8a7a8 */ "./resources/js/views/AddMedicine.vue?vue&type=template&id=0af8a7a8");
 /* harmony import */ var _AddMedicine_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddMedicine.vue?vue&type=script&setup=true&lang=js */ "./resources/js/views/AddMedicine.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var _home_tony_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_tony_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddMedicine_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddMedicine_vue_vue_type_template_id_0af8a7a8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/AddMedicine.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddMedicine_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddMedicine_vue_vue_type_template_id_0af8a7a8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/AddMedicine.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -4497,6 +4824,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "mixed": () => (/* binding */ create$8),
 /* harmony export */   "number": () => (/* binding */ create$5),
 /* harmony export */   "object": () => (/* binding */ create$3),
+/* harmony export */   "printValue": () => (/* binding */ printValue),
 /* harmony export */   "reach": () => (/* binding */ reach),
 /* harmony export */   "ref": () => (/* binding */ create$9),
 /* harmony export */   "setLocale": () => (/* binding */ setLocale),
@@ -4550,7 +4878,9 @@ function toArray(value) {
   return value == null ? [] : [].concat(value);
 }
 
+let _Symbol$toStringTag;
 let strReg = /\$\{\s*(\w+)\s*\}/g;
+_Symbol$toStringTag = Symbol.toStringTag;
 class ValidationError extends Error {
   static formatError(message, params) {
     const path = params.label || params.path || 'this';
@@ -4564,7 +4894,7 @@ class ValidationError extends Error {
   static isError(err) {
     return err && err.name === 'ValidationError';
   }
-  constructor(errorOrErrors, value, field, type) {
+  constructor(errorOrErrors, value, field, type, disableStack) {
     super();
     this.value = void 0;
     this.path = void 0;
@@ -4572,6 +4902,7 @@ class ValidationError extends Error {
     this.errors = void 0;
     this.params = void 0;
     this.inner = void 0;
+    this[_Symbol$toStringTag] = 'Error';
     this.name = 'ValidationError';
     this.value = value;
     this.path = field;
@@ -4581,13 +4912,14 @@ class ValidationError extends Error {
     toArray(errorOrErrors).forEach(err => {
       if (ValidationError.isError(err)) {
         this.errors.push(...err.errors);
-        this.inner = this.inner.concat(err.inner.length ? err.inner : err);
+        const innerErrors = err.inner.length ? err.inner : [err];
+        this.inner.push(...innerErrors);
       } else {
         this.errors.push(err);
       }
     });
     this.message = this.errors.length > 1 ? `${this.errors.length} errors occurred` : this.errors[0];
-    if (Error.captureStackTrace) Error.captureStackTrace(this, ValidationError);
+    if (!disableStack && Error.captureStackTrace) Error.captureStackTrace(this, ValidationError);
   }
 }
 
@@ -4666,7 +4998,8 @@ var locale = Object.assign(Object.create(null), {
   date,
   object,
   array,
-  boolean
+  boolean,
+  tuple
 });
 
 const isSchema = obj => obj && obj.__isYupSchema__;
@@ -4791,12 +5124,14 @@ function createValidation(config) {
     let {
       parent,
       context,
-      abortEarly = schema.spec.abortEarly
+      abortEarly = schema.spec.abortEarly,
+      disableStackTrace = schema.spec.disableStackTrace
     } = options;
     function resolve(item) {
       return Reference.isRef(item) ? item.getValue(value, parent, context) : item;
     }
     function createError(overrides = {}) {
+      var _overrides$disableSta;
       const nextParams = Object.assign({
         value,
         originalValue,
@@ -4805,7 +5140,7 @@ function createValidation(config) {
         spec: schema.spec
       }, params, overrides.params);
       for (const key of Object.keys(nextParams)) nextParams[key] = resolve(nextParams[key]);
-      const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name);
+      const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name, (_overrides$disableSta = overrides.disableStackTrace) != null ? _overrides$disableSta : disableStackTrace);
       error.params = nextParams;
       return error;
     }
@@ -4828,20 +5163,18 @@ function createValidation(config) {
       if (ValidationError.isError(err)) invalid(err);else panic(err);
     };
     const shouldSkip = skipAbsent && isAbsent(value);
-    if (!options.sync) {
-      try {
-        Promise.resolve(!shouldSkip ? test.call(ctx, value, ctx) : true).then(handleResult, handleError);
-      } catch (err) {
-        handleError(err);
-      }
-      return;
+    if (shouldSkip) {
+      return handleResult(true);
     }
     let result;
     try {
       var _result;
-      result = !shouldSkip ? test.call(ctx, value, ctx) : true;
+      result = test.call(ctx, value, ctx);
       if (typeof ((_result = result) == null ? void 0 : _result.then) === 'function') {
-        throw new Error(`Validation test of type: "${ctx.type}" returned a Promise during a synchronous validate. ` + `This test will finish after the validate call has returned`);
+        if (options.sync) {
+          throw new Error(`Validation test of type: "${ctx.type}" returned a Promise during a synchronous validate. ` + `This test will finish after the validate call has returned`);
+        }
+        return Promise.resolve(result).then(handleResult, handleError);
       }
     } catch (err) {
       handleError(err);
@@ -4969,6 +5302,8 @@ function clone(src, seen = new Map()) {
   return copy;
 }
 
+// If `CustomSchemaMeta` isn't extended with any keys, we'll fall back to a
+// loose Record definition allowing free form usage.
 class Schema {
   constructor(options) {
     this.type = void 0;
@@ -4995,6 +5330,7 @@ class Schema {
       strict: false,
       abortEarly: true,
       recursive: true,
+      disableStackTrace: false,
       nullable: false,
       optional: true,
       coerce: true
@@ -5100,12 +5436,13 @@ class Schema {
     return schema;
   }
   resolveOptions(options) {
-    var _options$strict, _options$abortEarly, _options$recursive;
+    var _options$strict, _options$abortEarly, _options$recursive, _options$disableStack;
     return Object.assign({}, options, {
       from: options.from || [],
       strict: (_options$strict = options.strict) != null ? _options$strict : this.spec.strict,
       abortEarly: (_options$abortEarly = options.abortEarly) != null ? _options$abortEarly : this.spec.abortEarly,
-      recursive: (_options$recursive = options.recursive) != null ? _options$recursive : this.spec.recursive
+      recursive: (_options$recursive = options.recursive) != null ? _options$recursive : this.spec.recursive,
+      disableStackTrace: (_options$disableStack = options.disableStackTrace) != null ? _options$disableStack : this.spec.disableStackTrace
     });
   }
 
@@ -5210,7 +5547,7 @@ class Schema {
       const test = tests[i];
       test(args, panicOnce, function finishTestRun(err) {
         if (err) {
-          nestedErrors = nestedErrors.concat(err);
+          Array.isArray(err) ? nestedErrors.push(...err) : nestedErrors.push(err);
         }
         if (--count <= 0) {
           nextOnce(nestedErrors);
@@ -5250,28 +5587,32 @@ class Schema {
     return (_, panic, next) => this.resolve(testOptions)._validate(value, testOptions, panic, next);
   }
   validate(value, options) {
+    var _options$disableStack2;
     let schema = this.resolve(Object.assign({}, options, {
       value
     }));
+    let disableStackTrace = (_options$disableStack2 = options == null ? void 0 : options.disableStackTrace) != null ? _options$disableStack2 : schema.spec.disableStackTrace;
     return new Promise((resolve, reject) => schema._validate(value, options, (error, parsed) => {
       if (ValidationError.isError(error)) error.value = parsed;
       reject(error);
     }, (errors, validated) => {
-      if (errors.length) reject(new ValidationError(errors, validated));else resolve(validated);
+      if (errors.length) reject(new ValidationError(errors, validated, undefined, undefined, disableStackTrace));else resolve(validated);
     }));
   }
   validateSync(value, options) {
+    var _options$disableStack3;
     let schema = this.resolve(Object.assign({}, options, {
       value
     }));
     let result;
+    let disableStackTrace = (_options$disableStack3 = options == null ? void 0 : options.disableStackTrace) != null ? _options$disableStack3 : schema.spec.disableStackTrace;
     schema._validate(value, Object.assign({}, options, {
       sync: true
     }), (error, parsed) => {
       if (ValidationError.isError(error)) error.value = parsed;
       throw error;
     }, (errors, validated) => {
-      if (errors.length) throw new ValidationError(errors, value);
+      if (errors.length) throw new ValidationError(errors, value, undefined, undefined, disableStackTrace);
       result = validated;
     });
     return result;
@@ -5291,12 +5632,12 @@ class Schema {
       throw err;
     }
   }
-  _getDefault(_options) {
+  _getDefault(options) {
     let defaultValue = this.spec.default;
     if (defaultValue == null) {
       return defaultValue;
     }
-    return typeof defaultValue === 'function' ? defaultValue.call(this) : clone(defaultValue);
+    return typeof defaultValue === 'function' ? defaultValue.call(this, options) : clone(defaultValue);
   }
   getDefault(options
   // If schema is defaulted we know it's at least not undefined
@@ -5942,46 +6283,54 @@ create$5.prototype = NumberSchema.prototype;
 // Number Interfaces
 //
 
-/* eslint-disable */
 /**
- *
+ * This file is a modified version of the file from the following repository:
  * Date.parse with progressive enhancement for ISO 8601 <https://github.com/csnover/js-iso8601>
  * NON-CONFORMANT EDITION.
  * © 2011 Colin Snover <http://zetafleet.com>
  * Released under MIT license.
  */
 
-//              1 YYYY                 2 MM        3 DD              4 HH     5 mm        6 ss            7 msec         8 Z 9 ±    10 tzHH    11 tzmm
-var isoReg = /^(\d{4}|[+\-]\d{6})(?:-?(\d{2})(?:-?(\d{2}))?)?(?:[ T]?(\d{2}):?(\d{2})(?::?(\d{2})(?:[,\.](\d{1,}))?)?(?:(Z)|([+\-])(\d{2})(?::?(\d{2}))?)?)?$/;
+// prettier-ignore
+//                1 YYYY                2 MM        3 DD              4 HH     5 mm        6 ss           7 msec         8 Z 9 ±   10 tzHH    11 tzmm
+const isoReg = /^(\d{4}|[+-]\d{6})(?:-?(\d{2})(?:-?(\d{2}))?)?(?:[ T]?(\d{2}):?(\d{2})(?::?(\d{2})(?:[,.](\d{1,}))?)?(?:(Z)|([+-])(\d{2})(?::?(\d{2}))?)?)?$/;
+function toNumber(str, defaultValue = 0) {
+  return Number(str) || defaultValue;
+}
 function parseIsoDate(date) {
-  var numericKeys = [1, 4, 5, 6, 7, 10, 11],
-    minutesOffset = 0,
-    timestamp,
-    struct;
-  if (struct = isoReg.exec(date)) {
-    // avoid NaN timestamps caused by “undefined” values being passed to Date.UTC
-    for (var i = 0, k; k = numericKeys[i]; ++i) struct[k] = +struct[k] || 0;
+  const regexResult = isoReg.exec(date);
+  if (!regexResult) return Date.parse ? Date.parse(date) : Number.NaN;
 
-    // allow undefined days and months
-    struct[2] = (+struct[2] || 1) - 1;
-    struct[3] = +struct[3] || 1;
-
+  // use of toNumber() avoids NaN timestamps caused by “undefined”
+  // values being passed to Date constructor
+  const struct = {
+    year: toNumber(regexResult[1]),
+    month: toNumber(regexResult[2], 1) - 1,
+    day: toNumber(regexResult[3], 1),
+    hour: toNumber(regexResult[4]),
+    minute: toNumber(regexResult[5]),
+    second: toNumber(regexResult[6]),
+    millisecond: regexResult[7] ?
     // allow arbitrary sub-second precision beyond milliseconds
-    struct[7] = struct[7] ? String(struct[7]).substr(0, 3) : 0;
+    toNumber(regexResult[7].substring(0, 3)) : 0,
+    z: regexResult[8] || undefined,
+    plusMinus: regexResult[9] || undefined,
+    hourOffset: toNumber(regexResult[10]),
+    minuteOffset: toNumber(regexResult[11])
+  };
 
-    // timestamps without timezone identifiers should be considered local time
-    if ((struct[8] === undefined || struct[8] === '') && (struct[9] === undefined || struct[9] === '')) timestamp = +new Date(struct[1], struct[2], struct[3], struct[4], struct[5], struct[6], struct[7]);else {
-      if (struct[8] !== 'Z' && struct[9] !== undefined) {
-        minutesOffset = struct[10] * 60 + struct[11];
-        if (struct[9] === '+') minutesOffset = 0 - minutesOffset;
-      }
-      timestamp = Date.UTC(struct[1], struct[2], struct[3], struct[4], struct[5] + minutesOffset, struct[6], struct[7]);
-    }
-  } else timestamp = Date.parse ? Date.parse(date) : NaN;
-  return timestamp;
+  // timestamps without timezone identifiers should be considered local time
+  if (struct.z === undefined && struct.plusMinus === undefined) {
+    return new Date(struct.year, struct.month, struct.day, struct.hour, struct.minute, struct.second, struct.millisecond).valueOf();
+  }
+  let totalMinutesOffset = 0;
+  if (struct.z !== 'Z' && struct.plusMinus !== undefined) {
+    totalMinutesOffset = struct.hourOffset * 60 + struct.minuteOffset;
+    if (struct.plusMinus === '+') totalMinutesOffset = 0 - totalMinutesOffset;
+  }
+  return Date.UTC(struct.year, struct.month, struct.day, struct.hour, struct.minute + totalMinutesOffset, struct.second, struct.millisecond);
 }
 
-// @ts-ignore
 let invalidDate = new Date('');
 let isDate = obj => Object.prototype.toString.call(obj) === '[object Date]';
 function create$4() {
@@ -6334,14 +6683,15 @@ class ObjectSchema extends Schema {
     for (const key of keys) {
       if (this.fields[key]) picked[key] = this.fields[key];
     }
-    return this.setFields(picked);
+    return this.setFields(picked, this._excludedEdges.filter(([a, b]) => keys.includes(a) && keys.includes(b)));
   }
   omit(keys) {
-    const fields = Object.assign({}, this.fields);
-    for (const key of keys) {
-      delete fields[key];
+    const remaining = [];
+    for (const key of Object.keys(this.fields)) {
+      if (keys.includes(key)) continue;
+      remaining.push(key);
     }
-    return this.setFields(fields);
+    return this.pick(remaining);
   }
   from(from, to, alias) {
     let fromGetter = (0,property_expr__WEBPACK_IMPORTED_MODULE_0__.getter)(from, true);
@@ -6404,9 +6754,10 @@ class ObjectSchema extends Schema {
     return this.transformKeys(key => (0,tiny_case__WEBPACK_IMPORTED_MODULE_1__.snakeCase)(key).toUpperCase());
   }
   describe(options) {
-    let base = super.describe(options);
+    const next = (options ? this.resolve(options) : this).clone();
+    const base = super.describe(options);
     base.fields = {};
-    for (const [key, value] of Object.entries(this.fields)) {
+    for (const [key, value] of Object.entries(next.fields)) {
       var _innerOptions2;
       let innerOptions = options;
       if ((_innerOptions2 = innerOptions) != null && _innerOptions2.value) {
@@ -6587,8 +6938,9 @@ class ArraySchema extends Schema {
     return this.transform(values => values != null ? values.filter(reject) : values);
   }
   describe(options) {
-    let base = super.describe(options);
-    if (this.innerType) {
+    const next = (options ? this.resolve(options) : this).clone();
+    const base = super.describe(options);
+    if (next.innerType) {
       var _innerOptions;
       let innerOptions = options;
       if ((_innerOptions = innerOptions) != null && _innerOptions.value) {
@@ -6597,7 +6949,7 @@ class ArraySchema extends Schema {
           value: innerOptions.value[0]
         });
       }
-      base.innerType = this.innerType.describe(innerOptions);
+      base.innerType = next.innerType.describe(innerOptions);
     }
     return base;
   }
@@ -6671,8 +7023,9 @@ class TupleSchema extends Schema {
     });
   }
   describe(options) {
-    let base = super.describe(options);
-    base.innerType = this.spec.types.map((schema, index) => {
+    const next = (options ? this.resolve(options) : this).clone();
+    const base = super.describe(options);
+    base.innerType = next.spec.types.map((schema, index) => {
       var _innerOptions;
       let innerOptions = options;
       if ((_innerOptions = innerOptions) != null && _innerOptions.value) {

@@ -59,33 +59,50 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   className: "mb-5"
 };
+
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   className: "font-bold mb-1 text-gray-700 block"
-}, "Username", -1 /* HOISTED */);
+}, "Username", -1
+/* HOISTED */
+);
+
 var _hoisted_6 = ["value"];
 var _hoisted_7 = {
   className: "mb-5"
 };
+
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   className: "font-bold mb-1 text-gray-700 block"
-}, "Email", -1 /* HOISTED */);
+}, "Email", -1
+/* HOISTED */
+);
+
 var _hoisted_9 = ["value"];
 var _hoisted_10 = {
   className: "mb-5"
 };
+
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   className: "font-bold mb-1 text-gray-700 block"
-}, "Account created", -1 /* HOISTED */);
+}, "Account created", -1
+/* HOISTED */
+);
+
 var _hoisted_12 = ["value"];
 var _hoisted_13 = {
   className: "mb-5"
 };
+
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   className: "font-bold mb-1 text-gray-700 block"
-}, "Authentication token", -1 /* HOISTED */);
+}, "Authentication token", -1
+/* HOISTED */
+);
+
 var _hoisted_15 = ["value"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ProfilePicture = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ProfilePicture");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div\n                                className=\"mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset\">\n                                <img id=\"image\" alt=\"profile picture\" className=\"object-cover w-full h-32 rounded-full\"\n                                    :src=\"image\" />\n                            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ProfilePicture, {
     width: '120px',
     height: '120px'
@@ -95,25 +112,33 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: "",
     className: "w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
     placeholder: "Enter your firstname..."
-  }, null, 8 /* PROPS */, _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8
+  /* PROPS */
+  , _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     value: $setup.user.user.email,
     disabled: "",
     className: "w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
     placeholder: "Enter your email address..."
-  }, null, 8 /* PROPS */, _hoisted_9)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8
+  /* PROPS */
+  , _hoisted_9)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     value: $setup.user.user.updated_at,
     disabled: "",
     className: "w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
     placeholder: "Enter your email address..."
-  }, null, 8 /* PROPS */, _hoisted_12)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8
+  /* PROPS */
+  , _hoisted_12)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     value: $setup.user.token,
     disabled: "",
     className: "w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
     placeholder: "Enter your email address..."
-  }, null, 8 /* PROPS */, _hoisted_15)])])])])])]);
+  }, null, 8
+  /* PROPS */
+  , _hoisted_15)])])])])])]);
 }
 
 /***/ }),
@@ -130,13 +155,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _MyProfile_vue_vue_type_template_id_8e9c9464__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyProfile.vue?vue&type=template&id=8e9c9464 */ "./resources/js/views/MyProfile.vue?vue&type=template&id=8e9c9464");
 /* harmony import */ var _MyProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyProfile.vue?vue&type=script&lang=js */ "./resources/js/views/MyProfile.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_tony_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_tony_projects_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MyProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyProfile_vue_vue_type_template_id_8e9c9464__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/MyProfile.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MyProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyProfile_vue_vue_type_template_id_8e9c9464__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/MyProfile.vue"]])
 /* hot reload */
 if (false) {}
 
