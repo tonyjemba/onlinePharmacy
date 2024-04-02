@@ -9,6 +9,7 @@ const state = {
     searched: [],
     error: "",
     uploadedServiceImage: null,
+    isLoading:false,
 };
 
 // mutations are operations that actually mutate the state.
@@ -17,11 +18,11 @@ const state = {
 // mutations must be synchronous and can be recorded by plugins
 // for debugging purposes.
 const mutations = {
-    storeServiceImage(state, data){
-        state.uploadedServiceImage = data; 
+    storeServiceImage(state, data) {
+        state.uploadedServiceImage = data;
     },
     STORESERVICES(state, data) {
-        state.services = data;
+        state.services = data.reverse();
     },
     EDITDATA(state, data) {
         state.editService = data;
@@ -32,14 +33,15 @@ const mutations = {
     SEARCHDATA(state, data) {
         state.searched = data;
     },
+    ROUTE_LOADING(state, data) {
+        state.isLoading= data
+    },
 };
 
 // actions are functions that cause side effects and can involve
 // asynchronous operations.
 const actions = {
     addService({ commit, state }, payload) {
-        //displays a loading indicator
-        commit("ROUTE_LOADING", true);
         // puting data in a formdata object
         const formData = new FormData();
         formData.append("serviceImage", payload.service_image);
@@ -51,10 +53,11 @@ const actions = {
         formData.append("disease", payload.disease);
         formData.append("descprition", payload.description);
         formData.append("contact", payload.contact);
-
+        //displays a loading indicator
+        commit("ROUTE_LOADING", true);
         //making api request
         axios
-            .post(`${process.env.MIX_APP_URL}/api/services`, formData, {
+            .post(`/api/services`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -62,15 +65,17 @@ const actions = {
             .then(() => {
                 //on success push back to the dashboard
                 router.push("/dashboard");
+                commit("ROUTE_LOADING", false);
             })
             .catch((error) => {
                 commit("ERROR", error.response.data.message);
+                commit("ROUTE_LOADING", false);
             });
     },
     fetchServices({ commit, state }) {
         //making api request
         axios
-            .get(`${process.env.MIX_APP_URL}/api/services`)
+            .get(`/api/services`)
             .then((res) => {
                 //Store data in vuex store
                 commit("STORESERVICES", res.data);
@@ -83,7 +88,7 @@ const actions = {
         router.push(`/editservice/${payload}`);
         //making api request to get product deatils to edit
         axios
-            .get(`${process.env.MIX_APP_URL}/api/services/${payload}`)
+            .get(`/api/services/${payload}`)
             .then((res) => {
                 //accessing data that needs to be edited
                 commit("EDITDATA", res.data);
@@ -95,7 +100,7 @@ const actions = {
     searchService({ commit, state }, payload) {
         //making api request to get product results
         axios
-            .get(`${process.env.MIX_APP_URL}/api/searchServices/${payload}`)
+            .get(`/api/searchServices/${payload}`)
             .then((res) => {
                 //accessing data that needs to be edited
                 commit("SEARCHDATA", res.data);
@@ -109,7 +114,6 @@ const actions = {
         const formData = new FormData();
         //updated image
         formData.append("productImage", payload.imageFile);
-
         formData.append("service_name", payload.service_name);
         formData.append("Pharmacy_name", payload.Pharmacy_name);
         formData.append("location", payload.location);
@@ -119,9 +123,9 @@ const actions = {
         formData.append("contact", payload.contact);
         formData.append("image_url", payload.image_url);
         formData.append("id", payload.id);
-       
+       commit("ROUTE_LOADING", true);
         axios
-            .post(`${process.env.MIX_APP_URL}/api/update-service`, formData, {
+            .post(`/api/update-service`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -131,15 +135,17 @@ const actions = {
                      //refresh the path to see the latest changes
                      window.location.reload();
                  });
+                 commit("ROUTE_LOADING", false);
             })
             .catch((error) => {
                 console.log("ERROR", error.response.data.message);
+                commit("ROUTE_LOADING", false);
             });
     },
     deleteService({ commit, state }, payload) {
         //making api request
         axios
-            .delete(`${process.env.MIX_APP_URL}/api/services/${payload}`)
+            .delete(`/api/services/${payload}`)
             .then(() => {
                 //refreshes currrent page
                 router.go();

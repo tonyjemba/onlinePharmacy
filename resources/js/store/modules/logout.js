@@ -33,7 +33,7 @@ const actions = {
         // making api request
         axios
             .post(
-                `${process.env.MIX_APP_URL}/api/logout`,
+                `/api/logout`,
                 email
             )
             .then((response) => {

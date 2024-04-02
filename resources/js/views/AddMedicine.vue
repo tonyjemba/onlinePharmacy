@@ -1,10 +1,14 @@
 <template>
     <div className="bg-indigo-50 min-h-screen md:px-20 pt-6 pb-12">
         <div>
-                <router-link to="/dashboard">
-                        <IconBack :width="'30px'" :height="'25px'" class="cursor-pointer"/>
-                </router-link>
-            </div>
+            <router-link to="/dashboard">
+                <IconBack
+                    :width="'30px'"
+                    :height="'25px'"
+                    class="cursor-pointer"
+                />
+            </router-link>
+        </div>
         <div className=" bg-white rounded-md px-6 py-10 max-w-2xl mx-auto">
             <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">
                 ADD PRODUCT
@@ -158,7 +162,13 @@
                     <button
                         className=" px-6 py-2 mt-10 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
-                        Add Product
+                        <div class="flex justify-center align-middle">
+                            <div v-if="isLoading">
+                                <ButtonSpinner />
+                            </div>
+
+                            <div>Add Product</div>
+                        </div>
                     </button>
                 </form>
             </VeeForm>
@@ -170,38 +180,48 @@
 import { Form as VeeForm, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import { useStore } from "vuex";
-import IconBack from "../components/IconBack.vue"
-
+import IconBack from "../components/IconBack.vue";
+import ButtonSpinner from "../components/ButtonSpinner.vue";
+import { computed } from "vue";
 
 //vuex store
 const store = useStore();
 
-  //logged user is stored in localstorage, we get his id
-        const ls = JSON.parse(localStorage.getItem("vuex"));
-        const userId = ls.login.loginUser.user.id;
+const isLoading = computed(() => store.state.products.isLoading);
+
+//logged user is stored in localstorage, we get his id
+const ls = JSON.parse(localStorage.getItem("vuex"));
+const userId = ls.login.loginUser.user.id;
 
 const schema = yup.object({
-    product_name: yup.string().required('The Product Name is a required field'),
-    phamacy_name: yup.string().required('The Pharmacy Name is a required field'),
-    location: yup.string().required('The Location is a required field'),
-    price: yup.number().required('The Price is a required field').positive().integer(),
-    disease: yup.string().required('The Disease is a required field'),
-    contact: yup.string('The  Contact is a required field')
-    .matches(/^\+?\d{10,20}$/, 'Please enter a valid Phone number')
-    .required('The Phone number is required'),
+    product_name: yup.string().required("The Product Name is a required field"),
+    phamacy_name: yup
+        .string()
+        .required("The Pharmacy Name is a required field"),
+    location: yup.string().required("The Location is a required field"),
+    price: yup
+        .number()
+        .required("The Price is a required field")
+        .positive()
+        .integer(),
+    disease: yup.string().required("The Disease is a required field"),
+    contact: yup
+        .string("The  Contact is a required field")
+        .matches(/^\+?\d{10,20}$/, "Please enter a valid Phone number")
+        .required("The Phone number is required"),
     product_image: yup
         .mixed()
         .required("The Product Image is required")
         .test("fileSize", "File too large", (value) => {
             return value && value.size <= 10000000; //file should be less or equal to 10MB
         }),
-    description: yup.string().required('The Product Description is a required field'),
+    description: yup
+        .string()
+        .required("The Product Description is a required field"),
 });
-
 
 const onSubmit = (values) => {
     // Submit values to API...
-    store.dispatch("products/addProduct",{...values, user_id: userId,})
-
-}
+    store.dispatch("products/addProduct", { ...values, user_id: userId });
+};
 </script>

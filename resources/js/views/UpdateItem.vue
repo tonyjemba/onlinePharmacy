@@ -131,7 +131,14 @@
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
-                        EDIT PRODUCT
+                     <div class="flex justify-center align-middle">
+                            <div v-if="isLoading">
+                                <ButtonSpinner />
+                            </div>
+
+                            <div>Edit Product</div>
+                        </div>
+                        
                     </button>
                 </div>
             </div>
@@ -144,9 +151,11 @@ import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import IconBack from "../components/IconBack.vue"
+import ButtonSpinner from "../components/ButtonSpinner.vue";
+import { computed } from "vue";
 
 export default {
-    components:{IconBack},
+    components:{IconBack,ButtonSpinner},
     setup() {
         const store = useStore();
         const route = useRoute();
@@ -168,10 +177,10 @@ export default {
             contact: "",
             imageFile: null
         });
-
+        const isLoading = computed(() => store.state.products.isLoading);
         onMounted(async () => {
             const res = await axios.get(
-                `${process.env.MIX_APP_URL}/api/products/${routeId}`
+                `/api/products/${routeId}`
             );
 
             state.product_name = res.data.product_name;
@@ -199,6 +208,7 @@ export default {
 
         return {
             previewImage,
+            isLoading,
             state,
             //edit the product
             updateProduct: () =>

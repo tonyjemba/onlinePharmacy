@@ -73,7 +73,13 @@
 
                     <button
                         className=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  ">
-                        EDIT SERVICE
+                         <div class="flex justify-center align-middle">
+                            <div v-if="isLoading">
+                                <ButtonSpinner />
+                            </div>
+
+                            <div>Edit Service</div>
+                        </div>
                     </button>
                 </div>
             </div>
@@ -87,10 +93,12 @@ import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import IconBack from "../components/IconBack.vue"
+import ButtonSpinner from "../components/ButtonSpinner.vue";
+import { computed } from "vue";
 
 
 export default {
-    components:{IconBack},
+    components:{IconBack,ButtonSpinner},
 
     setup() {
         const store = useStore();
@@ -115,10 +123,12 @@ export default {
 
         });
 
+        const isLoading = computed(() => store.state.services.isLoading);
+
         //get data to edit when the component is mounted
         onMounted(async () => {
             const res = await axios.get(
-                `${process.env.MIX_APP_URL}/api/services/${routeId}`
+                `/api/services/${routeId}`
             );
 
             state.service_name = res.data.service_name;
@@ -145,6 +155,7 @@ export default {
 
         return {
             previewImage,
+            isLoading,
             state,
             //edit the product
             updateService: () =>

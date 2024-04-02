@@ -11,6 +11,7 @@ class AuthController extends Controller
 {
   public function register(Request $request){
 
+
     //the fielsds must be verified, the password should be confirmed and the confirmation field 
     //should have an id of password_confirmation
         $fields = $request->validate([

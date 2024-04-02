@@ -50,7 +50,9 @@ export default {
            
         });
         return {
-            products: computed(() => store.state.login.myProducts),
+            products: computed(() =>{ 
+            return store.state.login.myProducts;
+            }),
             services: computed(() => store.state.login.myServices),
             deleteProduct: (id) => store.dispatch("products/deleteProduct", id),
             deleteService: (id) => store.dispatch("services/deleteService", id),

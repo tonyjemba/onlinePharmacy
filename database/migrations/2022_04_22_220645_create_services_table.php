@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('service_name');
             $table->string('Pharmacy_name');
             $table->string('location');
-            $table->integer('price');
+            $table->bigInteger('price');
             $table->string('disease');
             $table->longText('descprition');
             $table->string('contact');

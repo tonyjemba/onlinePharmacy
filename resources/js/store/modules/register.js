@@ -42,6 +42,7 @@ const mutations = {
     SET_APP_URL(state, data) {
         state.appURL = data;
     },
+    
 };
 
 // actions are functions that cause side effects and can involve
@@ -51,8 +52,19 @@ const actions = {
         //displays a loading indicator
         commit("ROUTE_LOADING", true);
         //making api request
+        //   const options = {
+        //       headers: {
+        //           "Content-Type": "multipart/form-data",
+        //       },
+        //   };
+        //   let formData = new FormData();
+        // formData.append("email", payload.email);
+        // formData.append("name", payload.name);
+        // formData.append("password", payload.password);
+        // formData.append("password_confirmation", payload.password_confirmation);
+
         axios
-            .post(`${state.appURL}/api/register`, payload)
+            .post(`/api/register`, payload)
             .then((response) => {
                 commit("REG_DATA", response);
                 commit("MSG", response.data.message);
@@ -66,6 +78,9 @@ const actions = {
                 commit("ROUTE_LOADING", false);
             });
     },
+    disableLoading(){
+                commit("ROUTE_LOADING", false);
+    }
 };
 
 // getters are functions.

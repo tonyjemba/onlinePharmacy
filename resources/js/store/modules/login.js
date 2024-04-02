@@ -29,10 +29,10 @@ const mutations = {
         state.islogged = false;
     },
     MYPRODUCTS(state, data) {
-        state.myProducts = data;
+        state.myProducts = data.reverse();
     },
     MYSERVICES(state, data) {
-        state.myServices = data;
+        state.myServices = data.reverse();
     },
     CLEARLOGGEDDATA(state) {
         state.loginUser = [];
@@ -68,10 +68,7 @@ const actions = {
     getProducts({ commit, state }, payload) {
         //making api request
         axios
-            .post(
-                `/api/myProducts`,
-                payload
-            )
+            .post(`/api/myProducts`, payload)
             .then((response) => {
                 commit("MYPRODUCTS", response.data);
             })
@@ -82,10 +79,7 @@ const actions = {
     getServices({ commit, state }, payload) {
         //making api request
         axios
-            .post(
-                `/api/myServices`,
-                payload
-            )
+            .post(`/api/myServices`, payload)
             .then((response) => {
                 commit("MYSERVICES", response.data);
             })

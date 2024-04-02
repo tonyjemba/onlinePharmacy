@@ -99,7 +99,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat("http://127.0.0.1:8000", "/api/services/").concat(routeId));
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/services/".concat(routeId));
 
             case 2:
               res = _context.sent;
@@ -1221,13 +1221,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _IconBack_vue_vue_type_template_id_0bfb332a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IconBack.vue?vue&type=template&id=0bfb332a */ "./resources/js/components/IconBack.vue?vue&type=template&id=0bfb332a");
 /* harmony import */ var _IconBack_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IconBack.vue?vue&type=script&lang=js */ "./resources/js/components/IconBack.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_tony_projects_docker_personal_portfolio_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_IconBack_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_IconBack_vue_vue_type_template_id_0bfb332a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/IconBack.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_tony_projects_docker_personal_portfolio_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_IconBack_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_IconBack_vue_vue_type_template_id_0bfb332a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/IconBack.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1249,13 +1249,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _UpdateService_vue_vue_type_template_id_a3222dc6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateService.vue?vue&type=template&id=a3222dc6 */ "./resources/js/views/UpdateService.vue?vue&type=template&id=a3222dc6");
 /* harmony import */ var _UpdateService_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateService.vue?vue&type=script&lang=js */ "./resources/js/views/UpdateService.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_tony_projects_docker_personal_portfolio_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_tony_projects_docker_personal_onlinePharmacy_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_UpdateService_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdateService_vue_vue_type_template_id_a3222dc6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/UpdateService.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_tony_projects_docker_personal_portfolio_onlinePharmacy_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_UpdateService_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UpdateService_vue_vue_type_template_id_a3222dc6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/UpdateService.vue"]])
 /* hot reload */
 if (false) {}
 

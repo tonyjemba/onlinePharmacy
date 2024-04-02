@@ -1,0 +1,76 @@
+version: '3.8'
+
+networks:
+  onlinepharmacydb:
+    driver: bridge
+  portfolio:
+    external: true
+
+volumes:
+  sharedfilestorage:
+    external: true
+  onlinepharmacyvol:
+  onlinepharmacydbvol:
+  
+
+
+services:
+
+  Onlinepharmacy-db:
+    image: mysql:8.3.0
+    container_name: Onlinepharmacy-db
+    restart: unless-stopped
+    tty: true
+    # ports:
+    # - "${MYSQL_HOST_PORT}:${MYSQL_DOCKER_CONTAINER_PORT}"
+    environment:
+      MYSQL_DATABASE: "${onlinePharmacyDB}"
+      MYSQL_ROOT_PASSWORD: "${onlinePharmacyDB_Password}"
+      MYSQL_USER: "${mysql_user}"
+      MYSQL_PASSWORD: "${mysql_password}"
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+
+    networks:
+      - onlinepharmacydb
+    volumes:
+      - onlinepharmacydbvol:/var/lib/mysql
+
+  onlinepharmacy-phpmyadmin:
+    image: phpmyadmin:5.2.0
+    ports:
+      - '8383:80'
+    environment:
+      - PMA_HOSTS=Onlinepharmacy-db #Add more mysql services here.
+    networks:
+      - onlinepharmacydb
+    depends_on:
+      - Onlinepharmacy-db
+
+  onlinepharmacy:
+    build:
+      context: ./
+      dockerfile: Dockerfile.prod
+    container_name: onlinepharmacy
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./:/var/www/html/
+      - sharedfilestorage:/var/www/html/storage/app/public/
+      - sharedfilestorage:/public/storage/
+    ports:
+      - "${ONLINEPHARMACYPORT}:${ONLINEPHARMACYDOCKERPORT}"
+    depends_on:
+      - Onlinepharmacy-db
+
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: Onlinepharmacy-db
+      DB_PORT: ${MYSQL_DOCKER_CONTAINER_PORT}
+      DB_DATABASE: "${onlinePharmacyDB}"
+      DB_USERNAME: "${mysql_user}"
+      DB_PASSWORD: "${mysql_password}"
+    
+    networks:
+      - onlinepharmacydb
+      - portfolio

@@ -13,8 +13,7 @@ export default {
     },
     setup(props) {
         const timeAgo = useTimeAgo(props.updated_at);
-        const appUrl =  process.env.MIX_APP_URL;
-        const imageUrl = appUrl+props.image_url;
+        const imageUrl = props.image_url;
 
         return {
             timeAgo,

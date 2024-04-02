@@ -67,7 +67,7 @@ export default {
         //get data to edit when the component is mounted
         onMounted(async () => {
             const res = await axios.get(
-                `${process.env.MIX_APP_URL}/api/services/${routeId}`
+                `/api/services/${routeId}`
             );
             console.log(res);
             //update state on component mount

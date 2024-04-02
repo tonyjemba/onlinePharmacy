@@ -40,6 +40,8 @@ class ProductController extends Controller
         $productImageFile = $request->file('productImage');
         $productImagePath = $productImageFile->store('public/product_images');
         $productImageUrl = Storage::url($productImagePath);
+        $relativePath = str_replace('public/', '', $productImageUrl);
+
 
         //store the product details in the database
         Product::create([
@@ -50,7 +52,7 @@ class ProductController extends Controller
             'disease' => $requestDetails['disease'],
             'descprition' => $requestDetails['descprition'],
             'contact' => $requestDetails['contact'],
-            'image_url' => $productImageUrl,
+            'image_url' => $relativePath,
             'user_id' => $requestDetails['user_id'],
         ]);
 
@@ -100,12 +102,10 @@ class ProductController extends Controller
             $productImageFile = $request->file('productImage');
             $productImagePath = $productImageFile->store('public/product_images');
             $productImageUrl = Storage::url($productImagePath);
-            $product->image_url = $productImageUrl;
+            $relativePath = str_replace('public/', '', $productImageUrl);
+            $product->image_url = $relativePath;
         }
         $product->save();
-
-
-
         return response()->json($product);
     }
 
@@ -127,8 +127,8 @@ class ProductController extends Controller
     public function search($name)
     {
         //ilike the i is for case insesitivity
-        $product = Product::where('product_name', 'LIKE', '%'.$name.'%')
-        ->orWhere('descprition', 'LIKE', '%'.$name.'%')
+        $product = Product::where('product_name', 'LIKE', '%' . $name . '%')
+            ->orWhere('descprition', 'LIKE', '%' . $name . '%')
             // ->orWhere('Pharmacy_name', 'LIKE', '%'.$name.'%')
             // ->orWhere('disease', 'LIKE', '%'.$name.'%')
             // ->orWhere('location', 'LIKE', '%'.$name.'%')

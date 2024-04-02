@@ -8,7 +8,8 @@ const state = {
     editProduct: {},
     searched: [],
     error: "",
-    uploadedProductImage: null
+    uploadedProductImage: null,
+    isLoading: false,
 };
 
 // mutations are operations that actually mutate the state.
@@ -18,11 +19,11 @@ const state = {
 // for debugging purposes.
 const mutations = {
     //storing the uploaded product image to the store
-    storeProductImage(state,data){
-        state.uploadedProductImage = data; 
+    storeProductImage(state, data) {
+        state.uploadedProductImage = data;
     },
     STOREPRODUCTS(state, data) {
-        state.products = data;
+        state.products = data.reverse();
     },
     EDITDATA(state, data) {
         state.editProduct = data;
@@ -32,6 +33,9 @@ const mutations = {
     },
     SEARCHDATA(state, data) {
         state.searched = data;
+    },
+    ROUTE_LOADING(state, data) {
+        state.isLoading = data;
     },
 };
 
@@ -55,7 +59,7 @@ const actions = {
           formData.append("contact", payload.contact);
 
         axios
-            .post(`${process.env.MIX_APP_URL}/api/products`, formData, {
+            .post(`/api/products`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -64,15 +68,17 @@ const actions = {
                 console.log(response);
                 //on success push back to the dashboard
                 router.push("/dashboard");
+                commit("ROUTE_LOADING", false);
             })
             .catch((error) => {
                 commit("ERROR", error.response.data.message);
+                commit("ROUTE_LOADING", false);
             });
     },
     fetchProcucts({ commit, state }) {
         //making api request
         axios
-            .get(`${process.env.MIX_APP_URL}/api/products`)
+            .get(`/api/products`)
             .then((res) => {
                 //Store data in vuex store
                 commit("STOREPRODUCTS", res.data);
@@ -86,7 +92,7 @@ const actions = {
 
         //making api request to get product deatils to edit
         axios
-            .get(`${process.env.MIX_APP_URL}/api/products/${payload}`)
+            .get(`/api/products/${payload}`)
             .then((res) => {
                 //accessing data that needs to be edited
                 commit("EDITDATA", res.data);
@@ -101,7 +107,7 @@ const actions = {
         //making api request to get product results
 
         axios
-            .get(`${process.env.MIX_APP_URL}/api/searchProducts/${payload}`)
+            .get(`/api/searchProducts/${payload}`)
             .then((res) => {
                 console.log(res.data);
                 commit("SEARCHDATA", res.data);
@@ -125,10 +131,10 @@ const actions = {
         formData.append("contact", payload.contact);
         formData.append("image_url", payload.image_url);
         formData.append("id",payload.id);
-        
+        commit("ROUTE_LOADING", true);
         axios
             .post(
-                `${process.env.MIX_APP_URL}/api/update-product`,
+                `/api/update-product`,
                 formData,
                 {
                     headers: {
@@ -141,16 +147,17 @@ const actions = {
                     //refresh the path to see the latest changes
                   window.location.reload();
                  });
+                 commit("ROUTE_LOADING", false);
             })
             .catch((error) => {
-
+                commit("ROUTE_LOADING", false);
                 console.log("ERROR", error.response.data.message);
             });
     },
     deleteProduct({ commit, state }, payload) {
         //making api request
         axios
-            .delete(`${process.env.MIX_APP_URL}/api/products/${payload}`)
+            .delete(`/api/products/${payload}`)
             .then(() => {
                 //refreshes currrent page
                 router.go();

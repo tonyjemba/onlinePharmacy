@@ -122,8 +122,9 @@
 
 <script>
 import Icon from "../components/Icon.vue";
-import { computed, ref, defineAsyncComponent } from "vue";
+import { computed, ref, defineAsyncComponent} from "vue";
 import { useStore } from "vuex";
+import store from '../store';
 
 export default {
     components: {
@@ -131,6 +132,14 @@ export default {
         Loading: defineAsyncComponent(() =>
             import("../components/Loading.vue")
         ),
+    },
+    mounted(){
+        //disable loading indicator
+         store.commit("register/ROUTE_LOADING", false)
+         store.commit("register/Error", "")
+
+        //set APP URl .env variable
+         store.commit("register/SET_APP_URL", process.env.MIX_APP_URL)
     },
 
     setup() {
@@ -141,6 +150,7 @@ export default {
             password: "",
             password_confirmation: "",
         });
+
         return {
             credentials,
             submitRegForm: () =>

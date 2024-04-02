@@ -38,6 +38,8 @@ class ServicesController extends Controller
         $serviceImageFile = $request->file('serviceImage');
         $serviceImagePath = $serviceImageFile->store('public/service_images');
         $serviceImageUrl = Storage::url($serviceImagePath);
+        $relativePath = str_replace('public/', '', $serviceImageUrl);
+
 
         //store the service details in the database
         Services::create([
@@ -48,7 +50,7 @@ class ServicesController extends Controller
             'disease' => $requestDetails['disease'],
             'descprition' => $requestDetails['descprition'],
             'contact' => $requestDetails['contact'],
-            'image_url' => $serviceImageUrl,
+            'image_url' => $relativePath,
             'user_id' => $requestDetails['user_id'],
         ]);
 
@@ -98,7 +100,8 @@ class ServicesController extends Controller
             $productImageFile = $request->file('productImage');
             $productImagePath = $productImageFile->store('public/service_images');
             $productImageUrl = Storage::url($productImagePath);
-            $product->image_url = $productImageUrl;
+            $relativePath = str_replace('public/', '', $productImageUrl);
+            $product->image_url = $relativePath;
         }
         $product->save();
 

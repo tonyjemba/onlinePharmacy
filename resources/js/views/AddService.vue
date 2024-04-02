@@ -158,7 +158,13 @@
                     <button
                         className=" px-6 py-2 mt-10 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600  "
                     >
-                        Add Service
+                    <div class="flex justify-center align-middle">
+                            <div v-if="isLoadingSevice">
+                                <ButtonSpinner />
+                            </div>
+
+                            <div>Add Service</div>
+                        </div>
                     </button>
                 </form>
             </VeeForm>
@@ -171,10 +177,14 @@ import { Form as VeeForm, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import { useStore } from "vuex";
 import IconBack from "../components/IconBack.vue"
+import ButtonSpinner from "../components/ButtonSpinner.vue";
+import { computed } from "vue";
 
 
 //vuex store
 const store = useStore();
+
+const isLoadingSevice = computed(() => store.state.services.isLoading);
 
 //logged user is stored in localstorage, we get his id
 const ls = JSON.parse(localStorage.getItem("vuex"));
