@@ -11,7 +11,7 @@ pipeline {
                 }
             }
             steps {
-                sh git clone https://github.com/tonyjemba/onlinePharmacy.git /repo
+                sh 'git clone https://github.com/tonyjemba/onlinePharmacy.git /repo'
             }
         }
    
