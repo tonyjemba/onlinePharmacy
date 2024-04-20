@@ -10,6 +10,7 @@ volumes:
   sharedfilestorage:
     external: true
   onlinepharmacyvol:
+    external: true
   onlinepharmacydbvol:
   
 
