@@ -1,16 +1,20 @@
 pipeline {
     //no global agent stages to be run on individual docker nodes and not from the controller
-    agent {
-        docker { image 'node:lts'}
-    } 
+    agent none
 
     stages {
-        stage('Checking Node Version') {
+
+        stage('Check Node Version') {
+             agent {
+        docker { image 'node:lts'}
+       } 
            
             steps {
                 sh 'node --version'
             }
-        }
+    }
+
+    
    
     }
  
