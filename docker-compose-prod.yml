@@ -10,7 +10,6 @@ volumes:
   sharedfilestorage:
     external: true
   onlinepharmacyvol:
-    external: true
   onlinepharmacydbvol:
   
 
@@ -57,7 +56,6 @@ services:
     tty: true
     volumes:
       - ./:/var/www/html/
-      - onlinepharmacyvol:/var/www/html/
       - sharedfilestorage:/var/www/html/storage/app/public/
       - sharedfilestorage:/public/storage/
     ports:
