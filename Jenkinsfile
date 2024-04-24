@@ -6,8 +6,10 @@ pipeline {
 
         stage('Check Node Version') {
              agent {
-        docker { image 'node:lts'}
-       } 
+                docker {
+                    image 'node:lts'
+                    }
+            } 
            
             steps {
                 sh 'node --version'
